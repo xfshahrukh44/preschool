@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
-                
+
                     <h2>Daycare Center</h2>
 
                 </div>
@@ -70,28 +70,28 @@
 
 <section class="about-sec-two">
     <div class="container">
-        
+
         <div class="row">
-            <div class="col-md-12" style="margin-top:50px;"> 
-            
+            <div class="col-md-12" style="margin-top:50px;">
+
                 <?php $get_daycarecount = DB::table('childcares')->distinct('name')->count(); ?>
-                
+
                 <center>
                     <h4 Style="color:#000;"> Childcare Provider Search </h4>
                 </center>
-                
+
                 <hr>
-                
+
             </div>
         </div>
-        
+
         <div class="row">
-            
-            <div class="col-md-12" style="margin-top:50px;"> 
-                                         
+
+            <div class="col-md-12" style="margin-top:50px;">
+
             <table id="example1" style="width:100%;" class="table table-hover table-bordered table-striped text-center">
-              
-              <thead> 
+
+              <thead>
                   <tr>
                     <th>Action</th>
                     <th>Name</th>
@@ -101,15 +101,16 @@
                     <th>State</th>
                   </tr>
               </thead>
-              
+
               <tbody>
-            
+
             @foreach($search_result as $key => $val_search)
-            
+
               <tr>
                 <td>
                     @if($val_search->claim_status == "1")
-                        <a class="btn btn-primary" href="{{ route('signin') }}">Claim</a>
+{{--                        <a class="btn btn-primary" href="{{ route('signin') }}">Claim</a>--}}
+                        <a class="btn btn-primary" href="{{ route('provider.findDaycare') }}">Claim</a>
                     @else
                         <a class="btn btn-secondary" href="{{ URL('claimed_center_detail/'.$val_search->id) }}">View</a>
                     @endif
@@ -120,13 +121,13 @@
                 <td>{{ $val_search->program_type ? $val_search->program_type : 'N\A'}}</td>
                 <td>{{ $val_search->state ? $val_search->state : 'N\A' }}</td>
               </tr>
-            
+
             @endforeach
-             
+
               </tbody>
-              
+
             </table>
-            
+
             </div>
 
         </div>
@@ -142,6 +143,6 @@
 
 @section('js')
 <script type="text/javascript">
-    
+
 </script>
 @endsection

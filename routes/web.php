@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,7 +96,7 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
     Route::get('500',function (){
         return view('pages.500');
     });
-    
+
 //============================================================//
 
     #Permission management
@@ -179,14 +180,14 @@ Route::post('update_daycare_center','LoggedInController@update_daycare_center')-
 
 Route::post('update/account','LoggedInController@updateAccount')->name('update.account');
 Route::get('signout', function() {
-    
+
     Auth::logout();
 
     Session::flash('flash_message', 'You have logged out  Successfully');
     Session::flash('alert-class', 'alert-success');
 
     return redirect('signin');
-    
+
 });
 
 Route::get('logout','Auth\LoginController@logout');
@@ -261,6 +262,13 @@ Route::get('add-job','HomeController@add_job')->name('add_job');
 Route::get('view-job','HomeController@view_job')->name('view_job');
 Route::get('edit-job/{id?}','HomeController@edit_job')->name('edit_job');
 Route::get('delete_job/{id?}','HomeController@delete_job')->name('delete_job');
+
+Route::prefix('provider')->group(function () {
+    Route::get('dashboard', [ProviderController::class, 'dashboard'])->name('provider.dashboard');
+    Route::get('daycare', [ProviderController::class, 'findDaycare'])->name('provider.findDaycare');
+    Route::post('update-daycare-center', [ProviderController::class, 'updateDaycareCenter'])->name('provider.updateDaycareCenter');
+    Route::get('claimed-centers', [ProviderController::class, 'claimedCenters'])->name('provider.claimedCenters');
+});
 
 
 Route::get('job-request','HomeController@job_request')->name('job_request');

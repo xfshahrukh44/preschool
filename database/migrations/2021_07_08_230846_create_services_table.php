@@ -12,15 +12,17 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->text('page_title')->nullable();
-            $table->string('banner_image')->nullable();
-            $table->string('main_image')->nullable();
-            $table->text('right_image')->nullable();
-            $table->text('bottom_content')->nullable();
+        if (!Schema::hasTable('services')) {
+            Schema::create('services', function (Blueprint $table) {
+                $table->increments('id');
+                $table->timestamps();
+                $table->text('page_title')->nullable();
+                $table->string('banner_image')->nullable();
+                $table->string('main_image')->nullable();
+                $table->text('right_image')->nullable();
+                $table->text('bottom_content')->nullable();
             });
+        }
     }
 
     /**

@@ -64,12 +64,17 @@ button#stripe-submit {
                     <form class="sign-up" method="POST" action="{{ route('register') }}" id="sign-up">
 
                         @csrf
+                        <?php
+                        $subtotal = App\Http\Traits\HelperTrait::returnFlag(1973);
+                        ?>
                     <input type="hidden" name="payment_id" value="" />
+                    <input type="hidden" name="amount" value="10" />
                     <input type="hidden" name="payer_id" value="" />
                     <input type="hidden" name="payment_status" value="" />
+                    <input type="hidden" name="amount" value="{{$subtotal}}" />
                     <input type="hidden" name="payment_method" id="payment_method" value="paypal" />
                         <div class="row">
-                        
+
                            <input type="hidden" name="role" value="4">
 
                             <div class="col-lg-6">
@@ -129,7 +134,7 @@ button#stripe-submit {
 
                             <div class="col-lg-4 mt-3">
                                 <span>Position accepted?</span>
-                                <div class="form-group"> 
+                                <div class="form-group">
                                     <input type="text" class="form-control" name="position_accepted" placeholder="1 to 3" required="">
                                 </div>
                             </div>
@@ -154,24 +159,24 @@ button#stripe-submit {
                             <!--<button type="submit" class="custom-btn">Become a provider</button>-->
                             <div class="form-group col-lg-12 mt-3">
                                 <div id="accordion" class="payment-accordion">
-                                  <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                      <h5 class="mb-0">
-                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-payment="paypal">
-                                          Pay with Paypal <img src="{{ asset('images/paypal.png') }}" width="60" alt="">
-                                        </button>
-                                      </h5>
-                                    </div>
-                                    <?php
-                                    $subtotal = App\Http\Traits\HelperTrait::returnFlag(1973);
-                                    ?>
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                      <div class="card-body">
-                                        <input type="hidden" name="price" value="{{ App\Http\Traits\HelperTrait::returnFlag(1973) }}" />
-                                        <div id="paypal-button-container-popup"></div>
-                                      </div>
-                                    </div>
-                                  </div>
+{{--                                  <div class="card">--}}
+{{--                                    <div class="card-header" id="headingOne">--}}
+{{--                                      <h5 class="mb-0">--}}
+{{--                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-payment="paypal">--}}
+{{--                                          Pay with Paypal <img src="{{ asset('images/paypal.png') }}" width="60" alt="">--}}
+{{--                                        </button>--}}
+{{--                                      </h5>--}}
+{{--                                    </div>--}}
+{{--                                    <?php--}}
+{{--                                    $subtotal = App\Http\Traits\HelperTrait::returnFlag(1973);--}}
+{{--                                    ?>--}}
+{{--                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">--}}
+{{--                                      <div class="card-body">--}}
+{{--                                        <input type="hidden" name="price" value="{{ App\Http\Traits\HelperTrait::returnFlag(1973) }}" />--}}
+{{--                                        <div id="paypal-button-container-popup"></div>--}}
+{{--                                      </div>--}}
+{{--                                    </div>--}}
+{{--                                  </div>--}}
                                   <div class="card">
                                     <div class="card-header" id="headingTwo">
                                       <h5 class="mb-0">
@@ -180,7 +185,7 @@ button#stripe-submit {
                                         </button>
                                       </h5>
                                     </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                                       <div class="card-body">
                                         <div class="stripe-form-wrapper require-validation" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" data-cc-on-file="false">
                                           <div id="card-element"></div>
@@ -195,8 +200,8 @@ button#stripe-submit {
                                 </div>
                             </div>
                         </div>
-                        
-                    
+
+
                     </form>
 
 
@@ -269,7 +274,7 @@ paypal.Button.render({
 
         if(errorCount == 1){
             	toastr.error('Please fill the required fields before proceeding to pay');
-          
+
           paypalActions.disable();
         }else{
           paypalActions.enable();
@@ -325,7 +330,7 @@ paypal.Button.render({
           $('input[name="payer_id"]').val('');
           $('input[name="payment_method"]').val('paypal');
       }
-    }, '#paypal-button-container-popup');    
+    }, '#paypal-button-container-popup');
 </script>
 <script>
 var stripe = Stripe('{{ env("STRIPE_KEY") }}');
@@ -413,6 +418,6 @@ var stripe = Stripe('{{ env("STRIPE_KEY") }}');
       }
     });
     return errorCount;
-  } 
+  }
 </script>
 @endsection

@@ -46,13 +46,13 @@ a:hover{
                                 <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
                             </li>
                              <li class="nav-item <?php if($segment == "search"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('search')}}">Total Daycares</a> 
+                                <a class="nav-link" href="{{route('search')}}">Total Daycares</a>
                             </li>
-                            
+
                              <li class="nav-item <?php if($segment == "shared-gallery"){ echo 'active'; } ?>">
                                 <a class="nav-link" href="{{route('sharedgallery')}}">Shared Gallery</a>
                             </li>
-                            
+
                             <li class="nav-item <?php if($segment == "shared-gallery"){ echo 'active'; } ?>">
                                 <a class="nav-link" href="{{route('claimed_center')}}">Claimed Center</a>
                             </li>
@@ -87,7 +87,7 @@ a:hover{
                                 @elseif(Auth::user()->role == '3')
                                 <a href="{{route('teacher_dashboard')}}" class="custom-btn" type="submit">  Teacher Dashboard </a>
                                 @elseif(Auth::user()->role == '4')
-                                <a href="{{route('provider_dashboard')}}" class="custom-btn" type="submit">  Provider Dashboard </a>
+                                <a href="{{route('provider.dashboard')}}" class="custom-btn" type="submit">  Provider Dashboard </a>
                                 @elseif(Auth::user()->role == '1')
                                 <a href="{{URL('admin')}}" class="custom-btn" type="submit">  Admin Dashboard </a>
                                 @endif

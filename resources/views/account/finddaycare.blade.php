@@ -16,7 +16,7 @@
 }
 
 .modal-body {
-    position: relative; 
+    position: relative;
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
@@ -177,29 +177,29 @@
                 <div class="col-lg-12">
                     <div class="myaccount-page-wrapper">
                         <div class="row">
-                            
+
                             <div class="col-lg-12 col-md-12">
                                 <div class="tab-content" id="myaccountContent">
                                     <!-- Single Tab Content Start -->
                                     <div class="tab-pane fade show active" id="dashboad">
                                         <div class="myaccount-content">
                                             <div class="section-heading">
-                                            
+
                                                 <div class="row">
                                                     <!--@dump($amount->amount)-->
                                                     @if($amount->amount == '0')
-                                                    
-                                                        <div class="col-md-12" style="margin-top:50px;"> 
+
+                                                        <div class="col-md-12" style="margin-top:50px;">
                                                             <form class="order-search" action="{{route('order-search')}}" method="post" id="order-search" >
                                                                 @csrf
                                                                 <input type="hidden" name="payment_id" value="" />
                                                                 <input type="hidden" name="payer_id" value="" />
                                                                 <input type="hidden" name="payment_status" value="" />
                                                                 <input type="hidden" name="payment_method" id="payment_method" value="paypal" />
-                                                                
+
                                                                 <div class="container">
                                                                 <div id="accordion" class="payment-accordion">
-                                                                  
+
                                                                   <!--<div class="card">-->
                                                                     <!--<div class="card-header" id="headingOne">-->
                                                                     <!--  <h5 class="mb-0">-->
@@ -230,9 +230,9 @@
                                                                       <div class="card-body">
                                                                         <div class="stripe-form-wrapper require-validation" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" data-cc-on-file="false">
                                                                           <div id="card-element"></div>
-                                                                          
+
                                                                           <div id="card-errors" role="alert"></div>
-                                                                          
+
                                                                           <div class="form-group">
                                                                             <button class="btn btn-red btn-block" type="button" id="stripe-submit" style="background: #646464; color: #fff;">Pay Now ${{ $subtotal }}  </button>
                                                                           </div>
@@ -241,37 +241,37 @@
                                                                     </div>
                                                                   </div>
                                                                 </div>
-                                                                
+
                                                                 </div>
-                                                                
+
                                                             </form>
                                                         </div>
-                                                    
+
                                                     @else
-                                                    
-                                                   
-                                                    <div class="col-md-12" style="margin-top:50px;"> 
-                                                        
-                                                        
+
+
+                                                    <div class="col-md-12" style="margin-top:50px;">
+
+
                                                          <form method="get" class="d-flex" action="{{ route('finddaycare') }}">
-                                                        
-                                                            <div class="col-md-12 d-flex" > 
-                                                                
+
+                                                            <div class="col-md-12 d-flex" >
+
                                                                 <input type="text" name="search" class="form-control" placeholder="Enter State Name" value="{{$search}}" style="width: 50% !important; margin-left: 200px;" required/>
                                                                 &nbsp;&nbsp;
                                                                 <button type="submit" class="btn btn-primary" style="width: 25%; height: 50px;" > FIND YOUR DAYCARE CENTER </button>
-                                                                
+
                                                             </div>
-                                                        
+
                                                         </form>
-                                                        
+
                                                         <hr>
-                                                        
+
                                                         <br><br>
 
-                                         
+
                                                         <table id="example1" style="width:100%;" class="table table-hover table-bordered table-striped text-center">
-                                                          
+
                                                             <thead>
                                                                 <tr>
                                                                     <th> Action </th>
@@ -284,12 +284,12 @@
                                                                     <th>Phone</th>
                                                                 </tr>
                                                             </thead>
-                                                          
+
                                                             <tbody>
-                                                                @foreach($childCare as $key => $value) 
+                                                                @foreach($childCare as $key => $value)
                                                                     <tr>
                                                                         <td>
-                                                                           @if($value->claim_status == "1") 
+                                                                           @if($value->claim_status == "1")
                                                                                 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$value->id}}"> CLAIM </button>
                                                                            @else
                                                                                 <button class="btn btn-secondary"> CLAIMED </button>
@@ -303,141 +303,135 @@
                                                                         <td>{{$value->zip ? $value->zip : 'N\A'}}</td>
                                                                         <td>{{$value->phone ? $value->phone : 'N\A'}}</td>
                                                                     </tr>
-                                                                
-                                                                   
-                                                                        
-                                                                        <!-- The Modal -->
-                                                                        <div class="modal fade" id="myModal{{$value->id}}" data-backdrop="static" data-keyboard="false">
-                                                                            <div class="modal-dialog modal-lg">
-                                                                              <div class="modal-content">
-                                                                                
-                                                                                <form  id="form{{$value->id}}" action="{{ route('update_daycare_center') }}" method="post" enctype="multipart/form-data">
-                                                                        
-                                                                                    @csrf
-                                                                              
-                                                                                
-                                                                              
-                                                                                <!-- Modal Header -->
-                                                                                <div class="modal-header">
-                                                                                  <h5 class="modal-title text-center">Claimed Daycare Center</h5>
-                                                                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                                </div>
-                                                                                
-                                                                                <!-- Modal body -->
-                                                                                <div class="modal-body">
-                                                                                  
-                                                                                    <p class="text-center"> {{$value->name}} </p>
-                                                                                    
-                                                                                    <hr>
-                                                                                    
-                                                                                    <div class="row">
-                                                                                        
-                                                                                        <div class="col-md-12 mb-2"> 
-                                                                                            
-                                                                                            <input type="hidden" name="id" value="{{ $value->id }}"/>
-                                                                                            
-                                                                                            <label> Name </label>
-                                                                                            <input type="text" value="{{$value->name}}" class="form-control" readonly/>
-                                                                                        
-                                                                                        </div>
-                                                                                        
-                                                                                        <div class="col-md-6 mb-2"> 
-                                                                                            
-                                                                                            <label> County </label>
-                                                                                            <input type="text" name="county" value="{{$value->county}}" class="form-control" required/>
-                                                                                            
-                                                                                            <br>
-                                                                                            
-                                                                                            <label> Zipcode </label>
-                                                                                            <input type="text" name="zip" value="{{$value->zip}}" class="form-control" required/>
-                                                                                            
-                                                                                            <br>
-                                                                                            
-                                                                                            <label> Address </label>
-                                                                                            <input type="text" name="physical_address" value="{{$value->physical_address}}" class="form-control" required/>
-                                                                                            
-                                                                                        </div>
-                                                                                        
-                                                                                        <div class="col-md-6 mb-2"> 
-                                                                                            
-                                                                                            <label> City </label>
-                                                                                            <input type="text" name="city" value="{{$value->city}}" class="form-control" required/>
-                                                                                            
-                                                                                            <br>
-                                                                                            
-                                                                                            <label> Phone </label>
-                                                                                            <input type="text" name="phone" value="{{$value->phone}}" class="form-control" required/>
-                                                                                            
-                                                                                            <br>
-                                                                                            
-                                                                                            <label> Email </label>
-                                                                                            <input type="text" name="email_address" value="{{$value->email_address}}" class="form-control" required/>
-                                                                                            
-                                                                                        </div>
-                                                                                        
-                                                                                         <div class="col-md-12 mb-2"> 
-                                                                                            
-                                                                                            <label> Description </label>
-                                                                                            <textarea type="text" style="height: 120px;" name="description" class="form-control" required> {{$value->description}} </textarea>
-                                                                                        
-                                                                                        </div>
-                                                                                        
-                                                                                        <div class="col-md-12 mb-2"> 
-                                                                                            
-                                                                                            <label> Feature Image </label>
-                                                                                            <input type="file" name="feature_image" class="form-control" />
-                                                                                        
-                                                                                        </div>
-                                                                                        
-                                                                                        <div class="col-md-12 mb-2"> 
-                                                                                            
-                                                                                            <label> Other Image 1 </label>
-                                                                                            <input type="file" name="other_image_one" class="form-control" />
-                                                                                        
-                                                                                        </div>
-                                                                                        
-                                                                                        <div class="col-md-12 mb-2"> 
-                                                                                            
-                                                                                            <label> Other Image 2 </label>
-                                                                                            <input type="file" name="other_image_two" class="form-control" />
-                                                                                        
-                                                                                        </div>
-                                                                                                                                                                      
-                                                                                    </div>
-                                                                                  
-                                                                                </div>
-                                                                                
-                                                                                <!-- Modal footer -->
-                                                                                <div class="modal-footer">
-                                                                                  <input type="submit" class="btn btn-primary" />
-                                                                                </div>
-                                                                                
-                                                                                </form>
-                                                                                
-                                                                              </div>
+
+                                                                    <!-- The Modal -->
+                                                                    <div class="modal fade" id="myModal{{$value->id}}" data-backdrop="static" data-keyboard="false">
+                                                                        <div class="modal-dialog modal-lg">
+                                                                          <div class="modal-content">
+
+                                                                            <form  id="form{{$value->id}}" action="{{ route('update_daycare_center') }}" method="post" enctype="multipart/form-data">
+
+                                                                                @csrf
+
+
+
+                                                                            <!-- Modal Header -->
+                                                                            <div class="modal-header">
+                                                                              <h5 class="modal-title text-center">Claimed Daycare Center</h5>
+                                                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                             </div>
+
+                                                                            <!-- Modal body -->
+                                                                            <div class="modal-body">
+
+                                                                                <p class="text-center"> {{$value->name}} </p>
+
+                                                                                <hr>
+
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-12 mb-2">
+
+                                                                                        <input type="hidden" name="id" value="{{ $value->id }}"/>
+
+                                                                                        <label> Name </label>
+                                                                                        <input type="text" value="{{$value->name}}" class="form-control" readonly/>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6 mb-2">
+
+                                                                                        <label> County </label>
+                                                                                        <input type="text" name="county" value="{{$value->county}}" class="form-control" required/>
+
+                                                                                        <br>
+
+                                                                                        <label> Zipcode </label>
+                                                                                        <input type="text" name="zip" value="{{$value->zip}}" class="form-control" required/>
+
+                                                                                        <br>
+
+                                                                                        <label> Address </label>
+                                                                                        <input type="text" name="physical_address" value="{{$value->physical_address}}" class="form-control" required/>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6 mb-2">
+
+                                                                                        <label> City </label>
+                                                                                        <input type="text" name="city" value="{{$value->city}}" class="form-control" required/>
+
+                                                                                        <br>
+
+                                                                                        <label> Phone </label>
+                                                                                        <input type="text" name="phone" value="{{$value->phone}}" class="form-control" required/>
+
+                                                                                        <br>
+
+                                                                                        <label> Email </label>
+                                                                                        <input type="text" name="email_address" value="{{$value->email_address}}" class="form-control" required/>
+
+                                                                                    </div>
+
+                                                                                     <div class="col-md-12 mb-2">
+
+                                                                                        <label> Description </label>
+                                                                                        <textarea type="text" style="height: 120px;" name="description" class="form-control" required> {{$value->description}} </textarea>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-12 mb-2">
+
+                                                                                        <label> Feature Image </label>
+                                                                                        <input type="file" name="feature_image" class="form-control" />
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-12 mb-2">
+
+                                                                                        <label> Other Image 1 </label>
+                                                                                        <input type="file" name="other_image_one" class="form-control" />
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-12 mb-2">
+
+                                                                                        <label> Other Image 2 </label>
+                                                                                        <input type="file" name="other_image_two" class="form-control" />
+
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <!-- Modal footer -->
+                                                                            <div class="modal-footer">
+                                                                              <input type="submit" class="btn btn-primary" />
+                                                                            </div>
+
+                                                                            </form>
+
+                                                                          </div>
                                                                         </div>
-                                                                    
-                                                                 
-                                                                                
-                                                                    
+                                                                    </div>
                                                                 @endforeach
                                                             </tbody>
-                                                          
+
                                                         </table>
-                                                        
+
                                                     </div>
-                                                    
+
                                                     @endif
-                                
-                                
+
+
                                                 </div>
-                                             
+
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Single Tab Content End -->
-    
+
                                 </div>
                             </div> <!-- My Account Tab Content End -->
                         </div>
@@ -449,7 +443,7 @@
     <!-- my account wrapper end -->
 
 
-<!-- main content end -->   
+<!-- main content end -->
 </main>
 
 <br><br><br>
@@ -479,7 +473,7 @@
 			'showMethod': 'fadeIn',
 			'hideMethod': 'fadeOut',
 		}
-	});    
+	});
 </script>
 <script type="text/javascript">
       $('#accordion .btn-link').on('click', function(e) {
@@ -511,7 +505,7 @@ paypal.Button.render({
 
         if(errorCount == 1){
             	toastr.error('Please fill the required fields before proceeding to pay');
-          
+
           paypalActions.disable();
         }else{
           paypalActions.enable();
@@ -567,7 +561,7 @@ paypal.Button.render({
           $('input[name="payer_id"]').val('');
           $('input[name="payment_method"]').val('paypal');
       }
-    }, '#paypal-button-container-popup');    
+    }, '#paypal-button-container-popup');
 </script>
 <script>
 var stripe = Stripe('{{ env("STRIPE_KEY") }}');
@@ -655,7 +649,7 @@ var stripe = Stripe('{{ env("STRIPE_KEY") }}');
       }
     });
     return errorCount;
-  } 
+  }
 </script>
 
 <!--<script type="text/javascript">-->

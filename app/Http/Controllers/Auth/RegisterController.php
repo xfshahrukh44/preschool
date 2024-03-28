@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/'; 
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -69,7 +69,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
 
-        // dd($request->all());
+//         dd($request->all());
 
         $validator = $this->validator($request->all());
         if($validator->fails()){
@@ -79,9 +79,9 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         $this->guard()->login($user);
-        
-        Session::flash('message', 'New Account Created Successfully'); 
-        Session::flash('alert-class', 'alert-success'); 
+
+        Session::flash('message', 'New Account Created Successfully');
+        Session::flash('alert-class', 'alert-success');
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }
@@ -94,8 +94,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-    
-        
+
+
         return User::create([
 
             'name' => $data['name'],
@@ -115,14 +115,14 @@ class RegisterController extends Controller
             'position_accepted' => $data['position_accepted'],
             'about_preschool' => $data['about_preschool'],
             'payment_method'=> $data['payment_method'],
-            'amount' => $data['price'],
+            'amount' => $data['amount'],
             'card_token' => $data['stripeToken'],
             'transaction_id'=>$data['payment_id'],
             'payer_id'=>$data['payer_id'],
             'paypal_token'=>$data['_token'],
-            'amount' => 0,
+//            'amount' => 0,
             'payment_status'=>$data['payment_status']
-            
+
         ]);
     }
 

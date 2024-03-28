@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSharedGalleriesTable extends Migration
 {
@@ -12,14 +13,16 @@ class CreateSharedGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('shared_galleries', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->string('name')->nullable();
-            $table->string('user_id')->nullable();
-            $table->string('tagline')->nullable();
-            $table->string('image')->nullable();
-            });
+        if (!Schema::hasTable('shared_galleries')) {
+            Schema::create('shared_galleries', function (Blueprint $table) {
+                $table->increments('id');
+                $table->timestamps();
+                $table->string('name')->nullable();
+                $table->string('user_id')->nullable();
+                $table->string('tagline')->nullable();
+                $table->string('image')->nullable();
+                });
+        }
     }
 
     /**

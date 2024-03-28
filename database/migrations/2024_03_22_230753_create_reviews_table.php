@@ -12,15 +12,17 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->string('message')->nullable();
-            $table->string('rate')->nullable();
-            $table->string('daycareid')->nullable();
+        if (!Schema::hasTable('reviews')) {
+            Schema::create('reviews', function (Blueprint $table) {
+                $table->increments('id');
+                $table->timestamps();
+                $table->string('name')->nullable();
+                $table->string('email')->nullable();
+                $table->string('message')->nullable();
+                $table->string('rate')->nullable();
+                $table->string('daycareid')->nullable();
             });
+        }
     }
 
     /**

@@ -212,7 +212,10 @@
                                                                             data-target="#myModal{{$value->id}}"> CLAIM
                                                                     </button>
                                                                 @else
-                                                                    <button class="btn btn-secondary"> CLAIMED</button>
+                                                                    <button class="btn btn-secondary" data-toggle="modal"
+                                                                            data-target="#myModal{{$value->id}}"> CLAIMED
+                                                                    </button>
+{{--                                                                    <button class="btn btn-secondary"> CLAIMED</button>--}}
                                                                 @endif
                                                             </td>
                                                             <td>{{$value->name ? $value->name : 'N\A' }}</td>
@@ -352,6 +355,10 @@
 
                                                                                 </div>
 
+                                                                                @php
+                                                                                    $decoded_timings = json_decode($value->timings);
+                                                                                    $decoded_services = json_decode($value->services);
+                                                                                @endphp
                                                                                 <div class="col-md-6 mb-2 mt-4">
                                                                                     <h2 class="ml-2"> Timings </h2>
 
@@ -376,112 +383,112 @@
                                                                                     <div class="row">
                                                                                         <div class="col-md-4">
                                                                                             <label for="">
-                                                                                                <h5>Mon</h5>
+                                                                                                <h5>Monday</h5>
                                                                                             </label>
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Mon][from]">
+                                                                                                   name="timings[Monday][from]" value="{{!is_null($decoded_timings->Monday->from) ? Carbon\Carbon::parse($decoded_timings->Monday->from)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Mon][to]">
+                                                                                                   name="timings[Monday][to]" value="{{!is_null($decoded_timings->Monday->to) ? Carbon\Carbon::parse($decoded_timings->Monday->to)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="row">
                                                                                         <div class="col-md-4">
                                                                                             <label for="">
-                                                                                                <h5>Tue</h5>
+                                                                                                <h5>Tuesday</h5>
                                                                                             </label>
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Tue][from]">
+                                                                                                   name="timings[Tuesday][from]" value="{{!is_null($decoded_timings->Tuesday->from) ? Carbon\Carbon::parse($decoded_timings->Tuesday->from)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Tue][to]">
+                                                                                                   name="timings[Tuesday][to]" value="{{!is_null($decoded_timings->Tuesday->to) ? Carbon\Carbon::parse($decoded_timings->Tuesday->to)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="row">
                                                                                         <div class="col-md-4">
                                                                                             <label for="">
-                                                                                                <h5>Wed</h5>
+                                                                                                <h5>Wednesday</h5>
                                                                                             </label>
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Wed][from]">
+                                                                                                   name="timings[Wednesday][from]" value="{{!is_null($decoded_timings->Wednesday->from) ? Carbon\Carbon::parse($decoded_timings->Wednesday->from)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Wed][to]">
+                                                                                                   name="timings[Wednesday][to]" value="{{!is_null($decoded_timings->Wednesday->to) ? Carbon\Carbon::parse($decoded_timings->Wednesday->to)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="row">
                                                                                         <div class="col-md-4">
                                                                                             <label for="">
-                                                                                                <h5>Thu</h5>
+                                                                                                <h5>Thursday</h5>
                                                                                             </label>
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Thu][from]">
+                                                                                                   name="timings[Thursday][from]" value="{{!is_null($decoded_timings->Thursday->from) ? Carbon\Carbon::parse($decoded_timings->Thursday->from)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Thu][to]">
+                                                                                                   name="timings[Thursday][to]" value="{{!is_null($decoded_timings->Thursday->to) ? Carbon\Carbon::parse($decoded_timings->Thursday->to)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="row">
                                                                                         <div class="col-md-4">
                                                                                             <label for="">
-                                                                                                <h5>Fri</h5>
+                                                                                                <h5>Friday</h5>
                                                                                             </label>
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Fri][from]">
+                                                                                                   name="timings[Friday][from]" value="{{!is_null($decoded_timings->Friday->from) ? Carbon\Carbon::parse($decoded_timings->Friday->from)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Fri][to]">
+                                                                                                   name="timings[Friday][to]" value="{{!is_null($decoded_timings->Friday->to) ? Carbon\Carbon::parse($decoded_timings->Friday->to)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="row">
                                                                                         <div class="col-md-4">
                                                                                             <label for="">
-                                                                                                <h5>Sat</h5>
+                                                                                                <h5>Saturday</h5>
                                                                                             </label>
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Sat][from]">
+                                                                                                   name="timings[Saturday][from]" value="{{!is_null($decoded_timings->Saturday->from) ? Carbon\Carbon::parse($decoded_timings->Saturday->from)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Sat][to]">
+                                                                                                   name="timings[Saturday][to]" value="{{!is_null($decoded_timings->Saturday->to) ? Carbon\Carbon::parse($decoded_timings->Saturday->to)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="row">
                                                                                         <div class="col-md-4">
                                                                                             <label for="">
-                                                                                                <h5>Sun</h5>
+                                                                                                <h5>Sunday</h5>
                                                                                             </label>
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Sun][from]">
+                                                                                                   name="timings[Sunday][from]" value="{{!is_null($decoded_timings->Sunday->from) ? Carbon\Carbon::parse($decoded_timings->Sunday->from)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Sun][to]">
+                                                                                                   name="timings[Sunday][to]" value="{{!is_null($decoded_timings->Sunday->to) ? Carbon\Carbon::parse($decoded_timings->Sunday->to)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -493,70 +500,70 @@
                                                                                         <label for="after_school" class="ml-5">
                                                                                             <strong>After school</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[After school]" id="after_school">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[After school]" id="after_school" {!! in_array('After school', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="before_school" class="ml-5">
                                                                                             <strong>Before school</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Before school]" id="before_school">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Before school]" id="before_school" {!! in_array('Before school', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="drop_in" class="ml-5">
                                                                                             <strong>Drop in</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Drop in]" id="drop_in">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Drop in]" id="drop_in" {!! in_array('Drop in', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="food_served" class="ml-5">
                                                                                             <strong>Food served</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Food served]" id="food_served">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Food served]" id="food_served" {!! in_array('Food served', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="full_day" class="ml-5">
                                                                                             <strong>Full day</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Full day]" id="full_day">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Full day]" id="full_day" {!! in_array('Full day', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="half_day" class="ml-5">
                                                                                             <strong>Half day</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Half day]" id="half_day">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Half day]" id="half_day" {!! in_array('Half day', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="infant_care" class="ml-5">
                                                                                             <strong>Infant care</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Infant care]" id="infant_care">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Infant care]" id="infant_care" {!! in_array('Infant care', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="night_care" class="ml-5">
                                                                                             <strong>Night care</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Night care]" id="night_care">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Night care]" id="night_care" {!! in_array('Night care', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="transportation" class="ml-5">
                                                                                             <strong>Transportation</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Transportation]" id="transportation">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Transportation]" id="transportation" {!! in_array('Transportation', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
 
                                                                                     <div class="row ml-2">
                                                                                         <label for="weekend_care" class="ml-5">
                                                                                             <strong>Weekend care</strong>
                                                                                         </label>
-                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Weekend care]" id="weekend_care">
+                                                                                        <input class="form-check-input" type="checkbox" value="" name="services[Weekend care]" id="weekend_care" {!! in_array('Weekend care', $decoded_services) ? 'checked' : '' !!}>
                                                                                     </div>
                                                                                 </div>
 

@@ -445,7 +445,7 @@
 
                     @foreach(json_decode($get_claimed_daycare_center_detail->timings) as $day => $timings)
                         <label for="">
-                            <strong>{{$day}}: </strong> {{!is_null($timings->from) && !is_null($timings->to) ? (Carbon\Carbon::parse($timings->from)->format('h:i A') . '-' . Carbon\Carbon::parse($timings->to)->format('h:i A')) : 'Closed'}}
+                            <strong>{{$day}}: &nbsp; </strong> {{!is_null($timings->from) && !is_null($timings->to) ? (Carbon\Carbon::parse($timings->from)->format('h:i A') . ' - ' . Carbon\Carbon::parse($timings->to)->format('h:i A')) : 'Closed'}}
                         </label>
                         <br />
                     @endforeach

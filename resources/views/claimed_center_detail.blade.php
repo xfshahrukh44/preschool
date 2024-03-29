@@ -439,30 +439,62 @@
                 </div>
             </div>
 
-            @if(!is_null($get_claimed_daycare_center_detail->timings))
-                <div class="col-md-10 offset-md-1 text-black">
-                    <h3 style="color: black;">Timings</h3>
+            <div class="col-md-10 offset-md-1 text-black">
 
-                    @foreach(json_decode($get_claimed_daycare_center_detail->timings) as $day => $timings)
-                        <label for="">
-                            <strong>{{$day}}: &nbsp; </strong> {{!is_null($timings->from) && !is_null($timings->to) ? (Carbon\Carbon::parse($timings->from)->format('h:i A') . ' - ' . Carbon\Carbon::parse($timings->to)->format('h:i A')) : 'Closed'}}
-                        </label>
-                        <br />
-                    @endforeach
+                <div class="row">
+                    @if(!is_null($get_claimed_daycare_center_detail->timings))
+                        <div class="col-md-6">
+                            <h3 style="color: black;">Timings</h3>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach(json_decode($get_claimed_daycare_center_detail->timings) as $day => $timings)
+                                    <tr>
+                                        <td><b>{{$day}}</b></td>
+
+                                        @if(is_null($timings->from) || is_null($timings->to))
+                                            <td class="text-danger">Closed</td>
+                                            <td class="text-danger"></td>
+                                        @else
+                                            <td>{{Carbon\Carbon::parse($timings->from)->format('h:i A')}}</td>
+                                            <td>{{Carbon\Carbon::parse($timings->to)->format('h:i A')}}</td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                    @if(!is_null($get_claimed_daycare_center_detail->services))
+                        <div class="col-md-6">
+                            <h3 style="color: black;">Services</h3>
+                            <table class="table">
+                                <thead>
+{{--                                    <tr>--}}
+{{--                                        <th>Day</th>--}}
+{{--                                        <th>From</th>--}}
+{{--                                        <th>To</th>--}}
+{{--                                    </tr>--}}
+{{--                                </thead>--}}
+                                <tbody>
+                                    @foreach(json_decode($get_claimed_daycare_center_detail->services) as $service)
+                                        <tr>
+                                            <td>{{$service}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
                 </div>
-            @endif
+            </div>
 
-            @if(!is_null($get_claimed_daycare_center_detail->services))
-                <div class="col-md-10 offset-md-1 text-black mt-4">
-                    <h3 style="color: black;">Services</h3>
-
-                    @foreach(json_decode($get_claimed_daycare_center_detail->services) as $service)
-                        <label for="">
-                            {{$service . ($loop->last ? '.' : ', ')}}
-                        </label>
-                    @endforeach
-                </div>
-            @endif
             <!-- <div class="col-lg-5">
                 <div class="section-3-form">
                     <form>

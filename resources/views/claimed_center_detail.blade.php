@@ -449,8 +449,7 @@
                                 <thead>
                                 <tr>
                                     <th>Day</th>
-                                    <th>From</th>
-                                    <th>To</th>
+                                    <th class="text-center">Timings</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -459,11 +458,13 @@
                                         <td><b>{{$day}}</b></td>
 
                                         @if(is_null($timings->from) || is_null($timings->to))
-                                            <td class="text-danger">Closed</td>
-                                            <td class="text-danger"></td>
+                                            <td class="text-danger text-center" style="font-size: 0.9em;">Closed</td>
                                         @else
-                                            <td>{{Carbon\Carbon::parse($timings->from)->format('h:i A')}}</td>
-                                            <td>{{Carbon\Carbon::parse($timings->to)->format('h:i A')}}</td>
+                                            <td class="text-center" style="font-size: 0.9em;">
+                                                <b>{{Carbon\Carbon::parse($timings->from)->format('h:i A')}}</b>
+                                                -
+                                                <b>{{Carbon\Carbon::parse($timings->to)->format('h:i A')}}</b>
+                                            </td>
                                         @endif
                                     </tr>
                                 @endforeach
@@ -485,7 +486,7 @@
                                 <tbody>
                                     @foreach(json_decode($get_claimed_daycare_center_detail->services) as $service)
                                         <tr>
-                                            <td>{{$service}}</td>
+                                            <td style="font-size: 0.9em;">{{$service}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

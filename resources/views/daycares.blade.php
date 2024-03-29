@@ -452,7 +452,7 @@
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"
-                                                                                                   name="timings[Fasdriday][from]" value="{{!is_null($decoded_timings->Friday->from) ? Carbon\Carbon::parse($decoded_timings->Friday->from)->format('H:i') : ''}}">
+                                                                                                   name="timings[Friday][from]" value="{{!is_null($decoded_timings->Friday->from) ? Carbon\Carbon::parse($decoded_timings->Friday->from)->format('H:i') : ''}}">
                                                                                         </div>
                                                                                         <div class="col-md-4 form-group">
                                                                                             <input class="form-control" type="time"

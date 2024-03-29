@@ -188,7 +188,7 @@
 
                                             <br><br>
 
-                                            <table id="example1"
+                                            <table id=""
                                                    class="table table-hover table-bordered table-striped text-center">
                                                 <thead>
                                                 <tr>
@@ -588,6 +588,9 @@
                                                 </tbody>
 
                                             </table>
+
+                                            <br />
+                                            {{ $childCare->appends(request()->input())->links() }}
 
                                         </div>
                                         <!-- /.card-body -->

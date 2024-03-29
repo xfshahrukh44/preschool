@@ -30,12 +30,13 @@ class ProviderController extends Controller
 
         $check_is_paid = DB::table('users')->where('id',Auth::user()->id)->where('role','2')->where('status','1')->first();
 
-
-        $search = "";
-
-        $search = $_GET['search'];
+        $search = $_GET['search'] ?? "";
         $childCare =  Childcare::where('status','1')->groupBy('name')->when(isset($_GET['search']), function ($q) use ($search) {
-            return $q->where('city','LIKE',"%{$search}%")->orWhere('state','LIKE',"%{$search}%")->orWhere('name','LIKE',"%{$search}%")->orWhere('county','LIKE',"%{$search}%")->orWhere('program_type','LIKE',"%{$search}%");
+            return $q->where('city','LIKE',"%{$search}%")
+                ->orWhere('state','LIKE',"%{$search}%")
+                ->orWhere('name','LIKE',"%{$search}%")
+                ->orWhere('county','LIKE',"%{$search}%")
+                ->orWhere('program_type','LIKE',"%{$search}%");
         })->paginate(25);
 
 //        if(isset($_GET['search']))

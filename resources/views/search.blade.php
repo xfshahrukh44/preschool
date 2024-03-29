@@ -132,11 +132,11 @@
 
             @endforeach
 
-              {{ $search_result->appends(request()->input())->links() }}
 
               </tbody>
 
             </table>
+              {{ $search_result->appends(request()->input())->links() }}
 
             </div>
 

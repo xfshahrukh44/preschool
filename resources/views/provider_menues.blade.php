@@ -25,7 +25,7 @@ $segment2 = Request::segment(2);
                 @endif
 
                 {{--Find daycare--}}
-                <li><a class="<?php if($segment2 == "daycare"){ echo 'menu_active'; } ?>" href="{{route('provider.findDaycare')}}"><img width="20" src="{{asset('images/search.png')}}"> Center </a></li>
+                <li><a class="<?php if($segment2 == "daycare"){ echo 'menu_active'; } ?>" href="{{route('provider.findDaycare', )}}"><img width="20" src="{{asset('images/search.png')}}"> Center </a></li>
 
                 {{--Claimed Centers--}}
                 <li><a class="<?php if($segment2 == "claimed-centers"){ echo 'menu_active'; } ?>" href="{{route('provider.claimedCenters')}}"><img width="20" src="{{asset('images/search.png')}}"> Claimed Centers </a></li>

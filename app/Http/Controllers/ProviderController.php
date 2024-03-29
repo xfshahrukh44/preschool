@@ -33,12 +33,17 @@ class ProviderController extends Controller
 
         $search = "";
 
-        if(isset($_GET['search']))
-        {
-            $search = $_GET['search'];
-            $childCare =  Childcare::where('city','LIKE',"%{$search}%")->orWhere('state','LIKE',"%{$search}%")->orWhere('name','LIKE',"%{$search}%")->orWhere('county','LIKE',"%{$search}%")->orWhere('program_type','LIKE',"%{$search}%")->where('status','1')->groupBy('name')->paginate(25);
+        $search = $_GET['search'];
+        $childCare =  Childcare::where('status','1')->groupBy('name')->when(isset($_GET['search']), function ($q) use ($search) {
+            return $q->where('city','LIKE',"%{$search}%")->orWhere('state','LIKE',"%{$search}%")->orWhere('name','LIKE',"%{$search}%")->orWhere('county','LIKE',"%{$search}%")->orWhere('program_type','LIKE',"%{$search}%");
+        })->paginate(25);
 
-        }
+//        if(isset($_GET['search']))
+//        {
+//            $childCare =  Childcare::where('city','LIKE',"%{$search}%")->orWhere('state','LIKE',"%{$search}%")->orWhere('name','LIKE',"%{$search}%")->orWhere('county','LIKE',"%{$search}%")->orWhere('program_type','LIKE',"%{$search}%")->where('status','1')->groupBy('name')->paginate(25);
+//            $search = $_GET['search'];
+//
+//        }
 
 //        return view('account.finddaycare',['amount'=>$check_is_paid , 'search'=>$search , 'childCare'=>$childCare]);
         return view('daycares',['amount'=>$check_is_paid , 'search'=>$search , 'childCare'=>$childCare]);

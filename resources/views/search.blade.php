@@ -89,7 +89,7 @@
 
             <div class="col-md-12" style="margin-top:50px;">
 
-            <table id="example1" style="width:100%;" class="table table-hover table-bordered table-striped text-center">
+            <table id="" style="width:100%;" class="table table-hover table-bordered table-striped text-center">
 
               <thead>
                   <tr>
@@ -131,6 +131,8 @@
               </tr>
 
             @endforeach
+
+              {{ $search_result->appends(request()->input())->links() }}
 
               </tbody>
 

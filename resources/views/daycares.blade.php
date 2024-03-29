@@ -176,7 +176,7 @@
 
                                                 <div class="col-md-12 d-flex" >
 
-                                                    <input type="text" name="search" class="form-control" placeholder="Enter State Name" value="{{$search}}" style="width: 50% !important; margin-left: 200px;" required/>
+                                                    <input type="text" name="search" class="form-control search" placeholder="Enter State Name" value="{{$search}}" style="width: 50% !important; margin-left: 200px;" required/>
                                                     &nbsp;&nbsp;
                                                     <button type="submit" class="btn btn-primary" style="width: 25%; height: 50px;" > FIND YOUR DAYCARE CENTER </button>
 
@@ -283,6 +283,7 @@
                                                                                     <br>
 
                                                                                     <label> Zipcode </label>
+{{--                                                                                    @dump($value->zip)--}}
                                                                                     <input type="text" name="zip"
                                                                                            value="{{$value->zip}}"
                                                                                            class="form-control" required/>
@@ -616,6 +617,14 @@
 
 
 @include('footerlink')
+
+<script>
+    $('form').on('submit', function (e) {
+        if ($('.search').val() == '') {
+            e.preventDefault();
+        }
+    })
+</script>
 
 
 </body>

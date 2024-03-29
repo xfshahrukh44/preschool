@@ -212,10 +212,13 @@
                                                                             data-target="#myModal{{$value->id}}"> CLAIM
                                                                     </button>
                                                                 @else
-                                                                    <button class="btn btn-secondary" data-toggle="modal"
-                                                                            data-target="#myModal{{$value->id}}"> CLAIMED
-                                                                    </button>
-{{--                                                                    <button class="btn btn-secondary"> CLAIMED</button>--}}
+                                                                    @if($value->claimed_by_id == \Illuminate\Support\Facades\Auth::id())
+                                                                        <button class="btn btn-secondary" data-toggle="modal"
+                                                                                data-target="#myModal{{$value->id}}"> CLAIMED
+                                                                        </button>
+                                                                    @else
+                                                                        <button class="btn btn-secondary"> CLAIMED</button>
+                                                                    @endif
                                                                 @endif
                                                             </td>
                                                             <td>{{$value->name ? $value->name : 'N\A' }}</td>

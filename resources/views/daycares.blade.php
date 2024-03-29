@@ -246,8 +246,7 @@
                                                                     <!-- Modal Header -->
                                                                         <div class="modal-header">
 {{--                                                                                <h5 class="modal-title text-center">Claimed--}}
-                                                                            <h5 class="modal-title text-center">Claim
-                                                                                Daycare Center</h5>
+                                                                            <h5 class="modal-title text-center">Claim Center</h5>
                                                                             <button type="button" class="close"
                                                                                     data-dismiss="modal">&times;
                                                                             </button>

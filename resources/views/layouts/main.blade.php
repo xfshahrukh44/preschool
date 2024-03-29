@@ -108,6 +108,30 @@
 		
         @yield('content')
 
+        <div class="modal fade" id="providerAlert" data-bs-keyboard="false" tabindex="-1" aria-labelledby="providerAlertLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="providerAlertLabel">Account required</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <b>Before you claim center, please sign up or log in to the website.</b>
+                        </p>
+                        <hr>
+
+                        <span><a href="{{route('become-a-provider')}}" class="text-center">Signup</a> as a provider.</span>
+                        <hr>
+                        <span>Already have a provider account? <a href="{{route('signin')}}" class="text-center">Login</a>.</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         
         @include('layouts/front.footer')
         <!-- ============================================================== -->
@@ -119,6 +143,10 @@
         
         <!-- ============================================================== -->
         @include('layouts/front.scripts')
+
+{{--        <script>--}}
+{{--            $('#providerAlert').modal('show');--}}
+{{--        </script>--}}
         
 
 

@@ -104,13 +104,21 @@
 
               <tbody>
 
+              @php
+                  $search = request()->has('search') ? '?search=' . request()->get('search') : '';
+              @endphp
             @foreach($search_result as $key => $val_search)
 
               <tr>
                 <td>
                     @if($val_search->claim_status == "1")
 {{--                        <a class="btn btn-primary" href="{{ route('signin') }}">Claim</a>--}}
-                        <a class="btn btn-primary" href="{{ route('provider.findDaycare') }}">Claim</a>
+                        @if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role == 4)
+                            <a class="btn btn-primary" href="{{ route('provider.findDaycare') . $search }}">Claim</a>
+                        @else
+{{--                            <a class="btn btn-primary" href="{{ route('provider.findDaycare') }}">Claim</a>--}}
+                            <button data-toggle="modal" data-target="#providerAlert" class="btn btn-primary">Claim</button>
+                        @endif
                     @else
                         <a class="btn btn-secondary" href="{{ URL('claimed_center_detail/'.$val_search->id) }}">View</a>
                     @endif

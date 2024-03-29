@@ -89,8 +89,12 @@
 <section class="back">
 
     <div class="container-fluid">
-        
-        <div class="profilebg1" style="<?php if(Auth::user()->banner_image != ''){ echo 'background-image: url('.Auth::user()->banner_image.') !important;'; }else{ echo 'background-image: url(../images/profilebg.png) !important;';} ?> background-size: cover !important;">
+
+        <div class="profilebg1" style="<?php if (Auth::user()->banner_image != '') {
+            echo 'background-image: url(' . Auth::user()->banner_image . ') !important;';
+        } else {
+            echo 'background-image: url(../images/profilebg.png) !important;';
+        } ?> background-size: cover !important;">
             <div class="row">
                 <div class="col-md-12">
                 <div class="profile1">

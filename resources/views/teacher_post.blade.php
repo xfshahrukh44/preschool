@@ -8,7 +8,6 @@ use DateTime;
 <html lang="en">
 
 @include('headerlink')
-
 <style>
 .fill-5 {
     animation: fill 5s linear 1;
@@ -138,13 +137,13 @@ use DateTime;
                             @foreach($get_all_teachers as $key => $val_teacher)
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php">
-                                    
+
                                     @if($val_teacher->image != '')
                                     <img style="height:60px; width:60px; border-radius:50px;" src="{{asset($val_teacher->image)}}" class="img-fluid">
                                     @else
                                     <img style="height:50px; width:50px; border-radius:50px;" src="{{asset('images/profilemain1.png')}}" class="img-fluid">
                                     @endif
-                                  
+
                                     <span class="menu-title"> {{ $val_teacher->name }} {{ $val_teacher->lname }} </span>
                                     
                                 </a>

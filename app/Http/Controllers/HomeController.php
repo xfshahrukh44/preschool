@@ -444,9 +444,9 @@ class HomeController extends Controller
 
     public function get_last_post()
     {
-
       $get_last_post = DB::table('posts')->where('user_id',Auth::user()->id)->orderBy('id', 'desc')->first();
-      $post_user_profile = User::find($get_last_post->user_id)->image;
+//      $post_user_profile = User::find($get_last_post->user_id)->image;
+      $post_user_profile = (Auth::user()->image != '') ? asset(Auth::user()->image) : asset('images/profilemain1.png');
       $dayago = Carbon::parse($post_user_profile->created_at)->diffForHumans();
       // dd($post_user_profile);
 

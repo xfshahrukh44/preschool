@@ -291,7 +291,7 @@ use DateTime;
 
                         <div class="newfeed-profile-name">
 
-                            <img style="height:60px; width:60px; border-radius:50px" src="{{asset('${data.user_image}')}}" class="img-fluid">
+                            <img style="height:60px; width:60px; border-radius:50px" src="${post_user_image}" class="img-fluid">
 
                             <h4> {{'${data.user_name}'}} <span> {{'${dayago}'}} </span></h4>
 

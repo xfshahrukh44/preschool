@@ -100,6 +100,10 @@
         height: 1rem !important;
     }
 
+    h5 {
+        font-size: 12px;
+    }
+
 </style>
 
 <body>
@@ -207,13 +211,22 @@
                                                         <td>{{$value->zip ? $value->zip : 'N\A'}}</td>
                                                         <td>{{$value->phone ? $value->phone : 'N\A'}}</td>
                                                         <td>
-                                                            <button class="btn btn-primary" data-toggle="modal"
-                                                                    data-target="#myModal{{$value->id}}"> <i class="fas fa-edit"></i> Edit
-                                                            </button>
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <button class="btn-sm btn-primary py-1 px-2" data-toggle="modal"
+                                                                            data-target="#myModal{{$value->id}}"> <i class="fas fa-edit"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <button class="btn-sm btn-info py-1 px-2" data-toggle="modal"
+                                                                            data-target="#myViewModal{{$value->id}}"> <i class="fas fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
 
-                                                    <!-- The Modal -->
+                                                    <!-- The Edit Modal -->
                                                     <div class="modal fade" id="myModal{{$value->id}}" data-backdrop="static" data-keyboard="false">
                                                         <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
@@ -562,6 +575,314 @@
                                                                     </div>
 
                                                                 </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- The Edit Modal -->
+                                                    <div class="modal fade" id="myViewModal{{$value->id}}" data-backdrop="static" data-keyboard="false">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <!-- Modal Header -->
+                                                                    <div class="modal-header">
+                                                                        {{--                                                                                <h5 class="modal-title text-center">Claimed--}}
+                                                                        <h4 class="modal-title text-center">{{$value->name}}</h4>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal">&times;
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <!-- Modal body -->
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-4">
+                                                                                <img src="{{ asset($value->feature_image) }}" alt="" class="img-fluid" height="2">
+                                                                            </div>
+                                                                            <div class="col-4">
+                                                                                <img src="{{ asset($value->other_image_one) }}" alt="" class="img-fluid" height="2">
+                                                                            </div>
+                                                                            <div class="col-4">
+                                                                                <img src="{{ asset($value->other_image_two) }}" alt="" class="img-fluid" height="2">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            @if($value->county)
+                                                                                <div class="col-3 px-4 py-2">
+                                                                                    <div class="row text-left">
+                                                                                        <strong>County</strong>
+                                                                                    </div>
+                                                                                    <div class="row text-left">
+                                                                                        {{$value->county}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if($value->zip)
+                                                                                <div class="col-3 px-4 py-2">
+                                                                                    <div class="row text-left">
+                                                                                        <strong>Zipcode</strong>
+                                                                                    </div>
+                                                                                    <div class="row text-left">
+                                                                                        {{$value->zip}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if($value->physical_address)
+                                                                                <div class="col-3 px-4 py-2">
+                                                                                    <div class="row text-left">
+                                                                                        <strong>Address</strong>
+                                                                                    </div>
+                                                                                    <div class="row text-left">
+                                                                                        {{$value->physical_address}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if($value->city)
+                                                                                <div class="col-3 px-4 py-2">
+                                                                                    <div class="row text-left">
+                                                                                        <strong>City</strong>
+                                                                                    </div>
+                                                                                    <div class="row text-left">
+                                                                                        {{$value->city}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if($value->phone)
+                                                                                <div class="col-3 px-4 py-2">
+                                                                                    <div class="row text-left">
+                                                                                        <strong>Phone</strong>
+                                                                                    </div>
+                                                                                    <div class="row text-left">
+                                                                                        {{$value->phone}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if($value->email_address)
+                                                                                <div class="col-3 px-4 py-2">
+                                                                                    <div class="row text-left">
+                                                                                        <strong>Email</strong>
+                                                                                    </div>
+                                                                                    <div class="row text-left">
+                                                                                        {{$value->email_address}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if($value->description)
+                                                                                    <div class="col-12 px-4 py-2">
+                                                                                        <div class="row text-left">
+                                                                                            <strong>Description</strong>
+                                                                                        </div>
+                                                                                        <div class="row text-left">
+                                                                                            {{$value->description}}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                @endif
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            @php
+                                                                                $decoded_timings = json_decode($value->timings);
+                                                                                $decoded_services = json_decode($value->services);
+                                                                            @endphp
+                                                                            <div class="col-md-6 mb-2 mt-4">
+                                                                                <h4 class="ml-2"> Timings </h4>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            <h5>Monday</h5>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            @if (!is_null($decoded_timings->Monday->from) && !is_null($decoded_timings->Monday->to))
+                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Monday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Monday->to)->format('H:i A')}}</h5>
+                                                                                            @else
+                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                            @endif
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            <h5>Tuesday</h5>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            @if (!is_null($decoded_timings->Tuesday->from) && !is_null($decoded_timings->Tuesday->to))
+                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Tuesday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Tuesday->to)->format('H:i A')}}</h5>
+                                                                                            @else
+                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                            @endif
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            <h5>Wednesday</h5>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            @if (!is_null($decoded_timings->Wednesday->from) && !is_null($decoded_timings->Wednesday->to))
+                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Wednesday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Wednesday->to)->format('H:i A')}}</h5>
+                                                                                            @else
+                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                            @endif
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            <h5>Thursday</h5>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            @if (!is_null($decoded_timings->Thursday->from) && !is_null($decoded_timings->Thursday->to))
+                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Thursday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Thursday->to)->format('H:i A')}}</h5>
+                                                                                            @else
+                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                            @endif
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            <h5>Friday</h5>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            @if (!is_null($decoded_timings->Friday->from) && !is_null($decoded_timings->Friday->to))
+                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Friday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Friday->to)->format('H:i A')}}</h5>
+                                                                                            @else
+                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                            @endif
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            <h5>Saturday</h5>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            @if (!is_null($decoded_timings->Saturday->from) && !is_null($decoded_timings->Saturday->to))
+                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Saturday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Saturday->to)->format('H:i A')}}</h5>
+                                                                                            @else
+                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                            @endif
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            <h5>Sunday</h5>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">
+                                                                                            @if (!is_null($decoded_timings->Sunday->from) && !is_null($decoded_timings->Sunday->to))
+                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Sunday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Sunday->to)->format('H:i A')}}</h5>
+                                                                                            @else
+                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                            @endif
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 mb-2 mt-4" style="font-size: 12px;">
+                                                                                <h4 class="ml-2"> Services </h4>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="after_school" class="ml-5">
+                                                                                        <strong>After school</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[After school]" id="after_school" {!! in_array('After school', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="before_school" class="ml-5">
+                                                                                        <strong>Before school</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Before school]" id="before_school" {!! in_array('Before school', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="drop_in" class="ml-5">
+                                                                                        <strong>Drop in</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Drop in]" id="drop_in" {!! in_array('Drop in', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="food_served" class="ml-5">
+                                                                                        <strong>Food served</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Food served]" id="food_served" {!! in_array('Food served', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="full_day" class="ml-5">
+                                                                                        <strong>Full day</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Full day]" id="full_day" {!! in_array('Full day', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="half_day" class="ml-5">
+                                                                                        <strong>Half day</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Half day]" id="half_day" {!! in_array('Half day', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="infant_care" class="ml-5">
+                                                                                        <strong>Infant care</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Infant care]" id="infant_care" {!! in_array('Infant care', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="night_care" class="ml-5">
+                                                                                        <strong>Night care</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Night care]" id="night_care" {!! in_array('Night care', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="transportation" class="ml-5">
+                                                                                        <strong>Transportation</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Transportation]" id="transportation" {!! in_array('Transportation', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+
+                                                                                <div class="row ml-2">
+                                                                                    <label for="weekend_care" class="ml-5">
+                                                                                        <strong>Weekend care</strong>
+                                                                                    </label>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Weekend care]" id="weekend_care" {!! in_array('Weekend care', $decoded_services) ? 'checked' : '' !!}>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
 
                                                             </div>
                                                         </div>

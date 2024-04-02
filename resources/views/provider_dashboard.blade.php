@@ -45,9 +45,93 @@
         margin: 0;
     }
 
+    li.nav-item.active {
+        background-color: #b8bab7;
+        border-radius: 10px;
+    }
+
+    .myaccount-tab-menu.nav a {
+        display: block;
+        padding: 20px;
+        font-size: 16px;
+        align-items: center;
+        width: 100%;
+        font-weight: bold;
+        color: black;
+    }
+    .myaccount-tab-menu.nav a i {
+        padding-right: 10px;
+        /* background-color: #5798fc; */
+    }
+
+    .myaccount-tab-menu.nav {
+        border: 1px solid;
+    }
+
+    .myaccount-tab-menu.nav .active, .myaccount-tab-menu.nav a:hover {
+        background-color: #5798fc;
+        color: white;
+    }
+
+    .account-details-form label.required {
+        width: 100%;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    .account-details-form input {
+        border-width: 1px;
+        border-color: white;
+        border-style: solid;
+        padding-left: 15px;
+        color: black;
+        width: 100%;
+        border-radius: 3px;
+        background-color: rgb(255, 255, 255);
+        height: 52px;
+        padding-left: 15px;
+        margin-bottom: 30px;
+        color: #000000;
+        font-size: 15px;
+    }
+    .account-details-form legend {
+        font-family: CottonCandies;
+        font-size: 50px;
+    }
+    .editable {
+        position: relative;
+    }
+    .editable-wrapper {
+        position: absolute;
+        right: 0px;
+        top: -50px;
+    }
+
+    .editable-wrapper a {
+        background-color: #17a2b8;
+        border-radius: 50px;
+        width: 35px;
+        height: 35px;
+        display: inline-block;
+        text-align: center;
+        line-height: 35px;
+        color: white;
+        margin-left: 10px;
+        font-size: 16px;
+    }
+    .editable-wrapper a.edit{
+        background-color: #007bff;
+    }
+
+    .profilebg1 {
+        margin-top: -16px;
+    }
+
 </style>
 
 <body>
+
+@include('layouts.front.css')
+@include('layouts/front.header')
 
 
 <section class="back">

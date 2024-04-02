@@ -125,7 +125,11 @@ button#stripe-submit {
                             <div class="col-lg-4 mt-3">
                                 <span>Ages accepted?</span>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="age_accepted" placeholder="1 to 3" required="">
+                                    <select name="age_accepted" id="" class="form-control">
+                                        <option value="1-3">1-3</option>
+                                        <option value="4-8">4-8</option>
+                                        <option value="9-10">9-10</option>
+                                    </select>
                                 </div>
                             </div>
                             @if ($errors->registerForm->has('age_accepted'))

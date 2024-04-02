@@ -37,7 +37,11 @@ class ProviderController extends Controller
                 ->orWhere('name','LIKE',"%{$search}%")
                 ->orWhere('county','LIKE',"%{$search}%")
                 ->orWhere('program_type','LIKE',"%{$search}%");
-        })->paginate(25);
+        })
+        ->when(!isset($_GET['search']), function ($q) {
+            return $q->where('state','LIKE',"%akjdhasjkdja hsjdahd suia ghaui hdsajd siadh aisdyasuidhasijdsa%");
+        })
+        ->paginate(25);
 
 //        if(isset($_GET['search']))
 //        {

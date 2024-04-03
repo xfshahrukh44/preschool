@@ -580,7 +580,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <!-- The Edit Modal -->
+                                                    <!-- The View Modal -->
                                                     <div class="modal fade" id="myViewModal{{$value->id}}" data-backdrop="static" data-keyboard="false">
                                                         <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">

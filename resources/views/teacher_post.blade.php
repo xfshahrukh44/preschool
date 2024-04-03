@@ -104,6 +104,7 @@ use DateTime;
                         <div class="logoDiv">
                             
                              <a href="{{route('teacher_dashboard')}}">
+                             <a href="{{Auth::user()->role == 4 ? route('provider_dashboard') : route('teacher_dashboard')}}">
 
                                 <img src="{{asset('images/back_button-removebg-preview.png')}}" alt="" style="height:40px; width:40px;">
 

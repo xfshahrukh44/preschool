@@ -146,6 +146,197 @@ button#stripe-submit {
                             <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('position_accepted') }}</small>
                             @endif
 
+
+                            <div class="col-md-6 mb-2 mt-4">
+                                <h4 class="ml-2"> Timings </h4>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            <span>Monday</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Monday][from]">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Monday][to]">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            <span>Tuesday</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Tuesday][from]">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Tuesday][to]">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            <span>Wednesday</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Wednesday][from]">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Wednesday][to]">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            <span>Thursday</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Thursday][from]">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Thursday][to]">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            <span>Friday</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Friday][from]">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Friday][to]">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            <span>Saturday</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Saturday][from]">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Saturday][to]">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            <span>Sunday</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Sunday][from]">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time"
+                                               name="timings[Sunday][to]">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-2 mt-4">
+                                <h4 class="ml-2"> Services </h4>
+
+                                <div class="row ml-2">
+                                    <label for="after_school" class="ml-5">
+                                        <strong>After school</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[After school]" id="after_school">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="before_school" class="ml-5">
+                                        <strong>Before school</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Before school]" id="before_school">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="drop_in" class="ml-5">
+                                        <strong>Drop in</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Drop in]" id="drop_in">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="food_served" class="ml-5">
+                                        <strong>Food served</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Food served]" id="food_served">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="full_day" class="ml-5">
+                                        <strong>Full day</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Full day]" id="full_day">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="half_day" class="ml-5">
+                                        <strong>Half day</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Half day]" id="half_day">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="infant_care" class="ml-5">
+                                        <strong>Infant care</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Infant care]" id="infant_care">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="night_care" class="ml-5">
+                                        <strong>Night care</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Night care]" id="night_care">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="transportation" class="ml-5">
+                                        <strong>Transportation</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Transportation]" id="transportation">
+                                </div>
+
+                                <div class="row ml-2">
+                                    <label for="weekend_care" class="ml-5">
+                                        <strong>Weekend care</strong>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" name="services[Weekend care]" id="weekend_care">
+                                </div>
+                            </div>
+
                             <div class="form-group col-lg-12 mt-3">
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="about" rows="6" placeholder="Tell us about Business?"></textarea>
                             </div>

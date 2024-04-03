@@ -94,9 +94,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-
-        return User::create([
+        $user = User::create([
 
             'name' => $data['name'],
             'email' => $data['email'],
@@ -124,6 +122,22 @@ class RegisterController extends Controller
             'payment_status'=>$data['payment_status']
 
         ]);
+
+        if ($data['timings']) {
+            $user->timings = json_encode($data['timings']);
+            $user->save();
+        }
+
+        if ($data['services']) {
+            $services = [];
+            foreach ($data['services'] as $key => $value) {
+                $services []= $key;
+            }
+            $user->services = $services;
+            $user->save();
+        }
+
+        return $user;
     }
 
     protected function registered(Request $request, $user)

@@ -10,6 +10,7 @@ $segment2 = Request::segment(2);
         <div class="profilebuttons">
             <ul>
                 <li><a class="<?php if($segment == "provider" && $segment2 == "dashboard"){ echo 'menu_active'; } ?>" href="{{route('provider.dashboard')}}"><img src="{{asset('images/home1.png')}}"> Provider Dashboard </a></li>
+                <li><a class="<?php if($segment == "add_post"){ echo 'menu_active'; } ?>" href="{{route('add_post')}}"><img src="{{asset('images/notification1.png')}}"> News Feed </a></li>
                 <li><a class="<?php if($segment == "add-job"){ echo 'menu_active'; } ?>" href="{{route('add_job')}}"> <i class="fa fa-pencil"> &nbsp; </i> Add Job </a></li>
                 <li><a class="<?php if($segment == "view-job"){ echo 'menu_active'; } ?>" href="{{route('view_job')}}"> <i class="fa fa-eye">  &nbsp;</i>  View Job </a></li>
 

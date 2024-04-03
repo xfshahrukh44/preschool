@@ -130,13 +130,13 @@ use DateTime;
                             
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <h6>Recent Teacher</h6>
+                                    <h6>Recent {{Auth::user()->role == 4 ? 'Providers' : 'Teachers'}}</h6>
                                 </a>
                             </li>
 
                             @foreach($get_all_teachers as $key => $val_teacher)
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php">
+                                <a class="nav-link" href="#">
 
                                     @if($val_teacher->image != '')
                                     <img style="height:60px; width:60px; border-radius:50px;" src="{{asset($val_teacher->image)}}" class="img-fluid">
@@ -168,6 +168,8 @@ use DateTime;
                                         enctype="multipart/form-data">
 
                                         @csrf
+                                        <input type="hidden" name="role_id" value="{{Auth::user()->role}}">
+
                                         <div class="profileparent" style="">
 
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}" id="">
@@ -186,7 +188,7 @@ use DateTime;
                                                     <div class="com-img">
                                                         @if(Auth::user()->image != '')
                                                         <img style="height:50px; width:50px; border-radius: 50px;"
-                                                            src="{{asset(Auth::user()->image)}}" class="img-fluid">
+                                                            src="{{asset(Auth::user()->image ?? 'images/profilemain1.png')}}" class="img-fluid">
                                                         @else
                                                         <img src="{{asset('images/profilein1.png')}}" class="img-fluid">
                                                         @endif
@@ -344,7 +346,7 @@ use DateTime;
 
                                                         <div class="com-img col-md-1">
                                                             <img style="height:50px; width:50px; border-radius:50px;"
-                                                                src="{{ asset(Auth::user()->image) }}"
+                                                                src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
                                                                 class="img-fluid">
                                                         </div>
 
@@ -377,7 +379,7 @@ use DateTime;
                                                     @foreach($get_comments_by_id as $key => $val_comments)
                                                     <div class="com-img col-md-1">
                                                         <img style="height:50px; width:50px; border-radius:50px;"
-                                                            src="{{asset(App\User::find($val_comments->user_id)->image)}}"
+                                                            src="{{asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png')}}"
                                                             class="img-fluid">
                                                     </div>
 

@@ -254,7 +254,7 @@
 
             <div class="col-md-3 sidebarleftprofile">
 
-                @include('all_teacher')
+                @include('all_provider')
 
             </div>
 

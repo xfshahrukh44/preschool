@@ -100,10 +100,6 @@
         height: 1rem !important;
     }
 
-    h5 {
-        font-size: 12px;
-    }
-
     /*header*/
     li.nav-item.active {
         background-color: #b8bab7;
@@ -184,6 +180,10 @@
 
     .profilebg1 {
         margin-top: -16px;
+    }
+
+    .special_h5 {
+        font-size: 12px!important;
     }
 
 </style>
@@ -776,15 +776,15 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
-                                                                                            <h5>Monday</h5>
+                                                                                            <h5 class="special_h5">Monday</h5>
                                                                                         </label>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
                                                                                             @if (!is_null($decoded_timings->Monday->from) && !is_null($decoded_timings->Monday->to))
-                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Monday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Monday->to)->format('H:i A')}}</h5>
+                                                                                                <h5 class="special_h5">{{Carbon\Carbon::parse($decoded_timings->Monday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Monday->to)->format('H:i A')}}</h5>
                                                                                             @else
-                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                                <h5 class="text-danger special_h5">Closed</h5>
                                                                                             @endif
                                                                                         </label>
                                                                                     </div>
@@ -793,15 +793,15 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
-                                                                                            <h5>Tuesday</h5>
+                                                                                            <h5 class="special_h5">Tuesday</h5>
                                                                                         </label>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
                                                                                             @if (!is_null($decoded_timings->Tuesday->from) && !is_null($decoded_timings->Tuesday->to))
-                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Tuesday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Tuesday->to)->format('H:i A')}}</h5>
+                                                                                                <h5 class="special_h5">{{Carbon\Carbon::parse($decoded_timings->Tuesday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Tuesday->to)->format('H:i A')}}</h5>
                                                                                             @else
-                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                                <h5 class="text-danger special_h5">Closed</h5>
                                                                                             @endif
                                                                                         </label>
                                                                                     </div>
@@ -810,15 +810,15 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
-                                                                                            <h5>Wednesday</h5>
+                                                                                            <h5 class="special_h5">Wednesday</h5>
                                                                                         </label>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
                                                                                             @if (!is_null($decoded_timings->Wednesday->from) && !is_null($decoded_timings->Wednesday->to))
-                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Wednesday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Wednesday->to)->format('H:i A')}}</h5>
+                                                                                                <h5 class="special_h5">{{Carbon\Carbon::parse($decoded_timings->Wednesday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Wednesday->to)->format('H:i A')}}</h5>
                                                                                             @else
-                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                                <h5 class="text-danger special_h5">Closed</h5>
                                                                                             @endif
                                                                                         </label>
                                                                                     </div>
@@ -827,15 +827,15 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
-                                                                                            <h5>Thursday</h5>
+                                                                                            <h5 class="special_h5">Thursday</h5>
                                                                                         </label>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
                                                                                             @if (!is_null($decoded_timings->Thursday->from) && !is_null($decoded_timings->Thursday->to))
-                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Thursday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Thursday->to)->format('H:i A')}}</h5>
+                                                                                                <h5 class="special_h5">{{Carbon\Carbon::parse($decoded_timings->Thursday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Thursday->to)->format('H:i A')}}</h5>
                                                                                             @else
-                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                                <h5 class="text-danger special_h5">Closed</h5>
                                                                                             @endif
                                                                                         </label>
                                                                                     </div>
@@ -844,15 +844,15 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
-                                                                                            <h5>Friday</h5>
+                                                                                            <h5 class="special_h5">Friday</h5>
                                                                                         </label>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
                                                                                             @if (!is_null($decoded_timings->Friday->from) && !is_null($decoded_timings->Friday->to))
-                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Friday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Friday->to)->format('H:i A')}}</h5>
+                                                                                                <h5 class="special_h5">{{Carbon\Carbon::parse($decoded_timings->Friday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Friday->to)->format('H:i A')}}</h5>
                                                                                             @else
-                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                                <h5 class="text-danger special_h5">Closed</h5>
                                                                                             @endif
                                                                                         </label>
                                                                                     </div>
@@ -861,15 +861,15 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
-                                                                                            <h5>Saturday</h5>
+                                                                                            <h5 class="special_h5">Saturday</h5>
                                                                                         </label>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
                                                                                             @if (!is_null($decoded_timings->Saturday->from) && !is_null($decoded_timings->Saturday->to))
-                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Saturday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Saturday->to)->format('H:i A')}}</h5>
+                                                                                                <h5 class="special_h5">{{Carbon\Carbon::parse($decoded_timings->Saturday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Saturday->to)->format('H:i A')}}</h5>
                                                                                             @else
-                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                                <h5 class="text-danger special_h5">Closed</h5>
                                                                                             @endif
                                                                                         </label>
                                                                                     </div>
@@ -878,15 +878,15 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
-                                                                                            <h5>Sunday</h5>
+                                                                                            <h5 class="special_h5">Sunday</h5>
                                                                                         </label>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <label for="">
                                                                                             @if (!is_null($decoded_timings->Sunday->from) && !is_null($decoded_timings->Sunday->to))
-                                                                                                <h5>{{Carbon\Carbon::parse($decoded_timings->Sunday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Sunday->to)->format('H:i A')}}</h5>
+                                                                                                <h5 class="special_h5">{{Carbon\Carbon::parse($decoded_timings->Sunday->from)->format('H:i A') . ' - ' . Carbon\Carbon::parse($decoded_timings->Sunday->to)->format('H:i A')}}</h5>
                                                                                             @else
-                                                                                                <h5 class="text-danger">Closed</h5>
+                                                                                                <h5 class="text-danger special_h5">Closed</h5>
                                                                                             @endif
                                                                                         </label>
                                                                                     </div>

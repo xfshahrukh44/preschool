@@ -102,7 +102,7 @@ button#stripe-submit {
                                 <input type="email" class="form-control" name="email" placeholder="Email" required="">
                             </div>
                             @if ($errors->registerForm->has('email'))
-                            <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('email') }}</small>
+                            <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('email') ?? '' }}</small>
                             @endif
 
                             <div class="col-lg-6 mt-3">

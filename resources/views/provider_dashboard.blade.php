@@ -161,9 +161,14 @@
         <div class="profile-name-bg">
             <div class="row">
 
+
                 <div class="col-md-3">
                     <div class="profile-name">
-                        <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span></h5>
+                        <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span>
+                            @if (Auth::user()->age_accepted)
+                                <span><strong>Ages accepted: </strong> {{Auth::user()->age_accepted}} </span>
+                            @endif
+                        </h5>
                     </div>
                 </div>
 

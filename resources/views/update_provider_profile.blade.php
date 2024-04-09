@@ -246,6 +246,12 @@ li.nav-item.active {
 
 
                                 <br><br>
+
+                                <label for="">Ages Accepted</label>
+                                <input type="text" name="lname" class="form-control" placeholder="" value="{{Auth::user()->age_accepted}}" >
+
+
+                                <br><br>
                                 
                                 <label for="">Phone No :</label>
                                 <input type="number" name="phone" class="form-control" placeholder="" value="{{Auth::user()->phone}}" >

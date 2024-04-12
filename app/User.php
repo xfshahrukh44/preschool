@@ -69,4 +69,9 @@ class User extends Authenticatable
        }
        return $is_admin;
     }
+
+    public function hasClaimed ()
+    {
+        return (boolean) (Childcare::where('claimed_by_id', $this->id)->count() > 0);
+    }
 }

@@ -59,7 +59,8 @@
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
 
-                    <h2>Daycare Center</h2>
+{{--                    <h2>Daycare Center</h2>--}}
+                    <h2>Childcare Provider Search</h2>
 
                 </div>
             </div>
@@ -76,9 +77,14 @@
 
                 <?php $get_daycarecount = DB::table('childcares')->distinct('name')->count(); ?>
 
-                <center>
-                    <h4 Style="color:#000;"> Childcare Provider Search </h4>
-                </center>
+{{--                <center>--}}
+{{--                    <h4 Style="color:#000;"> Childcare Provider Search </h4>--}}
+{{--                </center>--}}
+
+                    <form method="get" action="{{ route('search') }}">
+                        <input class="form-control" name="search" type="text" placeholder="Search providers" value="{{$search ?? ''}}">
+                        <button type="submit" class="btn btn-block"><i class="fas fa-search"></i></button>
+                    </form>
 
                 <hr>
 

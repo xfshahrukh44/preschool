@@ -45,21 +45,22 @@ a:hover{
                             <li class="nav-item <?php if($segment == "contact"){ echo 'active'; } ?>">
                                 <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
                             </li>
-                             <li class="nav-item <?php if($segment == "search"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('search')}}">Total Daycares</a>
-                            </li>
+{{--                             <li class="nav-item <?php if($segment == "search"){ echo 'active'; } ?>">--}}
+{{--                                <a class="nav-link" href="{{route('search')}}">Total Daycares</a>--}}
+{{--                            </li>--}}
 
-                             <li class="nav-item <?php if($segment == "shared-gallery"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('sharedgallery')}}">Shared Gallery</a>
-                            </li>
+{{--                             <li class="nav-item <?php if($segment == "shared-gallery"){ echo 'active'; } ?>">--}}
+{{--                                <a class="nav-link" href="{{route('sharedgallery')}}">Shared Gallery</a>--}}
+{{--                            </li>--}}
 
-                            <li class="nav-item <?php if($segment == "shared-gallery"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('claimed_center')}}">Claimed Center</a>
-                            </li>
+{{--                            <li class="nav-item <?php if($segment == "shared-gallery"){ echo 'active'; } ?>">--}}
+{{--                                <a class="nav-link" href="{{route('claimed_center')}}">Claimed Center</a>--}}
+{{--                            </li>--}}
 
                             @if(!Auth::check() && Auth::user()->role == '')
                             <li class="nav-item <?php if($segment == "signin"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('signin')}}"> Sign In </a>
+{{--                                <a class="nav-link" href="{{route('signin')}}"> Sign In </a>--}}
+                                <a class="nav-link" href="{{route('signin')}}"> Log In </a>
                             </li>
                             @endif
 
@@ -94,7 +95,7 @@ a:hover{
 
                             @else
 
-                                <a href="{{'joinnow'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "joinnow"){ echo 'background-color:#f84c8f';} ?>"> Join </a>
+                                <a href="{{'joinnow'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "joinnow"){ echo 'background-color:#f84c8f';} ?>"> Enroll </a>
                                 <!--<a href="{{'become-a-teacher'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "become-a-teacher"){ echo 'background-color:#f84c8f';} ?>">   Become A Teacher </a>-->
                                 <!--<a href="{{'become-a-provider'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "become-a-provider"){ echo 'background-color:#f84c8f';} ?>">  Become A Provider </a> -->
 

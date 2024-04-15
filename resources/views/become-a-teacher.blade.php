@@ -12,8 +12,8 @@
         display: flex;
         align-items: center;
     }
-    
-    
+
+
 </style>
 @endsection
 
@@ -57,7 +57,7 @@
                     </h6>
 
                     <form class="teacher-form" method="POST" action="{{route('register')}}">
-                    
+
                         @csrf
 
                         <input type="hidden" name="role" value="3">
@@ -74,7 +74,7 @@
                                     <select class="form-control" name="gender"  id="exampleFormControlSelect1">
                                         <option value="0">Sex</option>
                                         <option value="1">Male</option>
-                                        <option value="2">Female</option> 
+                                        <option value="2">Female</option>
                                     </select>
                                 </div>
                             </div>
@@ -126,6 +126,26 @@
     </div>
 </section>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ============================================================== -->
 

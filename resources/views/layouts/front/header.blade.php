@@ -95,7 +95,7 @@ a:hover{
 
                             @else
 
-                                <a href="{{'joinnow'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "joinnow"){ echo 'background-color:#f84c8f';} ?>"> Enroll </a>
+                                <a href="{{'joinnow'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "joinnow"){ echo 'background-color:#f84c8f';} ?>"> Enroll now </a>
                                 <!--<a href="{{'become-a-teacher'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "become-a-teacher"){ echo 'background-color:#f84c8f';} ?>">   Become A Teacher </a>-->
                                 <!--<a href="{{'become-a-provider'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "become-a-provider"){ echo 'background-color:#f84c8f';} ?>">  Become A Provider </a> -->
 

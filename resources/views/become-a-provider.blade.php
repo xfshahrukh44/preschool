@@ -59,7 +59,7 @@
                 <div class="col-lg-7 col-md-6 col-12">
                     <div class="content-zig mt-0 pt-0 priority" data-aos="fade-down" data-aos-easing="linear"
                          data-aos-duration="1500">
-                        <p><span>FOR BECOME A PROVIDER</span></p>
+{{--                        <p><span>FOR BECOME A PROVIDER</span></p>--}}
                         <h6>
                             Provider Registration
                         </h6>
@@ -120,25 +120,26 @@
                                     <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('password') }}</small>
                                 @endif
 
-                                <div class="col-lg-4 mt-3">
-                                    <span>Hour open</span>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="hour_open" placeholder="1 to 3"
-                                               required="">
-                                    </div>
-                                </div>
-                                @if ($errors->registerForm->has('hour_open'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('hour_open') }}</small>
-                                @endif
+{{--                                <div class="col-lg-4 mt-3">--}}
+{{--                                    <span>Hour open</span>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <input type="text" class="form-control" name="hour_open" placeholder="1 to 3"--}}
+{{--                                               required="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @if ($errors->registerForm->has('hour_open'))--}}
+{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('hour_open') }}</small>--}}
+{{--                                @endif--}}
 
-                                <div class="col-lg-4 mt-3">
-                                    <span>Ages accepted?</span>
+                                <div class="col-lg-12 mt-3">
+                                    <span>What ages do you accept?</span>
                                     <div class="form-group">
                                         <select name="age_accepted" id="" class="form-control" required>
                                             <option value="">Select an option</option>
-                                            <option value="1-3">1-3</option>
-                                            <option value="4-8">4-8</option>
-                                            <option value="9-10">9-10</option>
+                                            <option value="0-12 months">0-12 months</option>
+                                            <option value="12-24 months">12-24 months</option>
+                                            <option value="2-5 years">2-5 years</option>
+                                            <option value="5+ years">5+ years</option>
                                         </select>
                                     </div>
                                 </div>
@@ -146,20 +147,21 @@
                                     <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('age_accepted') }}</small>
                                 @endif
 
-                                <div class="col-lg-4 mt-3">
-                                    <span>Position accepted?</span>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="position_accepted"
-                                               placeholder="1 to 3" required="">
-                                    </div>
-                                </div>
-                                @if ($errors->registerForm->has('position_accepted'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('position_accepted') }}</small>
-                                @endif
+{{--                                <div class="col-lg-4 mt-3">--}}
+{{--                                    <span>Position accepted?</span>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <input type="text" class="form-control" name="position_accepted"--}}
+{{--                                               placeholder="1 to 3" required="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @if ($errors->registerForm->has('position_accepted'))--}}
+{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('position_accepted') }}</small>--}}
+{{--                                @endif--}}
 
 
                                 <div class="col-md-6 mb-2 mt-4">
-                                    <h4 class="ml-2"> Timings </h4>
+{{--                                    <h4 class="ml-2"> Timings </h4>--}}
+                                    <h4 class="ml-2"> Hours open </h4>
 
                                     <div class="row">
                                         <div class="col-md-4">
@@ -377,7 +379,10 @@
 
                                 <div class="form-group col-lg-12 mt-3">
                                     <input type="checkbox" id="checkbox_agreed_to_terms">
-                                    <label for="checkbox_agreed_to_terms">I have read the terms.</label>
+                                    <label for="checkbox_agreed_to_terms">
+                                        I have read the
+                                        <a target="_blank" href="{{route('termsandconditionprovider')}}">Terms and conditions</a>
+                                    </label>
                                     {{--                                <textarea class="form-control" id="exampleFormControlTextarea2" name="about_preschool" rows="6" placeholder="How did you hear about preschool portal?"></textarea>--}}
                                 </div>
 

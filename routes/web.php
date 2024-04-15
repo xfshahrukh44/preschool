@@ -389,3 +389,14 @@ Route::resource('payment/payment', 'payment\PaymentController');
 Route::resource('admin/shared-gallery/shared-gallery', 'SharedGallery\SharedGalleryController');
 
 Route::resource('review/review', 'review\ReviewController');
+
+Route::get('agree-to-sanbox-terms', function () {
+    if (!\Illuminate\Support\Facades\Auth::check()) {
+        return redirect()->back();
+    }
+
+    $user = \App\User::find(\Illuminate\Support\Facades\Auth::id());
+    $user->agreed_to_sandbox_terms = 1;
+    $user->save();
+    return redirect()->back();
+})->name('agree_to_sandbox_terms');

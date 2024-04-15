@@ -270,6 +270,53 @@ li.nav-item.active {
 
 @include('footerlink')
 
+<!-- Sandbox terms modal -->
+<div class="modal fade" id="modal_agree_to_sandbox_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Sandbox terms</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h6>Community Guidelines</h6>
+                    </div>
+                    <div class="col-12">
+                        <p>
+                            Welcome to the Sandbox!
+                        </p>
+                        <p>
+                            The Sandbox is meant to be a place to interact with other professionals while at work; learn from others, build relationships, and otherwise just ‘hang out’. This is the spirit in which these guidelines have been established. The discussions and the way all members and Preschool Portal employees are treated are always to be professional. The general rule of thumb to follow is that if the talk is inappropriate for a traditional workplace, then it is not appropriate here. Forums like the Sandbox are at their best when participants treat each other with respect and courtesy. Please be mindful of this when participating here in the Sandbox.
+                        </p>
+                        <p>
+                            Preschool Portal will occasionally move discussions if they belong in a different category. We will also close/remove duplicate discussions and/or replies if they are causing confusion, are mean-spirited, or are otherwise inappropriate (see our Do’s/Don’ts below). Our intention is not to censor, but to foster an environment that is easy to use and productive for all those involved.
+                        </p>
+                    </div>
+                    <div class="col-12 text-center">
+                        <a target="_blank" href="#">Rules of conduct</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                {{--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+                <a href="{{route('agree_to_sandbox_terms')}}" type="button" class="btn btn-primary">I agree to the terms</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(() => {
+
+        if (parseInt('{{\Illuminate\Support\Facades\Auth::user()->agreed_to_sandbox_terms}}') == 0) {
+            $('#modal_agree_to_sandbox_terms').modal({
+                keyboard: false
+            });
+            $('#modal_agree_to_sandbox_terms').modal('show');
+        }
+    });
+</script>
+
 
 </body>
 

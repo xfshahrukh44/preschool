@@ -80,7 +80,8 @@ class RegisterController extends Controller
 
         $this->guard()->login($user);
 
-        Session::flash('message', 'New Account Created Successfully');
+//        Session::flash('message', 'New Account Created Successfully');
+        Session::flash('message', 'Thank you for Enrolling. We look forward to working with you!');
         Session::flash('alert-class', 'alert-success');
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
@@ -104,7 +105,7 @@ class RegisterController extends Controller
             'age' => $data['age'],
             'phone' => $data['phone'],
             'address' => $data['address'],
-            'current_position ' => $data['current_position '],
+            'current_position ' => $data['current_position'],
             'year_of_experience' => $data['year_of_experience'],
             'age_worked_with' => $data['age_worked_with'],
             'about' => $data['about'],
@@ -119,7 +120,9 @@ class RegisterController extends Controller
             'payer_id'=>$data['payer_id'],
             'paypal_token'=>$data['_token'],
 //            'amount' => 0,
-            'payment_status'=>$data['payment_status']
+            'payment_status'=>$data['payment_status'],
+            'dob'=>$data['dob'],
+            'loe'=>$data['loe'],
 
         ]);
 

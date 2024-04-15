@@ -235,7 +235,7 @@ class HomeController extends Controller
             $search = $_GET['search'];
         }
 
-        $search_result = Childcare::where('city', 'LIKE', "%{$search}%")->orWhere('state', 'LIKE', "%{$search}%")->orWhere('name', 'LIKE', "%{$search}%")->orWhere('county', 'LIKE', "%{$search}%")->orWhere('program_type', 'LIKE', "%{$search}%")->where('status', '1')->groupBy('name')->paginate(25);
+        $search_result = Childcare::where('city', 'LIKE', "%{$search}%")->orWhere('state', 'LIKE', "%{$search}%")->orWhere('name', 'LIKE', "%{$search}%")->orWhere('county', 'LIKE', "%{$search}%")->orWhere('program_type', 'LIKE', "%{$search}%")->where('status', '1')->orderBy('claimed_by_id', 'DESC')->groupBy('name')->paginate(25);
 
         return view('search', compact('page', 'section', 'search_result', 'search'));
 

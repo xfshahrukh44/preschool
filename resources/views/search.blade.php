@@ -43,6 +43,11 @@
   align-items: center;
 }
 
+a.btn.btn-secondary {
+    background: #8cc63f;
+    border: 0px #8cc63f;
+}
+
 </style>
 @endsection
 

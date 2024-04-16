@@ -2,15 +2,16 @@
 
 @section('css')
     <style>
-        /*.sec-one {*/
-        /*	background-image: url('{{ asset($page->image) }}');*/
-        /*	background-position: center;*/
-        /*	background-repeat: no-repeat;*/
-        /*	background-size: cover;*/
-        /*	height: 800px;*/
-        /*	display: flex;*/
-        /*	align-items: center;*/
-        /*  }*/
+        
+        .sec-one {
+        	background-image: url('{{ asset($page->image) }}');
+        	background-position: center;
+        	background-repeat: no-repeat;
+        	background-size: cover;
+        	height: 800px;
+        	display: flex;
+        	align-items: center;
+          }
 
 
         header {
@@ -156,49 +157,49 @@
     <!-- BODY START HERE -->
 
 
-    <!--<section class="sec-one">-->
-    <!--    <div class="container">-->
-    <!--        <div class="rwo">-->
-    <!--            <div class="col-lg-12 col-md-12 col-12">-->
-    <!--                <div class="childcare" data-aos="fade-down" data-aos-duration="2000">-->
-
-    <!--                    {!! $page->content !!}-->
-
-    <!--                </div>-->
-    <!--                <div class="header-form">-->
-    <!--                    <input type="text" class="form-control" id="validationCustom03" placeholder="Enter a zip code or city" required>-->
-    <!--                    <button class="custom-btn">Search</button>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</section>-->
-
     <section class="sec-one">
-        <div class="bloc-video">
-            <video autoplay muted loop>
-                <source src="{{ asset($banner->video) }}" type="video/mp4">
-            </video>
-            <div class="content-video">
-                <div class="content-text">
-                    <h1></h1>
-                </div>
-                <div class="content-button">
-                    <h2 class="hh"> Are You Looking For Childcare? </h2>
+        <div class="container">
+            <div class="rwo">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="childcare" data-aos="fade-down" data-aos-duration="2000">
 
-                    <form method="get" action="{{ route('search') }}">
+                        {!! $page->content !!}
 
-                        <div class="header-form">
-                            <input type="text" name="search" class="form-control" id="validationCustom03"
-                                placeholder="Enter a zip code or city" required>
-                            <button type="submit" class="custom-btn"> Search </button>
-                        </div>
-
-                    </form>
-
+                    </div>
+                    <div class="header-form">
+                        <input type="text" class="form-control" id="validationCustom03" placeholder="Enter a zip code or city" required>
+                        <button class="custom-btn">Search</button>
+                    </div>
                 </div>
             </div>
+        </div>
     </section>
+
+    <!--<section class="sec-one">-->
+    <!--    <div class="bloc-video">-->
+    <!--        <video autoplay muted loop>-->
+    <!--            <source src="{{ asset($banner->video) }}" type="video/mp4">-->
+    <!--        </video>-->
+    <!--        <div class="content-video">-->
+    <!--            <div class="content-text">-->
+    <!--                <h1></h1>-->
+    <!--            </div>-->
+    <!--            <div class="content-button">-->
+    <!--                <h2 class="hh"> Are You Looking For Childcare? </h2>-->
+
+    <!--                <form method="get" action="{{ route('search') }}">-->
+
+    <!--                    <div class="header-form">-->
+    <!--                        <input type="text" name="search" class="form-control" id="validationCustom03"-->
+    <!--                            placeholder="Enter a zip code or city" required>-->
+    <!--                        <button type="submit" class="custom-btn"> Search </button>-->
+    <!--                    </div>-->
+
+    <!--                </form>-->
+
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--</section>-->
 
     <section class="sec-two">
         <div class="container">

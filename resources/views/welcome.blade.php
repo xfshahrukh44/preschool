@@ -166,10 +166,14 @@
                         {!! $page->content !!}
 
                     </div>
-                    <div class="header-form">
-                        <input type="text" class="form-control" id="validationCustom03" placeholder="Enter a zip code or city" required>
-                        <button class="custom-btn">Search</button>
-                    </div>
+                    
+                    <form method="get" action="{{ route('search') }}">
+                        <div class="header-form">
+                            <input type="text" class="form-control" name="search" id="validationCustom03" placeholder="Enter a zip code or city" required>
+                            <button class="custom-btn">Search</button>
+                        </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>

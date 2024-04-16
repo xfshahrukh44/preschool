@@ -423,6 +423,12 @@ use DateTime;
                     var post_user_image = response.p_u_profile;
                     var dayago = response.dayago;
 
+                    let post_image_string = data.image ? `<div class="newfeed-image">
+
+                            <img style="height:400px; width:100%; border-radius:10px;" src="{{asset('${data.image}')}}" class="img-fluid">
+
+                        </div>` : ``;
+
 
                     $('.comment_div').append(
                         `<div class="newfeed">
@@ -445,11 +451,7 @@ use DateTime;
 
                         </div>
 
-                        <div class="newfeed-image">
-
-                            <img style="height:400px; width:100%; border-radius:10px;" src="{{asset('${data.image}')}}" class="img-fluid">
-
-                        </div>
+                        `+post_image_string+`
 
                          
                         <hr>

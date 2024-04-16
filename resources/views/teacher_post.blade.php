@@ -312,9 +312,8 @@ use DateTime;
                                                 </div>
 
                                                 <div class="newfeed-image">
-                                                    @dump($val_get_last->image)
 
-                                                    @if(!is_null($val_get_last->image) && $val_get_last->image != 'null')
+                                                    @if(!is_null($val_get_last->image))
                                                         <img style="height:400px; width:100%; border-radius:10px;"
                                                              src="{{asset($val_get_last->image)}}" class="img-fluid">
                                                     @endif

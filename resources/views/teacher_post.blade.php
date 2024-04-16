@@ -312,6 +312,7 @@ use DateTime;
                                                 </div>
 
                                                 <div class="newfeed-image">
+                                                    @dump($val_get_last->image)
 
                                                     @if(!is_null($val_get_last->image) && $val_get_last->image != 'null')
                                                         <img style="height:400px; width:100%; border-radius:10px;"

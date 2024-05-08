@@ -22,6 +22,48 @@
         button#stripe-submit {
             margin-top: 2rem;
         }
+        
+        
+        .StripeElement {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+    border-width: 1px;
+    border-color: rgb(150, 163, 218);
+    border-style: solid;
+    margin-bottom: 10px;
+  }
+
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+  }
+
+  .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+  div#card-errors {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    display: block;
+    width: 100%;
+
+    font-size: 15px;
+    padding: 5px 15px;
+    border-radius: 6px;
+    display: none;
+    margin-bottom: 10px;
+  }
 
     </style>
 @endsection
@@ -68,14 +110,16 @@
 
                             @csrf
                             <?php
-                            $subtotal = App\Http\Traits\HelperTrait::returnFlag(1973);
+                                $subtotal = App\Http\Traits\HelperTrait::returnFlag(1973);
                             ?>
+                            
                             <input type="hidden" name="payment_id" value=""/>
                             <input type="hidden" name="amount" value="10"/>
                             <input type="hidden" name="payer_id" value=""/>
                             <input type="hidden" name="payment_status" value=""/>
                             <input type="hidden" name="amount" value="{{$subtotal}}"/>
                             <input type="hidden" name="payment_method" id="payment_method" value="paypal"/>
+                            
                             <div class="row">
 
                                 <input type="hidden" name="role" value="4">
@@ -134,7 +178,7 @@
                                 <div class="col-lg-12 mt-3">
                                     <span>What ages do you accept?</span>
                                     <div class="form-group">
-                                        <select name="age_accepted" id="" class="form-control" required>
+                                        <select name="age_accepted[]" id="select1" class="form-control" multiple required>
                                             <option value="">Select an option</option>
                                             <option value="0-12 months">0-12 months</option>
                                             <option value="12-24 months">12-24 months</option>
@@ -159,7 +203,7 @@
 {{--                                @endif--}}
 
 
-                                <div class="col-md-6 mb-2 mt-4">
+                                <div class="col-md-7 mb-2 mt-4">
 {{--                                    <h4 class="ml-2"> Timings </h4>--}}
                                     <h4 class="ml-2"> Hours open </h4>
 
@@ -171,11 +215,11 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Monday][from]">
+                                                   name="timings[Monday][from]" value="09:00">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Monday][to]">
+                                                   name="timings[Monday][to]" value="17:00">
                                         </div>
                                     </div>
 
@@ -187,11 +231,11 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Tuesday][from]">
+                                                   name="timings[Tuesday][from]" value="09:00">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Tuesday][to]">
+                                                   name="timings[Tuesday][to]" value="17:00">
                                         </div>
                                     </div>
 
@@ -203,11 +247,11 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Wednesday][from]">
+                                                   name="timings[Wednesday][from]" value="09:00">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Wednesday][to]">
+                                                   name="timings[Wednesday][to]" value="17:00">
                                         </div>
                                     </div>
 
@@ -219,11 +263,11 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Thursday][from]">
+                                                   name="timings[Thursday][from]" value="09:00">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Thursday][to]">
+                                                   name="timings[Thursday][to]" value="17:00">
                                         </div>
                                     </div>
 
@@ -235,11 +279,11 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Friday][from]">
+                                                   name="timings[Friday][from]" value="09:00">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Friday][to]">
+                                                   name="timings[Friday][to]" value="17:00">
                                         </div>
                                     </div>
 
@@ -251,11 +295,11 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Saturday][from]">
+                                                   name="timings[Saturday][from]" value="09:00">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Saturday][to]">
+                                                   name="timings[Saturday][to]" value="17:00">
                                         </div>
                                     </div>
 
@@ -267,16 +311,16 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Sunday][from]">
+                                                   name="timings[Sunday][from]" value="09:00">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input class="form-control" type="time"
-                                                   name="timings[Sunday][to]">
+                                                   name="timings[Sunday][to]" value="17:00">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 mb-2 mt-4">
+                                <div class="col-md-5 mb-2 mt-4">
                                     <h4 class="ml-2"> Services </h4>
 
                                     <div class="row ml-2">
@@ -389,24 +433,7 @@
                                 <!--<button type="submit" class="custom-btn">Become a provider</button>-->
                                 <div class="form-group col-lg-12 mt-3">
                                     <div id="accordion" class="payment-accordion">
-                                        {{--                                  <div class="card">--}}
-                                        {{--                                    <div class="card-header" id="headingOne">--}}
-                                        {{--                                      <h5 class="mb-0">--}}
-                                        {{--                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-payment="paypal">--}}
-                                        {{--                                          Pay with Paypal <img src="{{ asset('images/paypal.png') }}" width="60" alt="">--}}
-                                        {{--                                        </button>--}}
-                                        {{--                                      </h5>--}}
-                                        {{--                                    </div>--}}
-                                        {{--                                    <?php--}}
-                                        {{--                                    $subtotal = App\Http\Traits\HelperTrait::returnFlag(1973);--}}
-                                        {{--                                    ?>--}}
-                                        {{--                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">--}}
-                                        {{--                                      <div class="card-body">--}}
-                                        {{--                                        <input type="hidden" name="price" value="{{ App\Http\Traits\HelperTrait::returnFlag(1973) }}" />--}}
-                                        {{--                                        <div id="paypal-button-container-popup"></div>--}}
-                                        {{--                                      </div>--}}
-                                        {{--                                    </div>--}}
-                                        {{--                                  </div>--}}
+                                       
                                         <div class="card">
                                             <div class="card-header" id="headingTwo">
                                                 <h5 class="mb-0">
@@ -429,7 +456,7 @@
                                                         <div id="card-element"></div>
                                                         <div id="card-errors" role="alert"></div>
                                                         <div class="form-group">
-                                                            <button class="btn btn-red btn-block" type="button"
+                                                            <button class="btn btn-red btn-block" type="button" style="background: #5798fc; color: #fff;"
                                                                     id="stripe-submit">Pay Now ${{ $subtotal }}</button>
                                                         </div>
                                                     </div>

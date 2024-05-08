@@ -95,6 +95,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        $ageacceptedd = implode(',', $data['age_accepted']);
+        
+        // dd($ageacceptedd);
+        
         $user = User::create([
 
             'name' => $data['name'],
@@ -110,7 +115,7 @@ class RegisterController extends Controller
             'age_worked_with' => $data['age_worked_with'],
             'about' => $data['about'],
             'hour_open' => $data['hour_open'],
-            'age_accepted' => $data['age_accepted'],
+            'age_accepted' => $ageacceptedd,
             'position_accepted' => $data['position_accepted'],
             'about_preschool' => $data['about_preschool'],
             'payment_method'=> $data['payment_method'],

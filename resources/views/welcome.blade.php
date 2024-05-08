@@ -148,6 +148,47 @@
         .box-new-1 {
             padding-top: 100px;
         }
+        
+        
+        .services.aos-init.aos-animate {
+            height: 330px !important;
+        }
+        
+        
+        
+        .top-bottom {
+          background-image: url('https://democustom-html.com/custom-backend/preschool/public/uploads/pages/1019_1680634802.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 830px;
+          box-shadow: 0px 0px 14px 2px #0000002b;
+          border-radius: 20px;
+        }
+        
+        .top-bottom.two {
+          background-image: url('https://democustom-html.com/custom-backend/preschool/public/uploads/pages/1121_1680634802.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 830px;
+          box-shadow: 0px 0px 14px 2px #0000002b;
+          border-radius: 20px;
+        }
+        
+        
+        .about-sec-three {
+          background-image: url('https://democustom-html.com/custom-backend/preschool/public/uploads/pages/1223_1680635119.png');
+          background-position: left;
+          background-size: 50%;
+          background-color: #000000;
+          background-repeat: no-repeat;
+          height: 600px;
+          display: flex;
+          align-items: center;
+        }
+
+
     </style>
 @endsection
 
@@ -179,6 +220,7 @@
         </div>
     </section>
 
+
     <!--<section class="sec-one">-->
     <!--    <div class="bloc-video">-->
     <!--        <video autoplay muted loop>-->
@@ -205,6 +247,7 @@
     <!--        </div>-->
     <!--</section>-->
 
+
     <section class="sec-two">
         <div class="container">
             <div class="row">
@@ -215,30 +258,100 @@
 
                     </div>
                 </div>
-                <div class="main-col-div">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="Provider" data-aos="flip-left" data-aos-duration="1500">
+                <!--<div class="main-col-div">-->
+                <!--    <div class="row">-->
+                <!--        <div class="col-lg-6 col-md-6 col-12">-->
+                <!--            <div class="Provider" data-aos="flip-left" data-aos-duration="1500">-->
 
-                                {!! $section[1]->value !!}
+                <!--                {!! $section[1]->value !!}-->
 
-                                <a href="#" class="custom-btn pink">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="Provider" data-aos="flip-right" data-aos-duration="1500">
+                <!--                <a href="#" class="custom-btn pink">Learn More</a>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--        <div class="col-lg-6 col-md-6 col-12">-->
+                <!--            <div class="Provider" data-aos="flip-right" data-aos-duration="1500">-->
 
-                                {!! $section[2]->value !!}
+                <!--                {!! $section[2]->value !!}-->
 
-                                <a href="#" class="custom-btn pink">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!--                <a href="#" class="custom-btn pink">Learn More</a>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
             </div>
         </div>
     </section>
+    
+    
+    <section class="about-sec-two">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                <div class="top-bottom aos-init aos-animate" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="1500">
+                    <div class="about-bottom">
+                    
+                    <h5>For Providers</h5>
+                
+                <p>Preschool Portal does not employ, recommend or endorse any childcare provider or childcare teacher nor is it responsible for the conduct of any childcare provider or childcare teacher.</p>
+                
+                <p>Preschool Portal provides information and tools to help parents, childcare providers and childcare teachers connect. Each individual is solely responsible for selecting an appropriate childcare provider or childcare teacher for themselves, dependent on their role, and for complying with all applicable laws in connection with any employment relationship or child enrollment they establish.</p>
+                
+                    </div>
+                    
+                   
+                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+                 
+                </div>
+                
+                 
+                
+                
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                <div class="top-bottom two aos-init aos-animate" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
+                    <div class="about-bottom two">
+                    
+                    <h5>For Teachers</h5>
+                
+                <p>Preschool Portal is owned and designed by actual Preschool owners. We have worked in this industry for over 30 years and have seen the changes that have made this industry so challenging, and yet so rewarding. At Preschool Portal, we want to have ONE environment for early education facilities whether for the need to enroll children or to hire staff.</p>
+                
+                    </div>
+                    
+                <br><br><br><br><br>
+                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+                
+                </div>
+                
+                
+                
+                
+                </div>
+            </div>
+            
+        </div>
+    </section>
 
+
+    <section class="about-sec-three aos-init aos-animate" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="our-goal">
+                
+                <h2>OUR GOAL</h2>
+
+                <p>The Preschool Portal connects parents with Child Care providers in order to meet their specific needs. Our goal is to create an environment that makes it easier for families to find childcare.</p>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+    
 
     <section class="sec-three">
         <div class="container">
@@ -312,7 +425,7 @@
 
                             {!! $section[13]->value !!}
 
-                            <a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>
+                            <!--<a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>-->
                         </div>
                     </div>
                 </div>
@@ -325,7 +438,7 @@
 
                             {!! $section[15]->value !!}
 
-                            <a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>
+                            <!--<a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>-->
 
                         </div>
                     </div>
@@ -339,7 +452,7 @@
 
                             {!! $section[17]->value !!}
 
-                            <a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>
+                            <!--<a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>-->
 
                         </div>
                     </div>
@@ -381,8 +494,8 @@
     </section>
 
 
-
     <!-- ============================================================== -->
+    
 @endsection
 
 

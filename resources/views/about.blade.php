@@ -13,22 +13,44 @@
     align-items: center;
 }
 
+/*.top-bottom {*/
+/*  background-image: url('{{asset($section[0]->value)}}');*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: cover;*/
+/*  height: 820px;*/
+/*  box-shadow: 0px 0px 14px 2px #0000002b;*/
+/*  border-radius: 20px;*/
+/*}*/
+/*.top-bottom.two {*/
+/*  background-image: url('{{asset($section[2]->value)}}');*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: cover;*/
+/*  height: 720px;*/
+/*  margin-top: 100px;*/
+/*}*/
+
+
 .top-bottom {
   background-image: url('{{asset($section[0]->value)}}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 820px;
+  height: 830px;
   box-shadow: 0px 0px 14px 2px #0000002b;
   border-radius: 20px;
+  
 }
+
 .top-bottom.two {
   background-image: url('{{asset($section[2]->value)}}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 720px;
-  margin-top: 100px;
+  height: 830px;
+  box-shadow: 0px 0px 14px 2px #0000002b;
+  border-radius: 20px;
 }
 
 
@@ -69,6 +91,7 @@
 <section class="about-sec-two">
     <div class="container">
         <div class="row">
+            
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="top-bottom" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom">
@@ -77,10 +100,11 @@
 
                     </div>
                     
-                    <a href="#" style="margin-left:20px; margin-top:10px;" class="custom-btn pink"> Enrolled Now </a>
+                    <a href="{{route('become-a-provider')}}" style="margin-left:20px; margin-top:10px;" class="custom-btn pink"> Enrolled Now </a>
 
                 </div>
             </div>
+            
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="top-bottom two" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom two">
@@ -89,9 +113,12 @@
 
                     </div>
                     
-                    <a href="#" style="margin-left:20px; margin-top:10px;" class="custom-btn pink"> Enrolled Now </a>
+                    <br><br><br><br><br>
+                    <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+                    
                 </div>
             </div>
+            
         </div>
     </div>
 </section>

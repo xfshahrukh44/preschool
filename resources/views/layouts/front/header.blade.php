@@ -6,6 +6,20 @@ a:hover{
     text-decoration:none !important;
 }
 
+header {
+    background-color: #e3e3e3e6;
+    position: relative;
+    right: 0;
+    left: 0;
+    top: 0px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*margin-bottom: 20px !important;*/
+    z-index: 1;
+}
+
 </style>
 
 <header>

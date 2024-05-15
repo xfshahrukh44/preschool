@@ -151,13 +151,13 @@
         
         
         .services.aos-init.aos-animate {
-            height: 330px !important;
+            height: auto !important;
         }
         
         
         
         .top-bottom {
-          background-image: url('https://democustom-html.com/custom-backend/preschool/public/uploads/pages/1019_1680634802.png');
+          background-image: url(<?php echo asset($section[25]->value); ?>);
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
@@ -167,7 +167,7 @@
         }
         
         .top-bottom.two {
-          background-image: url('https://democustom-html.com/custom-backend/preschool/public/uploads/pages/1121_1680634802.png');
+          background-image: url(<?php echo asset($section[24]->value); ?>);
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
@@ -178,7 +178,7 @@
         
         
         .about-sec-three {
-          background-image: url('https://democustom-html.com/custom-backend/preschool/public/uploads/pages/1223_1680635119.png');
+          background-image: url(<?php echo asset($section[26]->value); ?>);
           background-position: left;
           background-size: 50%;
           background-color: #000000;
@@ -291,11 +291,7 @@
                 <div class="top-bottom aos-init aos-animate" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom">
                     
-                    <h5>For Providers</h5>
-                
-                <p>Preschool Portal does not employ, recommend or endorse any childcare provider or childcare teacher nor is it responsible for the conduct of any childcare provider or childcare teacher.</p>
-                
-                <p>Preschool Portal provides information and tools to help parents, childcare providers and childcare teachers connect. Each individual is solely responsible for selecting an appropriate childcare provider or childcare teacher for themselves, dependent on their role, and for complying with all applicable laws in connection with any employment relationship or child enrollment they establish.</p>
+                    {!! $section[1]->value !!}
                 
                     </div>
                     
@@ -312,9 +308,7 @@
                 <div class="top-bottom two aos-init aos-animate" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom two">
                     
-                    <h5>For Teachers</h5>
-                
-                <p>Preschool Portal is owned and designed by actual Preschool owners. We have worked in this industry for over 30 years and have seen the changes that have made this industry so challenging, and yet so rewarding. At Preschool Portal, we want to have ONE environment for early education facilities whether for the need to enroll children or to hire staff.</p>
+                   {!! $section[2]->value !!}
                 
                     </div>
                     
@@ -341,9 +335,7 @@
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="our-goal">
                 
-                <h2>OUR GOAL</h2>
-
-                <p>The Preschool Portal connects parents with Child Care providers in order to meet their specific needs. Our goal is to create an environment that makes it easier for families to find childcare.</p>
+                {!! $section[27]->value !!}
 
                 </div>
             </div>

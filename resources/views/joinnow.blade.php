@@ -4,7 +4,7 @@
 <style>
 
 .about-sec-one {
-    background-image: url('{{asset($page->image)}}');
+    background-image: url(<?php echo asset('images/iStock-684061754--crop.jpg'); ?>);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

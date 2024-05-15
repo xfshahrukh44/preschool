@@ -39,9 +39,9 @@ body {
   h6 {
 	font-family: "Inter", sans-serif;
 	font-weight: 400;
-	font-size: 25px;
+	font-size: 20px;
 	color: var(--black-color);
-  }
+	}
   h5 {
 	font-family: "Inter", sans-serif;
 	font-weight: bold;
@@ -304,8 +304,8 @@ nav.navbar.navbar-expand-lg a img {
   }
   .services {
 	text-align: center;
-	padding-top: 70px;
-	padding-bottom: 50px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	background-color: var(--white-color);
 	border-radius: 15px;
 	margin-top: 50px;
@@ -314,7 +314,7 @@ nav.navbar.navbar-expand-lg a img {
 	box-shadow: 0px 0px 20px 1px #0000002b;
 	transition: all ease 1s;
 	cursor: pointer;
-  }
+	}
   .services:hover {
 	background-color: var(--pink-color);
 	transition: all ease 1s;
@@ -330,8 +330,8 @@ nav.navbar.navbar-expand-lg a img {
 	transitio: all ease 1s;
   }
   .services figure img {
-	width: 30%;
-  }
+	width: 100%;
+	}
   .font-a i {
 	color: var(--yellow-color);
   }

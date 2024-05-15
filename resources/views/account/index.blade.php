@@ -5,7 +5,7 @@
 <style>
 
 	.about-sec-one {
-        background-image: url('https://testdemowebsite-v1.com/custom-backend/preschool_portal/public/uploads/pages/9_(2)_1680636205.png');
+        background-image: url(<?php echo asset('uploads/pages/iStock_000076101011_Large_1715294141.jpg'); ?>);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

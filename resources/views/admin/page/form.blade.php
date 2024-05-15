@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
-                <input class="form-control dropify" name="image" type="file" id="image" {{ ($page->image != '') ? "data-default-file = /$page->image" : ''}} {{ ($page->image == '') ? "required" : ''}} value="{{$page->image}}">
+                <input class="form-control dropify" name="image" type="file" id="image" data-default-file = "{{ asset($page->image) }}"  value="{{$page->image}}">
             </div>
         </div>
         @foreach($page->sections as $section)

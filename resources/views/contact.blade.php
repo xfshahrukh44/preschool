@@ -4,7 +4,7 @@
 <style>
 
 .about-sec-one {
-    background-image: url('{{asset($page->image)}}');
+    background-image: url(<?php echo asset('images/hand-draw-back-school-banner-design-background_826551-4055.avif'); ?>);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -14,7 +14,9 @@ class AddMultipleColumnsOnChildcaresTable extends Migration
     public function up()
     {
         Schema::table('childcares', function (Blueprint $table) {
-            $table->text('timings')->nullable();
+            if (!Schema::hasColumn('childcares', 'timings')) {
+                $table->text('timings')->nullable();
+            }
         });
     }
 

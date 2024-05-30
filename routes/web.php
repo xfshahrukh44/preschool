@@ -400,3 +400,7 @@ Route::get('agree-to-sanbox-terms', function () {
     $user->save();
     return redirect()->back();
 })->name('agree_to_sandbox_terms');
+
+Route::get('rules-of-conduct-individual', function () {
+   return view('termsandconditionindividual');
+})->name('rules-of-conduct-individual');

@@ -1,3 +1,13 @@
+
+
+<section class="sec-four">
+    <div class="col-lg-12 col-md-12 col-12 text-center mt-5">
+        <div class="give-the-best">
+            <a href="{{ route('joinnow') }}" class="custom-btn">Enroll now</a>
+        </div>
+    </div>
+</section>
+
 <footer style="height:450px !important;">
     <div class="container" style="margin-top: -70px;">
         <div class="row">
@@ -34,7 +44,7 @@
                     <h5><a href="#">Teacher Links</a></h5>
                     <ul class="FooterUl">
                         <li>
-                            <p><a href="{{route('become-a-teacher')}}">Become-A-Teacher</a></p>
+                            <p><a href="{{route('become-a-teacher')}}">Teachers</a></p>
                         </li>
                       
                     </ul>
@@ -45,7 +55,7 @@
                     <h5><a href="#">Provider Links</a></h5>
                     <ul class="FooterUl">
                         <li>
-                            <p><a href="{{route('become-a-provider')}}">Become-A-Provider</a></p>
+                            <p><a href="{{route('become-a-provider')}}">Providers</a></p>
                         </li>
                         
 
@@ -56,7 +66,7 @@
             <div class="col-lg-4 col-md-3 col-12">
                 <div class="FooterMainDiv QuickContact">
                     <h5><a href="#">Quick Contact</a></h5>
-                    <p><a href="#"> If you have any questions or need help, feel free to contact with our team.</a></p>
+                    <p><a href="#"> If you have any questions or need help, feel free to contact our team.</a></p>
                     
                     <!--<div class="ReadMoreFooter"><span><i class="fa-solid fa-phone"></i></span> -->
                         <!--<span class="Colored"><a href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}"> {{ App\Http\Traits\HelperTrait::returnFlag(59) }} </a></span> -->

@@ -378,6 +378,12 @@
                 </div>
             </div>
         </div>
+
+{{--        <div class="col-lg-12 col-md-12 col-12 text-center mt-5">--}}
+{{--            <div class="give-the-best">--}}
+{{--                <a href="{{ route('joinnow') }}" class="custom-btn">Enroll now</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </section>
 
 

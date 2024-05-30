@@ -179,7 +179,7 @@ li.nav-item.active {
                 <div class="col-md-12">
                 <div class="profile1">
                         @if(Auth::user()->image != '')
-                        <img src="{{asset(Auth::user()->image)}}" style="height:175px; width:175px;" class="img-fluid">
+                        <img src="{{asset(Auth::user()->image ?? 'images/noimage.png')}}" style="height:175px; width:175px;" class="img-fluid">
                         @else
                         <img src="{{asset('images/profilemain1.png')}}" class="img-fluid">
                         @endif
@@ -223,7 +223,7 @@ li.nav-item.active {
     
                             <div class="newfeed-profile-name">
     
-                                <img style="height:60px; width:60px; border-radius:50px" src="{{asset(App\User::find($val_pinned->user_id)->image)}}" class="img-fluid">
+                                <img style="height:60px; width:60px; border-radius:50px" src="{{asset(App\User::find($val_pinned->user_id)->image ?? 'assets/imgs/noimage.png')}}" class="img-fluid">
     
                                 <h4> {{App\User::find($val_pinned->user_id)->name}} <span> {{ Carbon::parse($val_pinned->created_at)->diffForHumans() }} </span></h4>
       
@@ -294,7 +294,7 @@ li.nav-item.active {
                         </p>
                     </div>
                     <div class="col-12 text-center">
-                        <a target="_blank" href="#">Rules of conduct</a>
+                        <a target="_blank" href="{{route('rules-of-conduct-individual')}}">Rules of conduct</a>
                     </div>
                 </div>
             </div>

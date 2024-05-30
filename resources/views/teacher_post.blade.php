@@ -518,7 +518,7 @@ use DateTime;
                         </p>
                     </div>
                     <div class="col-12 text-center">
-                        <a target="_blank" href="#">Rules of conduct</a>
+                        <a target="_blank" href="{{route('rules-of-conduct-individual')}}">Rules of conduct</a>
                     </div>
                 </div>
             </div>

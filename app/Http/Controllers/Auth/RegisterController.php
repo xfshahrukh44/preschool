@@ -68,9 +68,6 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-
-//         dd($request->all());
-
         $validator = $this->validator($request->all());
         if($validator->fails()){
             return redirect()->back()->withInput()->withErrors($validator, 'registerForm');
@@ -83,6 +80,11 @@ class RegisterController extends Controller
 //        Session::flash('message', 'New Account Created Successfully');
         Session::flash('message', 'Thank you for Enrolling. We look forward to working with you!');
         Session::flash('alert-class', 'alert-success');
+
+        if ($request->get('role') == '3') {
+            return redirect()->route('teacher_dashboard');
+        }
+
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }
@@ -98,6 +100,7 @@ class RegisterController extends Controller
         $user = User::create([
 
             'name' => $data['name'],
+            'last_name' => $data['lname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
@@ -123,6 +126,7 @@ class RegisterController extends Controller
             'payment_status'=>$data['payment_status'],
             'dob'=>$data['dob'],
             'loe'=>$data['loe'],
+            'do_you_currently_work'=>$data['do_you_work'],
 
         ]);
 

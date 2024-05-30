@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
-                    <h2>Become A Teacher</h2>
+                    <h2 style="color:black !important;">Teachers</h2>
                 </div>
             </div>
         </div>
@@ -193,6 +193,7 @@
                                         <select class="form-control" name="loe" id="loe"  id="exampleFormControlSelect1">
                                             <option value="">None</option>
                                             <option value="HS Diploma/GED">HS Diploma/GED</option>
+                                            <option value="Some College">Some College</option>
                                             <option value="A.A./A.S.">A.A./A.S.</option>
                                             <option value="B.A./B.S.">B.A./B.S.</option>
                                             <option value="M.A./M.S.">M.A./M.S.</option>
@@ -213,7 +214,7 @@
                             </div>
                         </div>
 
-                        <button class="custom-btn">Become a teacher</button>
+                        <button class="custom-btn">Join for FREE to get started</button>
 
                     </form>
                 </div>

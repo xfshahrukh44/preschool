@@ -90,12 +90,13 @@ a:hover{
                                 @elseif(Auth::user()->role == '4')
                                 <a href="{{route('provider.dashboard')}}" class="custom-btn" type="submit">  Provider Dashboard </a>
                                 @elseif(Auth::user()->role == '1')
-                                <a href="{{URL('admin')}}" class="custom-btn" type="submit">  Admin Dashboard </a>
+{{--                                <a href="{{URL('admin')}}" class="custom-btn" type="submit">  Admin Dashboard </a>--}}
+                                <a href="{{URL('admin')}}" class="custom-btn" type="submit">Login</a>
                                 @endif
 
                             @else
 
-                                <a href="{{'joinnow'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "joinnow"){ echo 'background-color:#f84c8f';} ?>"> Enroll now </a>
+                                <a href="{{route('about')}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "joinnow"){ echo 'background-color:#f84c8f';} ?>">Learn more</a>
                                 <!--<a href="{{'become-a-teacher'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "become-a-teacher"){ echo 'background-color:#f84c8f';} ?>">   Become A Teacher </a>-->
                                 <!--<a href="{{'become-a-provider'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "become-a-provider"){ echo 'background-color:#f84c8f';} ?>">  Become A Provider </a> -->
 

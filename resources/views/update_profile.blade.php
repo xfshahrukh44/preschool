@@ -284,19 +284,19 @@ li.nav-item.active {
                                 <label for="">Do You Currently Work :</label>
                                 <select id="dycw" class="form-control"  >
                                     <option>Select</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
+                                    <option value="1" {!! Auth::user()->do_you_currently_work == "1" ? 'selected' : '' !!}>Yes</option>
+                                    <option value="0" {!! Auth::user()->do_you_currently_work == "0" ? 'selected' : '' !!}>No</option>
                                 </select>
                                 
                                 <br>
                                 
-                                <select name="do_you_currently_work" class="form-control" id="show_current_work">
-                                    <option <?php if(Auth::user()->do_you_currently_work == 'Select'){echo 'selected';} ?> >Select</option>
-                                    <option <?php if(Auth::user()->do_you_currently_work == 'Childcare facility'){echo 'selected';} ?> >Childcare facility</option>
-                                    <option <?php if(Auth::user()->do_you_currently_work == 'In Home Provider'){echo 'selected';} ?> >In Home Provider</option>
-                                </select>
-                                
-                                <br><br>
+{{--                                <select name="do_you_currently_work" class="form-control" id="show_current_work">--}}
+{{--                                    <option <?php if(Auth::user()->do_you_currently_work == 'Select'){echo 'selected';} ?> >Select</option>--}}
+{{--                                    <option <?php if(Auth::user()->do_you_currently_work == 'Childcare facility'){echo 'selected';} ?> >Childcare facility</option>--}}
+{{--                                    <option <?php if(Auth::user()->do_you_currently_work == 'In Home Provider'){echo 'selected';} ?> >In Home Provider</option>--}}
+{{--                                </select>--}}
+{{--                                --}}
+{{--                                <br><br>--}}
                                 
                                 <label for="">Position :</label>
                                 <select name="current_position" class="form-control"  >
@@ -315,20 +315,21 @@ li.nav-item.active {
                                     <option <?php if(Auth::user()->year_of_experience == 'Less than 1'){echo 'selected';} ?> >Less than 1</option>
                                     <option <?php if(Auth::user()->year_of_experience == '1-5'){echo 'selected';} ?> >1-5</option>
                                     <option <?php if(Auth::user()->year_of_experience == '5-10'){echo 'selected';} ?> >5-10</option>
-                                    <option <?php if(Auth::user()->year_of_experience == '10+yrs'){echo 'selected';} ?> >10+yrs</option>
+                                    <option <?php if(Auth::user()->year_of_experience == '10+'){echo 'selected';} ?> >10+</option>
                                 </select>   
                                 
                                  
                                 <br><br>
                                 
                                 <label for="">Level of Education :</label>
-                                <select name="level_of_education" class="form-control"  >
-                                    <option <?php if(Auth::user()->level_of_education == 'None'){echo 'selected';} ?> >None</option>
-                                    <option <?php if(Auth::user()->level_of_education == 'HS Diploma/GED'){echo 'selected';} ?> >HS Diploma/GED</option>
-                                    <option <?php if(Auth::user()->level_of_education == 'A.A./A.S.'){echo 'selected';} ?> >A.A./A.S.</option>
-                                    <option <?php if(Auth::user()->level_of_education == 'B.A./B.S.'){echo 'selected';} ?> >B.A./B.S.</option>
-                                    <option <?php if(Auth::user()->level_of_education == 'M.A./M.S.'){echo 'selected';} ?> >M.A./M.S.</option>
-                                    <option <?php if(Auth::user()->level_of_education == 'Ph.D./Ed.D.'){echo 'selected';} ?> >Ph.D./Ed.D.</option>
+                                <select name="loe" class="form-control">
+                                    <option <?php if(Auth::user()->loe == 'None'){echo 'selected';} ?> >None</option>
+                                    <option <?php if(Auth::user()->loe == 'HS Diploma/GED'){echo 'selected';} ?> >HS Diploma/GED</option>
+                                    <option <?php if(Auth::user()->loe == 'Some College'){echo 'selected';} ?> >Some College</option>
+                                    <option <?php if(Auth::user()->loe == 'A.A./A.S.'){echo 'selected';} ?> >A.A./A.S.</option>
+                                    <option <?php if(Auth::user()->loe == 'B.A./B.S.'){echo 'selected';} ?> >B.A./B.S.</option>
+                                    <option <?php if(Auth::user()->loe == 'M.A./M.S.'){echo 'selected';} ?> >M.A./M.S.</option>
+                                    <option <?php if(Auth::user()->loe == 'Ph.D./Ed.D.'){echo 'selected';} ?> >Ph.D./Ed.D.</option>
                                 </select>  
                                 
                             </div>
@@ -388,7 +389,7 @@ li.nav-item.active {
                         </p>
                     </div>
                     <div class="col-12 text-center">
-                        <a target="_blank" href="#">Rules of conduct</a>
+                        <a target="_blank" href="{{route('rules-of-conduct-individual')}}">Rules of conduct</a>
                     </div>
                 </div>
             </div>

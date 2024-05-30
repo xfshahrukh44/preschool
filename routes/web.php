@@ -215,8 +215,8 @@ Route::get('termsandconditionprovider','HomeController@termsandconditionprovider
 Route::get('privacy','HomeController@privacy')->name('privacy');
 Route::get('community','HomeController@community')->name('community');
 
-Route::get('become-a-teacher','HomeController@become_a_teacher')->name('become-a-teacher');
 Route::get('become-a-provider','HomeController@become_a_provider')->name('become-a-provider');
+Route::get('become-a-teacher','HomeController@become_a_teacher')->name('become-a-teacher');
 
 Route::get('joinnow','HomeController@joinnow')->name('joinnow');
 

@@ -20,6 +20,21 @@
 <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 
+
+
+<!-- Select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<script>
+    
+     $("#select1").select2({
+          placeholder: " Select multiple ages",
+          allowClear: true
+      });
+      
+</script>
+
+
 <script>
   $(function () {
     $("#example1").DataTable({

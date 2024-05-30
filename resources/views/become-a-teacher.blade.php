@@ -4,7 +4,7 @@
 <style>
 
 	.about-sec-one {
-        background-image: url('https://testdemowebsite-v1.com/custom-backend/preschool_portal/public/uploads/pages/9_(2)_1680636205.png');
+        background-image: url('<?php echo asset('images/techer-banner.webp'); ?>');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -44,7 +44,7 @@
             <div class="col-lg-5 col-md-6 col-12 p-0">
                 <div class="images-zag" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
                     <figure>
-                        <img src="images/techer-1.png" class="img-fluid" alt="">
+                        <img src="images/teacher-standing-in-front-of-chalkboard-in-classroom-683x1024.jpg" class="img-fluid" alt="">
                     </figure>
                 </div>
             </div>

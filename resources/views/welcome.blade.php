@@ -148,6 +148,47 @@
         .box-new-1 {
             padding-top: 100px;
         }
+        
+        
+        .services.aos-init.aos-animate {
+            height: auto !important;
+        }
+        
+        
+        
+        .top-bottom {
+          background-image: url(<?php echo asset($section[25]->value); ?>);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 830px;
+          box-shadow: 0px 0px 14px 2px #0000002b;
+          border-radius: 20px;
+        }
+        
+        .top-bottom.two {
+          background-image: url(<?php echo asset($section[24]->value); ?>);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 830px;
+          box-shadow: 0px 0px 14px 2px #0000002b;
+          border-radius: 20px;
+        }
+        
+        
+        .about-sec-three {
+          background-image: url(<?php echo asset($section[26]->value); ?>);
+          background-position: left;
+          background-size: 50%;
+          background-color: #000000;
+          background-repeat: no-repeat;
+          height: 600px;
+          display: flex;
+          align-items: center;
+        }
+
+
     </style>
 @endsection
 
@@ -179,6 +220,7 @@
         </div>
     </section>
 
+
     <!--<section class="sec-one">-->
     <!--    <div class="bloc-video">-->
     <!--        <video autoplay muted loop>-->
@@ -205,6 +247,7 @@
     <!--        </div>-->
     <!--</section>-->
 
+
     <section class="sec-two">
         <div class="container">
             <div class="row">
@@ -215,30 +258,92 @@
 
                     </div>
                 </div>
-                <div class="main-col-div">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="Provider" data-aos="flip-left" data-aos-duration="1500">
+                <!--<div class="main-col-div">-->
+                <!--    <div class="row">-->
+                <!--        <div class="col-lg-6 col-md-6 col-12">-->
+                <!--            <div class="Provider" data-aos="flip-left" data-aos-duration="1500">-->
 
-                                {!! $section[1]->value !!}
+                <!--                {!! $section[1]->value !!}-->
 
-                                <a href="#" class="custom-btn pink">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="Provider" data-aos="flip-right" data-aos-duration="1500">
+                <!--                <a href="#" class="custom-btn pink">Learn More</a>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--        <div class="col-lg-6 col-md-6 col-12">-->
+                <!--            <div class="Provider" data-aos="flip-right" data-aos-duration="1500">-->
 
-                                {!! $section[2]->value !!}
+                <!--                {!! $section[2]->value !!}-->
 
-                                <a href="#" class="custom-btn pink">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!--                <a href="#" class="custom-btn pink">Learn More</a>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
             </div>
         </div>
     </section>
+    
+    
+    <section class="about-sec-two">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                <div class="top-bottom aos-init aos-animate" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="1500">
+                    <div class="about-bottom">
+                    
+                    {!! $section[1]->value !!}
+                
+                    </div>
+                    
+                   
+                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+                 
+                </div>
+                
+                 
+                
+                
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                <div class="top-bottom two aos-init aos-animate" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
+                    <div class="about-bottom two">
+                    
+                   {!! $section[2]->value !!}
+                
+                    </div>
+                    
+                <br><br><br><br><br>
+                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+                
+                </div>
+                
+                
+                
+                
+                </div>
+            </div>
+            
+        </div>
+    </section>
 
+
+    <section class="about-sec-three aos-init aos-animate" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="our-goal">
+                
+                {!! $section[27]->value !!}
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+    
 
     <section class="sec-three">
         <div class="container">
@@ -312,7 +417,7 @@
 
                             {!! $section[13]->value !!}
 
-                            <a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>
+                            <!--<a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>-->
                         </div>
                     </div>
                 </div>
@@ -325,7 +430,7 @@
 
                             {!! $section[15]->value !!}
 
-                            <a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>
+                            <!--<a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>-->
 
                         </div>
                     </div>
@@ -339,7 +444,7 @@
 
                             {!! $section[17]->value !!}
 
-                            <a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>
+                            <!--<a href="#" class="custom-btn"><i class="fa-solid fa-arrow-right"></i> Read More</a>-->
 
                         </div>
                     </div>
@@ -387,8 +492,8 @@
     </section>
 
 
-
     <!-- ============================================================== -->
+    
 @endsection
 
 

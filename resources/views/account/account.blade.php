@@ -4,6 +4,22 @@
 
 <?php $segment = Request::segments(); ?>
 
+<style>
+
+	.about-sec-one {
+        background-image: url(<?php echo asset('uploads/pages/iStock_000076101011_Large_1715294141.jpg'); ?>);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 450px;
+        display: flex;
+        align-items: center;
+    }
+
+
+
+
+</style>
 
 <section class="about-sec-one Teacher-Banner">
     <div class="container">

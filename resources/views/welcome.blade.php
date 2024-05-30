@@ -283,11 +283,11 @@
     </section>
     
     
-    <section class="about-sec-two">
+    <section class="about-sec-two" style="background: url({{asset('images/doodle-wall.png')}})">
         <div class="container">
             
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12" style="background: white;">
                 <div class="top-bottom aos-init aos-animate" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom">
                     
@@ -304,7 +304,7 @@
                 
                 
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12" style="background: white;">
                 <div class="top-bottom two aos-init aos-animate" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom two">
                     
@@ -312,9 +312,9 @@
                 
                     </div>
                     
-                <br><br><br><br><br>
                 <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
-                
+                <br><br><br><br><br>
+
                 </div>
                 
                 
@@ -345,7 +345,7 @@
 </section>
     
 
-    <section class="sec-three">
+    <section class="sec-three" style="background: url({{asset('images/doodle-wall.png')}})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-12">
@@ -398,17 +398,17 @@
         </div>
     </section>
 
-    <section class="sec-four">
+    <section class="sec-four" style="background: url({{asset('images/doodle-wall.png')}})">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12">
+            <div class="row" style="box-shadow: 0px 0px 20px 1px #0000002b;">
+                <div style="background: white;" class="col-lg-12 col-md-12 col-12">
                     <div class="trands" data-aos="fade-down" data-aos-duration="2000">
 
                         {!! $section[11]->value !!}
 
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12">
+                <div style="background: white;" class="col-lg-4 col-md-4 col-12">
                     <div class="first-img" data-aos="flip-right" data-aos-duration="2000">
                         <figure>
                             <img src="{{ asset($section[12]->value) }}" class="img-fluid" alt="">
@@ -421,7 +421,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12">
+                <div style="background: white;" class="col-lg-4 col-md-4 col-12">
                     <div class="first-img" data-aos="zoom-in" data-aos-duration="2000">
                         <figure>
                             <img src="{{ asset($section[14]->value) }}" class="img-fluid" alt="">
@@ -435,7 +435,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12">
+                <div style="background: white;" class="col-lg-4 col-md-4 col-12">
                     <div class="first-img" data-aos="flip-left" data-aos-duration="2000">
                         <figure>
                             <img src="{{ asset($section[16]->value) }}" class="img-fluid" alt="">
@@ -450,7 +450,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row box-new-1">
+            <div class="row box-new-1" style="background: white; box-shadow: 0px 0px 20px 1px #0000002b">
                 <div class="col-md-4">
                     <div class="box-new">
                         <div class="box-new-img">

@@ -14,8 +14,13 @@ class AddMultipleColumnsOnUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->longText('timings')->nullable();
-            $table->longText('services')->nullable();
+            if (!Schema::hasColumn('users', 'timings')) {
+                $table->longText('timings')->nullable();
+            }
+
+            if (!Schema::hasColumn('users', 'services'))  {
+                $table->longText('services')->nullable();
+            }
         });
     }
 

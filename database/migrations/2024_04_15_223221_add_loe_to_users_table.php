@@ -14,7 +14,9 @@ class AddLoeToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('loe')->nullable();
+            if (!Schema::hasColumn('users', 'loe'))  {
+                $table->string('loe')->nullable();
+            }
         });
     }
 

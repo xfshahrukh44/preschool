@@ -14,7 +14,9 @@ class AddDobToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('dob')->nullable();
+            if (!Schema::hasColumn('users', 'dob'))  {
+                $table->date('dob')->nullable();
+            }
         });
     }
 

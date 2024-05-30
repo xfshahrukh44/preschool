@@ -14,7 +14,9 @@ class AddAgreedToSandboxTermsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('agreed_to_sandbox_terms')->default(false);
+            if (!Schema::hasColumn('users', 'agreed_to_sandbox_terms'))  {
+                $table->boolean('agreed_to_sandbox_terms')->default(false);
+            }
         });
     }
 

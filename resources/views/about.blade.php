@@ -100,7 +100,7 @@
 
                     </div>
                     
-                    <a href="{{route('become-a-provider')}}" style="margin-left:20px; margin-top:10px;" class="custom-btn pink"> Enrolled Now </a>
+{{--                    <a href="{{route('become-a-provider')}}" style="margin-left:20px; margin-top:10px;" class="custom-btn pink"> Enrolled Now </a>--}}
 
                 </div>
             </div>
@@ -114,7 +114,7 @@
                     </div>
                     
                     <br><br><br><br><br>
-                    <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+{{--                    <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
                     
                 </div>
             </div>

@@ -15,7 +15,7 @@
 
 
         header {
-            background-color: #e3e3e3e6;
+            background-color: #e3e6e6;
             position: relative;
             right: 0;
             left: 0;
@@ -296,7 +296,7 @@
                     </div>
                     
                    
-                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+{{--                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
                  
                 </div>
                 
@@ -312,7 +312,7 @@
                 
                     </div>
                     
-                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+{{--                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
                 <br><br><br><br><br>
 
                 </div>

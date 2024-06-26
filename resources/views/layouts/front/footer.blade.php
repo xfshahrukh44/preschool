@@ -1,12 +1,14 @@
+<?php $segment = request()->segment(1);?>
 
-
-<section class="sec-four">
-    <div class="col-lg-12 col-md-12 col-12 text-center mt-5">
-        <div class="give-the-best">
-            <a href="{{ route('joinnow') }}" class="custom-btn">Enroll now</a>
+@if(!in_array($segment, ["", "home"]))
+    <section class="sec-four">
+        <div class="col-lg-12 col-md-12 col-12 text-center mt-5">
+            <div class="give-the-best">
+                <a href="{{ route('joinnow') }}" class="custom-btn">Enroll now</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
 
 <footer style="height:450px !important;">
     <div class="container" style="margin-top: -70px;">

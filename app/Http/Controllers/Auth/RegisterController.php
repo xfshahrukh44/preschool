@@ -119,6 +119,7 @@ class RegisterController extends Controller
             'about' => $data['about'],
             'hour_open' => $data['hour_open'],
             'age_accepted' => $ageacceptedd,
+            'custom_age' => $data['custom_age'],
             'position_accepted' => $data['position_accepted'],
             'about_preschool' => $data['about_preschool'],
             'payment_method'=> $data['payment_method'],

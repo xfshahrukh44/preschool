@@ -24,7 +24,7 @@ class User extends Authenticatable
         'current_position','year_of_experience','age_worked_with',
         'about','hour_open','age_accepted','position_accepted','about_preschool','image','banner_image',
         'race','ethnicity','date_of_birth','do_you_currently_work','level_of_education',
-        'business_name','address','city','zip','license_number','capacity','hours_of_operation','ages_accepted','types_of_care_provided','payment_method','amount','card_token','transaction_id','payer_id','paypal_token','payment_status',
+        'business_name','address','city','zip','license_number','capacity','hours_of_operation','ages_accepted', 'custom_age' , 'types_of_care_provided','payment_method','amount','card_token','transaction_id','payer_id','paypal_token','payment_status',
         'timings', 'services', 'dob', 'loe', 'agreed_to_sandbox_terms'
     ];
 

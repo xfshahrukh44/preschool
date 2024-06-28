@@ -6,11 +6,12 @@
     <style>
 
         .about-sec-one {
-            background-image: url(<?php echo asset('images/194-scaled.jpg'); ?>);
+            /*background-image: url(<?php //echo asset('images/194-scaled.jpg'); ?>);*/
+            background-image: url(<?php echo asset('images/contact_img.png'); ?>);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            height: 450px;
+            height: 650px;
             display: flex;
             align-items: center;
         }
@@ -190,6 +191,12 @@
                                 @if ($errors->registerForm->has('age_accepted'))
                                     <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('age_accepted') }}</small>
                                 @endif
+                                
+                                
+                                <div class="col-lg-12 mt-3">
+                                    <!--<span>Custom Age</span>-->
+                                    <input type="number" class="form-control" name="custom_age" placeholder="Enter Age">
+                                </div>
 
 {{--                                <div class="col-lg-4 mt-3">--}}
 {{--                                    <span>Position accepted?</span>--}}

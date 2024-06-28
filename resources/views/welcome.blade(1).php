@@ -15,7 +15,7 @@
 
 
         header {
-            background-color: #e3e6e6;
+            background-color: #e3e3e3e6;
             position: relative;
             right: 0;
             left: 0;
@@ -188,15 +188,6 @@
           align-items: center;
         }
 
-        .our-goal p {
-            color: #b3b3b3;
-            margin: auto;
-            text-align: center;
-            width: 70%;
-            font-size: 25px !important;
-            line-height: 25px;
-            margin-top: 60px;
-        }
 
     </style>
 @endsection
@@ -257,7 +248,7 @@
     <!--</section>-->
 
 
-    <section class="sec-two" style="background: url({{asset('images/doodle-wall.png')}})">
+    <section class="sec-two">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
@@ -292,11 +283,11 @@
     </section>
     
     
-    <section class="about-sec-two" style="background: url({{asset('images/doodle-wall.png')}})">
+    <section class="about-sec-two">
         <div class="container">
             
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-12" style="background: white;">
+                <div class="col-lg-6 col-md-6 col-12">
                 <div class="top-bottom aos-init aos-animate" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom">
                     
@@ -305,7 +296,7 @@
                     </div>
                     
                    
-{{--                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
+                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
                  
                 </div>
                 
@@ -313,7 +304,7 @@
                 
                 
                 </div>
-                <div class="col-lg-6 col-md-6 col-12" style="background: white;">
+                <div class="col-lg-6 col-md-6 col-12">
                 <div class="top-bottom two aos-init aos-animate" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom two">
                     
@@ -321,9 +312,9 @@
                 
                     </div>
                     
-{{--                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
                 <br><br><br><br><br>
-
+                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>
+                
                 </div>
                 
                 
@@ -354,7 +345,7 @@
 </section>
     
 
-    <section class="sec-three" style="background: url({{asset('images/doodle-wall.png')}})">
+    <section class="sec-three">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-12">
@@ -369,7 +360,7 @@
 
                         {!! $section[4]->value !!}
 
-                        <!--<a href="{{ route('contact') }}" class="custom-btn">Contact Us</a>-->
+                        <a href="{{ route('contact') }}" class="custom-btn">Contact Us</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
@@ -407,17 +398,17 @@
         </div>
     </section>
 
-    <section class="sec-four" style="background: url({{asset('images/doodle-wall.png')}})">
+    <section class="sec-four">
         <div class="container">
-            <div class="row" style="box-shadow: 0px 0px 20px 1px #0000002b;">
-                <div style="background: white;" class="col-lg-12 col-md-12 col-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="trands" data-aos="fade-down" data-aos-duration="2000">
 
                         {!! $section[11]->value !!}
 
                     </div>
                 </div>
-                <div style="background: white;" class="col-lg-4 col-md-4 col-12">
+                <div class="col-lg-4 col-md-4 col-12">
                     <div class="first-img" data-aos="flip-right" data-aos-duration="2000">
                         <figure>
                             <img src="{{ asset($section[12]->value) }}" class="img-fluid" alt="">
@@ -430,7 +421,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="background: white;" class="col-lg-4 col-md-4 col-12">
+                <div class="col-lg-4 col-md-4 col-12">
                     <div class="first-img" data-aos="zoom-in" data-aos-duration="2000">
                         <figure>
                             <img src="{{ asset($section[14]->value) }}" class="img-fluid" alt="">
@@ -444,7 +435,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="background: white;" class="col-lg-4 col-md-4 col-12">
+                <div class="col-lg-4 col-md-4 col-12">
                     <div class="first-img" data-aos="flip-left" data-aos-duration="2000">
                         <figure>
                             <img src="{{ asset($section[16]->value) }}" class="img-fluid" alt="">
@@ -459,7 +450,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row box-new-1" style="background: white; box-shadow: 0px 0px 20px 1px #0000002b">
+            <div class="row box-new-1">
                 <div class="col-md-4">
                     <div class="box-new">
                         <div class="box-new-img">
@@ -492,12 +483,6 @@
                 </div>
             </div>
         </div>
-
-{{--        <div class="col-lg-12 col-md-12 col-12 text-center mt-5">--}}
-{{--            <div class="give-the-best">--}}
-{{--                <a href="{{ route('joinnow') }}" class="custom-btn">Enroll now</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </section>
 
 

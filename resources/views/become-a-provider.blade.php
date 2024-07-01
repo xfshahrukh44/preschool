@@ -193,10 +193,10 @@
                                 @endif
                                 
                                 
-                                <div class="col-lg-12 mt-3">
-                                    <!--<span>Custom Age</span>-->
-                                    <input type="number" class="form-control" name="custom_age" placeholder="Enter Age">
-                                </div>
+{{--                                <div class="col-lg-12 mt-3">--}}
+{{--                                    <!--<span>Custom Age</span>-->--}}
+{{--                                    <input type="number" class="form-control" name="custom_age" placeholder="Enter Age">--}}
+{{--                                </div>--}}
 
 {{--                                <div class="col-lg-4 mt-3">--}}
 {{--                                    <span>Position accepted?</span>--}}

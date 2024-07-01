@@ -235,7 +235,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
-                        <h2> CLAIMED CENTER DETAIL </h2>
+                        <h2>Provider Page</h2>
                     </div>
                 </div>
             </div>
@@ -444,12 +444,12 @@
                 <div class="row">
                     @if(!is_null($get_claimed_daycare_center_detail->timings))
                         <div class="col-md-6">
-                            <h3 style="color: black;">Timings</h3>
+                            <h3 style="color: black;">Hours open</h3>
                             <table class="table">
                                 <thead>
                                 <tr>
                                     <th>Day</th>
-                                    <th class="text-center">Timings</th>
+                                    <th class="text-center">Hours open</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -518,6 +518,14 @@
                 </div>
             </div> -->
         </div>
+        </div>
+    </section>
+
+    <section class="sec-four">
+        <div class="col-lg-12 col-md-12 col-12 text-center mt-5">
+            <div class="give-the-best">
+                <a href="tel:{{$get_claimed_daycare_center_detail->phone}}" class="custom-btn">Contact provider</a>
+            </div>
         </div>
     </section>
 

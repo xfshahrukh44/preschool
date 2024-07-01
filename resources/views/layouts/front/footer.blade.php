@@ -1,6 +1,6 @@
 <?php $segment = request()->segment(1);?>
 
-@if(!in_array($segment, ["", "home"]))
+@if(!in_array($segment, ["", "home", "claimed_center_detail"]))
     <section class="sec-four">
         <div class="col-lg-12 col-md-12 col-12 text-center mt-5">
             <div class="give-the-best">

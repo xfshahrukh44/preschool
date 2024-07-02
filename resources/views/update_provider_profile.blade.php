@@ -4,6 +4,15 @@
 @include('headerlink')
 
 <style>
+li.select2-selection__choice {
+    font-size: 14px !important;
+    padding: 6px !important;
+    background: #0B94F7 !important;
+}
+
+span.select2-selection.select2-selection--multiple {
+    background: #f5f7fc;
+}
 
 .form-group label {
     font-size: 20px;
@@ -165,6 +174,8 @@ li.nav-item.active {
 
 </style>
 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
 <body>
 
 @include('layouts.front.css')
@@ -220,10 +231,8 @@ li.nav-item.active {
             <div class="col-lg-6 col-md-8">
                 
                 <div class="profileparent">
-                    <div class="profilein1">
-
-                        <form action="{{route('update_prov_profile2')}}" method="post" enctype="multipart/form-data">
-
+                    <form action="{{route('update_prov_profile2')}}" method="post" enctype="multipart/form-data">
+                        <div class="profilein1" style="border-bottom: 0px; padding-bottom: 0px;">
                             @csrf 
 
                             <div class="form-group">
@@ -315,58 +324,63 @@ li.nav-item.active {
                                 <label for="">Capacity :</label>
                                 <input type="text" name="capacity" class="form-control" placeholder="Enter Capacity" value="{{Auth::user()->capacity }}" >
                                 
-                                     
-                                <br><br>
-                                
-                                <label for="">Hours of Operation :</label>
-                                <select  name="hours_of_operation" class="form-control">
-                                    <option>Select</option>
-                                    <option <?php if(Auth::user()->hours_of_operation == 'Monday to Tuesday'){echo 'selected';} ?> >Monday to Tuesday</option>
-                                    <option <?php if(Auth::user()->hours_of_operation == 'Tuesday to Wednesday'){echo 'selected';} ?> >Tuesday to Wednesday</option>
-                                    <option <?php if(Auth::user()->hours_of_operation == 'Wednesday to Thursday'){echo 'selected';} ?> >Wednesday to Thursday</option>
-                                    <option <?php if(Auth::user()->hours_of_operation == 'Thursday to Friday'){echo 'selected';} ?> >Thursday to Friday</option>
-                                    <option <?php if(Auth::user()->hours_of_operation == 'Friday to Saturday'){echo 'selected';} ?> >Friday to Saturday</option>
-                                    <option <?php if(Auth::user()->hours_of_operation == 'Saturday to Sunday'){echo 'selected';} ?> >Saturday to Sunday</option>
-                                </select>
-                                      
-                                <br><br>
-                                
-                                <label for="">Ages Accepted :</label>
-                                <select type="text" name="age_accepted" class="form-control">
-                                    <option>Select</option>
-                                    <option <?php if(Auth::user()->age_accepted == '0-1'){echo 'selected';} ?> >0-1</option>
-                                    <option <?php if(Auth::user()->age_accepted == '1-2'){echo 'selected';} ?> >1-2</option>
-                                    <option <?php if(Auth::user()->age_accepted == '2-3'){echo 'selected';} ?> >2-3</option>
-                                    <option <?php if(Auth::user()->age_accepted == '3-4'){echo 'selected';} ?> >3-4</option>
-                                    <option <?php if(Auth::user()->age_accepted == '4-5'){echo 'selected';} ?> >4-5</option>
-                                    <option <?php if(Auth::user()->age_accepted == 'School-ager'){echo 'selected';} ?> >School-ager</option>
-                                </select>
-                                
-                                <br><br>
-                                
-                                <label for="">Types of Care Provided :</label>
-                                <select type="text" name="types_of_care_provided" class="form-control">
-                                    <option>Select</option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'Full Time'){echo 'selected';} ?> >Full Time</option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'Part Time'){echo 'selected';} ?> >Part Time</option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'School-ager'){echo 'selected';} ?> >School-ager</option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'Drop-In'){echo 'selected';} ?> >Drop-In</option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'Temporary'){echo 'selected';} ?> >Temporary</option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'Summer Care'){echo 'selected';} ?> >Summer Care </option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'Evening'){echo 'selected';} ?> >Evening</option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'Overnight'){echo 'selected';} ?> >Overnight</option>
-                                    <option <?php if(Auth::user()->types_of_care_provided == 'Faith Based'){echo 'selected';} ?> >Faith Based</option>
-                                </select>
-                                
                             </div>
+                        </div>
 
-                            <div class="post">
-                                <button type="submit" class="btn custom-btn">Update Profile</button>
-                            </div>
 
-                        </form>
+                        <label style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important;" for="">Hours of Operation :</label>
+                        @php
+                            $hours_of_operation = explode(',', Auth::user()->hours_of_operation);
+                        @endphp
+                        <select  name="hours_of_operation[]" class="form-control" multiple id="hours_of_operation">
+                            <option>Select</option>
+                            <option {!! in_array('Monday to Tuesday', $hours_of_operation) ? 'selected' : '' !!} >Monday to Tuesday</option>
+                            <option {!! in_array('Tuesday to Wednesday', $hours_of_operation) ? 'selected' : '' !!} >Tuesday to Wednesday</option>
+                            <option {!! in_array('Wednesday to Thursday', $hours_of_operation) ? 'selected' : '' !!} >Wednesday to Thursday</option>
+                            <option {!! in_array('Thursday to Friday', $hours_of_operation) ? 'selected' : '' !!} >Thursday to Friday</option>
+                            <option {!! in_array('Friday to Saturday', $hours_of_operation) ? 'selected' : '' !!} >Friday to Saturday</option>
+                            <option {!! in_array('Saturday to Sunday', $hours_of_operation) ? 'selected' : '' !!} >Saturday to Sunday</option>
+                        </select>
 
-                    </div>
+                        <br><br>
+
+                        <label style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important;" for="">Ages Accepted :</label>
+                        @php
+                            $age_accepted = explode(',', Auth::user()->age_accepted);
+                        @endphp
+                        <select type="text" name="age_accepted[]" class="form-control" multiple id="age_accepted">
+                            <option>Select</option>
+                            <option {!! in_array('0-1', $age_accepted) ? 'selected' : '' !!} >0-1</option>
+                            <option {!! in_array('1-2', $age_accepted) ? 'selected' : '' !!} >1-2</option>
+                            <option {!! in_array('2-3', $age_accepted) ? 'selected' : '' !!} >2-3</option>
+                            <option {!! in_array('3-4', $age_accepted) ? 'selected' : '' !!} >3-4</option>
+                            <option {!! in_array('4-5', $age_accepted) ? 'selected' : '' !!} >4-5</option>
+                            <option {!! in_array('School-ager', $age_accepted) ? 'selected' : '' !!} >School-ager</option>
+                        </select>
+
+                        <br><br>
+
+                        <label style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important;" for="">Types of Care Provided :</label>
+                        @php
+                            $types_of_care_provided = explode(',', Auth::user()->types_of_care_provided);
+                        @endphp
+                        <select type="text" name="types_of_care_provided[]" class="form-control" multiple id="types_of_care_provided">
+                            <option>Select</option>
+                            <option {!! in_array('Full Time', $types_of_care_provided) ? 'selected' : '' !!} >Full Time</option>
+                            <option {!! in_array('Part Time', $types_of_care_provided) ? 'selected' : '' !!} >Part Time</option>
+                            <option {!! in_array('School-ager', $types_of_care_provided) ? 'selected' : '' !!} >School-ager</option>
+                            <option {!! in_array('Drop-In', $types_of_care_provided) ? 'selected' : '' !!} >Drop-In</option>
+                            <option {!! in_array('Temporary', $types_of_care_provided) ? 'selected' : '' !!} >Temporary</option>
+                            <option {!! in_array('Summer Care ', $types_of_care_provided) ? 'selected' : '' !!} >Summer Care </option>
+                            <option {!! in_array('Evening', $types_of_care_provided) ? 'selected' : '' !!} >Evening</option>
+                            <option {!! in_array('Overnight', $types_of_care_provided) ? 'selected' : '' !!} >Overnight</option>
+                            <option {!! in_array('Faith Based', $types_of_care_provided) ? 'selected' : '' !!} >Faith Based</option>
+                        </select>
+
+                        <div class="post">
+                            <button type="submit" class="btn custom-btn">Update Profile</button>
+                        </div>
+                    </form>
                     <div class="write-jus">
 
                        
@@ -427,6 +441,7 @@ li.nav-item.active {
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(() => {
 
@@ -436,6 +451,10 @@ li.nav-item.active {
             });
             $('#modal_agree_to_sandbox_terms').modal('show');
         }
+
+        $('#hours_of_operation').select2();
+        $('#age_accepted').select2();
+        $('#types_of_care_provided').select2();
     });
 </script>
 

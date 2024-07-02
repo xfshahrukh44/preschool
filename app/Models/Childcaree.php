@@ -22,7 +22,7 @@ class Childcare extends Model
 
     /**
      * Attributes that should be mass-assignable.
-     *
+     *n
      * @var array
      */
     protected $fillable = ['physical_address', 'county', 'zip', 'name', 'city','phone', 'email_address', 'description', 'feature_image', 'other_image_one', 'other_image_two'];

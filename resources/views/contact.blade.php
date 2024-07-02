@@ -48,17 +48,17 @@
 <section class="zig-zag Teacher-sec">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-6 col-12 p-0">
-                <div class="images-zag" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
-                    <div style="overflow:hidden;resize:none;max-width:100%;width:500px;height:500px;">
-                   
-                    <div id="embed-map-display" style="height:100%; width:100%;max-width:100%;">
-                        <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=1720+South+Blagg+Road,+Pahrump,+NV+89048,+USA&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="embedded-map-code" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="authorize-maps-data">premium bootstrap themes</a>
-                    </div>
-                
-                </div>
-            </div>
-            <div class="col-lg-7 col-md-6 col-12">
+{{--            <div class="col-lg-5 col-md-6 col-12 p-0">--}}
+{{--                <div class="images-zag" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">--}}
+{{--                    <div style="overflow:hidden;resize:none;max-width:100%;width:500px;height:500px;">--}}
+{{--                   --}}
+{{--                    <div id="embed-map-display" style="height:100%; width:100%;max-width:100%;">--}}
+{{--                        <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=1720+South+Blagg+Road,+Pahrump,+NV+89048,+USA&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="embedded-map-code" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="authorize-maps-data">premium bootstrap themes</a>--}}
+{{--                    </div>--}}
+{{--                --}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <div class="col-lg-12 col-md-6 col-12">
                 <div class="content-zig mt-0 pt-0 priority" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
                 
                     <form class="form_submission" id="contactform" method="post">

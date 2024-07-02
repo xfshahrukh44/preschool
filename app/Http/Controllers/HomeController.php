@@ -123,8 +123,9 @@ class HomeController extends Controller
 
         $get_claimed_daycare_center_detail = DB::table('childcares')->where('id', $id)->where('claim_status', '2')->where('status', '1')->first();
         $get_reviews = DB::table('reviews')->where('daycareid', $id)->where('rate', 5)->take(5)->get();
+        $claimant = User::find($get_claimed_daycare_center_detail->claimed_by_id);
 
-        return view('claimed_center_detail', compact('page', 'section', 'get_reviews', 'get_claimed_daycare_center_detail'));
+        return view('claimed_center_detail', compact('page', 'section', 'get_reviews', 'get_claimed_daycare_center_detail', 'claimant'));
 
     }
 

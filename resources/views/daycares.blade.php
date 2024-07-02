@@ -443,6 +443,16 @@
 
                                                                                 </div>
 
+                                                                                <div class="col-md-12 mb-2">
+
+                                                                                    <label> Location iframe </label>
+                                                                                    <textarea type="text"
+                                                                                              style="height: 120px;"
+                                                                                              name="location_iframe"
+                                                                                              class="form-control"> {{$value->location_iframe}} </textarea>
+
+                                                                                </div>
+
                                                                                 @php
                                                                                     $decoded_timings = json_decode($value->timings);
                                                                                     $decoded_services = json_decode($value->services);

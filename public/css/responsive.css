@@ -178,7 +178,9 @@
 
 @media (max-width: 991px) {
   nav.navbar.navbar-expand-lg a img {
-    width: 65%;
+    /*width: 65%;*/
+    width: 100%;
+    left: 48%;
   }
 
   ul.navbar-nav {

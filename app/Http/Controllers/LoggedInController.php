@@ -452,7 +452,8 @@ class LoggedInController extends Controller
 
 
 
-	public function update_prov_profile2(Request $request) {	
+	public function update_prov_profile2(Request $request) {
+//        dd($request->all());
 
 
 
@@ -515,6 +516,10 @@ class LoggedInController extends Controller
         $requestData['password'] = Hash::make($request->password);
 
 		$users = User::findOrFail($request->id);
+
+        $requestData['hours_of_operation'] = implode(',', $requestData['hours_of_operation']);
+        $requestData['age_accepted'] = implode(',', $requestData['age_accepted']);
+        $requestData['types_of_care_provided'] = implode(',', $requestData['types_of_care_provided']);
 		$users->update($requestData);
 		
 

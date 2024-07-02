@@ -302,6 +302,26 @@
                     <div class="section-3-main-txt">
                         <h2 class="heading-2" style="color:#000;">About the facility</h2>
                         <!--<h6 class="heading-6">Renaissance North Tampa</h6>-->
+                        <h4>Provider information</h4>
+                        @if($claimant->name)
+                            <b>Name: </b> {{$claimant->name}}
+                            <br />
+                        @endif
+                        @if($claimant->address)
+                            <b>Address: </b> {{$claimant->address}}
+                            <br />
+                        @endif
+                        @if($claimant->phone)
+                            <b>Phone: </b> {{$claimant->phone}}
+                            <br />
+                        @endif
+                        @if($claimant->age_accepted)
+                            <b>Ages accepted: </b> {{$claimant->age_accepted}}
+                        @endif
+
+                        <br />
+
+                        <h4>Facility information</h4>
                         <p class="para-1">
 
                             {!! $get_claimed_daycare_center_detail->description !!}
@@ -491,6 +511,21 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                    @endif
+
+                    @if(!is_null($get_claimed_daycare_center_detail->location_iframe))
+                        <h4>Location</h4>
+                        <div class="col-lg-12 col-md-12 col-12 p-0">
+                            <div class="images-zag" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
+                                <div style="overflow:hidden;resize:none;max-width:100%;width:500px;height:500px;">
+
+                                    <div id="embed-map-display" style="height:100%; width:100%;max-width:100%;">
+                                        {!! $get_claimed_daycare_center_detail->location_iframe !!}
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     @endif
                 </div>

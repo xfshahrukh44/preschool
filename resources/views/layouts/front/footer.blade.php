@@ -79,7 +79,7 @@
                     </div>
                     
                     <!--<p class="Reused"><a href="#"> {{ App\Http\Traits\HelperTrait::returnFlag(519) }}</a></p>-->
-                    <div class="ReadMoreFooter">
+                    <div class="ReadMoreFooter social-linsk">
                         <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(682) }}"><i class="fa-brands fa-facebook-f"></i></a></span>
                         <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(1962) }}"><i class="fa-brands fa-instagram"></i></a></span>
                         <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(1960) }}"><i class="fa-brands fa-twitter"></i></a></span>
@@ -95,16 +95,16 @@
         <div class="maindivFooter">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-3 col-12">
-                    <div class="LOGO">
-                        <a class="navbar-brand Colored" href="#">
-                            <div class="bg-video-wrap">
-                                <video class="video-1" width="100%" height="100%" autoplay muted loop>
-                                    <source src="{{asset('images/gif.mp4')}}" type="video/mp4">
-                                    <source src="{{asset('images/video.ogg')}}" type="video/ogg">
-                                </video>
-                            </div>
-                        </a>
-                    </div>
+{{--                    <div class="LOGO">--}}
+{{--                        <a class="navbar-brand Colored" href="#">--}}
+{{--                            <div class="bg-video-wrap">--}}
+{{--                                <video class="video-1" width="100%" height="100%" autoplay muted loop>--}}
+{{--                                    <source src="{{asset('images/gif.mp4')}}" type="video/mp4">--}}
+{{--                                    <source src="{{asset('images/video.ogg')}}" type="video/ogg">--}}
+{{--                                </video>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="SignUp">

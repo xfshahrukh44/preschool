@@ -88,7 +88,7 @@
 </section>
 
 
-<section class="about-sec-two">
+<section class="about-sec-two pt-about">
     <div class="container">
         <div class="row">
             
@@ -123,7 +123,7 @@
     </div>
 </section>
 
-<section class="about-sec-three" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+<section class="about-sec-three about-pg" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">

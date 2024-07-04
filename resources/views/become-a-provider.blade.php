@@ -76,7 +76,7 @@
     <!-- BODY START HERE -->
 
 
-    <section class="about-sec-one Teacher-Banner">
+    <section class="about-sec-one Teacher-Banner provider-banner">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
@@ -93,7 +93,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-5 col-md-6 col-12 p-0">
-                    <div class="images-zag" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
+                    <div class="images-zag " data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
                         <figure>
                             <img src="{{asset('images/provv.png')}}" class="img-fluid" alt="">
                         </figure>
@@ -212,7 +212,7 @@
 
                                 <div class="col-md-7 mb-2 mt-4">
 {{--                                    <h4 class="ml-2"> Timings </h4>--}}
-                                    <h4 class="ml-2"> Hours open </h4>
+                                    <h4 class="ml-2 bigh"> Hours open </h4>
 
                                     <div class="row">
                                         <div class="col-md-4">

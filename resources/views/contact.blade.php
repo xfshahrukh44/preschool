@@ -58,7 +58,7 @@
 {{--                --}}
 {{--                </div>--}}
 {{--            </div>--}}
-            <div class="col-lg-12 col-md-6 col-12">
+            <div class="col-lg-12 col-md-12 col-12">
                 <div class="content-zig mt-0 pt-0 priority" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
                 
                     <form class="form_submission" id="contactform" method="post">

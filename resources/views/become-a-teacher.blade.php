@@ -42,7 +42,7 @@
         <div class="row">
 
             <div class="col-lg-5 col-md-6 col-12 p-0">
-                <div class="images-zag" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
+                <div class="images-zag womenimg" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
                     <figure>
                         <img src="images/teacher-standing-in-front-of-chalkboard-in-classroom-683x1024.jpg" class="img-fluid" alt="">
                     </figure>

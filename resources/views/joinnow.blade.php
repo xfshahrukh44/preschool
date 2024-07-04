@@ -36,7 +36,7 @@
 
 
 
-<section class="about-sec-one Teacher-Banner">
+<section class="about-sec-one Teacher-Banner joinnow">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
@@ -52,7 +52,7 @@
 </section>
 
 
-<section style="height:250px;">
+<section class="mt-btn" style="height:250px;">
     
     <div class="container">
         
@@ -64,14 +64,14 @@
 {{--            --}}
 {{--            </div>--}}
             
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6 col-6">
             
 {{--                <a href="{{'become-a-teacher'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "become-a-teacher"){ echo 'background-color:#f84c8f';} ?>">   Become A Teacher </a>--}}
                 <a href="{{'become-a-teacher'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "become-a-teacher"){ echo 'background-color:#f84c8f';} ?>">Individual</a>
 
             </div>
             
-            <div class="col-lg-6">
+            <div class="col-lg-6  col-md-6 col-6">
             
 {{--                <a href="{{'become-a-provider'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "become-a-provider"){ echo 'background-color:#f84c8f';} ?>">  Become A Provider </a> --}}
                 <a href="{{'become-a-provider'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "become-a-provider"){ echo 'background-color:#f84c8f';} ?>">  Business </a>

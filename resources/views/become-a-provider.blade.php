@@ -7,7 +7,7 @@
 
         .about-sec-one {
             /*background-image: url(<?php //echo asset('images/194-scaled.jpg'); ?>);*/
-            background-image: url(<?php echo asset('images/contact_img.png'); ?>);
+            background-image: url(<?php echo asset('images/provider-image.webp'); ?>);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -125,93 +125,8 @@
 
                                 <input type="hidden" name="role" value="4">
 
-                                <div class="col-lg-6">
-                                    <input type="text" class="form-control" name="name" placeholder="Business Name"
-                                           required="">
-                                </div>
-                                @if ($errors->registerForm->has('name'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('name') }}</small>
-                                @endif
-
-                                <div class="col-lg-6 pl-lg-1 pl-md-1">
-                                    <input type="text" class="form-control" name="phone"
-                                           placeholder="Business Phone  Number" required="">
-                                </div>
-                                @if ($errors->registerForm->has('phone'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('phone') }}</small>
-                                @endif
-
-                                <div class="col-lg-12 mt-3">
-                                    <input type="text" class="form-control" name="address"
-                                           placeholder="Business Address" required="">
-                                </div>
-                                @if ($errors->registerForm->has('address'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('address') }}</small>
-                                @endif
-
-                                <div class="col-lg-6 mt-3">
-                                    <input type="email" class="form-control" name="email" placeholder="Email"
-                                           required="">
-                                </div>
-                                @if ($errors->registerForm->has('email'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('email') ?? '' }}</small>
-                                @endif
-
-                                <div class="col-lg-6 mt-3">
-                                    <input type="password" class="form-control" name="password" placeholder="Password"
-                                           required="">
-                                </div>
-                                @if ($errors->registerForm->has('password'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('password') }}</small>
-                                @endif
-
-{{--                                <div class="col-lg-4 mt-3">--}}
-{{--                                    <span>Hour open</span>--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <input type="text" class="form-control" name="hour_open" placeholder="1 to 3"--}}
-{{--                                               required="">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                @if ($errors->registerForm->has('hour_open'))--}}
-{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('hour_open') }}</small>--}}
-{{--                                @endif--}}
-
-                                <div class="col-lg-12 mt-3">
-                                    <span>What ages do you accept?</span>
-                                    <div class="form-group">
-                                        <select name="age_accepted[]" id="select1" class="form-control" multiple required>
-                                            <option value="">Select an option</option>
-                                            <option value="0-12 months">0-12 months</option>
-                                            <option value="12-24 months">12-24 months</option>
-                                            <option value="2-5 years">2-5 years</option>
-                                            <option value="5+ years">5+ years</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                @if ($errors->registerForm->has('age_accepted'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('age_accepted') }}</small>
-                                @endif
-                                
-                                
-{{--                                <div class="col-lg-12 mt-3">--}}
-{{--                                    <!--<span>Custom Age</span>-->--}}
-{{--                                    <input type="number" class="form-control" name="custom_age" placeholder="Enter Age">--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-lg-4 mt-3">--}}
-{{--                                    <span>Position accepted?</span>--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <input type="text" class="form-control" name="position_accepted"--}}
-{{--                                               placeholder="1 to 3" required="">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                @if ($errors->registerForm->has('position_accepted'))--}}
-{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('position_accepted') }}</small>--}}
-{{--                                @endif--}}
-
-
                                 <div class="col-md-7 mb-2 mt-4">
-{{--                                    <h4 class="ml-2"> Timings </h4>--}}
+                                    {{--                                    <h4 class="ml-2"> Timings </h4>--}}
                                     <h4 class="ml-2 bigh"> Hours open </h4>
 
                                     <div class="row">
@@ -410,6 +325,91 @@
                                                name="services[Weekend care]" id="weekend_care">
                                     </div>
                                 </div>
+
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" name="name" placeholder="Business Name"
+                                           required="">
+                                </div>
+                                @if ($errors->registerForm->has('name'))
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('name') }}</small>
+                                @endif
+
+                                <div class="col-lg-6 pl-lg-1 pl-md-1">
+                                    <input type="text" class="form-control" name="phone"
+                                           placeholder="Business Phone  Number" required="">
+                                </div>
+                                @if ($errors->registerForm->has('phone'))
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('phone') }}</small>
+                                @endif
+
+                                <div class="col-lg-12 mt-3">
+                                    <textarea name="address" placeholder="Business Address" id="" cols="30" rows="4" class="form-control"></textarea>
+{{--                                    <input type="text" class="form-control" name="address" placeholder="Business Address" required="">--}}
+                                </div>
+                                @if ($errors->registerForm->has('address'))
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('address') }}</small>
+                                @endif
+
+                                <div class="col-lg-6 mt-3">
+                                    <input type="email" class="form-control" name="email" placeholder="Email"
+                                           required="">
+                                </div>
+                                @if ($errors->registerForm->has('email'))
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('email') ?? '' }}</small>
+                                @endif
+
+                                <div class="col-lg-6 mt-3">
+                                    <input type="password" class="form-control" name="password" placeholder="Password"
+                                           required="">
+                                </div>
+                                @if ($errors->registerForm->has('password'))
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('password') }}</small>
+                                @endif
+
+{{--                                <div class="col-lg-4 mt-3">--}}
+{{--                                    <span>Hour open</span>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <input type="text" class="form-control" name="hour_open" placeholder="1 to 3"--}}
+{{--                                               required="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @if ($errors->registerForm->has('hour_open'))--}}
+{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('hour_open') }}</small>--}}
+{{--                                @endif--}}
+
+                                <div class="col-lg-12 mt-3">
+                                    <span>What ages do you accept?</span>
+                                    <div class="form-group">
+                                        <select name="age_accepted[]" id="select1" class="form-control" multiple required>
+                                            <option value="">Select an option</option>
+                                            <option value="0-12 months">0-12 months</option>
+                                            <option value="12-24 months">12-24 months</option>
+                                            <option value="2-5 years">2-5 years</option>
+                                            <option value="5+ years">5+ years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @if ($errors->registerForm->has('age_accepted'))
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('age_accepted') }}</small>
+                                @endif
+                                
+                                
+{{--                                <div class="col-lg-12 mt-3">--}}
+{{--                                    <!--<span>Custom Age</span>-->--}}
+{{--                                    <input type="number" class="form-control" name="custom_age" placeholder="Enter Age">--}}
+{{--                                </div>--}}
+
+{{--                                <div class="col-lg-4 mt-3">--}}
+{{--                                    <span>Position accepted?</span>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <input type="text" class="form-control" name="position_accepted"--}}
+{{--                                               placeholder="1 to 3" required="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @if ($errors->registerForm->has('position_accepted'))--}}
+{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('position_accepted') }}</small>--}}
+{{--                                @endif--}}
+
 
                                 <div class="form-group col-lg-12 mt-3">
                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="about"

@@ -257,7 +257,8 @@
     <!--</section>-->
 
 
-    <section class="sec-two" style="background: url({{asset('images/doodle-wall.png')}})">
+{{--    <section class="sec-two" style="background: url({{asset('images/doodle-wall.png')}})">--}}
+    <section class="sec-two">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
@@ -292,7 +293,8 @@
     </section>
     
     
-    <section class="about-sec-two" style="background: url({{asset('images/doodle-wall.png')}})">
+{{--    <section class="about-sec-two" style="background: url({{asset('images/doodle-wall.png')}})">--}}
+    <section class="about-sec-two">
         <div class="container">
             
             <div class="row">
@@ -354,7 +356,8 @@
 </section>
     
 
-    <section class="sec-three" style="background: url({{asset('images/doodle-wall.png')}})">
+{{--    <section class="sec-three" style="background: url({{asset('images/doodle-wall.png')}})">--}}
+    <section class="sec-three">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-12">
@@ -407,7 +410,8 @@
         </div>
     </section>
 
-    <section class="sec-four" style="background: url({{asset('images/doodle-wall.png')}})">
+{{--    <section class="sec-four" style="background: url({{asset('images/doodle-wall.png')}})">--}}
+    <section class="sec-four">
         <div class="container">
             <div class="row" style="box-shadow: 0px 0px 20px 1px #0000002b;">
                 <div style="background: white;" class="col-lg-12 col-md-12 col-12">

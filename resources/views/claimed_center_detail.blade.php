@@ -308,7 +308,7 @@
                             <br />
                         @endif
                         @if($claimant->address)
-                            <b>Address: </b> {{$claimant->address}}
+                            <b>Address: </b> {!! $claimant->address !!}
                             <br />
                         @endif
                         @if($claimant->phone)
@@ -339,60 +339,6 @@
                             <li><p class="para-2"><i class="fas fa-check"></i> Memory Care</p></li>
                             </ul>
                           <p class="para-2"><i class="fas fa-check"></i> Independent Living</p> -->
-
-                    </div>
-
-                    <hr>
-
-                    <div class="row"
-                         style="border: 1px solid #cec6c6; padding: 20px; margin-top: 50px; margin-bottom: 50px;">
-
-                        <div class="col-md-12">
-
-                            <form method="post" action="{{ URL('review_store') }}">
-
-                                @csrf
-
-                                <input type="hidden" name="daycareid"
-                                       value="{{ $get_claimed_daycare_center_detail->id }}" class="form-control"/>
-
-                                <div class="row">
-
-                                    <div class="form-group col-md-4">
-                                        <label> Enter Name </label>
-                                        <input name="name" class="form-control" required/>
-                                    </div>
-
-                                    <div class="form-group col-md-4">
-                                        <label> Enter Email </label>
-                                        <input name="email" class="form-control" required/>
-                                    </div>
-
-
-                                    <div class="form-group col-md-4">
-                                        <label> Select Stars </label>
-                                        <select name="rate" class="form-control">
-                                            <option value="1">&#11088;</option>
-                                            <option value="2">&#11088;&#11088;</option>
-                                            <option value="3">&#11088;&#11088;&#11088;</option>
-                                            <option value="4">&#11088;&#11088;&#11088;&#11088;</option>
-                                            <option value="5">&#11088;&#11088;&#11088;&#11088;&#11088;</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label> Enter Comments </label>
-                                    <textarea name="message" style="height: 200px;" class="form-control"
-                                              required>  </textarea>
-                                </div>
-
-                                <button class="btn btn-primary" type="submit"> Add Reviews</button>
-
-                            </form>
-
-                        </div>
 
                     </div>
 
@@ -528,6 +474,62 @@
                             </div>
                         </div>
                     @endif
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="col-md-10 offset-md-1 text-black">
+                <div class="row"
+                     style="border: 1px solid #cec6c6; padding: 20px; margin-top: 50px; margin-bottom: 50px;">
+
+                    <div class="col-md-12">
+
+                        <form method="post" action="{{ URL('review_store') }}">
+
+                            @csrf
+
+                            <input type="hidden" name="daycareid"
+                                   value="{{ $get_claimed_daycare_center_detail->id }}" class="form-control"/>
+
+                            <div class="row">
+
+                                <div class="form-group col-md-4">
+                                    <label> Enter Name </label>
+                                    <input name="name" class="form-control" required/>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label> Enter Email </label>
+                                    <input name="email" class="form-control" required/>
+                                </div>
+
+
+                                <div class="form-group col-md-4">
+                                    <label> Select Stars </label>
+                                    <select name="rate" class="form-control">
+                                        <option value="1">&#11088;</option>
+                                        <option value="2">&#11088;&#11088;</option>
+                                        <option value="3">&#11088;&#11088;&#11088;</option>
+                                        <option value="4">&#11088;&#11088;&#11088;&#11088;</option>
+                                        <option value="5">&#11088;&#11088;&#11088;&#11088;&#11088;</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label> Enter Comments </label>
+                                <textarea name="message" style="height: 200px;" class="form-control"
+                                          required>  </textarea>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit"> Add Reviews</button>
+
+                        </form>
+
+                    </div>
+
                 </div>
             </div>
 

@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('content')
-
     <section class="about-sec-one Teacher-Banner">
         <div class="container">
             <div class="row">
@@ -29,19 +28,19 @@
                             <form class="loginForm" method="POST" action="{{ route('register') }}">
                                 @csrf
 
-                                <input type="hidden" name="role" value="2"/>
+                                <input type="hidden" name="role" value="2" />
 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-group">
                                             <input type="text"
-                                                   class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                                   name="name" placeholder="Full name" required>
+                                                class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                name="name" placeholder="First name" required>
 
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('name') }}</strong>
-						</span>
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
@@ -50,12 +49,27 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-group">
                                             <input type="text"
-                                                   class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                                   name="email" placeholder="Email" required>
+                                                class="form-control {{ $errors->has('lname') ? ' is-invalid' : '' }}"
+                                                name="lname" placeholder="Last name" required>
+
+                                            @if ($errors->has('lname'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('lname') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                                name="email" placeholder="Email" required>
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">
-      							<strong>{{ $errors->first('email') }}</strong>
-      						</span>
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
@@ -65,7 +79,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-group">
 
-                                        <!--  <input type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Email" required>-->
+                                            <!--  <input type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Email" required>-->
 
                                         </div>
                                     </div>
@@ -75,12 +89,12 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-group">
                                             <input type="password"
-                                                   class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                                   name="password" placeholder="Password" required>
+                                                class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                                name="password" placeholder="Password" required>
                                             @if ($errors->has('password'))
                                                 <span class="invalid-feedback" role="alert">
-        							<strong>{{ $errors->first('password') }}</strong>
-        						</span>
+                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                </span>
                                             @endif
 
                                         </div>
@@ -94,7 +108,8 @@
                                         <div class="log submit-btn">
 
                                             <!--<a href="javascript:void(0)" class="btn btn1"> Register </a> --> <input
-                                                    type="submit" class="log submit-btn" value="Register"/></div>
+                                                type="submit" class="log submit-btn" value="Register" />
+                                        </div>
 
                                     </div>
 
@@ -116,14 +131,9 @@
         <!-- END: Checkout Section -->
     </div>
     <!-- product page end-->
-
-
-
-
 @endsection
 @section('css')
     <style type="text/css">
-
         .account_form {
             margin: 70px 0px;
         }
@@ -150,13 +160,11 @@
             display: flex;
             align-items: center;
         }
-
-
     </style>
 @endsection
 @section('js')
     <script type="text/javascript">
-        $(document).on('click', ".btn1", function (e) {
+        $(document).on('click', ".btn1", function(e) {
             $('.loginForm').submit();
         });
     </script>

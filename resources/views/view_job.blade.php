@@ -61,7 +61,7 @@
 }
 
 .account-details-form input {
-    
+
     height: auto !important;
     width: auto !important;
 }
@@ -168,7 +168,7 @@ li.nav-item.active {
 <section class="back">
 
     <div class="container-fluid">
-        
+
         <div class="profilebg1" style="<?php if(Auth::user()->banner_image != ''){ echo 'background-image: url('.Auth::user()->banner_image.') !important;'; }else{ echo 'background-image: url(../images/profilebg.png) !important;';} ?> background-size: cover !important;">
             <div class="row">
                 <div class="col-md-12">
@@ -182,16 +182,16 @@ li.nav-item.active {
                 </div>
             </div>
         </div>
-        
+
         <div class="profile-name-bg">
             <div class="row">
-                
+
                 <div class="col-md-3">
                     <div class="profile-name">
                         <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span></h5>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -204,24 +204,24 @@ li.nav-item.active {
             <i class="fas fa-address-book"></i>
         </div>
         <div class="row">
-            
+
         @include('provider_menues')
 
             <div class="col-lg-9 col-md-8">
-                
+
                 <div class="profileparent">
                     <div class="profilein1">
 
-    
+
         <section class="content">
             <div class="row">
                 <div class="col-12">
-                                                    
+
                 <div class="card">
-                
+
                     <!-- /.card-header -->
                     <div class="card-body">
-                    
+
                         <table id="example1" class="table table-hover table-bordered table-striped text-center">
                             <thead>
                             <tr>
@@ -235,7 +235,7 @@ li.nav-item.active {
                             </thead>
 
                             <tbody>
-                                                        
+
                                 @foreach($job_post as $key => $val_job_post)
                                 <tr>
                                     <td> {{ $key+1 }} </td>
@@ -243,16 +243,18 @@ li.nav-item.active {
                                     <td> {{ $val_job_post->job_type }} </td>
                                     <td> {{ $val_job_post->salary_range }} </td>
                                     <td> {{ $val_job_post->skills }} </td>
-                                    <td> 
+                                    <td>
                                         <a href="{{route('edit_job',['id'=>$val_job_post->id])}}" class="btn btn-success"> <span class="fa fa-edit"></span> </a>
                                         <br><br>
                                         <a href="{{route('delete_job',['id'=>$val_job_post->id])}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger"> <span class="fa fa-trash"></span> </a>
-                                    </td>
+                                        <button type="button" class="btn btn-info view-job" data-id="{{ $val_job_post->id }}" data-toggle="modal" data-target="#jobModal">
+                                            <span class="fa fa-eye"></span>
+                                        </button>
                                 </tr>
                                 @endforeach
 
                             </tbody>
-                        
+
                         </table>
 
                         </div>
@@ -272,7 +274,7 @@ li.nav-item.active {
                     </div>
                     <div class="write-jus">
 
-                       
+
                     </div>
                 </div>
 
@@ -322,6 +324,37 @@ li.nav-item.active {
         </div>
     </div>
 </div>
+
+{{-- <div class="modal fade" id="myModal{{ $value->id }}"
+    data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div> --}}
+
+<!-- Job Details Modal -->
+<div class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="jobModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="jobModalLabel">Job Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Job details will be loaded here -->
+                <div id="job-details"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(() => {
 
@@ -331,6 +364,24 @@ li.nav-item.active {
             });
             $('#modal_agree_to_sandbox_terms').modal('show');
         }
+    });
+
+    $(document).ready(function() {
+        $('.view-job').on('click', function() {
+            var jobId = $(this).data('id');
+
+            $.ajax({
+                url: '{{ route("get_job_details") }}', // Adjust the route to your actual route
+                type: 'GET',
+                data: { id: jobId },
+                success: function(response) {
+                    $('#job-details').html(response);
+                },
+                error: function() {
+                    $('#job-details').html('<p>An error has occurred</p>');
+                }
+            });
+        });
     });
 </script>
 

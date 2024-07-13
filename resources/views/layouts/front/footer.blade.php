@@ -1,6 +1,6 @@
 <?php $segment = request()->segment(1);?>
 
-@if(!in_array($segment, ["home", "claimed_center_detail", "rules-of-conduct-individual", 'joinnow', 'contact', 'become-a-provider']))
+@if(!in_array($segment, ["home", "claimed_center_detail", "rules-of-conduct-individual", 'joinnow', 'contact', 'become-a-provider', 'job-board']))
     <section class="sec-four">
         <div class="col-lg-12 col-md-12 col-12 text-center mt-5">
             <div class="give-the-best">
@@ -16,18 +16,18 @@
             <div class="col-lg-4 col-md-5 col-12">
                 <div class="FooterMainDiv">
 
-                    <?php 
-                    
+                    <?php
+
                     $footer = DB::table('pages')->where('id', 6)->first();
-                    
+
                     ?>
 
                     <!--<h5><a href="#"> {{$footer->name}} </a></h5>-->
-                    
+
                     <h5><a href="#"> Support </a></h5>
-                    
+
                     <!--{!!$footer->content!!}-->
-                        
+
                     <ul class="FooterUl">
                         <li>
                             <p><a href="{{ route('termsandconditionindividual') }}"> Terms & Conditions-Individual Membership </a></p>
@@ -35,9 +35,9 @@
                             <p><a href="{{ route('privacy') }}"> Privacy Policy </a></p>
                             <p><a href="{{ route('community') }}"> Community Guidelines </a></p>
                         </li>
-                      
+
                     </ul>
-                    
+
                     <!-- <div class="ReadMoreFooter"><span><i class="fa-solid fa-circle-arrow-right"></i></span> <span><a href="#">Request A Quote</a></span> </div> -->
                 </div>
             </div>
@@ -48,7 +48,7 @@
                         <li>
                             <p><a href="{{route('become-a-teacher')}}">Teachers</a></p>
                         </li>
-                      
+
                     </ul>
                 </div>
             </div>
@@ -59,25 +59,25 @@
                         <li>
                             <p><a href="{{route('become-a-provider')}}">Providers</a></p>
                         </li>
-                        
+
 
                     </ul>
                 </div>
             </div>
-            
+
             <div class="col-lg-4 col-md-3 col-12">
                 <div class="FooterMainDiv QuickContact">
                     <h5><a href="#">Quick Contact</a></h5>
                     <p><a href="#"> If you have any questions or need help, feel free to contact our team.</a></p>
-                    
+
                     <!--<div class="ReadMoreFooter"><span><i class="fa-solid fa-phone"></i></span> -->
                         <!--<span class="Colored"><a href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}"> {{ App\Http\Traits\HelperTrait::returnFlag(59) }} </a></span> -->
                     <!--</div>-->
-                    
-                    <div class="ReadMoreFooter"><span><i class="fa-solid fa-envelope"></i></span> 
-                        <span class="Colored"><a href="mailto:{{ App\Http\Traits\HelperTrait::returnFlag(218) }}"> {{ App\Http\Traits\HelperTrait::returnFlag(218) }} </a></span> 
+
+                    <div class="ReadMoreFooter"><span><i class="fa-solid fa-envelope"></i></span>
+                        <span class="Colored"><a href="mailto:{{ App\Http\Traits\HelperTrait::returnFlag(218) }}"> {{ App\Http\Traits\HelperTrait::returnFlag(218) }} </a></span>
                     </div>
-                    
+
                     <!--<p class="Reused"><a href="#"> {{ App\Http\Traits\HelperTrait::returnFlag(519) }}</a></p>-->
                     <div class="ReadMoreFooter social-linsk">
                         <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(682) }}"><i class="fa-brands fa-facebook-f"></i></a></span>
@@ -116,7 +116,7 @@
                     <div class="EmailSubbmision">
                         <form method="post" id="newForm">
                             @csrf
-                            <input type="email" name="newemail" id="newemail" placeholder="Your Email Address" id="" required> 
+                            <input type="email" name="newemail" id="newemail" placeholder="Your Email Address" id="" required>
                             <button type="submit" class="custom-btn big"> Sign Up! </button>
                         </form>
 

@@ -585,6 +585,12 @@ class HomeController extends Controller
 
     }
 
+    public function getJobDetails(Request $request)
+    {
+        $job = Job_post::find($request->id);
+        return view('job_details', compact('job'))->render();
+    }
+
 
     public function edit_job($id = '')
     {

@@ -121,6 +121,11 @@ class ProviderController extends Controller
 
         }
 
+        if($request->input('age_accepted')){
+            $ageAccepted = implode(',', $request->input('age_accepted'));
+            $requestData['age_accepted'] = $ageAccepted;
+        }
+
 
         $requestData['claim_status'] = "2";
         $requestData['claimed_by_id'] = auth()->user()->id;

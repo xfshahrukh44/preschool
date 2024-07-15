@@ -217,18 +217,18 @@ li.nav-item.active {
 
                                 <br><br>
 
-                                {{-- <label for="">Job Description :</label>
+                                <label for="">Job Description :</label>
                                 <textarea  name="job_description" class="form-control" placeholder="" >  </textarea>
 
-                                <br><br> --}}
+                                <br><br>
 
                                 <label for="">Company Name :</label>
                                 <input type="text" name="company_name" class="form-control" placeholder=""  >
 
-                                <br><br>
+                                <!--<br><br>-->
 
-                                <label for="">Company Description: :</label>
-                                <textarea name="company_description" class="form-control" placeholder="" >  </textarea>
+                                <!--<label for="">Company Description: :</label>-->
+                                <!--<textarea name="company_description" class="form-control" placeholder="" >  </textarea>-->
 
 
                                 <br><br>

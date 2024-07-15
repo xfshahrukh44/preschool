@@ -210,6 +210,7 @@
 
     section.back li.select2-search.select2-search--inline {
         width: 100% !important;
+        display: none;
     }
 
     section.back li.select2-search.select2-search--inline input {

@@ -33,6 +33,8 @@ if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
 
 
 
+
+
 //===================== Admin Routes =====================//
 
 Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'admin'], function () {

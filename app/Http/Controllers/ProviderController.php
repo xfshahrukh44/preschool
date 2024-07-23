@@ -17,7 +17,6 @@ class ProviderController extends Controller
         $this->middleware('provider');
     }
 
-
     public function dashboard ()
     {
         $page = DB::table('pages')->where('id', 7)->first();

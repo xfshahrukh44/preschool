@@ -69,7 +69,7 @@
         .client_info h4 {
             font-weight: bold;
             color: black;
-            font-size: 30px;
+            font-size: 20px;
             margin-bottom: 0;
         }
 
@@ -104,7 +104,7 @@
             align-items: start;
             gap: 30px;
             margin-top: 40px;
-            border: 1px solid black;
+            border: 1px solid #0000002b;
             border-radius: 10px;
             padding: 10px;
         }
@@ -201,13 +201,12 @@
                         $rounded_rating = round($average_rating);
 
                         $full_stars = floor($average_rating);
-                        $half_star = ($average_rating - $full_stars) >= 0.5;
+                        $half_star = $average_rating - $full_stars >= 0.5;
 
                         $latest_review = DB::table('reviews')
                             ->where('daycareid', $val_search->id)
                             ->orderBy('id', 'DESC')
                             ->first();
-
                         $rating = $latest_review ? $latest_review->rate : 0;
                     @endphp
                     <div class="col-lg-12">
@@ -215,11 +214,11 @@
                             <div class="clien_details">
                                 <div class="profile_img">
                                     <figure>
-                                        @if(!empty($val_search->feature_image))
+                                        @if (!empty($val_search->feature_image))
                                             <img src="{{ asset($val_search->feature_image) }}"
                                                 style="height: 329px;width: 100%;" alt="" class="img-fluid">
                                         @else
-                                            <img src="{{ asset('assets/imgs/noimage.png') }}"
+                                            <img src="{{ asset('assets/imgs/profile_empty.png') }}"
                                                 style="height: 329px;width: 100%;" alt="" class="img-fluid">
                                         @endif
                                     </figure>
@@ -236,18 +235,18 @@
                                     </div>
                                 </div>
                                 <div class="rating_client">
-                                    <span>{{  $average_rating ?? 0.0 }}</span>
+                                    <span>{{ $average_rating ?? 0.0 }}</span>
                                     <div class="client_star">
                                         <?php for ($i = 0; $i < $full_stars; $i++): ?>
-                                            <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
                                         <?php endfor; ?>
 
                                         <?php if ($half_star): ?>
-                                            <i class="fa-solid fa-star-half-stroke"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
                                         <?php endif; ?>
 
                                         <?php for ($i = $full_stars + ($half_star ? 1 : 0); $i < 5; $i++): ?>
-                                            <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
                                         <?php endfor; ?>
                                     </div>
                                 </div>
@@ -273,20 +272,18 @@
                                         $half_star = ($rating - $full_stars) >= 0.5;
                                         // Display full stars
                                         for ($i = 0; $i < $full_stars; $i++): ?>
-                                            <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
                                         <?php endfor; ?>
                                         <?php if ($half_star): ?>
-                                            <i class="fa-solid fa-star-half-stroke"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
                                         <?php endif; ?>
                                         <?php for ($i = $full_stars + ($half_star ? 1 : 0); $i < 5; $i++): ?>
-                                            <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
                                         <?php endfor; ?>
                                     </div>
                                 </div>
                                 <div class="client_discription">
-                                    <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quo ea nam
-                                        itaque
-                                        consectetur ad porro! <b>Lorem ....</b></p>
+                                    <p> {{ $latest_review->message ?? 'No Comment' }}</p>
                                 </div>
                             </div>
                         </div>

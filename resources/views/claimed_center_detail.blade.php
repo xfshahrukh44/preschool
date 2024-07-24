@@ -250,7 +250,7 @@
         .review_show h5 {
             color: black;
             font-weight: 600;
-            font-size: 25px;
+            font-size: 40px;
             margin-bottom: 10px;
         }
 
@@ -262,7 +262,7 @@
 
         .review_show p a {
             color: black;
-            font-size: 16px;
+            font-size: 30px;
             font-weight: 600;
         }
 
@@ -273,12 +273,12 @@
         }
 
         .rating_client i {
-            font-size: 17px;
+            font-size: 35px;
             color: #ffe234;
         }
 
         .rating_client span {
-            font-size: 20px;
+            font-size: 30px;
             font-weight: 700;
             margin-left: 10px;
         }
@@ -298,6 +298,10 @@
 
         .hihglight ul {
             padding-bottom: 20px;
+        }
+
+        .review_show {
+            margin-bottom: 50px;
         }
     </style>
 @endsection
@@ -328,29 +332,29 @@
 
                         <!-- <p class="para-2">16001 Lakeshore Villa Dr, Tampa, FL 33613</p> -->
                         <!-- <div class="span-txt">
-                                                                                                                                                                                                                                                                                                            <span class="main-box-blue">9.5</span>
-                                                                                                                                                                                                                                                                                                            <strong class="small-heading">Review score</strong>
-                                                                                                                                                                                                                                                                                                            <span class="main-box">76 reviews</span>
-                                                                                                                                                                                                                                                                                                            <strong class="small-heading"><a class="anker-1" href="">Add review</a></strong>
-                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                        <div class="span-txt">
-                                                                                                                                                                                                                                                                                                            <span class="para-2">For pricing & availability:</span>
-                                                                                                                                                                                                                                                                                                            <strong class="small-heading"><a class="anker-2" href="">
-                                                                                                                                                                                                                                                                                                            <i class="fas fa-phone"></i> (866) 374-4058</a></strong>
-                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                        <span class="main-box-blue">9.5</span>
+                                                                                                                                                                                                                                                                                                                                        <strong class="small-heading">Review score</strong>
+                                                                                                                                                                                                                                                                                                                                        <span class="main-box">76 reviews</span>
+                                                                                                                                                                                                                                                                                                                                        <strong class="small-heading"><a class="anker-1" href="">Add review</a></strong>
+                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                    <div class="span-txt">
+                                                                                                                                                                                                                                                                                                                                        <span class="para-2">For pricing & availability:</span>
+                                                                                                                                                                                                                                                                                                                                        <strong class="small-heading"><a class="anker-2" href="">
+                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-phone"></i> (866) 374-4058</a></strong>
+                                                                                                                                                                                                                                                                                                                                    </div>
 
-                                                                                                                                                                                                                                                                                                        <div class="section-1-menu-txt">
-                                                                                                                                                                                                                                                                                                            <i class="fas fa-paw"></i>
-                                                                                                                                                                                                                                                                                                            <i class="fas fa-wifi"></i>
-                                                                                                                                                                                                                                                                                                            <i class="fas fa-bus"></i>
-                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                    <div class="section-1-menu-txt">
+                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-paw"></i>
+                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-wifi"></i>
+                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-bus"></i>
+                                                                                                                                                                                                                                                                                                                                    </div>
 
-                                                                                                                                                                                                                                                                                                        <div class="section-1-anker">
-                                                                                                                                                                                                                                                                                                            <a href="" class="purpul1">Get pricing</a>
-                                                                                                                                                                                                                                                                                                            <a href="" class="purpul1">Check Availability</a>
-                                                                                                                                                                                                                                                                                                            <a href="" class="purpul1">Download Brochure</a>
-                                                                                                                                                                                                                                                                                                            <a href="" class="purpul1">Request a tour</a>
-                                                                                                                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                                                                    <div class="section-1-anker">
+                                                                                                                                                                                                                                                                                                                                        <a href="" class="purpul1">Get pricing</a>
+                                                                                                                                                                                                                                                                                                                                        <a href="" class="purpul1">Check Availability</a>
+                                                                                                                                                                                                                                                                                                                                        <a href="" class="purpul1">Download Brochure</a>
+                                                                                                                                                                                                                                                                                                                                        <a href="" class="purpul1">Request a tour</a>
+                                                                                                                                                                                                                                                                                                                                    </div> -->
                         <div class="border-line"><span></span></div>
                     </div>
                 </div>
@@ -408,61 +412,7 @@
                             </tbody>
                         </table>
                     </div>
-                    @foreach ($get_reviews as $key => $val_review)
-                        <div class="span-txt1">
-                            <div class="section-3-family-txt">
-                                <strong class="small-heading">{{ $val_review->name }}</strong>
-                                <strong class="small-heading">-</strong>
-                                <!--<p class="para-2">Family/friend</p>-->
-                                <strong class="small-heading"></strong>
 
-                                <p class="para-2">
-
-                                    <?php if($val_review->rate == 1){ ?>
-
-                                    <i class="fas fa-star"></i>
-
-                                    <?php }elseif($val_review->rate == 2){ ?>
-
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-
-                                    <?php }elseif($val_review->rate == 3){ ?>
-
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-
-                                    <?php }elseif($val_review->rate == 4){ ?>
-
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-
-                                    <?php }elseif($val_review->rate == 5){ ?>
-
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-
-                                    <?php } ?>
-
-                                    {{ $val_review->rate }}.0
-
-                                </p>
-
-                            </div>
-                            <div class="section-3-family-txt1">
-                                <!--<h6 class="heading-6">Great place!</h6>-->
-                                <p class="para-1"> {!! $val_review->message !!} </p>
-                                <!--<strong class="small-heading"><a class="anker-1" href="">Add review-->
-                                <!--<i class="fas fa-chevron-right"></i></a>-->
-                                <!--</strong>-->
-                            </div>
-                    @endforeach
                 </div>
             </div>
             <div class="row" style="padding-left: 150px;padding-right: 150px;">
@@ -542,17 +492,17 @@
 
                                             </p>
                                             <!-- <h6 class="heading-6">Related</h6>
-                                                                                                                                                                                                                                                                                                                    <p class="para-2"><a href="">6 Practical Things to Consider When Moving an Aging Loved One <span class="d-block"></span> Memory Care Checklist: How to Choose a Memory Care Facility</a></p>
-                                                                                                                                                                                                                                                                                                                    <strong class="small-heading"><a class="anker-1" href="">Add review
-                                                                                                                                                                                                                                                                                                                        <i class="fas fa-chevron-up"></i></a>
-                                                                                                                                                                                                                                                                                                                        </strong>
-                                                                                                                                                                                                                                                                                                                    <h2 class="heading-2">Senior living options offered</h2>
-                                                                                                                                                                                                                                                                                                                    <div class="section-3-main-cheaq">
-                                                                                                                                                                                                                                                                                                                        <ul>
-                                                                                                                                                                                                                                                                                                                        <li><p class="para-2"><i class="fas fa-check"></i> Assisted Living</p></li>
-                                                                                                                                                                                                                                                                                                                        <li><p class="para-2"><i class="fas fa-check"></i> Memory Care</p></li>
-                                                                                                                                                                                                                                                                                                                        </ul>
-                                                                                                                                                                                                                                                                                                                      <p class="para-2"><i class="fas fa-check"></i> Independent Living</p> -->
+                                                                                                                                                                                                                                                                                                                                                <p class="para-2"><a href="">6 Practical Things to Consider When Moving an Aging Loved One <span class="d-block"></span> Memory Care Checklist: How to Choose a Memory Care Facility</a></p>
+                                                                                                                                                                                                                                                                                                                                                <strong class="small-heading"><a class="anker-1" href="">Add review
+                                                                                                                                                                                                                                                                                                                                                    <i class="fas fa-chevron-up"></i></a>
+                                                                                                                                                                                                                                                                                                                                                    </strong>
+                                                                                                                                                                                                                                                                                                                                                <h2 class="heading-2">Senior living options offered</h2>
+                                                                                                                                                                                                                                                                                                                                                <div class="section-3-main-cheaq">
+                                                                                                                                                                                                                                                                                                                                                    <ul>
+                                                                                                                                                                                                                                                                                                                                                    <li><p class="para-2"><i class="fas fa-check"></i> Assisted Living</p></li>
+                                                                                                                                                                                                                                                                                                                                                    <li><p class="para-2"><i class="fas fa-check"></i> Memory Care</p></li>
+                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                  <p class="para-2"><i class="fas fa-check"></i> Independent Living</p> -->
 
                                         </div>
                                         <hr>
@@ -637,10 +587,66 @@
                                 @endif
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
-
                                 <div class="row"
                                     style="border: 1px solid #cec6c6; padding: 20px; margin-top: 50px; margin-bottom: 50px;">
+                                    <div class="col-lg-12">
+                                        @foreach ($get_reviews as $key => $val_review)
+                                            <div class="span-txt1">
+                                                <div class="section-3-family-txt">
+                                                    <strong class="small-heading">{{ $val_review->name }}</strong>
+                                                    <strong class="small-heading">-</strong>
+                                                    <!--<p class="para-2">Family/friend</p>-->
+                                                    <strong class="small-heading"></strong>
 
+                                                    <p class="para-2">
+
+                                                        <?php if($val_review->rate == 1){ ?>
+
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php }elseif($val_review->rate == 2){ ?>
+
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php }elseif($val_review->rate == 3){ ?>
+
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php }elseif($val_review->rate == 4){ ?>
+
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php }elseif($val_review->rate == 5){ ?>
+
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php } ?>
+
+                                                        {{ $val_review->rate }}.0
+
+                                                    </p>
+
+                                                </div>
+                                                <div class="section-3-family-txt1">
+                                                    <!--<h6 class="heading-6">Great place!</h6>-->
+                                                    <p class="para-1"> {!! $val_review->message !!} </p>
+                                                    <!--<strong class="small-heading"><a class="anker-1" href="">Add review-->
+                                                    <!--<i class="fas fa-chevron-right"></i></a>-->
+                                                    <!--</strong>-->
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                     <div class="col-md-12">
 
                                         <form method="post" action="{{ URL('review_store') }}">

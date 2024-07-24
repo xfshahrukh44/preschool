@@ -386,7 +386,7 @@
                                     <td>
                                         <?php
                                         $average_rating = DB::table('reviews')
-                                            ->where('daycareid', $val_search->id)
+                                            ->where('daycareid', $get_all_claimed_daycare_center->id)
                                             ->avg('rate');
                                         $rounded_rating = round($average_rating);
 

@@ -356,12 +356,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Review</a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">Review</a>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">Center Highlights</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">Review</a>
-                            </li> --}}
+                                <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">Cost</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">License</a>
+                            </li>
                         </ul><!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
@@ -430,62 +433,6 @@
 
                                         </div>
                                         <hr>
-
-                                        @foreach ($get_reviews as $key => $val_review)
-                                            <div class="span-txt1">
-                                                <div class="section-3-family-txt">
-                                                    <strong class="small-heading">{{ $val_review->name }}</strong>
-                                                    <strong class="small-heading">-</strong>
-                                                    <!--<p class="para-2">Family/friend</p>-->
-                                                    <strong class="small-heading"></strong>
-
-                                                    <p class="para-2">
-
-                                                        <?php if($val_review->rate == 1){ ?>
-
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php }elseif($val_review->rate == 2){ ?>
-
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php }elseif($val_review->rate == 3){ ?>
-
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php }elseif($val_review->rate == 4){ ?>
-
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php }elseif($val_review->rate == 5){ ?>
-
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php } ?>
-
-                                                        {{ $val_review->rate }}.0
-
-                                                    </p>
-
-                                                </div>
-                                                <div class="section-3-family-txt1">
-                                                    <!--<h6 class="heading-6">Great place!</h6>-->
-                                                    <p class="para-1"> {!! $val_review->message !!} </p>
-                                                    <!--<strong class="small-heading"><a class="anker-1" href="">Add review-->
-                                                    <!--<i class="fas fa-chevron-right"></i></a>-->
-                                                    <!--</strong>-->
-                                                </div>
-                                        @endforeach
                                     </div>
                                     <div class="col-lg-6">
                                         @if (!is_null($get_claimed_daycare_center_detail->timings))
@@ -568,8 +515,8 @@
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <div class="review_show">
+                                    <div class="col-lg-12">
+                                        {{-- <div class="review_show">
                                             <table>
                                                 <thead>
                                                     <tr>
@@ -604,7 +551,62 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </div>
+                                        </div> --}}
+                                        @foreach ($get_reviews as $key => $val_review)
+                                            <div class="span-txt1">
+                                                <div class="section-3-family-txt">
+                                                    <strong class="small-heading">{{ $val_review->name }}</strong>
+                                                    <strong class="small-heading">-</strong>
+                                                    <!--<p class="para-2">Family/friend</p>-->
+                                                    <strong class="small-heading"></strong>
+
+                                                    <p class="para-2">
+
+                                                        <?php if($val_review->rate == 1){ ?>
+
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php }elseif($val_review->rate == 2){ ?>
+
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php }elseif($val_review->rate == 3){ ?>
+
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php }elseif($val_review->rate == 4){ ?>
+
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php }elseif($val_review->rate == 5){ ?>
+
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+
+                                                        <?php } ?>
+
+                                                        {{ $val_review->rate }}.0
+
+                                                    </p>
+
+                                                </div>
+                                                <div class="section-3-family-txt1">
+                                                    <!--<h6 class="heading-6">Great place!</h6>-->
+                                                    <p class="para-1"> {!! $val_review->message !!} </p>
+                                                    <!--<strong class="small-heading"><a class="anker-1" href="">Add review-->
+                                                    <!--<i class="fas fa-chevron-right"></i></a>-->
+                                                    <!--</strong>-->
+                                                </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="row"
@@ -660,12 +662,15 @@
 
                                 </div>
                             </div>
-                            {{-- <div class="tab-pane" id="tabs-4" role="tabpanel">
-                                <p>Third Panel</p>
-                            </div>
                             <div class="tab-pane" id="tabs-4" role="tabpanel">
                                 <p>Third Panel</p>
-                            </div> --}}
+                            </div>
+                            <div class="tab-pane" id="tabs-5" role="tabpanel">
+                                <p>Third Panel</p>
+                            </div>
+                            <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                <p>Third Panel</p>
+                            </div>
                         </div>
                     </div>
                 </div>

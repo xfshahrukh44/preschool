@@ -194,58 +194,99 @@
             <div class="row">
                 {{-- @dd($search_result); --}}
                 @foreach ($search_result as $key => $val_search)
+                    @php
+                        $average_rating = DB::table('reviews')
+                            ->where('daycareid', $val_search->id)
+                            ->avg('rate');
+                        $rounded_rating = round($average_rating);
+
+                        $full_stars = floor($average_rating);
+                        $half_star = ($average_rating - $full_stars) >= 0.5;
+
+                        $latest_review = DB::table('reviews')
+                            ->where('daycareid', $val_search->id)
+                            ->orderBy('id', 'DESC')
+                            ->first();
+
+                        $rating = $latest_review ? $latest_review->rate : 0;
+                    @endphp
                     <div class="col-lg-12">
                         <div class="dashboard_details">
                             <div class="clien_details">
                                 <div class="profile_img">
                                     <figure>
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzCW8ayM9K_iNzX81NSjgpGcl30jDvsTSiIg&s"
-                                            style="height: 329px;width: 100%;" alt="" class="img-fluid">
+                                        @if(!empty($val_search->feature_image))
+                                            <img src="{{ asset($val_search->feature_image) }}"
+                                                style="height: 329px;width: 100%;" alt="" class="img-fluid">
+                                        @else
+                                            <img src="{{ asset('assets/imgs/noimage.png') }}"
+                                                style="height: 329px;width: 100%;" alt="" class="img-fluid">
+                                        @endif
                                     </figure>
                                     <div class="client_info">
                                         <h4>{{ $val_search->name ? $val_search->name : 'N\A' }}</h4>
                                         <p>
-                                            @if (!empty($val_search->city) && !empty($val_search->state))
+                                            {{ $val_search->physical_address ?? 'N/A' }}
+                                            {{-- @if (!empty($val_search->city) && !empty($val_search->state))
                                                 {{ $val_search->city . ',' . $val_search->state }},
                                             @else
                                                 {{ $val_search->city . ' ' . ($val_search->state = 'N\A') }}
-                                            @endif
+                                            @endif --}}
                                         </p>
                                     </div>
                                 </div>
                                 <div class="rating_client">
-                                    <span>5</span>
+                                    <span>{{  $average_rating ?? 0.0 }}</span>
                                     <div class="client_star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <?php for ($i = 0; $i < $full_stars; $i++): ?>
+                                            <i class="fa-solid fa-star"></i>
+                                        <?php endfor; ?>
+
+                                        <?php if ($half_star): ?>
+                                            <i class="fa-solid fa-star-half-stroke"></i>
+                                        <?php endif; ?>
+
+                                        <?php for ($i = $full_stars + ($half_star ? 1 : 0); $i < 5; $i++): ?>
+                                            <i class="fa-regular fa-star"></i>
+                                        <?php endfor; ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="current_info">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae aperiam labore quo
-                                    itaque
-                                    eius! ....<a href="{{ URL('claimed_center_detail/' . $val_search->id) }}">show more</a>
-                                </p>
+                                @if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role == 4)
+                                    <a class="btn btn-success"
+                                        href="{{ URL('claimed_center_detail/' . $val_search->id) }}">View</a>
+                                @else
+                                    {{--                            <a class="btn btn-primary" href="{{ route('provider.findDaycare') }}">Claim</a> --}}
+                                    <button data-toggle="modal" data-target="#providerAlert"
+                                        class="btn btn-primary">Claim</button>
+                                @endif
                             </div>
                             <div class="comment_box">
                                 <div class="rating_client">
-                                    <span>5</span>
+                                    <span><?php echo htmlspecialchars($rating); ?></span>
                                     <div class="client_star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <?php
+                                        // Full stars
+                                        $full_stars = floor($rating);
+                                        // Half star
+                                        $half_star = ($rating - $full_stars) >= 0.5;
+                                        // Display full stars
+                                        for ($i = 0; $i < $full_stars; $i++): ?>
+                                            <i class="fa-solid fa-star"></i>
+                                        <?php endfor; ?>
+                                        <?php if ($half_star): ?>
+                                            <i class="fa-solid fa-star-half-stroke"></i>
+                                        <?php endif; ?>
+                                        <?php for ($i = $full_stars + ($half_star ? 1 : 0); $i < 5; $i++): ?>
+                                            <i class="fa-regular fa-star"></i>
+                                        <?php endfor; ?>
                                     </div>
                                 </div>
                                 <div class="client_discription">
                                     <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quo ea nam
                                         itaque
-                                        consectetur ad porro! <b>Lorem ....</b> <a
-                                            href="{{ URL('claimed_center_detail/' . $val_search->id) }}">show more</a></p>
+                                        consectetur ad porro! <b>Lorem ....</b></p>
                                 </div>
                             </div>
                         </div>
@@ -254,7 +295,7 @@
                 {{ $search_result->appends(request()->input())->links() }}
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
 
                 <div class="col-md-12" style="margin-top:50px;">
 
@@ -281,12 +322,10 @@
                                 <tr>
                                     <td>
                                         @if ($val_search->claim_status == '1')
-                                            {{--                        <a class="btn btn-primary" href="{{ route('signin') }}">Claim</a> --}}
                                             @if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role == 4)
                                                 <a class="btn btn-primary"
                                                     href="{{ route('provider.findDaycare') . $search }}">Claim</a>
                                             @else
-                                                {{--                            <a class="btn btn-primary" href="{{ route('provider.findDaycare') }}">Claim</a> --}}
                                                 <button data-toggle="modal" data-target="#providerAlert"
                                                     class="btn btn-primary">Claim</button>
                                             @endif
@@ -309,7 +348,7 @@
 
                 </div>
 
-            </div>
+            </div> --}}
         </div>
     </section>
 

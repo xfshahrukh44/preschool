@@ -73,7 +73,7 @@
 }
 
 .account-details-form input {
-    
+
     height: auto !important;
     width: auto !important;
 }
@@ -168,12 +168,12 @@ li.nav-item.active {
 
 @include('layouts.front.css')
 @include('layouts/front.header')
-  
+
 
 <section class="back">
 
     <div class="container-fluid">
-        
+
     <div class="profilebg1" style="<?php if(Auth::user()->banner_image != ''){ echo "background-image: url('".asset(Auth::user()->banner_image)."') !important;"; }else{ echo 'background-image: url('.asset("images/profilebg.png").') !important;';} ?> background-size: cover !important;">
             <div class="row">
                 <div class="col-md-12">
@@ -190,13 +190,13 @@ li.nav-item.active {
 
         <div class="profile-name-bg">
             <div class="row">
-                
+
                 <div class="col-md-3">
                     <div class="profile-name">
                         <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span></h5>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -206,20 +206,20 @@ li.nav-item.active {
             <i class="fas fa-address-book"></i>
         </div>
         <div class="row">
-            
+
             @include('teacher_menues')
 
             <div class="col-lg-6 col-md-8">
-                
+
                 <div class="profileparent">
                     <div class="profilein1">
 
                         <form action="{{route('update_profile2')}}" method="post" enctype="multipart/form-data">
 
-                            @csrf 
+                            @csrf
 
                             <div class="form-group">
-                            
+
                                 <input type="hidden" name="id" value="{{Auth::user()->id}}">
 
                                 <label for="">Email :</label>
@@ -232,18 +232,18 @@ li.nav-item.active {
 
 
                                 <br><br>
-                                
+
                                 <label for="">Last Name :</label>
                                 <input type="text" name="lname" class="form-control" placeholder="" value="{{Auth::user()->lname}}" >
 
 
                                 <br><br>
-                                
+
                                 <label for="">Phone No :</label>
                                 <input type="number" name="phone" class="form-control" placeholder="" value="{{Auth::user()->phone}}" >
 
                                 <br><br>
-                                
+
                                 <label for="">About :</label>
                                 <textarea type="text" name="about" class="form-control" placeholder="" > {{Auth::user()->about}} </textarea>
 
@@ -258,38 +258,38 @@ li.nav-item.active {
                                     <label for="exampleInputEmail1">Upload Banner Image</label>
                                     <input type="file" name="banner_image" class="form-control" />
                                 </div>
-                                
+
                                 <br><br>
-                                
+
                                 <label for="">Change Password :</label>
                                 <input type="text" name="password" class="form-control" placeholder="Enter New Password"  >
 
                                 <br><br>
-                                
+
                                 <label for="">Race :</label>
                                 <input type="text" name="race" class="form-control" placeholder="Enter Race" value="{{Auth::user()->race}}" >
 
                                 <br><br>
-                                
+
                                 <label for="">Ethnicity :</label>
                                 <input type="text" name="ethnicity" class="form-control" placeholder="Enter Ethnicity" value="{{Auth::user()->ethnicity}}" >
 
                                 <br><br>
-                                
+
                                 <label for="">Date of Birth :</label>
                                 <input type="date" name="date_of_birth" class="form-control" value="{{Auth::user()->date_of_birth}}" >
 
                                 <br><br>
-                                
+
                                 <label for="">Do You Currently Work :</label>
-                                <select id="dycw" class="form-control"  >
+                                <select id="dycw" name="do_you_currently_work" class="form-control"  >
                                     <option>Select</option>
                                     <option value="1" {!! Auth::user()->do_you_currently_work == "1" ? 'selected' : '' !!}>Yes</option>
                                     <option value="0" {!! Auth::user()->do_you_currently_work == "0" ? 'selected' : '' !!}>No</option>
                                 </select>
-                                
+
                                 <br>
-                                
+
 {{--                                <select name="do_you_currently_work" class="form-control" id="show_current_work">--}}
 {{--                                    <option <?php if(Auth::user()->do_you_currently_work == 'Select'){echo 'selected';} ?> >Select</option>--}}
 {{--                                    <option <?php if(Auth::user()->do_you_currently_work == 'Childcare facility'){echo 'selected';} ?> >Childcare facility</option>--}}
@@ -297,7 +297,7 @@ li.nav-item.active {
 {{--                                </select>--}}
 {{--                                --}}
 {{--                                <br><br>--}}
-                                
+
                                 <label for="">Position :</label>
                                 <select name="current_position" class="form-control"  >
                                     <option <?php if(Auth::user()->current_position == 'Owner'){echo 'selected';} ?> >Owner</option>
@@ -306,21 +306,21 @@ li.nav-item.active {
                                     <option <?php if(Auth::user()->current_position == 'Aide'){echo 'selected';} ?> >Aide</option>
                                     <option <?php if(Auth::user()->current_position == 'Other'){echo 'selected';} ?> >Other</option>
                                 </select>
-                                
-                                
+
+
                                 <br><br>
-                                
+
                                 <label for="">Years of Experience :</label>
                                 <select name="year_of_experience" class="form-control"  >
                                     <option <?php if(Auth::user()->year_of_experience == 'Less than 1'){echo 'selected';} ?> >Less than 1</option>
                                     <option <?php if(Auth::user()->year_of_experience == '1-5'){echo 'selected';} ?> >1-5</option>
                                     <option <?php if(Auth::user()->year_of_experience == '5-10'){echo 'selected';} ?> >5-10</option>
                                     <option <?php if(Auth::user()->year_of_experience == '10+'){echo 'selected';} ?> >10+</option>
-                                </select>   
-                                
-                                 
+                                </select>
+
+
                                 <br><br>
-                                
+
                                 <label for="">Level of Education :</label>
                                 <select name="loe" class="form-control">
                                     <option <?php if(Auth::user()->loe == 'None'){echo 'selected';} ?> >None</option>
@@ -330,8 +330,8 @@ li.nav-item.active {
                                     <option <?php if(Auth::user()->loe == 'B.A./B.S.'){echo 'selected';} ?> >B.A./B.S.</option>
                                     <option <?php if(Auth::user()->loe == 'M.A./M.S.'){echo 'selected';} ?> >M.A./M.S.</option>
                                     <option <?php if(Auth::user()->loe == 'Ph.D./Ed.D.'){echo 'selected';} ?> >Ph.D./Ed.D.</option>
-                                </select>  
-                                
+                                </select>
+
                             </div>
 
                             <div class="post">
@@ -343,7 +343,7 @@ li.nav-item.active {
                     </div>
                     <div class="write-jus">
 
-                       
+
                     </div>
                 </div>
 
@@ -356,7 +356,7 @@ li.nav-item.active {
 
             </div>
 
-            
+
         </div>
     </div>
 
@@ -419,33 +419,33 @@ li.nav-item.active {
 
 
 <script>
-    
+
     $(document).ready(function(){
-        
-        $('#show_current_work').hide(); 
-        
+
+        $('#show_current_work').hide();
+
         $('#dycw').change(function(){
-            
+
             var get_sel = $('#dycw').val();
-            
+
             // alert(get_sel);
-            
+
             if(get_sel == "Yes")
             {
-                $('#show_current_work').show(500); 
+                $('#show_current_work').show(500);
             }
             else if(get_sel == "No"){
-                
-                $('#show_current_work').hide(500); 
+
+                $('#show_current_work').hide(500);
             }
              else if(get_sel == "Select"){
-                
-                $('#show_current_work').hide(500); 
+
+                $('#show_current_work').hide(500);
             }
-            
-                
+
+
         });
-       
+
     });
-    
+
 </script>

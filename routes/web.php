@@ -33,8 +33,6 @@ if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
 
 
 
-
-
 //===================== Admin Routes =====================//
 
 Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'admin'], function () {
@@ -260,6 +258,7 @@ Route::post('order-search','LoggedInController@orderSearch')->name('order-search
 Route::get('provider_dashboard','HomeController@provider_dashboard')->name('provider_dashboard');
 Route::get('add-job','HomeController@add_job')->name('add_job');
 Route::get('view-job','HomeController@view_job')->name('view_job');
+Route::get('job-details','HomeController@getJobDetails')->name('get_job_details');
 Route::get('edit-job/{id?}','HomeController@edit_job')->name('edit_job');
 Route::get('delete_job/{id?}','HomeController@delete_job')->name('delete_job');
 

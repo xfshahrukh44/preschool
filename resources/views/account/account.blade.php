@@ -52,39 +52,49 @@
                         <div class="row">
                             @include('account.sidebar')
                             <!-- My Account Tab Menu End -->
-    
+
                             <!-- My Account Tab Content Start -->
                             <div class="col-lg-9 col-md-8">
                                 <div class="tab-content" id="myaccountContent">
-                                   
+
                                    <!-- Single Tab Content Start -->
                                     <div class="tab-pane active" id="account-info" role="tabpanel">
                                         <div class="myaccount-content">
                                             <!--<div class="section-heading">-->
                                             <!--    <h4 style="color:#000; font-weight:bold;">Account Details</h4>-->
                                             <!--</div>-->
-    
+
                                             <div class="account-details-form">
                                                <form action="{{ route('update.account') }}" method="post" enctype="multipart/form-data" id="accountForm">
                                                 @csrf
                                                     <div class="row">
-                                                    
+
                                                         <div class="col-lg-12">
                                                             <div class="single-input-item">
-                                                                <label for="last-name" class="required">Name</label>
-                                                                <input type="text" class="form-control" id="last-name" name="uname" placeholder="Last Name" value="<?php echo Auth::user()->name; ?>">
+                                                                <label for="last-name" class="required">Fisrt Name</label>
+                                                                <input type="text" class="form-control" id="last-name" name="name" placeholder="First Name" value="<?php echo Auth::user()->name; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
-    
+
+                                                    <div class="row">
+
+                                                        <div class="col-lg-12">
+                                                            <div class="single-input-item">
+                                                                <label for="last-name" class="required">Last Name</label>
+                                                                <input type="text" class="form-control" id="last-name" name="lname" placeholder="Last Name" value="<?php echo Auth::user()->lname; ?>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="single-input-item">
                                                         <label for="email" class="required">Email Addres</label>
                                                         <input type="email" id="email" class="form-control" placeholder="Email Address" name="email" value="<?php echo Auth::user()->email; ?>">
                                                     </div>
-    
+
                                                     <fieldset>
                                                         <legend>Password change</legend>
-    
+
                                                         <div class="row">
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
@@ -92,7 +102,7 @@
                                                                     <input type="password" class="form-control" id="new-pwd" placeholder="New Password" name="password">
                                                                 </div>
                                                             </div>
-    
+
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
                                                                     <label for="confirm-pwd" class="required">Confirm Password</label>
@@ -101,7 +111,7 @@
                                                             </div>
                                                         </div>
                                                     </fieldset>
-    
+
                                                     <div class="single-input-item">
                                                         <button class="check-btn sqr-btn btn btn-red" id="updateProfile">Save Changes</button>
                                                     </div>
@@ -109,8 +119,8 @@
                                             </div>
                                         </div>
                                     </div> <!-- Single Tab Content End -->
-    
-                                    
+
+
                                 </div>
                             </div> <!-- My Account Tab Content End -->
                         </div>
@@ -122,7 +132,7 @@
     <!-- my account wrapper end -->
 
 
-<!-- main content end -->   
+<!-- main content end -->
 </main>
 
 <br><br><br>
@@ -130,8 +140,8 @@
 @endsection
 @section('css')
 <style type="text/css">
-    
-    
+
+
 	.about-sec-one {
         background-image: url('https://testdemowebsite-v1.com/custom-backend/preschool_portal/public/uploads/pages/9_(2)_1680636205.png');
         background-position: center;

@@ -22,7 +22,7 @@ use App\Childcare;
 
 
 class LoggedInController extends Controller
-{	
+{
 	use HelperTrait;
     /**
      * Create a new controller instance.
@@ -30,7 +30,7 @@ class LoggedInController extends Controller
      * @return void
      */
 	 // use Helper;
-	 
+
     public function __construct()
     {
 
@@ -40,11 +40,11 @@ class LoggedInController extends Controller
                      select('img_path')
                      ->where('table_name','=','logo')
                      ->first();
-             
+
 		$favicon = imagetable::
                      select('img_path')
                      ->where('table_name','=','favicon')
-                     ->first();	 
+                     ->first();
 
         View()->share('logo',$logo);
 		View()->share('favicon',$favicon);
@@ -52,10 +52,10 @@ class LoggedInController extends Controller
 
     }
 
-	
+
 	public function orders()
     {
-		
+
 		if(Auth::user()->role != "2"){
 
 			return redirect("/");
@@ -65,15 +65,15 @@ class LoggedInController extends Controller
 		$orders = orders::where('orders.user_id', Auth::user()->id)
 				->orderBy('orders.id', 'desc')
 				->get();
-		return view('account.orders',['ORDERS'=>$orders]); 
-		
+		return view('account.orders',['ORDERS'=>$orders]);
+
 	}
-	
+
 
 	public function account()
     {
 
-			
+
 		if(Auth::user()->role != "2"){
 
 			return redirect("/");
@@ -83,57 +83,57 @@ class LoggedInController extends Controller
 		$orders = orders::where('orders.user_id', Auth::user()->id)
 				->orderBy('orders.id', 'desc')
 				->get();
-		return view('account.index',['ORDERS'=>$orders]); 
-		
+		return view('account.index',['ORDERS'=>$orders]);
+
 	}
 
 
 	public function finddaycare()
-    { 
-        
+    {
+
         $check_is_paid = DB::table('users')->where('id',Auth::user()->id)->where('role','2')->where('status','1')->first();
-        
-        
+
+
         $search = "";
-        
+
         if(isset($_GET['search']))
-        {   
+        {
             $search = $_GET['search'];
             $childCare =  Childcare::where('city','LIKE',"%{$search}%")->orWhere('state','LIKE',"%{$search}%")->orWhere('name','LIKE',"%{$search}%")->orWhere('county','LIKE',"%{$search}%")->orWhere('program_type','LIKE',"%{$search}%")->where('status','1')->groupBy('name')->get();
-        
-        } 
-        
-	    return view('account.finddaycare',['amount'=>$check_is_paid , 'search'=>$search , 'childCare'=>$childCare]); 
-		
+
+        }
+
+	    return view('account.finddaycare',['amount'=>$check_is_paid , 'search'=>$search , 'childCare'=>$childCare]);
+
 	}
-	
-	
-	
-	
+
+
+
+
 	public function my_claimed_daycare()
-    { 
-        
+    {
+
         $climedchildCare = DB::table('childcares')->where('claimed_by_id',Auth::user()->id)->where('status','1')->get();
-     
-        
-	    return view('account.my_claimed_daycare', compact('climedchildCare')); 
-		 
+
+
+	    return view('account.my_claimed_daycare', compact('climedchildCare'));
+
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	public function update_daycare_center(Request $request)
     {
-        
-        
+
+
         $requestData = $request->all();
         $id = $request->id;
-        
+
 		if ($request->hasFile('feature_image')) {
-        
+
 
             $file = $request->file('feature_image');
             $fileNameExt = $request->file('feature_image')->getClientOriginalName();
@@ -145,13 +145,13 @@ class LoggedInController extends Controller
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 
 
-            $requestData['feature_image'] = 'uploads/feature_images/'.$fileNameToStore;               
-        
+            $requestData['feature_image'] = 'uploads/feature_images/'.$fileNameToStore;
+
 		}
-		
-		
+
+
 		if ($request->hasFile('other_image_one')) {
-        
+
 
             $file = $request->file('other_image_one');
             $fileNameExt = $request->file('other_image_one')->getClientOriginalName();
@@ -163,13 +163,13 @@ class LoggedInController extends Controller
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 
 
-            $requestData['other_image_one'] = 'uploads/other_image_one/'.$fileNameToStore;               
-        
+            $requestData['other_image_one'] = 'uploads/other_image_one/'.$fileNameToStore;
+
 		}
-		
-		
+
+
 		if ($request->hasFile('other_image_two')) {
-        
+
 
             $file = $request->file('other_image_two');
             $fileNameExt = $request->file('other_image_two')->getClientOriginalName();
@@ -181,24 +181,24 @@ class LoggedInController extends Controller
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 
 
-            $requestData['other_image_two'] = 'uploads/other_image_two/'.$fileNameToStore;               
-        
+            $requestData['other_image_two'] = 'uploads/other_image_two/'.$fileNameToStore;
+
 		}
-        
-        
+
+
         $requestData['claim_status'] = "2";
         $requestData['claimed_by_id'] = auth()->user()->id;
-        
-        
+
+
         $childcareupdate = Childcare::findOrFail($id);
         $childcareupdate->update($requestData);
-        
+
         return redirect()->back()->with('message', 'You are successfully claimed daycare center');
-       
+
     }
-    
-   
-    
+
+
+
     public function orderSearch(Request $request){
         $user = User::where('id',Auth::user()->id)->first();
         $insertArr = array();
@@ -209,68 +209,68 @@ class LoggedInController extends Controller
         $insertArr['payer_id'] = $request->payer_id;
         $insertArr['paypal_token'] = $request->_token;
         $insertArr['payment_status'] = $request->payment_status;
-        
+
         DB::table('users')
 		->where('id', Auth::user()->id)
 		->update(
 					$insertArr
 				);
-		Session::flash('message', 'Your Payment Successfull'); 
-		Session::flash('alert-class', 'alert-success'); 
-		return back();	
+		Session::flash('message', 'Your Payment Successfull');
+		Session::flash('alert-class', 'alert-success');
+		return back();
     }
-		
+
 	public function update_profile(Request $request) {
-		
+
 		$user = DB::table('profiles')->where('id', Auth::user()->id)->first();
-		
+
 		$validateArr = array();
 		$messageArr = array();
 		$insertArr = array();
-		$validateArr = [ 
+		$validateArr = [
 
 			'uname' => 'required',
 			'email' => array(),
-			
+
 		 ];
-		 
+
 		 if($user->email != $_POST['email']) {
 			$validateArr['email'] = 'required|unique:users,email,NULL,id';
 		 }
 
 		if(trim($_POST['password']) != "") {
-		
-			$validateArr['password'] = 'required|min:6|confirmed'; 
-            $validateArr['password_confirmation'] = 'required|min:6'; 
+
+			$validateArr['password'] = 'required|min:6|confirmed';
+            $validateArr['password_confirmation'] = 'required|min:6';
 		}
-		
+
 		$this->validate($request,$validateArr,$messageArr);
-		
-		$insertArr['name'] = $_POST['uname'];	
+
+		$insertArr['name'] = $_POST['uname'];
 		$insertArr['email'] = $_POST['email'];
-	
+
 		if(trim($_POST['password']) != "") {
 				$insertArr['password'] = Hash::make($_POST['password']);
 		}
-			
+
 		DB::table('users')
 		->where('id', Auth::user()->id)
 		->update(
 					$insertArr
 				);
-					
-					
-		Session::flash('message', 'Your Profile Settings has been changed'); 
-		Session::flash('alert-class', 'alert-success'); 
-		return back();			
-		
+
+
+		Session::flash('message', 'Your Profile Settings has been changed');
+		Session::flash('alert-class', 'alert-success');
+		return back();
+
 	}
 
 
-	public function uploadPicture(Request $request) {	
+	public function uploadPicture(Request $request) {
 
 		$user = DB::table('profiles')->where('id', Auth::user()->id)->first();
-	
+
         if ($file = $request->file('pic')) {
             $extension = $file->extension()?: 'jpg|png';
             $destinationPath = public_path() . '/storage/uploads/users/';
@@ -292,44 +292,45 @@ class LoggedInController extends Controller
 						$insertArr
 					);
 
-		Session::flash('message', 'Your Profile has been changed'); 
-		Session::flash('alert-class', 'alert-success'); 
-		return back();			
+		Session::flash('message', 'Your Profile has been changed');
+		Session::flash('alert-class', 'alert-success');
+		return back();
 
 	}
 
-    public function updateAccount(Request $request) { 
+    public function updateAccount(Request $request) {
 
 		$user = DB::table('users')->where('id', Auth::user()->id)->first();
-		
-		$insertArr['name'] = $_POST['name']; 
+
+		$insertArr['name'] = $_POST['name'];
+		$insertArr['lname'] = $_POST['lname'];
 		$insertArr['email'] = $_POST['email'];
-		
-		
+
+
 		$password = $_POST['password'];
 		$confirmpass = $_POST['password_confirmation'];
 		  if($password == $confirmpass ){
 		if(trim($_POST['password']) != "") {
 		  $insertArr['password'] = Hash::make($_POST['password']);
-		} 
+		}
 		DB::table('users')
 		->where('id', Auth::user()->id)
 		->update(
 		   $insertArr
 		  );
-	  
-		Session::flash('message', 'Your password settings has been changed'); 
-		Session::flash('alert-class', 'alert-success'); 
-		return back();   
+
+		Session::flash('message', 'Your password settings has been changed');
+		Session::flash('alert-class', 'alert-success');
+		return back();
 		  }
 		  else{
-		   
-		   Session::flash('flash_message', 'Password do not match'); 
-		Session::flash('alert-class', 'alert-danger'); 
-		return back(); 
-		   
+
+		   Session::flash('flash_message', 'Password do not match');
+		Session::flash('alert-class', 'alert-danger');
+		return back();
+
 		  }
-		   
+
 	   }
 
 
@@ -346,11 +347,11 @@ class LoggedInController extends Controller
 		$orders = orders::where('orders.user_id', Auth::user()->id)
 						->orderBy('orders.id', 'desc')
 						->get();
-		
-		return view('account.account',['ORDERS'=>$orders]); 
-		
+
+		return view('account.account',['ORDERS'=>$orders]);
+
 	}
-	
+
 
 
 	public function invoice($id)
@@ -362,33 +363,33 @@ class LoggedInController extends Controller
 
 		}
 
-		
+
 		$order_id = $id;
 		$order = orders::where('id',$order_id)->first();
 		$order_products = orders_products::where('orders_id',$order_id)->get();
-		
-		return view('account.invoice')->with('title','Invoice #'.$order_id)->with(compact('order','order_products'))->with('order_id',$order_id);; 
+
+		return view('account.invoice')->with('title','Invoice #'.$order_id)->with(compact('order','order_products'))->with('order_id',$order_id);;
 	}
 
 
 
 
 
-	public function update_profile2(Request $request) {	
+	public function update_profile2(Request $request) {
 
 
 
 		$requestData = $request->all();
 // 		dd($requestData);
-		
+
 		$users = User::where('id', $request->id)->first();
-		$image_path = public_path($users->image); 
-		$banner_image_path = public_path($users->banner_image); 
+		$image_path = public_path($users->image);
+		$banner_image_path = public_path($users->banner_image);
 
 
 		if ($request->hasFile('image')) {
-            
-    
+
+
             if(File::exists($image_path)) {
                 File::delete($image_path);
             }
@@ -407,14 +408,14 @@ class LoggedInController extends Controller
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 
 
-            $requestData['image'] = 'uploads/users/'.$fileNameToStore;               
-        
+            $requestData['image'] = 'uploads/users/'.$fileNameToStore;
+
 		}
 
 
-		
+
 		if ($request->hasFile('banner_image')) {
-            
+
 
 			if(File::exists($banner_image_path)) {
                 File::delete($banner_image_path);
@@ -430,22 +431,22 @@ class LoggedInController extends Controller
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 
 
-            $requestData['banner_image'] = 'uploads/users/'.$fileNameToStore;               
-        
+            $requestData['banner_image'] = 'uploads/users/'.$fileNameToStore;
+
 		}
 
 		if($request->password != ''){
-        
+
 			$requestData['password'] = Hash::make($request->password);
-		
+
 		}
 
 		$users = User::findOrFail($request->id);
 		$users->update($requestData);
 
-		
-		Session::flash('message', 'Teacher Profile has been Updated Successfully'); 
-		Session::flash('alert-class', 'alert-success'); 
+
+		Session::flash('message', 'Teacher Profile has been Updated Successfully');
+		Session::flash('alert-class', 'alert-success');
 	   	return back();
 
 	}
@@ -459,15 +460,15 @@ class LoggedInController extends Controller
 
 		$requestData = $request->all();
         // dd($requestData);
-		
+
 		$users = User::where('id', $request->id)->first();
-		$image_path = public_path($users->image); 
-		$banner_image_path = public_path($users->banner_image); 
+		$image_path = public_path($users->image);
+		$banner_image_path = public_path($users->banner_image);
 
 
 		if ($request->hasFile('image')) {
-            
-    
+
+
             if(File::exists($image_path)) {
                 File::delete($image_path);
             }
@@ -486,14 +487,14 @@ class LoggedInController extends Controller
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 
 
-            $requestData['image'] = 'uploads/users/'.$fileNameToStore;               
-        
+            $requestData['image'] = 'uploads/users/'.$fileNameToStore;
+
 		}
 
 
-		
+
 		if ($request->hasFile('banner_image')) {
-            
+
 
 			if(File::exists($banner_image_path)) {
                 File::delete($banner_image_path);
@@ -509,8 +510,8 @@ class LoggedInController extends Controller
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 
 
-            $requestData['banner_image'] = 'uploads/users/'.$fileNameToStore;               
-        
+            $requestData['banner_image'] = 'uploads/users/'.$fileNameToStore;
+
 		}
 
         $requestData['password'] = Hash::make($request->password);
@@ -521,34 +522,34 @@ class LoggedInController extends Controller
         $requestData['age_accepted'] = implode(',', $requestData['age_accepted']);
         $requestData['types_of_care_provided'] = implode(',', $requestData['types_of_care_provided']);
 		$users->update($requestData);
-		
 
-		Session::flash('message', 'Provider Profile has been Updated Successfully'); 
-		Session::flash('alert-class', 'alert-success'); 
+
+		Session::flash('message', 'Provider Profile has been Updated Successfully');
+		Session::flash('alert-class', 'alert-success');
 	   	return back();
 
 	}
 
 
-	
+
 
 	public function friends()
     {
-		return view('account.friends'); 
-		
+		return view('account.friends');
+
 	}
 
 	public function upload()
     {
-		return view('account.upload'); 
-		
+		return view('account.upload');
+
 	}
 
 	public function password()
     {
-		return view('account.password'); 
-		
+		return view('account.password');
+
 	}
-	
-}	
-	
+
+}
+

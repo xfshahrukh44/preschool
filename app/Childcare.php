@@ -26,7 +26,7 @@ class Childcare extends Model
      * @var array
      */
 
-    protected $fillable = ['name', 'county', 'program_type', 'licence_sub_type', 'email_address' , 'physical_address','city','state','zip','phone','is_vpk','services', 'description', 'feature_image', 'other_image_one', 'other_image_two', 'claim_status', 'claimed_by_id', 'timings', 'location_iframe'];
+    protected $fillable = ['name', 'county', 'program_type', 'licence_sub_type', 'email_address' , 'physical_address','city','state','zip','phone','is_vpk','services', 'description', 'feature_image', 'other_image_one', 'other_image_two', 'claim_status', 'claimed_by_id', 'timings', 'location_iframe', 'age_accepted'];
 
 
 }

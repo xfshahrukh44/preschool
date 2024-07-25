@@ -5,7 +5,7 @@
 /vendor
 /DB
 /db_file
-/publicuploads
+/public/uploads
 .env.backup
 .phpunit.result.cache
 Homestead.json
@@ -16,3 +16,4 @@ yarn-error.log
 *.zip
 *.mp4
 *.sql
+composer.lock

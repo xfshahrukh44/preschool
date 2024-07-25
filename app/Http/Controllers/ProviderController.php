@@ -17,6 +17,7 @@ class ProviderController extends Controller
         $this->middleware('provider');
     }
 
+
     public function dashboard ()
     {
         $page = DB::table('pages')->where('id', 7)->first();
@@ -119,6 +120,11 @@ class ProviderController extends Controller
 
             $requestData['other_image_two'] = 'uploads/other_image_two/'.$fileNameToStore;
 
+        }
+
+        if($request->input('age_accepted')){
+            $ageAccepted = implode(',', $request->input('age_accepted'));
+            $requestData['age_accepted'] = $ageAccepted;
         }
 
 

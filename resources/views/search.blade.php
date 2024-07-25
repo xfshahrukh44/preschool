@@ -65,7 +65,12 @@ a.btn.btn-secondary {
                 <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
 
 {{--                    <h2>Daycare Center</h2>--}}
-                    <h2>Childcare Provider Search</h2>
+{{--                    <h2>Childcare Provider Search</h2>--}}
+                    <h2>
+                        <span style="font-family:Comic Sans MS,cursive; color:#000;">
+                            <strong>Childcare Provider Search</strong>
+                        </span>
+                    </h2>
 
                 </div>
             </div>
@@ -118,6 +123,13 @@ a.btn.btn-secondary {
               @php
                   $search = request()->has('search') ? '?search=' . request()->get('search') : '';
               @endphp
+              @if(!count($search_result))
+                  <tr>
+                      <td colspan="9999999" class="text-center">
+                          No daycares found
+                      </td>
+                  </tr>
+              @endif
             @foreach($search_result as $key => $val_search)
 
               <tr>

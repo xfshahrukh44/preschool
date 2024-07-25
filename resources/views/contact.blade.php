@@ -75,7 +75,7 @@
                            <br><br>
   
                            <div class="col-lg-12" style="margin-top: 20px">
-                                <input type="text" class="form-control" name="lname" placeholder="First name" required="">
+                                <input type="text" class="form-control" name="lname" placeholder="Last name" required="">
                             </div>
                             
                            <br><br>

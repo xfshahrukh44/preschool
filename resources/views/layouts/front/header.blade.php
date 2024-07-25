@@ -48,7 +48,7 @@ header {
                                 <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item <?php if($segment == "about"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('about')}}">About</a>
+                                <a class="nav-link" href="{{route('about')}}">About Us</a>
                             </li>
                             <!--<li class="nav-item <?php if($segment == "teacher"){ echo 'active'; } ?>">-->
                             <!--    <a class="nav-link" href="{{route('teacher')}}">Teacher</a>-->

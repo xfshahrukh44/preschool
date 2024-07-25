@@ -303,7 +303,7 @@
                         <h2 class="heading-2" style="color:#000;">About the facility</h2>
                         <!--<h6 class="heading-6">Renaissance North Tampa</h6>-->
                         <h4>Provider information</h4>
-                        @if($claimant->name)
+                        @if($clahimant->name)
                             <b>Name: </b> {{$claimant->name}}
                             <br />
                         @endif

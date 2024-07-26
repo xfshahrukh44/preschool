@@ -88,6 +88,16 @@ use DateTime;
         width: 65rem;
     }
 
+    /*select2 css*/
+    span.select2.select2-container.select2-container--default {
+        width: 100% !important;
+        margin-top: 10px;
+    }
+
+    textarea.select2-search__field {
+        font-size: 15px !important;
+    }
+
 </style>
 
 <body>
@@ -166,6 +176,13 @@ use DateTime;
 
                             <div class="row justify-content-center">
                                 <div class="col-lg-6">
+                                    <form action="{{route('add_post')}}" method="GET">
+                                        <div class="row m-auto px-5" style="background-color: #f5f7fc;">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control mt-4" placeholder="Search posts (press enter to search)" name="search" value="{{request()->get('search')}}" style="border: 1px solid #bad234;">
+                                            </div>
+                                        </div>
+                                    </form>
                                     <div class="write-in">
 
                                         <form action="{{route('teacher_create_new_post')}}" id="save_post" method="post"
@@ -202,11 +219,24 @@ use DateTime;
                                                         <div class="commentbox">
                                                             <h4>
                                                                 <input type="text" name="post"
-                                                                       placeholder="Write Comment"
+                                                                       placeholder="Write Comment / Picture title"
                                                                        style="height: 30px; !important; font-size: 15px;"
                                                                        required>
+{{--                                                                <br>--}}
+
+{{--                                                                <select name="tags" id="tags" multiple--}}
+{{--                                                                        class="mt-4" id="tags">--}}
+{{--                                                                </select>--}}
+{{--                                                                <input type="text" name="tags"--}}
+{{--                                                                       class="mt-4" id="tags"--}}
+{{--                                                                       placeholder="Add tags"--}}
+{{--                                                                       style="height: 30px; !important; font-size: 15px;"--}}
+{{--                                                                       required>--}}
                                                             </h4>
                                                         </div>
+{{--                                                        <div class="row">--}}
+{{--                                                            <h1>ad</h1>--}}
+{{--                                                        </div>--}}
                                                     </div>
 
                                                 </div>
@@ -547,6 +577,14 @@ use DateTime;
 
 
 <script>
+    $(document).ready(() => {
+        $('#tags').select2({
+            tags: true,
+            placeholder: "Add tags to your post",
+            allowClear: true
+        });
+    });
+
     $("#save_post").submit(function (e) {
         e.preventDefault();
         var formData = new FormData(this);

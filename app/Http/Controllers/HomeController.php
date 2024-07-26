@@ -309,7 +309,11 @@ class HomeController extends Controller
 
 
 //       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
-        $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')->get();
+        $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
+            ->when(request()->has('search'), function ($q) {
+                return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
+            })
+            ->get();
 //       $get_all_teachers = DB::table('users')->where('role','3')->get();
         $get_all_teachers = DB::table('users')->where('role', Auth::user()->role)->get();
         //$post_user_profile = User::find($get_last_post->user_id)->image;

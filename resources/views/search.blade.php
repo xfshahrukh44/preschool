@@ -191,6 +191,13 @@
                         <button type="submit" class="btn btn-block"><i class="fas fa-search"></i></button>
                     </form>
 
+
+                    <hr>
+                        <span>
+                            Don't see your center listed?
+                            <a href="{{ route('joinnow') }}">Enroll now</a>
+                            to create your profile and start advertising and placing ads
+                        </span>
                     <hr>
 
                 </div>

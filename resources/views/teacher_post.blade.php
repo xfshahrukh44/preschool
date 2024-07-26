@@ -98,6 +98,25 @@ use DateTime;
         font-size: 15px !important;
     }
 
+    .select2-selection__clear span {
+        font-size: 15px !important;
+        color: white !important;
+    }
+
+    .select2-selection__choice__remove span {
+        font-size: 15px !important;
+        color: white !important;
+    }
+
+    .select2-selection__choice span {
+        font-size: 15px !important;
+        color: white !important;
+    }
+
+    li.select2-selection__choice {
+        background-color: #bad234 !important;
+    }
+
 </style>
 
 <body>
@@ -179,7 +198,7 @@ use DateTime;
                                     <form action="{{route('add_post')}}" method="GET">
                                         <div class="row m-auto px-5" style="background-color: #f5f7fc;">
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control mt-4" placeholder="Search posts (press enter to search)" name="search" value="{{request()->get('search')}}" style="border: 1px solid #bad234;">
+                                                <input type="text" class="form-control mt-4" placeholder="Search posts (press enter to search)" name="search" value="{{request()->get('search')}}" style="border: 1px solid #bad234; border-radius: 18px;">
                                             </div>
                                         </div>
                                     </form>
@@ -222,10 +241,10 @@ use DateTime;
                                                                        placeholder="Write Comment / Picture title"
                                                                        style="height: 30px; !important; font-size: 15px;"
                                                                        required>
-{{--                                                                <br>--}}
+                                                                <br>
 
-{{--                                                                <select name="tags" id="tags" multiple--}}
-{{--                                                                        class="mt-4" id="tags">--}}
+{{--                                                                <select name="tags[]" id="tags" multiple--}}
+{{--                                                                        class="mt-4">--}}
 {{--                                                                </select>--}}
 {{--                                                                <input type="text" name="tags"--}}
 {{--                                                                       class="mt-4" id="tags"--}}

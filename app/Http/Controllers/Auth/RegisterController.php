@@ -71,7 +71,6 @@ class RegisterController extends Controller
     {
         $validator = $this->validator($request->all());
         if($validator->fails()){
-            dd($validator->errors());
             return redirect()->back()->withInput()->withErrors($validator, 'registerForm');
         }
 

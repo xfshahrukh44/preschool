@@ -330,8 +330,9 @@
                                     <input type="text" class="form-control" name="name" placeholder="Business Name"
                                            required="">
                                 </div>
+{{--                                @dd($errors->registerForm->get('email')[0])--}}
                                 @if ($errors->registerForm->has('name'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('name') }}</small>
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('name')[0] }}</small>
                                 @endif
 
                                 <div class="col-lg-6 pl-lg-1 pl-md-1">
@@ -339,7 +340,7 @@
                                            placeholder="Business Phone  Number" required="">
                                 </div>
                                 @if ($errors->registerForm->has('phone'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('phone') }}</small>
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('phone')[0] }}</small>
                                 @endif
 
                                 <div class="col-lg-12 mt-3">
@@ -347,7 +348,7 @@
 {{--                                    <input type="text" class="form-control" name="address" placeholder="Business Address" required="">--}}
                                 </div>
                                 @if ($errors->registerForm->has('address'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('address') }}</small>
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('address')[0] }}</small>
                                 @endif
 
                                 <div class="col-lg-6 mt-3">
@@ -355,7 +356,7 @@
                                            required="">
                                 </div>
                                 @if ($errors->registerForm->has('email'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('email') ?? '' }}</small>
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('email')[0] ?? '' }}</small>
                                 @endif
 
                                 <div class="col-lg-6 mt-3">
@@ -363,7 +364,7 @@
                                            required="">
                                 </div>
                                 @if ($errors->registerForm->has('password'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('password') }}</small>
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('password')[0] }}</small>
                                 @endif
 
 {{--                                <div class="col-lg-4 mt-3">--}}
@@ -374,7 +375,7 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
 {{--                                @if ($errors->registerForm->has('hour_open'))--}}
-{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('hour_open') }}</small>--}}
+{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->registerForm->first('hour_open') }}</small>--}}
 {{--                                @endif--}}
 
                                 <div class="col-lg-12 mt-3">
@@ -390,7 +391,7 @@
                                     </div>
                                 </div>
                                 @if ($errors->registerForm->has('age_accepted'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('age_accepted') }}</small>
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('age_accepted')[0] }}</small>
                                 @endif
                                 
                                 
@@ -407,7 +408,7 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
 {{--                                @if ($errors->registerForm->has('position_accepted'))--}}
-{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('position_accepted') }}</small>--}}
+{{--                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->registerForm->first('position_accepted') }}</small>--}}
 {{--                                @endif--}}
 
 
@@ -416,7 +417,7 @@
                                               rows="6" placeholder="Tell us about Business?"></textarea>
                                 </div>
                                 @if ($errors->registerForm->has('about'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('about') }}</small>
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('about')[0] }}</small>
                                 @endif
 
                                 <div class="form-group col-lg-12 mt-3">
@@ -425,7 +426,7 @@
                                               placeholder="How did you hear about preschool portal?"></textarea>
                                 </div>
                                 @if ($errors->registerForm->has('about_preschool'))
-                                    <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->registerForm->first('about_preschool') }}</small>
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('about_preschool')[0] }}</small>
                                 @endif
 
                                 <div class="form-group col-lg-12 mt-3">

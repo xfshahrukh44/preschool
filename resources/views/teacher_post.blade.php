@@ -326,9 +326,9 @@ use DateTime;
 
                                                     <?php }else{ ?>
 
-                                                    <button class="btn btn-secondary" style="right:50px;"
-                                                            onClick="add_pined_post('{{$val_get_last->id}}')"><span
-                                                                class="fa fa-thumbtack"> </span></button>
+{{--                                                    <button class="btn btn-secondary" style="right:50px;"--}}
+{{--                                                            onClick="add_pined_post('{{$val_get_last->id}}')"><span--}}
+{{--                                                                class="fa fa-thumbtack"> </span></button>--}}
 
                                                     <?php } ?>
 
@@ -378,6 +378,29 @@ use DateTime;
                                                     <button href="" style="pointer-events:none;" class="but0 but2">
                                                         Comment ({{$get_comment_count}})
                                                     </button>
+
+
+                                                    <?php
+
+                                                    $get_post = DB::table("pined_posts")->where('post_id', $val_get_last->id)->where('user_id', Auth::user()->id)->count();
+                                                    // dump($get_post);
+
+                                                    if($get_post > '0'){
+
+                                                    ?>
+
+                                                        <button onClick="delete_pined_post('{{$val_get_last->id}}')" href="" style="width: 20px;" class="but0 but2 btn-dark">
+                                                            <i class="fa fa-thumbtack"></i>
+                                                        </button>
+
+                                                    <?php }else{ ?>
+
+
+                                                        <button onClick="add_pined_post('{{$val_get_last->id}}')" href="" style="width: 20px;" class="but0 but2">
+                                                            <i class="fa fa-thumbtack"></i>
+                                                        </button>
+
+                                                    <?php } ?>
                                                     <!-- <button href="" class="but0 but2">Share</button> -->
 
                                                 </div>

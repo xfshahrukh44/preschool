@@ -288,6 +288,38 @@ class HomeController extends Controller
         return view('teacher_dashboard', compact('get_all_teacher', 'get_last_post'));
     }
 
+    public function connect($id)
+    {
+        $user = auth()->user();
+
+        if ($user->id == $id) {
+            return response()->json(['error' => 'Cannot connect to yourself.'], 400);
+        }
+
+        $connectedTeacher = User::find($id);
+
+        if ($connectedTeacher) {
+            $user->connectedTeachers()->attach($id);
+            return response()->json(['success' => 'Connected with teacher.', 'user_id' => $connectedTeacher->id]);
+        }
+
+        return response()->json(['error' => 'Teacher not found.'], 404);
+    }
+
+    public function remove($id)
+    {
+        $user = auth()->user();
+
+        $connectedTeacher = User::find($id);
+
+        if ($connectedTeacher) {
+            $user->connectedTeachers()->detach($id);
+            return response()->json(['success' => 'Teacher removed.', 'user_id' => $connectedTeacher->id]);
+        }
+
+        return response()->json(['error' => 'Teacher not found.'], 404);
+    }
+
 
     public function my_pinned()
     {
@@ -307,15 +339,30 @@ class HomeController extends Controller
             return redirect("/");
         }
 
+        if(Auth::user()->role == "3"){
+            $connectedTeacherIds = Auth::user()->connectedTeachers->pluck('id');
+            $get_all_teachers = DB::table('users')->whereIn('id', $connectedTeacherIds)->get();
+            $connectedTeacherIds[] = Auth::user()->id;
 
-//       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
-        $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
-            ->when(request()->has('search'), function ($q) {
-                return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
-            })
-            ->get();
-//       $get_all_teachers = DB::table('users')->where('role','3')->get();
-        $get_all_teachers = DB::table('users')->where('role', Auth::user()->role)->get();
+    //       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
+            $get_last_post = Post::where('role_id', Auth::user()->role)->whereIn('user_id', $connectedTeacherIds)->orderBy('id', 'desc')
+                ->when(request()->has('search'), function ($q) {
+                    return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
+                })
+                ->get();
+    //       $get_all_teachers = DB::table('users')->where('role','3')->get();
+
+
+        }else{
+            $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
+                ->when(request()->has('search'), function ($q) {
+                    return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
+                })
+                ->get();
+    //       $get_all_teachers = DB::table('users')->where('role','3')->get();
+
+            $get_all_teachers = DB::table('users')->where('role_id', Auth::user()->role)->get();
+        }
         //$post_user_profile = User::find($get_last_post->user_id)->image;
         //$dayago = Carbon::parse($post_user_profile->created_at)->diffForHumans();
 

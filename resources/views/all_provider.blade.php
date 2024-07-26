@@ -1,6 +1,6 @@
-    
+
     <?php $get_all_teachers = DB::table('users')->where('role','4')->get()?>
-    
+
     <div class="sidebarleft">
 
         <div class="most">
@@ -17,7 +17,7 @@
                     @else
                     <img src="{{asset('images/commentimage1.png')}}" class="img-fluid">
                     @endif
-                    
+
                     <h6> {{$val_teacher->name}} <img src="{{asset('images/dotgreen.png')}}" class="img-fluid"></h6>
 
                 </li>
@@ -25,5 +25,5 @@
             </ul>
 
         </div>
- 
+
     </div>

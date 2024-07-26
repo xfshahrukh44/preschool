@@ -87,7 +87,7 @@ header {
 
                             @if(Auth::check() && Auth::user()->role == '4')
                             <li class="nav-item <?php if($segment == "job-board"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('job_board')}}"> View Job Board </a>
+                                <a class="nav-link" href="{{route('job_board')}}"> View Bulletin Board </a>
                             </li>
                             @endif
 

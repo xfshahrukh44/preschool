@@ -385,7 +385,7 @@ use DateTime;
                     $('#prog').show();
 
                     setTimeout(function () {
-                        // alert("sd");    
+                        // alert("sd");
 
                         $('#prog').hide();
                         toastr.success(response.message);
@@ -442,7 +442,7 @@ use DateTime;
                             <h4> {{'${data.user_name}'}} <span> {{'${dayago}'}} </span></h4>
 
                             <button class="btn btn-danger" style="position:absolute; right:50px;" onClick="delete_post({{'${data.id}'}})"> <span class="fa fa-trash" > </span> </button>
-                            
+
                         </div>
 
                         <div class="newfeed-image">
@@ -453,9 +453,9 @@ use DateTime;
 
                         `+post_image_string+`
 
-                         
+
                         <hr>
-             
+
 
                         </div>`
                     );
@@ -472,8 +472,8 @@ use DateTime;
 
 
     // setInterval(function(){
-    //     // alert("sd");    
-    //     $(".comment_div").load(location.href+" .comment_div>*","");   
+    //     // alert("sd");
+    //     $(".comment_div").load(location.href+" .comment_div>*","");
 
     // }, 5000);
 
@@ -484,7 +484,7 @@ use DateTime;
     //     setTimeout(function(){
 
     //         $('#prog').hide();
-    //         // $(".comment_div").load(location.href+" .comment_div>*",""); 
+    //         // $(".comment_div").load(location.href+" .comment_div>*","");
 
 
     //     }, 3000);
@@ -518,7 +518,7 @@ use DateTime;
 
 
                     setTimeout(function () {
-                        // alert("sd");    
+                        // alert("sd");
 
                         $('#prog').hide();
                         toastr.success(response.message);
@@ -563,7 +563,7 @@ use DateTime;
 
 
                     setTimeout(function () {
-                        // alert("sd");    
+                        // alert("sd");
 
                         $('#prog').hide();
                         toastr.success(response.message);
@@ -582,5 +582,67 @@ use DateTime;
 
 
     get_last_post();
+
+    $(document).ready(function() {
+        // Use event delegation to handle dynamic forms
+        $(document).on('submit', 'form.connect-form', function(e) {
+            e.preventDefault();
+
+            var $form = $(this);
+            var actionUrl = $form.attr('action');
+
+            $.ajax({
+                url: actionUrl,
+                type: 'POST',
+                data: $form.serialize(),
+                success: function(response) {
+                    var url = "{{ url('teacher/remove/') }}/" + response.user_id;
+                    $form.find('button').attr('disabled', true);
+
+                    var $listItem = $form.closest('li');
+                    $listItem.find('form.remove-form').remove(); // Ensure only one remove form is present
+                    $listItem.append('<form action="'+ url +'" method="POST" class="remove-form" style="display:inline;">' +
+                        '@csrf' +
+                        '<button type="submit" class="btn btn-danger btn-small">Remove</button>' +
+                    '</form>');
+                    $form.remove();
+                },
+                error: function(xhr) {
+                    alert('Failed to connect. Please try again.');
+                }
+            });
+        });
+
+        $(document).on('submit', 'form.remove-form', function(e) {
+            e.preventDefault();
+
+            var $form = $(this);
+            var actionUrl = $form.attr('action');
+
+            $.ajax({
+                url: actionUrl,
+                type: 'POST',
+                data: $form.serialize(),
+                success: function(response) {
+                    var $listItem = $form.closest('li');
+                    $form.find('button').attr('disabled', true);
+                    var url = "{{ url('teacher/connect/') }}/" + response.user_id;
+                    $form.remove();
+
+                    if ($listItem.find('form.connect-form').length === 0) {
+                        $listItem.append('<form action="'+ url +'" method="POST" class="connect-form" style="display:inline;">' +
+                            '@csrf' +
+                            '<button type="submit" class="btn btn-primary btn-small">Connect</button>' +
+                        '</form>');
+                    }
+                },
+                error: function(xhr) {
+                    alert('Failed to remove. Please try again.');
+                }
+            });
+        });
+    });
+
+
 
 </script>

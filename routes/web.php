@@ -261,6 +261,8 @@ Route::get('view-job','HomeController@view_job')->name('view_job');
 Route::get('job-details','HomeController@getJobDetails')->name('get_job_details');
 Route::get('edit-job/{id?}','HomeController@edit_job')->name('edit_job');
 Route::get('delete_job/{id?}','HomeController@delete_job')->name('delete_job');
+Route::post('teacher/connect/{id}','HomeController@connect')->name('connect.teacher');
+Route::post('teacher/remove/{id}','HomeController@remove')->name('remove.teacher');
 
 Route::prefix('provider')->group(function () {
     Route::get('dashboard', [ProviderController::class, 'dashboard'])->name('provider.dashboard');

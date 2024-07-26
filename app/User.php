@@ -74,4 +74,14 @@ class User extends Authenticatable
     {
         return (boolean) (Childcare::where('claimed_by_id', $this->id)->count() > 0);
     }
+
+    public function connectedTeachers()
+    {
+        return $this->belongsToMany(User::class, 'connections', 'user_id', 'connected_id');
+    }
+
+    public function teacherConnections()
+    {
+        return $this->belongsToMany(User::class, 'connections', 'connected_id', 'user_id');
+    }
 }

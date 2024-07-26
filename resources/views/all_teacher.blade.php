@@ -1,6 +1,9 @@
-    
-    <?php $get_all_teachers = DB::table('users')->where('role','3')->get()?>
-    
+
+    <?php
+    $get_all_teachers = DB::table('users')->where('role','3')->where('id', '!=', Auth::user()->id)->get();
+    $connectedTeacherIds = Auth::user()->connectedTeachers->pluck('id');
+    ?>
+
     <div class="sidebarleft">
 
         <div class="most">
@@ -17,13 +20,24 @@
                     @else
                     <img src="{{asset('images/commentimage1.png')}}" class="img-fluid">
                     @endif
-                    
+
                     <h6> {{$val_teacher->name}} <img src="{{asset('images/dotgreen.png')}}" class="img-fluid"></h6>
+                    @if(in_array($val_teacher->id, json_decode($connectedTeacherIds, true)))
+                    <form action="{{ route('remove.teacher', $val_teacher->id) }}" method="POST" class="remove-form" style="display:inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-small">Remove</button>
+                    </form>
+                    @else
+                    <form action="{{ route('connect.teacher', $val_teacher->id) }}" method="POST" class="connect-form" style="display:inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-primary btn-small">Connect</button>
+                    </form>
+                    @endif
 
                 </li>
                 @endforeach
             </ul>
 
         </div>
- 
+
     </div>

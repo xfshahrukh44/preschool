@@ -437,8 +437,12 @@
                                     {{--                                <textarea class="form-control" id="exampleFormControlTextarea2" name="about_preschool" rows="6" placeholder="How did you hear about preschool portal?"></textarea>--}}
                                 </div>
 
-                                <!--<button type="submit" class="custom-btn">Become a provider</button>-->
                                 <div class="form-group col-lg-12 mt-3">
+                                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                </div>
+
+                                <!--<button type="submit" class="custom-btn">Become a provider</button>-->
+                                <div class="form-group col-lg-12 mt-3" hidden>
                                     <div id="accordion" class="payment-accordion">
                                        
                                         <div class="card">

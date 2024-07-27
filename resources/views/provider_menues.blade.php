@@ -32,6 +32,7 @@ $segment2 = Request::segment(2);
                 @if(\Illuminate\Support\Facades\Auth::user()->hasClaimed())
                     <li><a class="<?php if($segment2 == "claimed-centers"){ echo 'menu_active'; } ?>" href="{{route('provider.claimedCenters')}}"><img width="20" src="{{asset('images/search.png')}}"> Claimed Centers </a></li>
                 @endif
+                <li><a class="<?php if($segment2 == "angel-list"){ echo 'menu_active'; } ?>" href="{{route('provider.angelList', )}}"><img width="20" src="{{asset('images/search.png')}}"> Angel List </a></li>
                 <li><a class="<?php if($segment == "update-provider-profile"){ echo 'menu_active'; } ?>" href="{{route('update_provider_profile')}}"><img src="{{asset('images/group511.png')}}">Profile Update</a></li>
                 <li><a class="<?php if($segment == ""){ echo 'menu_active'; } ?>" href="{{ URL('signout') }}"><img src="{{asset('images/logout1.png')}}">Logout</a></li>
             </ul>

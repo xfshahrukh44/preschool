@@ -50,7 +50,7 @@
     <div class="container-fluid">
         <div class="row">
 
-            
+
             @foreach($get_all_new_job as $key => $val_newjob)
             <div class="col-md-4">
                 <div class="main-job">
@@ -62,7 +62,7 @@
                         <p><a href="#"><i class="fa-solid fa-location-dot"></i> {{ $val_newjob->location }} </a></p>
                     </div>
                     <div class="apply">
-                        <a href="{{route('apply_for_job',['id'=>$val_newjob->id])}}" class="custom-btn views">View Details</a>
+                        <a href="javascript:void(0)" class="custom-btn views become-angel-button" data-jobid="{{ $val_newjob->id }}" data-creatorid="{{ $val_newjob->creator_name }}">Become An Angel</a>
                         <a href="{{route('apply_for_job',['id'=>$val_newjob->id])}}" class="custom-btn now">Apply Now</a>
                     </div>
                 </div>
@@ -139,6 +139,27 @@
                 });
                 $('#modal_agree_to_sandbox_terms').modal('show');
             }
+        });
+        $(document).ready(function() {
+            $('.become-angel-button').click(function() {
+                var jobId = $(this).data('jobid');
+                var creatorId = $(this).data('creatorid');
+
+                $.ajax({
+                    url: "{{ url('become-an-angel') }}/"+jobId+"/"+creatorId,
+                    type: 'GET',
+                    success: function(response) {
+                        if (response.success) {
+                            alert(response.success);
+                        } else if (response.error) {
+                            alert(response.error);
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('An error occurred: ' + xhr.responseText);
+                    }
+                });
+            });
         });
     </script>
 @endsection

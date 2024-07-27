@@ -22,16 +22,23 @@
                     @endif
 
                     <h6> {{$val_teacher->name}} <img src="{{asset('images/dotgreen.png')}}" class="img-fluid"></h6>
-                    @if(in_array($val_teacher->id, json_decode($connectedTeacherIds, true)))
-                    <form action="{{ route('remove.teacher', $val_teacher->id) }}" method="POST" class="remove-form" style="display:inline;">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-small">Remove</button>
-                    </form>
+                    @if (!empty($connectedTeacherIds))
+                        @if(in_array($val_teacher->id, json_decode($connectedTeacherIds, true)))
+                        <form action="{{ route('remove.teacher', $val_teacher->id) }}" method="POST" class="remove-form" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-small">Remove</button>
+                        </form>
+                        @else
+                        <form action="{{ route('connect.teacher', $val_teacher->id) }}" method="POST" class="connect-form" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-primary btn-small">Connect</button>
+                        </form>
+                        @endif
                     @else
-                    <form action="{{ route('connect.teacher', $val_teacher->id) }}" method="POST" class="connect-form" style="display:inline;">
-                        @csrf
-                        <button type="submit" class="btn btn-primary btn-small">Connect</button>
-                    </form>
+                        <form action="{{ route('connect.teacher', $val_teacher->id) }}" method="POST" class="connect-form" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-primary btn-small">Connect</button>
+                        </form>
                     @endif
 
                 </li>

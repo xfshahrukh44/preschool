@@ -22,6 +22,7 @@ use App\Models\Post;
 use App\Models\Pined_post;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Angel;
 use App\Childcare;
 use App\Page;
 use App\User;
@@ -100,6 +101,18 @@ class HomeController extends Controller
         $get_all_claimed_daycare_center = DB::table('childcares')->where('claim_status', '2')->where('status', '1')->get();
 
         return view('claimed_center', compact('page', 'section', 'get_all_claimed_daycare_center'));
+
+    }
+
+    public function angelList()
+    {
+
+        $page = DB::table('pages')->where('id', 2)->first();
+        $section = DB::table('section')->where('page_id', 2)->get();
+
+        $angel = Angel::where('creator_id', Auth::user()->id)->get();
+
+        return view('angel-list', compact('page', 'section', 'get_all_claimed_daycare_center', 'angel'));
 
     }
 
@@ -405,6 +418,32 @@ class HomeController extends Controller
 
         return view('apply_for_job', compact('page', 'section', 'get_all_new_job_byid'));
 
+    }
+
+    public function become_an_angel($jobid)
+    {
+        if (Auth::user()->role != "3") {
+            return redirect("/");
+        }
+
+        $userId = Auth::user()->id;
+
+        // Check if the record already exists
+        $existingAngel = Angel::where('teacher_id', $userId)
+                            ->where('job_id', $jobid)
+                            ->first();
+
+        if ($existingAngel) {
+            return response()->json(['error' => 'You are already an angel for this job.']);
+        }
+
+        // If not found, create a new record
+        $angel = new Angel();
+        $angel->teacher_id = $userId;
+        $angel->job_id = $jobid;
+        $angel->save();
+
+        return response()->json(['success' => 'You added the angel list.']);
     }
 
 

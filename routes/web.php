@@ -233,7 +233,7 @@ Route::get('my-pinned','HomeController@my_pinned')->name('my_pinned');
 Route::get('add-post','HomeController@teacher_post')->name('add_post');
 Route::get('job-board','HomeController@job_board')->name('job_board');
 Route::get('apply-for-job/{id?}','HomeController@apply_for_job')->name('apply_for_job');
-Route::get('become-an-angel/{jobid}','HomeController@become_an_angel')->name('become_an_angel');
+Route::get('become-an-angel/{jobid}/{creatorId}','HomeController@become_an_angel')->name('become_an_angel');
 Route::get('update-profile','HomeController@update_profile')->name('update_profile');
 
 Route::post('new-post','HomeController@teacher_create_new_post')->name('teacher_create_new_post');
@@ -265,6 +265,7 @@ Route::get('delete_job/{id?}','HomeController@delete_job')->name('delete_job');
 Route::post('teacher/connect/{id}','HomeController@connect')->name('connect.teacher');
 Route::post('teacher/remove/{id}','HomeController@remove')->name('remove.teacher');
 Route::get('angel-list','HomeController@angelList')->name('provider.angelList');
+Route::get('delete-angel/{id}','HomeController@deleteAngel')->name('provider.deleteAngel');
 
 Route::prefix('provider')->group(function () {
     Route::get('dashboard', [ProviderController::class, 'dashboard'])->name('provider.dashboard');

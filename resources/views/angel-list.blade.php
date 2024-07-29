@@ -238,73 +238,38 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Job</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
 
                     <tbody>
+                        @php
+                            $count = 1;
+                        @endphp
                         @foreach ($angel as $key => $val)
-                            @php
-                                $data = DB::table('users')
-                                    ->where('id', $val->teacher_id)
-                                    ->first();
-                            @endphp
-
                             <tr>
-                                <td>{{ $data->id }}</td>
-                                <td>{{ $data->name .' '.$data->lname }}</td>
-                                <td>{{ $data->email }}</td>
+                                <td>{{ $count }}</td>
+                                <td>{{ $val->creator->name .' '.$val->creator->lname }}</td>
+                                <td>{{ $val->creator->email }}</td>
+                                <td>{{ $val->job->job_title }}</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger delete-button"
+                                        data-id="{{ $val->id }}"
+                                        data-token="{{ csrf_token() }}"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
                             </tr>
+                        @php
+                            $count++;
+                        @endphp
                         @endforeach
                     </tbody>
 
                 </table>
-                {{-- <div class="col-lg-12">
-                        <div class="section-1-menu">
-                            <div class="section-1-menu-1">
-                                <div class="section-1-detail-txt1">
-                                    <h6 class="heading-6"><a href="#"> {{ $val->name }} </a></h6>
-                                    <p class="para-2"> {{ $val->physical_address }} </p>
-                                </div>
-                                <div class="section-1-detail-txt2">
-                                    <div class="para-2">Claimed</div>
-                                </div>
-                            </div>
-                            <div class="section-1-menu-text">
-
-                                <div class="section-1-menu-img">
-                                    <figure>
-                                        <img src="{{ asset($val->feature_image) }}" alt="" class="img-fluid"
-                                            style="border: 1px solid #000;">
-                                    </figure>
-                                </div>
-
-                                <div class="section-1-menu-txt">
-
-                                    <p class="para-2">
-                                        {!! $val->description !!}
-                                    </p>
-
-                                    <!--<a href="">Read more</a>-->
-
-                                    <div class="border-line"><span></span></div>
-                                    <div class="section-1-menu-txt-from">
-
-                                        <div class="section-1-anker">
-                                            <a href="{{ URL('claimed_center_detail/' . $val->id) }}"
-                                                class="btn btn-primary">See details</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div> --}}
-
-
-
-
-
             </div>
         </div>
     </section>
@@ -315,5 +280,57 @@
 
 
 @section('js')
-    <script type="text/javascript"></script>
+<script>
+    $(document).ready(function() {
+        $('.delete-button').click(function() {
+            var angelId = $(this).data('id');
+            var token = $(this).data('token');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ url('delete-angel') }}/" + angelId,
+                        type: 'GET',
+                        data: {
+                            _token: token
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    response.success,
+                                    'success'
+                                ).then(() => {
+                                    // Optionally, remove the row from the table
+                                    $('button.delete-button[data-id="' + angelId + '"]').closest('tr').remove();
+                                });
+                            } else if (response.error) {
+                                Swal.fire(
+                                    'Error!',
+                                    response.error,
+                                    'error'
+                                );
+                            }
+                        },
+                        error: function(xhr) {
+                            Swal.fire(
+                                'Error!',
+                                'An error occurred: ' + xhr.responseText,
+                                'error'
+                            );
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endsection

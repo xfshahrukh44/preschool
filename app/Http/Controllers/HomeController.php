@@ -110,10 +110,23 @@ class HomeController extends Controller
         $page = DB::table('pages')->where('id', 2)->first();
         $section = DB::table('section')->where('page_id', 2)->get();
 
-        $angel = Angel::where('creator_id', Auth::user()->id)->get();
+        $angel = Angel::with('job','creator')->where('creator_id', Auth::user()->id)->get();
 
         return view('angel-list', compact('page', 'section', 'get_all_claimed_daycare_center', 'angel'));
 
+    }
+
+    public function deleteAngel($id)
+    {
+        $angel = Angel::find($id);
+
+        if ($angel) {
+            $angel->delete();
+
+            return response()->json(['success' => 'Angel has been deleted successfully.']);
+        } else {
+            return response()->json(['error' => 'Angel not found.'], 404);
+        }
     }
 
 
@@ -420,7 +433,7 @@ class HomeController extends Controller
 
     }
 
-    public function become_an_angel($jobid)
+    public function become_an_angel($jobid, $creatorId)
     {
         if (Auth::user()->role != "3") {
             return redirect("/");
@@ -441,6 +454,7 @@ class HomeController extends Controller
         $angel = new Angel();
         $angel->teacher_id = $userId;
         $angel->job_id = $jobid;
+        $angel->creator_id = $creatorId;
         $angel->save();
 
         return response()->json(['success' => 'You added the angel list.']);

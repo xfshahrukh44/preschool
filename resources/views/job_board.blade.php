@@ -146,20 +146,36 @@
                 var creatorId = $(this).data('creatorid');
 
                 $.ajax({
-                    url: "{{ url('become-an-angel') }}/"+jobId+"/"+creatorId,
+                    url: "{{ url('become-an-angel') }}/" + jobId + "/" + creatorId,
                     type: 'GET',
                     success: function(response) {
                         if (response.success) {
-                            alert(response.success);
+                            Swal.fire({
+                                title: 'Success!',
+                                text: response.success,
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            });
                         } else if (response.error) {
-                            alert(response.error);
+                            Swal.fire({
+                                title: 'Error!',
+                                text: response.error,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                         }
                     },
                     error: function(xhr) {
-                        alert('An error occurred: ' + xhr.responseText);
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'An error occurred: ' + xhr.responseText,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
                     }
                 });
             });
         });
+
     </script>
 @endsection

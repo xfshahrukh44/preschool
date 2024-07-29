@@ -15,10 +15,10 @@ class Comment extends Model
     protected $table = 'comments';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -28,7 +28,8 @@ class Comment extends Model
      */
     protected $fillable = ['comment', 'post_id', 'user_id', 'post_image', 'user_image', 'reply_id'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

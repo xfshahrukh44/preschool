@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProviderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/clear-config', function() {
+Route::get('/clear-config', function () {
     Artisan::call('config:clear');
     return "config is cleared";
 });
 
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
 
 
 
-if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
 
@@ -35,15 +36,15 @@ if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
 
 //===================== Admin Routes =====================//
 
-Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'admin'], function () {
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin', 'prefix' => 'admin'], function () {
 
 
-    Route::get('/','Admin\AdminController@dashboard');
+    Route::get('/', 'Admin\AdminController@dashboard');
 
-    Route::get('/dashboard','Admin\AdminController@dashboard')->name('admin.dashboard');
+    Route::get('/dashboard', 'Admin\AdminController@dashboard')->name('admin.dashboard');
 
-    Route::get('account/settings','Admin\UsersController@getSettings');
-    Route::post('account/settings','Admin\UsersController@saveSettings');
+    Route::get('account/settings', 'Admin\UsersController@getSettings');
+    Route::post('account/settings', 'Admin\UsersController@saveSettings');
 
     Route::get('project', function () {
         return view('dashboard.index-project');
@@ -54,82 +55,82 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
     });
 
 
-    Route::get('logo/edit','Admin\AdminController@logoEdit')->name('admin.logo.edit');
-    Route::post('logo/upload','Admin\AdminController@logoUpload')->name('logo_upload');
+    Route::get('logo/edit', 'Admin\AdminController@logoEdit')->name('admin.logo.edit');
+    Route::post('logo/upload', 'Admin\AdminController@logoUpload')->name('logo_upload');
 
-    Route::get('favicon/edit','Admin\AdminController@faviconEdit')->name('admin.favicon.edit');
+    Route::get('favicon/edit', 'Admin\AdminController@faviconEdit')->name('admin.favicon.edit');
 
-    Route::post('favicon/upload','Admin\AdminController@faviconUpload')->name('favicon_upload');
+    Route::post('favicon/upload', 'Admin\AdminController@faviconUpload')->name('favicon_upload');
 
     Route::get('config/setting', 'Admin\AdminController@configSetting')->name('admin.config.setting');
 
-    Route::get('contact/inquiries','Admin\AdminController@contactSubmissions');
-    Route::get('contact/inquiries/{id}','Admin\AdminController@inquiryshow');
-    Route::get('newsletter/inquiries','Admin\AdminController@newsletterInquiries');
+    Route::get('contact/inquiries', 'Admin\AdminController@contactSubmissions');
+    Route::get('contact/inquiries/{id}', 'Admin\AdminController@inquiryshow');
+    Route::get('newsletter/inquiries', 'Admin\AdminController@newsletterInquiries');
 
-    Route::any('contact/submissions/delete/{id}','Admin\AdminController@contactSubmissionsDelete');
-    Route::any('newsletter/inquiries/delete/{id}','Admin\AdminController@newsletterInquiriesDelete');
+    Route::any('contact/submissions/delete/{id}', 'Admin\AdminController@contactSubmissionsDelete');
+    Route::any('newsletter/inquiries/delete/{id}', 'Admin\AdminController@newsletterInquiriesDelete');
 
     /* Config Setting Form Submit Route */
-    Route::post('config/setting','Admin\AdminController@configSettingUpdate')->name('config_settings_update');
+    Route::post('config/setting', 'Admin\AdminController@configSettingUpdate')->name('config_settings_update');
 
 
-//==============================================================//
+    //==============================================================//
 
 
-//==================== Error pages Routes ====================//
+    //==================== Error pages Routes ====================//
 
-    Route::get('403',function (){
+    Route::get('403', function () {
         return view('pages.403');
     });
 
-    Route::get('404',function (){
+    Route::get('404', function () {
         return view('pages.404');
     });
 
-    Route::get('405',function (){
+    Route::get('405', function () {
         return view('pages.405');
     });
 
-    Route::get('500',function (){
+    Route::get('500', function () {
         return view('pages.500');
     });
 
-//============================================================//
+    //============================================================//
 
     #Permission management
-    Route::get('permission-management','PermissionController@getIndex');
-    Route::get('permission/create','PermissionController@create');
-    Route::post('permission/create','PermissionController@save');
-    Route::get('permission/delete/{id}','PermissionController@delete');
-    Route::get('permission/edit/{id}','PermissionController@edit');
-    Route::post('permission/edit/{id}','PermissionController@update');
+    Route::get('permission-management', 'PermissionController@getIndex');
+    Route::get('permission/create', 'PermissionController@create');
+    Route::post('permission/create', 'PermissionController@save');
+    Route::get('permission/delete/{id}', 'PermissionController@delete');
+    Route::get('permission/edit/{id}', 'PermissionController@edit');
+    Route::post('permission/edit/{id}', 'PermissionController@update');
 
     #Role management
-    Route::get('role-management','RoleController@getIndex');
-    Route::get('role/create','RoleController@create');
-    Route::post('role/create','RoleController@save');
-    Route::get('role/delete/{id}','RoleController@delete');
-    Route::get('role/edit/{id}','RoleController@edit');
-    Route::post('role/edit/{id}','RoleController@update');
+    Route::get('role-management', 'RoleController@getIndex');
+    Route::get('role/create', 'RoleController@create');
+    Route::post('role/create', 'RoleController@save');
+    Route::get('role/delete/{id}', 'RoleController@delete');
+    Route::get('role/edit/{id}', 'RoleController@edit');
+    Route::post('role/edit/{id}', 'RoleController@update');
 
     #CRUD Generator
     Route::get('/crud-generator', ['uses' => 'ProcessController@getGenerator']);
     Route::post('/crud-generator', ['uses' => 'ProcessController@postGenerator']);
 
     # Activity log
-    Route::get('activity-log','LogViewerController@getActivityLog');
+    Route::get('activity-log', 'LogViewerController@getActivityLog');
     Route::get('activity-log/data', 'LogViewerController@activityLogData')->name('activity-log.data');
 
     #User Management routes
-    Route::get('users','Admin\\UsersController@Index');
-    Route::get('user/create','Admin\\UsersController@create');
-    Route::post('user/create','Admin\\UsersController@save');
-    Route::get('user/edit/{id}','Admin\\UsersController@edit');
-    Route::post('user/edit/{id}','Admin\\UsersController@update');
-    Route::get('user/delete/{id}','Admin\\UsersController@destroy');
-    Route::get('user/deleted/','Admin\\UsersController@getDeletedUsers');
-    Route::get('user/restore/{id}','Admin\\UsersController@restoreUser');
+    Route::get('users', 'Admin\\UsersController@Index');
+    Route::get('user/create', 'Admin\\UsersController@create');
+    Route::post('user/create', 'Admin\\UsersController@save');
+    Route::get('user/edit/{id}', 'Admin\\UsersController@edit');
+    Route::post('user/edit/{id}', 'Admin\\UsersController@update');
+    Route::get('user/delete/{id}', 'Admin\\UsersController@destroy');
+    Route::get('user/deleted/', 'Admin\\UsersController@getDeletedUsers');
+    Route::get('user/restore/{id}', 'Admin\\UsersController@restoreUser');
 
 
     Route::resource('product', 'Admin\\ProductController');
@@ -137,9 +138,9 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
     Route::get('order/list', ['as' => 'order.list', 'uses' => 'Admin\\ProductController@orderList']);
     Route::get('order/detail/{id}', ['as' => 'order.list.detail', 'uses' => 'Admin\\ProductController@orderListDetail']);
 
-     //Order Status Change Routes//
-    Route::get('status/completed/{id}','Admin\\ProductController@updatestatuscompleted')->name('status.completed');
-    Route::get('status/pending/{id}','Admin\\ProductController@updatestatusPending')->name('status.pending');
+    //Order Status Change Routes//
+    Route::get('status/completed/{id}', 'Admin\\ProductController@updatestatuscompleted')->name('status.completed');
+    Route::get('status/pending/{id}', 'Admin\\ProductController@updatestatusPending')->name('status.pending');
 
 
 });
@@ -157,27 +158,27 @@ Route::get('log-viewers/logs/{date}/{level}/search', '\Arcanedev\LogViewer\Http\
 Route::get('log-viewers/logcheck', '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@logCheck')->name('log-viewers.logcheck');
 
 
-Route::get('auth/{provider}/','Auth\SocialLoginController@redirectToProvider');
-Route::get('{provider}/callback','Auth\SocialLoginController@handleProviderCallback');
-Route::get('logout','Auth\LoginController@logout');
+Route::get('auth/{provider}/', 'Auth\SocialLoginController@redirectToProvider');
+Route::get('{provider}/callback', 'Auth\SocialLoginController@handleProviderCallback');
+Route::get('logout', 'Auth\LoginController@logout');
 Auth::routes();
 
 
 //===================== Account Area Routes =====================//
 
 
-Route::get('signin','GuestController@signin')->name('signin');
-Route::get('signup','GuestController@signup')->name('signup');
-Route::get('account','LoggedInController@account')->name('account');
-Route::get('orders','LoggedInController@orders')->name('orders');
-Route::get('account-detail','LoggedInController@accountDetail')->name('accountDetail');
-Route::get('find-daycare','LoggedInController@finddaycare')->name('finddaycare');
-Route::get('my-claimed-daycare','LoggedInController@my_claimed_daycare')->name('my_claimed_daycare');
+Route::get('signin', 'GuestController@signin')->name('signin');
+Route::get('signup', 'GuestController@signup')->name('signup');
+Route::get('account', 'LoggedInController@account')->name('account');
+Route::get('orders', 'LoggedInController@orders')->name('orders');
+Route::get('account-detail', 'LoggedInController@accountDetail')->name('accountDetail');
+Route::get('find-daycare', 'LoggedInController@finddaycare')->name('finddaycare');
+Route::get('my-claimed-daycare', 'LoggedInController@my_claimed_daycare')->name('my_claimed_daycare');
 
-Route::post('update_daycare_center','LoggedInController@update_daycare_center')->name('update_daycare_center');
+Route::post('update_daycare_center', 'LoggedInController@update_daycare_center')->name('update_daycare_center');
 
-Route::post('update/account','LoggedInController@updateAccount')->name('update.account');
-Route::get('signout', function() {
+Route::post('update/account', 'LoggedInController@updateAccount')->name('update.account');
+Route::get('signout', function () {
 
     Auth::logout();
 
@@ -188,48 +189,49 @@ Route::get('signout', function() {
 
 });
 
-Route::get('logout','Auth\LoginController@logout');
+Route::get('logout', 'Auth\LoginController@logout');
 Auth::routes();
 
-Route::get('account/friends','LoggedInController@friends')->name('friends');
-Route::get('account/upload','LoggedInController@upload')->name('upload');
-Route::get('account/password','LoggedInController@password')->name('password');
+Route::get('account/friends', 'LoggedInController@friends')->name('friends');
+Route::get('account/upload', 'LoggedInController@upload')->name('upload');
+Route::get('account/password', 'LoggedInController@password')->name('password');
 
-Route::get('/success','OrderController@success')->name('success');
+Route::get('/success', 'OrderController@success')->name('success');
 
-Route::post('update/profile','LoggedInController@update_profile')->name('update_profile');
-Route::post('update/uploadPicture','LoggedInController@uploadPicture')->name('uploadPicture');
+Route::post('update/profile', 'LoggedInController@update_profile')->name('update_profile');
+Route::post('update/uploadPicture', 'LoggedInController@uploadPicture')->name('uploadPicture');
 
 
 //===================== Front Routes =====================//
 
-Route::get('/','HomeController@index')->name('home');
-Route::get('about','HomeController@about')->name('about');
-Route::get('teacher','HomeController@teacher')->name('teacher');
-Route::get('provider','HomeController@provider')->name('provider');
-Route::get('contact','HomeController@contact')->name('contact');
-Route::get('termsandconditionindividual','HomeController@termsandconditionindividual')->name('termsandconditionindividual');
-Route::get('termsandconditionprovider','HomeController@termsandconditionprovider')->name('termsandconditionprovider');
-Route::get('privacy','HomeController@privacy')->name('privacy');
-Route::get('community','HomeController@community')->name('community');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('about', 'HomeController@about')->name('about');
+Route::get('teacher', 'HomeController@teacher')->name('teacher');
+Route::get('provider', 'HomeController@provider')->name('provider');
+Route::get('contact', 'HomeController@contact')->name('contact');
+Route::get('termsandconditionindividual', 'HomeController@termsandconditionindividual')->name('termsandconditionindividual');
+Route::get('termsandconditionprovider', 'HomeController@termsandconditionprovider')->name('termsandconditionprovider');
+Route::get('privacy', 'HomeController@privacy')->name('privacy');
+Route::get('community', 'HomeController@community')->name('community');
 
-Route::get('become-a-provider','HomeController@become_a_provider')->name('become-a-provider');
-Route::get('become-a-teacher','HomeController@become_a_teacher')->name('become-a-teacher');
+Route::get('become-a-provider', 'HomeController@become_a_provider')->name('become-a-provider');
+Route::get('become-a-teacher', 'HomeController@become_a_teacher')->name('become-a-teacher');
 
-Route::get('joinnow','HomeController@joinnow')->name('joinnow');
+Route::get('joinnow', 'HomeController@joinnow')->name('joinnow');
 
-Route::get('search','HomeController@search')->name('search');
+Route::get('search', 'HomeController@search')->name('search');
 
-Route::get('claimed_center','HomeController@claimed_center')->name('claimed_center');
+Route::get('claimed_center', 'HomeController@claimed_center')->name('claimed_center');
 
-Route::get('claimed_center_detail/{id?}','HomeController@claimed_center_detail')->name('claimed_center_detail');
+Route::get('claimed_center_detail/{id?}', 'HomeController@claimed_center_detail')->name('claimed_center_detail');
 
 
 // Teacher Dashboard
-Route::get('teacher_dashboard','HomeController@teacher_dashboard')->name('teacher_dashboard');
+Route::get('teacher_dashboard', 'HomeController@teacher_dashboard')->name('teacher_dashboard');
 
-Route::get('my-pinned','HomeController@my_pinned')->name('my_pinned');
+Route::get('my-pinned', 'HomeController@my_pinned')->name('my_pinned');
 
+<<<<<<< HEAD
 Route::get('add-post','HomeController@teacher_post')->name('add_post');
 Route::get('job-board','HomeController@job_board')->name('job_board');
 Route::get('apply-for-job/{id?}','HomeController@apply_for_job')->name('apply_for_job');
@@ -238,24 +240,38 @@ Route::get('update-profile','HomeController@update_profile')->name('update_profi
 
 Route::post('new-post','HomeController@teacher_create_new_post')->name('teacher_create_new_post');
 Route::post('delete-post','HomeController@delete_post')->name('delete_post');
+=======
+Route::get('add-post', 'HomeController@teacher_post')->name('add_post');
+Route::get('job-board', 'HomeController@job_board')->name('job_board');
+Route::get('apply-for-job/{id?}', 'HomeController@apply_for_job')->name('apply_for_job');
+Route::get('update-profile', 'HomeController@update_profile')->name('update_profile');
+>>>>>>> 7ae0771 (newchanges1)
 
 
-Route::post('add-pined-post','HomeController@add_pined_post')->name('add_pined_post');
-Route::post('delete-pined-post','HomeController@delete_pined_post')->name('delete_pined_post');
+Route::get('chats', [HomeController::class,'chat_user']);
 
 
-Route::post('like_post','HomeController@like_post')->name('like_post');
-Route::post('unlike_post','HomeController@unlike_post')->name('unlike_post');
+Route::post('new-post', 'HomeController@teacher_create_new_post')->name('teacher_create_new_post');
+Route::post('delete-post', 'HomeController@delete_post')->name('delete_post');
 
-Route::post('save_comment','HomeController@save_comment')->name('save_comment');
 
-Route::get('get_last_post','HomeController@get_last_post')->name('get_last_post');
+Route::post('add-pined-post', 'HomeController@add_pined_post')->name('add_pined_post');
+Route::post('delete-pined-post', 'HomeController@delete_pined_post')->name('delete_pined_post');
+
+
+Route::post('like_post', 'HomeController@like_post')->name('like_post');
+Route::post('unlike_post', 'HomeController@unlike_post')->name('unlike_post');
+
+Route::post('save_comment', 'HomeController@save_comment')->name('save_comment');
+
+Route::get('get_last_post', 'HomeController@get_last_post')->name('get_last_post');
 
 //For Payment
-Route::post('order-search','LoggedInController@orderSearch')->name('order-search');
+Route::post('order-search', 'LoggedInController@orderSearch')->name('order-search');
 // Route::get('search-child-care','LoggedInController@search')->name('searchLogg');
 
 // Provider Dashboard
+<<<<<<< HEAD
 Route::get('provider_dashboard','HomeController@provider_dashboard')->name('provider_dashboard');
 Route::get('add-job','HomeController@add_job')->name('add_job');
 Route::get('view-job','HomeController@view_job')->name('view_job');
@@ -266,6 +282,14 @@ Route::post('teacher/connect/{id}','HomeController@connect')->name('connect.teac
 Route::post('teacher/remove/{id}','HomeController@remove')->name('remove.teacher');
 Route::get('angel-list','HomeController@angelList')->name('provider.angelList');
 Route::get('delete-angel/{id}','HomeController@deleteAngel')->name('provider.deleteAngel');
+=======
+Route::get('provider_dashboard', 'HomeController@provider_dashboard')->name('provider_dashboard');
+Route::get('add-job', 'HomeController@add_job')->name('add_job');
+Route::get('view-job', 'HomeController@view_job')->name('view_job');
+Route::get('job-details', 'HomeController@getJobDetails')->name('get_job_details');
+Route::get('edit-job/{id?}', 'HomeController@edit_job')->name('edit_job');
+Route::get('delete_job/{id?}', 'HomeController@delete_job')->name('delete_job');
+>>>>>>> 7ae0771 (newchanges1)
 
 Route::prefix('provider')->group(function () {
     Route::get('dashboard', [ProviderController::class, 'dashboard'])->name('provider.dashboard');
@@ -275,40 +299,40 @@ Route::prefix('provider')->group(function () {
 });
 
 
-Route::get('job-request','HomeController@job_request')->name('job_request');
-Route::post('save_add_job','HomeController@save_add_job')->name('save_add_job');
-Route::post('update_add_job','HomeController@update_add_job')->name('update_add_job');
+Route::get('job-request', 'HomeController@job_request')->name('job_request');
+Route::post('save_add_job', 'HomeController@save_add_job')->name('save_add_job');
+Route::post('update_add_job', 'HomeController@update_add_job')->name('update_add_job');
 
-Route::post('save_apply_for_job','HomeController@save_apply_for_job')->name('save_apply_for_job');
-
-
-Route::get('view-job-request/{id?}','HomeController@view_job_request')->name('view_job_request');
-Route::get('delete-job-request/{id?}','HomeController@delete_job_request')->name('delete_job_request');
+Route::post('save_apply_for_job', 'HomeController@save_apply_for_job')->name('save_apply_for_job');
 
 
-Route::get('update-provider-profile','HomeController@update_provider_profile')->name('update_provider_profile');
+Route::get('view-job-request/{id?}', 'HomeController@view_job_request')->name('view_job_request');
+Route::get('delete-job-request/{id?}', 'HomeController@delete_job_request')->name('delete_job_request');
 
 
-Route::post('update_profile2','LoggedInController@update_profile2')->name('update_profile2');
-Route::post('update_prov_profile2','LoggedInController@update_prov_profile2')->name('update_prov_profile2');
+Route::get('update-provider-profile', 'HomeController@update_provider_profile')->name('update_provider_profile');
+
+
+Route::post('update_profile2', 'LoggedInController@update_profile2')->name('update_profile2');
+Route::post('update_prov_profile2', 'LoggedInController@update_prov_profile2')->name('update_prov_profile2');
 
 
 
 
 // Route::get('store','HomeController@store')->name('store');
-Route::get('upcoming-classes','HomeController@upcoming_classes')->name('upcoming-classes');
-Route::get('online-classes/{id?}','HomeController@online_classes')->name('classes');
-Route::get('learn-to-play','HomeController@play')->name('play');
-Route::get('shared-gallery','HomeController@sharedGallery')->name('sharedgallery');
-Route::get('gallery-detail/{id}','HomeController@gallery_detail')->name('gallery-detail');
-Route::post('commentSubmit','HomeController@commentSubmit')->name('commentSubmit');
-Route::post('replySubmit','HomeController@replySubmit')->name('replySubmit');
+Route::get('upcoming-classes', 'HomeController@upcoming_classes')->name('upcoming-classes');
+Route::get('online-classes/{id?}', 'HomeController@online_classes')->name('classes');
+Route::get('learn-to-play', 'HomeController@play')->name('play');
+Route::get('shared-gallery', 'HomeController@sharedGallery')->name('sharedgallery');
+Route::get('gallery-detail/{id}', 'HomeController@gallery_detail')->name('gallery-detail');
+Route::post('commentSubmit', 'HomeController@commentSubmit')->name('commentSubmit');
+Route::post('replySubmit', 'HomeController@replySubmit')->name('replySubmit');
 
-Route::post('careerSubmit','HomeController@careerSubmit')->name('contactUsSubmit');
-Route::post('newsletter-submit','HomeController@newsletterSubmit')->name('newsletterSubmit');
-Route::post('update-content','HomeController@updateContent')->name('update-content');
+Route::post('careerSubmit', 'HomeController@careerSubmit')->name('contactUsSubmit');
+Route::post('newsletter-submit', 'HomeController@newsletterSubmit')->name('newsletterSubmit');
+Route::post('update-content', 'HomeController@updateContent')->name('update-content');
 
-Route::post('review_store','HomeController@store')->name('review_store');
+Route::post('review_store', 'HomeController@store')->name('review_store');
 //=================================================================//
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
@@ -328,16 +352,16 @@ Route::get('/test', function() {
 
 //===================== Shop Routes Below ========================//
 
-Route::get('store','ProductController@shop')->name('shop');
-Route::get('store-detail/{id}','ProductController@shopDetail')->name('shopDetail');
-Route::get('category-detail/{id}','ProductController@categoryDetail')->name('categoryDetail');
+Route::get('store', 'ProductController@shop')->name('shop');
+Route::get('store-detail/{id}', 'ProductController@shopDetail')->name('shopDetail');
+Route::get('category-detail/{id}', 'ProductController@categoryDetail')->name('categoryDetail');
 
 Route::post('/cartAdd', 'ProductController@saveCart')->name('save_cart');
 Route::any('/remove-cart/{id}', 'ProductController@removeCart')->name('remove_cart');
 Route::post('/updateCart', 'ProductController@updateCart')->name('update_cart');
 Route::get('/cart', 'ProductController@cart')->name('cart');
 Route::get('/payment', 'OrderController@payment')->name('payment');
-Route::get('invoice/{id}','LoggedInController@invoice')->name('invoice');
+Route::get('invoice/{id}', 'LoggedInController@invoice')->name('invoice');
 Route::get('/payment', 'OrderController@payment')->name('payment');
 Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 Route::post('/place-order', 'OrderController@placeOrder')->name('order.place');
@@ -357,8 +381,8 @@ Route::post('/language-form', 'ProductController@language')->name('language');
 Route::get('user-ip', 'HomeController@getusersysteminfo');
 
 //===================== New Crud-Generators Routes Will Auto Display Below ========================//
-route::get('status/delivered/{id}','admin\\productcontroller@updatestatusdelivered')->name('status.delivered');
-route::get('status/cancelled/{id}','admin\\productcontroller@updatestatuscancelled')->name('status.cancelled');
+route::get('status/delivered/{id}', 'admin\\productcontroller@updatestatusdelivered')->name('status.delivered');
+route::get('status/cancelled/{id}', 'admin\\productcontroller@updatestatuscancelled')->name('status.cancelled');
 
 
 
@@ -394,6 +418,8 @@ Route::resource('admin/shared-gallery/shared-gallery', 'SharedGallery\SharedGall
 
 Route::resource('review/review', 'review\ReviewController');
 
+
+
 Route::get('agree-to-sanbox-terms', function () {
     if (!\Illuminate\Support\Facades\Auth::check()) {
         return redirect()->back();
@@ -406,5 +432,5 @@ Route::get('agree-to-sanbox-terms', function () {
 })->name('agree_to_sandbox_terms');
 
 Route::get('rules-of-conduct-individual', function () {
-   return view('termsandconditionindividual');
+    return view('termsandconditionindividual');
 })->name('rules-of-conduct-individual');

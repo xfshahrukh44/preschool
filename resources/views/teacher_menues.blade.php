@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $segment = Request::segment(1);
 

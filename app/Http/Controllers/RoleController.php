@@ -10,7 +10,7 @@ use App\Role;
 class RoleController extends Controller
 {
     public function getIndex(){
-	
+
        $roles =  Role::paginate(10);
        return view('role.index',compact('roles'));
     }

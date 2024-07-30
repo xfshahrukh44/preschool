@@ -231,7 +231,6 @@ Route::get('teacher_dashboard', 'HomeController@teacher_dashboard')->name('teach
 
 Route::get('my-pinned', 'HomeController@my_pinned')->name('my_pinned');
 
-<<<<<<< HEAD
 Route::get('add-post','HomeController@teacher_post')->name('add_post');
 Route::get('job-board','HomeController@job_board')->name('job_board');
 Route::get('apply-for-job/{id?}','HomeController@apply_for_job')->name('apply_for_job');
@@ -240,12 +239,6 @@ Route::get('update-profile','HomeController@update_profile')->name('update_profi
 
 Route::post('new-post','HomeController@teacher_create_new_post')->name('teacher_create_new_post');
 Route::post('delete-post','HomeController@delete_post')->name('delete_post');
-=======
-Route::get('add-post', 'HomeController@teacher_post')->name('add_post');
-Route::get('job-board', 'HomeController@job_board')->name('job_board');
-Route::get('apply-for-job/{id?}', 'HomeController@apply_for_job')->name('apply_for_job');
-Route::get('update-profile', 'HomeController@update_profile')->name('update_profile');
->>>>>>> 7ae0771 (newchanges1)
 
 
 Route::get('chats', [HomeController::class,'chat_user']);
@@ -271,7 +264,6 @@ Route::post('order-search', 'LoggedInController@orderSearch')->name('order-searc
 // Route::get('search-child-care','LoggedInController@search')->name('searchLogg');
 
 // Provider Dashboard
-<<<<<<< HEAD
 Route::get('provider_dashboard','HomeController@provider_dashboard')->name('provider_dashboard');
 Route::get('add-job','HomeController@add_job')->name('add_job');
 Route::get('view-job','HomeController@view_job')->name('view_job');
@@ -282,14 +274,6 @@ Route::post('teacher/connect/{id}','HomeController@connect')->name('connect.teac
 Route::post('teacher/remove/{id}','HomeController@remove')->name('remove.teacher');
 Route::get('angel-list','HomeController@angelList')->name('provider.angelList');
 Route::get('delete-angel/{id}','HomeController@deleteAngel')->name('provider.deleteAngel');
-=======
-Route::get('provider_dashboard', 'HomeController@provider_dashboard')->name('provider_dashboard');
-Route::get('add-job', 'HomeController@add_job')->name('add_job');
-Route::get('view-job', 'HomeController@view_job')->name('view_job');
-Route::get('job-details', 'HomeController@getJobDetails')->name('get_job_details');
-Route::get('edit-job/{id?}', 'HomeController@edit_job')->name('edit_job');
-Route::get('delete_job/{id?}', 'HomeController@delete_job')->name('delete_job');
->>>>>>> 7ae0771 (newchanges1)
 
 Route::prefix('provider')->group(function () {
     Route::get('dashboard', [ProviderController::class, 'dashboard'])->name('provider.dashboard');

@@ -376,7 +376,6 @@ class HomeController extends Controller
             $get_all_teachers = DB::table('users')->whereIn('id', $connectedTeacherIds)->get();
             $connectedTeacherIds[] = Auth::user()->id;
 
-<<<<<<< HEAD
     //       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
             $get_last_post = Post::where('role_id', Auth::user()->role)->whereIn('user_id', $connectedTeacherIds)->orderBy('id', 'desc')
                 ->when(request()->has('search'), function ($q) {
@@ -396,12 +395,6 @@ class HomeController extends Controller
 
             $get_all_teachers = DB::table('users')->where('role_id', Auth::user()->role)->get();
         }
-=======
-        //       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
-        $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')->get();
-        //       $get_all_teachers = DB::table('users')->where('role','3')->get();
-        $get_all_teachers = DB::table('users')->where('role', Auth::user()->role)->get();
->>>>>>> 7ae0771 (newchanges1)
         //$post_user_profile = User::find($get_last_post->user_id)->image;
         //$dayago = Carbon::parse($post_user_profile->created_at)->diffForHumans();
 

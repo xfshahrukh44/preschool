@@ -314,6 +314,20 @@ class HomeController extends Controller
         return view('teacher_dashboard', compact('get_all_teacher', 'get_last_post'));
     }
 
+    public function chats()
+    {
+
+        if (Auth::user()->role != "3") {
+            return redirect("/");
+        }
+
+        $get_last_post = DB::table('posts')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+
+        // dd($get_last_post);
+
+        return view('chats', compact('get_last_post'));
+    }
+
     public function connect($id)
     {
         $user = auth()->user();
@@ -356,12 +370,6 @@ class HomeController extends Controller
 
         return view('my_pinned', compact('get_my_pinned'));
 
-    }
-
-
-    public function chat_user()
-    {
-        return view('chat');
     }
 
 

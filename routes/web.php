@@ -229,6 +229,8 @@ Route::get('claimed_center_detail/{id?}', 'HomeController@claimed_center_detail'
 // Teacher Dashboard
 Route::get('teacher_dashboard', 'HomeController@teacher_dashboard')->name('teacher_dashboard');
 
+Route::get('chats', 'HomeController@chats')->name('chats');
+
 Route::get('my-pinned', 'HomeController@my_pinned')->name('my_pinned');
 
 Route::get('add-post','HomeController@teacher_post')->name('add_post');
@@ -239,9 +241,6 @@ Route::get('update-profile','HomeController@update_profile')->name('update_profi
 
 Route::post('new-post','HomeController@teacher_create_new_post')->name('teacher_create_new_post');
 Route::post('delete-post','HomeController@delete_post')->name('delete_post');
-
-
-Route::get('chats', [HomeController::class,'chat_user']);
 
 
 Route::post('new-post', 'HomeController@teacher_create_new_post')->name('teacher_create_new_post');

@@ -41,8 +41,6 @@
                             <button type="submit" class="btn btn-primary btn-small">Connect</button>
                         </form>
                     @endif
-
-                    <h6> {{ $val_teacher->name }} <img src="{{ asset('images/dotgreen.png') }}" class="img-fluid"></h6>
                 </li>
                 @endforeach
             </ul>

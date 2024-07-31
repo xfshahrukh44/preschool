@@ -181,6 +181,10 @@ use DateTime;
         justify-content: end !important;
     }
 
+    .messg-info .right_messg {
+        margin-bottom: 30px;
+    }
+
     .messg-info .time_show {
         position: relative;
         z-index: 0;
@@ -264,11 +268,13 @@ use DateTime;
     .left_messg div#dynamicTextarea {
         background: #25D366;
         color: white !important;
+        border-radius: 10px;
     }
 
     .left_messg #dynamicTextarea p {
         color: white !important;
     }
+
     .bottom-type-input {
         position: relative;
         z-index: 0;
@@ -286,6 +292,11 @@ use DateTime;
         z-index: 0;
         right: 0;
         top: 0px;
+    }
+
+    .right_messg #dynamicTextarea {
+        background: #e9ecef78;
+        border-radius: 10px;
     }
 </style>
 
@@ -502,9 +513,8 @@ use DateTime;
                             </div>
                             <div class="bottom-type-input">
                                 <input type="" id="messg_type" placeholder="" class="form-control">
-                                <button type="submit" class="btn btn-send"><img
-                                        src="{{ asset('images/send.png') }}" class="img-fluid"
-                                        alt=""></button>
+                                <button type="submit" class="btn btn-send"><img src="{{ asset('images/send.png') }}"
+                                        class="img-fluid" alt=""></button>
                             </div>
                         </div>
                     </div>
@@ -828,7 +838,7 @@ use DateTime;
 
                     var $listItem = $form.closest('li');
                     $listItem.find('form.remove-form')
-                .remove(); // Ensure only one remove form is present
+                        .remove(); // Ensure only one remove form is present
                     $listItem.append('<form action="' + url +
                         '" method="POST" class="remove-form" style="display:inline;">' +
                         '@csrf' +

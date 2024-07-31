@@ -378,7 +378,7 @@ use DateTime;
                                                 class="{{ $conversation->user_id == Auth::user()->id ? 'right_messg' : 'left_messg' }} time_show">
                                                 @if ($conversation->user_id == Auth::user()->id)
                                                     <div class="chat_picture">
-                                                        <img src="{{ asset(Auth::user()->image) }}"
+                                                        <img src="{{ file_exists(public_path(Auth::user()->image)) ? asset(Auth::user()->image) : asset('imgs/profile_empty.png') }}"
                                                             class="img-fluid">
                                                     </div>
                                                 @endif
@@ -393,7 +393,7 @@ use DateTime;
                                                 </div>
                                                 @if ($conversation->user_id != Auth::user()->id)
                                                     <div class="chat_picture">
-                                                        <img src="{{ asset($user->image) }}"
+                                                        <img src="{{ file_exists(public_path($user->image)) ? asset($user->image) : asset('imgs/profile_empty.png') }}"
                                                             class="img-fluid">
                                                     </div>
                                                 @endif

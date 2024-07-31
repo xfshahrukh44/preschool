@@ -15,8 +15,8 @@ class CreateMessageCommentsTable extends Migration
     {
         Schema::create('message_comments', function (Blueprint $table) {
             $table->id();
-            $table->string('message_id');
-            $table->string('user_id');
+            $table->integer('message_id')->nullable();
+            $table->integer('user_id')->nullable();
             $table->mediumText('message');
             $table->timestamps();
         });

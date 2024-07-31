@@ -229,7 +229,9 @@ Route::get('claimed_center_detail/{id?}', 'HomeController@claimed_center_detail'
 // Teacher Dashboard
 Route::get('teacher_dashboard', 'HomeController@teacher_dashboard')->name('teacher_dashboard');
 
-Route::get('chats', 'HomeController@chats')->name('chats');
+Route::get('messages/{user?}', 'MessagesController@show')->name('chats.show');
+Route::post('storeConversations', 'MessagesController@store')->name('chats.storeConversations');
+Route::get('getConversations', 'MessagesController@getConversations')->name('chats.getConversations');
 
 Route::get('my-pinned', 'HomeController@my_pinned')->name('my_pinned');
 

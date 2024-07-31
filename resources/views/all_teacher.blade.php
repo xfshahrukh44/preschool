@@ -22,8 +22,8 @@
                         <img src="{{ asset('images/commentimage1.png') }}" class="img-fluid">
                     @endif
 
-                    <h6> {{$val_teacher->name}} <img src="{{asset('images/dotgreen.png')}}" class="img-fluid"></h6>
                     @if (!empty($connectedTeacherIds))
+                        <a href="{{ route('chats.show', $val_teacher->id) }}"><h6> {{$val_teacher->name}} <img src="{{asset('images/dotgreen.png')}}" class="img-fluid"></h6></a>
                         @if(in_array($val_teacher->id, json_decode($connectedTeacherIds, true)))
                         <form action="{{ route('remove.teacher', $val_teacher->id) }}" method="POST" class="remove-form" style="display:inline;">
                             @csrf
@@ -36,6 +36,7 @@
                         </form>
                         @endif
                     @else
+                        <h6> {{$val_teacher->name}} <img src="{{asset('images/dotgreen.png')}}" class="img-fluid"></h6>
                         <form action="{{ route('connect.teacher', $val_teacher->id) }}" method="POST" class="connect-form" style="display:inline;">
                             @csrf
                             <button type="submit" class="btn btn-primary btn-small">Connect</button>

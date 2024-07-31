@@ -174,6 +174,10 @@ use DateTime;
         background: #25D366;
     }
 
+    .messg-info {
+        height: 597px;
+    }
+
     .messg-info .left_messg {
         width: auto;
         margin-left: 50px;
@@ -194,11 +198,12 @@ use DateTime;
         gap: 20px;
     }
 
-    #dynamicTextarea span {
+    .dynamicTextarea span {
         /* position: absolute; */
         z-index: 0;
         right: 10px;
         top: 5px;
+        font-size: 13px;
     }
 
     .chat_picture {
@@ -215,13 +220,13 @@ use DateTime;
         line-height: 0;
     }
 
-    #dynamicTextarea p {
+    .dynamicTextarea p {
         margin: 0;
         /* position: absolute; */
         z-index: 0;
         top: 5px;
         left: 10px;
-        font-size: 22px;
+        font-size: 13px;
         font-weight: 600;
         color: black;
     }
@@ -263,15 +268,16 @@ use DateTime;
         width: 50px;
         height: 50px;
         max-width: 50px;
+        border-radius: 50px;
     }
 
-    .left_messg div#dynamicTextarea {
+    .left_messg div.dynamicTextarea {
         background: #25D366;
         color: white !important;
         border-radius: 10px;
     }
 
-    .left_messg #dynamicTextarea p {
+    .left_messg .dynamicTextarea p {
         color: white !important;
     }
 
@@ -294,9 +300,13 @@ use DateTime;
         top: 0px;
     }
 
-    .right_messg #dynamicTextarea {
+    .right_messg .dynamicTextarea {
         background: #e9ecef78;
         border-radius: 10px;
+    }
+
+    .send-button {
+        margin-top: 10px;
     }
 </style>
 
@@ -356,168 +366,58 @@ use DateTime;
                     <div class="tab-content">
                         <div class="profile-disctiption chat_list">
                             <div class="chat_item">
-                                <h6>Clark Kent</h6>
+                                <h5>{{ $user->name ?? 'Messages' }}</h5>
                             </div>
                         </div>
                         <div class="chating_section">
-                            <div class="messg-info">
-                                <div class="right_messg time_show">
-                                    <div class="chat_picture">
-                                        <img src="http://127.0.0.1:8000/images/commentimage1.png" class="img-fluid">
-                                    </div>
-                                    <div id="dynamicTextarea" class="para_chat" oninput="adjustTextareaSize()">
-                                        <div class="show_mssg">
-                                            <p class="client_name_show">Renee</p>
-                                            <span>5:45</span>
-                                        </div>
-                                        <div class="show_result">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, nobis
-                                            eaque?
-                                            Aut, voluptatibus dolores reprehenderit et laudantium explicabo labore
-                                        </div>
-                                    </div>
+                            @if ($user != null)
+                                <div class="messg-info">
+                                    @if (count($conversations) > 0)
+                                        @foreach ($conversations as $conversation)
+                                            <div
+                                                class="{{ $conversation->user_id == Auth::user()->id ? 'right_messg' : 'left_messg' }} time_show">
+                                                @if ($conversation->user_id == Auth::user()->id)
+                                                    <div class="chat_picture">
+                                                        <img src="{{ asset(Auth::user()->image) }}"
+                                                            class="img-fluid">
+                                                    </div>
+                                                @endif
+                                                <div class="para_chat dynamicTextarea">
+                                                    <div class="show_mssg">
+                                                        <p class="client_name_show">{{ $conversation->user->name }}</p>
+                                                        <span>{{ $conversation->created_at->format('h:i A') }}</span>
+                                                    </div>
+                                                    <div class="show_result">
+                                                        {{ $conversation->message }}
+                                                    </div>
+                                                </div>
+                                                @if ($conversation->user_id != Auth::user()->id)
+                                                    <div class="chat_picture">
+                                                        <img src="{{ asset($user->image) }}"
+                                                            class="img-fluid">
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <p>No conversation so far. Start a conversation</p>
+                                    @endif
                                 </div>
-                                <div class="left_messg time_show">
-
-                                    <div id="dynamicTextarea" class="para_chat" oninput="adjustTextareaSize()">
-                                        <div class="show_mssg">
-                                            <p class="client_name_show">Renee</p>
-                                            <span>5:45</span>
-                                        </div>
-                                        <div class="show_result">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, nobis
-                                            eaque?
-                                            Aut, voluptatibus dolores reprehenderit et laudantium explicabo labore
-                                            soluta
-                                            iure delectus mollitia quidem quis animi. Labore deserunt natus hic.
-                                        </div>
-                                    </div>
-                                    <div class="chat_picture">
-                                        <img src="http://127.0.0.1:8000/images/commentimage1.png" class="img-fluid">
-                                    </div>
-                                </div>
-                                <div class="right_messg time_show">
-                                    <div class="chat_picture">
-                                        <img src="http://127.0.0.1:8000/images/commentimage1.png" class="img-fluid">
-                                    </div>
-                                    <div id="dynamicTextarea" class="para_chat" oninput="adjustTextareaSize()">
-                                        <div class="show_mssg">
-                                            <p class="client_name_show">Renee</p>
-                                            <span>5:45</span>
-                                        </div>
-                                        <div class="show_result">
-                                            ok
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="left_messg time_show">
-
-                                    <div id="dynamicTextarea" class="para_chat" oninput="adjustTextareaSize()">
-                                        <div class="show_mssg">
-                                            <p class="client_name_show">Renee</p>
-                                            <span>5:45</span>
-                                        </div>
-                                        <div class="show_result">
-                                            Lorem ipsum dolor sit amet consectetur
-                                        </div>
-                                    </div>
-                                    <div class="chat_picture">
-                                        <img src="http://127.0.0.1:8000/images/commentimage1.png" class="img-fluid">
-                                    </div>
-                                </div>
-
-                                <div class="left_messg time_show">
-
-                                    <div id="dynamicTextarea" class="para_chat" oninput="adjustTextareaSize()">
-                                        <div class="show_mssg">
-                                            <p class="client_name_show">Renee</p>
-                                            <span>5:45</span>
-                                        </div>
-                                        <div class="show_result">
-                                            ok
-                                        </div>
-                                    </div>
-                                    <div class="chat_picture">
-                                        <img src="http://127.0.0.1:8000/images/commentimage1.png" class="img-fluid">
-                                    </div>
-                                </div>
-                                <div class="right_messg time_show">
-                                    <div class="chat_picture">
-                                        <img src="http://127.0.0.1:8000/images/commentimage1.png" class="img-fluid">
-                                    </div>
-                                    <div id="dynamicTextarea" class="para_chat" oninput="adjustTextareaSize()">
-                                        <div class="show_mssg">
-                                            <p class="client_name_show">Renee</p>
-                                            <span>5:45</span>
-                                        </div>
-                                        <div class="show_result">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. In voluptates earum
-                                            explicabo aperiam animi reprehenderit, cupiditate cumque ea. Architecto
-                                            minus fugit perspiciatis ipsum, maxime recusandae, amet quos tempore vero
-                                            mollitia dicta magni nisi ad numquam fugiat! Vero, repellat? Est, voluptate
-                                            error id iusto nulla voluptatibus autem porro obcaecati officiis enim
-                                            incidunt doloribus illum possimus quas non illo atque dignissimos explicabo!
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="left_messg time_show">
-
-                                    <div id="dynamicTextarea" class="para_chat" oninput="adjustTextareaSize()">
-                                        <div class="show_mssg">
-                                            <p class="client_name_show">Renee</p>
-                                            <span>5:45</span>
-                                        </div>
-                                        <div class="show_result">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor
-                                            saepe dolorum. Quibusdam aliquid sequi rem molestias, at eaque, laborum
-                                            provident, alias ut earum eligendi voluptatem dolore consequatur accusantium
-                                            repellendus vitae? Neque laudantium fugit sunt hic, est placeat harum saepe.
-                                            Culpa id suscipit adipisci voluptatum. Dolore ipsa delectus totam rem error
-                                            eos nobis, aut fugiat at necessitatibus in neque alias cupiditate laboriosam
-                                            ut ratione officia quaerat deleniti aperiam obcaecati reprehenderit
-                                            similique, vero ipsum eum? Libero repudiandae tenetur animi quod corporis
-                                            nihil eaque numquam alias sapiente voluptates repellendus magni, ratione
-                                            labore mollitia incidunt nobis eveniet eos excepturi distinctio unde
-                                            aliquam. Nam, harum inventore pariatur est consequuntur enim ex molestiae
-                                            culpa numquam tempora recusandae repudiandae explicabo, repellendus
-                                            cupiditate, aliquid consequatur qui nisi magnam fugiat. Totam voluptatem
-                                            possimus nesciunt vero autem quia at! Nesciunt cum ullam deleniti impedit
-                                            repellat saepe ex? Nisi veniam exercitationem nulla, illum quae cupiditate
-                                            alias iste aliquam at possimus tenetur impedit ducimus similique odit
-                                            molestias omnis nihil et? Fugit distinctio numquam rerum? Nesciunt vel
-                                            eligendi repellat obcaecati, consequuntur soluta itaque aliquam odio commodi
-                                            natus et aut libero maiores aliquid quas beatae delectus dicta enim harum,
-                                            quasi nam. Excepturi voluptates dolorem, reprehenderit qui nostrum deserunt!
-                                            Harum minima obcaecati accusantium atque?
-                                        </div>
-                                    </div>
-                                    <div class="chat_picture">
-                                        <img src="http://127.0.0.1:8000/images/commentimage1.png" class="img-fluid">
-                                    </div>
-                                </div>
-
-                                <div class="right_messg time_show">
-                                    <div class="chat_picture">
-                                        <img src="http://127.0.0.1:8000/images/commentimage1.png" class="img-fluid">
-                                    </div>
-                                    <div id="dynamicTextarea" class="para_chat" oninput="adjustTextareaSize()">
-                                        <div class="show_mssg">
-                                            <p class="client_name_show">Renee</p>
-                                            <span>5:45</span>
-                                        </div>
-                                        <div class="show_result">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bottom-type-input">
-                                <input type="" id="messg_type" placeholder="" class="form-control">
-                                <button type="submit" class="btn btn-send"><img src="{{ asset('images/send.png') }}"
-                                        class="img-fluid" alt=""></button>
-                            </div>
+                            @endif
                         </div>
                     </div>
+                    @if ($user != null)
+                    <div class="send-button">
+                        <form id="myForm" class="bottom-type-input">
+                            <input type="hidden" name="message_id" value="{{ $message_info->id }}">
+                            <input type="text" name="message" autocomplete="off" id="messg_type"
+                                class="form-control" placeholder="Type...">
+                            <button class="btn btn-send" id="submitMessage"><img src="{{ asset('images/send.png') }}"
+                                    class="img-fluid" alt=""></button>
+
+                        </form>
+                    </div>
+                    @endif
                 </div>
 
 
@@ -881,5 +781,85 @@ use DateTime;
                 }
             });
         });
+    });
+
+    $(document).ready(function() {
+        $('#submitMessage').click(function(e) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{ url('storeConversations') }}",
+                method: 'post',
+                data: {
+                    message_id: $('[name="message_id"]').val(),
+                    message: $('[name="message"]').val()
+                },
+                success: function(result) {
+                    $('[name="message"]').val('');
+                    location.reload();
+                    // loadConversations();
+                }
+            });
+        });
+
+        // function loadConversations() {
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+        //     var value = $('[name="message_id"]').val();
+        //     $.ajax({
+        //         url: "{{ url('getConversations') }}",
+        //         method: "get",
+        //         data: {
+        //             id: value
+        //         },
+        //         success: function(data) {
+        //             $('#chatContent').html('');
+        //             $.each(data, function(i, v) {
+        //                 $('#chatContent').append(`
+        //                     <div class="${v.user_id == {{ Auth::id() }} ? 'right_messg' : 'left_messg'} time_show">
+        //                         ${v.user_id == {{ Auth::id() }} ? `
+        //                             <div class="chat_picture">
+        //                                 <img src="{{ asset('images/commentimage1.png') }}" class="img-fluid">
+        //                             </div>
+        //                         ` : ''}
+        //                         <div class="para_chat" oninput="adjustTextareaSize()">
+        //                             <div class="show_mssg">
+        //                                 <p class="client_name_show">${v.user.name}</p>
+        //                                 <span>${new Date(v.created_at).toLocaleTimeString()}</span>
+        //                             </div>
+        //                             <div class="show_result">
+        //                                 ${v.message}
+        //                             </div>
+        //                         </div>
+        //                         ${v.user_id != {{ Auth::id() }} ? `
+        //                             <div class="chat_picture">
+        //                                 <img src="{{ asset('images/commentimage1.png') }}" class="img-fluid">
+        //                             </div>
+        //                         ` : ''}
+        //                     </div><br>
+        //                 `);
+        //             });
+        //         }
+        //     });
+        // }
+
+        // setInterval(loadConversations, 1000);
+    });
+
+    function scrollToBottom() {
+        var chatContainer = $('.tab-content');
+        chatContainer.scrollTop(chatContainer[0].scrollHeight);
+    }
+
+    // Call scrollToBottom on page load to ensure the chat is scrolled to the bottom initially
+    $(document).ready(function() {
+        scrollToBottom();
     });
 </script>

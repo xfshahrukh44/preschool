@@ -6,6 +6,8 @@ use App\User;
 use App\Message;
 use App\MessageComment;
 use Illuminate\Http\Request;
+use Auth;
+use DB;
 
 class MessagesController extends Controller
 {
@@ -28,7 +30,7 @@ class MessagesController extends Controller
     public function store(Request $request)
     {
         $conversation = new MessageComment;
-        $conversation->user_id = auth()->user()->id;
+        $conversation->user_id = Auth::user()->id;
         $conversation->message = $request->message;
         $conversation->message_id = $request->message_id;
         $conversation->save();
@@ -42,35 +44,43 @@ class MessagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user)
+    public function show($user = null)
     {
-        $auth_user = auth()->user()->id;
-
-        // check if user and auth already have a message if not create
-        if(Message::where(['sender_id'=> $auth_user, 'receiver_id'=> $user])->first()){
-
-            $message_info = Message::where(['sender_id'=> $auth_user, 'receiver_id'=> $user])->first();
-
-        }else if(Message::where(['sender_id'=> $user, 'receiver_id'=> $auth_user])->first()){
-
-            $message_info = Message::where(['sender_id'=> $user, 'receiver_id'=> $auth_user])->first();
-        }
-        else {
-            $message_info = Message::create(
-                [
-                'sender_id' => auth()->user()->id,
-                'receiver_id' => $user
-                ]
-            );
+        $auth_user = Auth::user()->id;
+        if (Auth::user()->role != "3") {
+            return redirect("/");
         }
 
-        $user_messages = User::where('id','!=',auth()->user()->id)->get();
+        $get_last_post = DB::table('posts')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+        if($user != null) {
+            // check if user and auth already have a message if not create
+            if(Message::where(['sender_id'=> $auth_user, 'receiver_id'=> $user])->first()){
+
+                $message_info = Message::where(['sender_id'=> $auth_user, 'receiver_id'=> $user])->first();
+
+            }else if(Message::where(['sender_id'=> $user, 'receiver_id'=> $auth_user])->first()){
+
+                $message_info = Message::where(['sender_id'=> $user, 'receiver_id'=> $auth_user])->first();
+            }
+            else {
+                $message_info = Message::create(
+                    [
+                    'sender_id' => Auth::user()->id,
+                    'receiver_id' => $user
+                    ]
+                );
+            }
+        }else{
+            $message_info = '';
+        }
+
+        $user_messages = User::where('id','!=',Auth::user()->id)->get();
 
         $user = User::where('id', $user)->first();
 
         $conversations =  MessageComment::where(['message_id'=> $message_info->id])->get();
 
-       return view('messages', compact('user_messages', 'conversations', 'message_info' ));
+        return view('chats', compact('user_messages', 'conversations', 'message_info', 'get_last_post', 'user'));
 
     }
 

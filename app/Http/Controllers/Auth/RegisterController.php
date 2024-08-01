@@ -101,7 +101,7 @@ class RegisterController extends Controller
 
         $ageacceptedd = implode(',', $data['age_accepted']);
 
-        // dd($ageacceptedd);
+        // dd($data);
 
         $user = User::create([
 
@@ -134,6 +134,7 @@ class RegisterController extends Controller
             'dob'=>$data['dob'],
             'loe'=>$data['loe'],
             'do_you_currently_work'=>$data['do_you_work'],
+            'position'=>$data['position'],
 
         ]);
 

@@ -23,8 +23,8 @@
         button#stripe-submit {
             margin-top: 2rem;
         }
-        
-        
+
+
         .StripeElement {
     box-sizing: border-box;
     height: 40px;
@@ -113,14 +113,14 @@
                             <?php
                                 $subtotal = App\Http\Traits\HelperTrait::returnFlag(1973);
                             ?>
-                            
+
                             <input type="hidden" name="payment_id" value=""/>
                             <input type="hidden" name="amount" value="10"/>
                             <input type="hidden" name="payer_id" value=""/>
                             <input type="hidden" name="payment_status" value=""/>
                             <input type="hidden" name="amount" value="{{$subtotal}}"/>
                             <input type="hidden" name="payment_method" id="payment_method" value="paypal"/>
-                            
+
                             <div class="row">
 
                                 <input type="hidden" name="role" value="4">
@@ -352,6 +352,20 @@
                                 @endif
 
                                 <div class="col-lg-6 mt-3">
+                                    <input type="name" class="form-control" name="name" placeholder="Name"
+                                           required="">
+                                </div>
+                                @if ($errors->registerForm->has('name'))
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('name')[0] ?? '' }}</small>
+                                @endif
+                                <div class="col-lg-6 mt-3">
+                                    <input type="position" class="form-control" name="position" placeholder="Position"
+                                           required="">
+                                </div>
+                                @if ($errors->registerForm->has('position'))
+                                    <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('position')[0] ?? '' }}</small>
+                                @endif
+                                <div class="col-lg-6 mt-3">
                                     <input type="email" class="form-control" name="email" placeholder="Email"
                                            required="">
                                 </div>
@@ -393,8 +407,8 @@
                                 @if ($errors->registerForm->has('age_accepted'))
                                     <small class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('age_accepted')[0] }}</small>
                                 @endif
-                                
-                                
+
+
 {{--                                <div class="col-lg-12 mt-3">--}}
 {{--                                    <!--<span>Custom Age</span>-->--}}
 {{--                                    <input type="number" class="form-control" name="custom_age" placeholder="Enter Age">--}}
@@ -445,7 +459,7 @@
                                 <!--<button type="submit" class="custom-btn">Become a provider</button>-->
                                 <div class="form-group col-lg-12 mt-3" hidden>
                                     <div id="accordion" class="payment-accordion">
-                                       
+
                                         <div class="card">
                                             <div class="card-header" id="headingTwo">
                                                 <h5 class="mb-0">

@@ -83,7 +83,7 @@ span.select2-selection.select2-selection--multiple {
 }
 
 .account-details-form input {
-    
+
     height: auto !important;
     width: auto !important;
 }
@@ -203,16 +203,16 @@ li.nav-item.active {
                 </div>
             </div>
         </div>
-        
+
         <div class="profile-name-bg">
             <div class="row">
-                
+
                 <div class="col-md-3">
                     <div class="profile-name">
                         <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span></h5>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -225,18 +225,18 @@ li.nav-item.active {
             <i class="fas fa-address-book"></i>
         </div>
         <div class="row">
-            
+
         @include('provider_menues')
 
             <div class="col-lg-6 col-md-8">
-                
+
                 <div class="profileparent">
                     <form action="{{route('update_prov_profile2')}}" method="post" enctype="multipart/form-data">
                         <div class="profilein1" style="border-bottom: 0px; padding-bottom: 0px;">
-                            @csrf 
+                            @csrf
 
                             <div class="form-group">
-                            
+
                                 <input type="hidden" name="id" value="{{Auth::user()->id}}">
 
                                 <label for="">Email :</label>
@@ -249,9 +249,14 @@ li.nav-item.active {
 
 
                                 <br><br>
-                                
+
                                 <label for="">Last Name :</label>
                                 <input type="text" name="lname" class="form-control" placeholder="" value="{{Auth::user()->lname}}" >
+
+                                <br><br>
+
+                                <label for="">Position :</label>
+                                <input type="text" name="position" class="form-control" placeholder="" value="{{Auth::user()->position}}" >
 
 
                                 <br><br>
@@ -261,12 +266,12 @@ li.nav-item.active {
 
 
                                 <br><br>
-                                
+
                                 <label for="">Phone No :</label>
                                 <input type="number" name="phone" class="form-control" placeholder="" value="{{Auth::user()->phone}}" >
 
                                 <br><br>
-                                
+
                                 <label for="">About :</label>
                                 <textarea type="text" name="about" class="form-control" placeholder="" > {{Auth::user()->about}} </textarea>
 
@@ -281,49 +286,49 @@ li.nav-item.active {
                                     <label for="exampleInputEmail1">Upload Banner Image</label>
                                     <input type="file" name="banner_image" class="form-control" />
                                 </div>
-                                
+
                                 <br><br>
-                                
+
                                 <label for="">Change Password :</label>
                                 <input type="text" name="password" class="form-control" placeholder="Enter New Password"  >
 
 
 
                                 <br><br>
-                                
+
                                 <label for="">Business Name,  :</label>
                                 <input type="text" name="business_name" class="form-control" placeholder="Enter Business Name" value="{{Auth::user()->business_name }}" >
-                                
-                                  
+
+
                                 <br><br>
-                                
+
                                 <label for="">Address :</label>
                                 <textarea type="text" name="address" class="form-control" placeholder="Enter Address"> {{Auth::user()->address }} </textarea>
-                                
-                                
+
+
                                 <br><br>
-                                
+
                                 <label for="">City :</label>
                                 <input type="text" name="city" class="form-control" placeholder="Enter City" value="{{Auth::user()->city }}" >
-                                
-                                
+
+
                                 <br><br>
-                                
+
                                 <label for="">Zip :</label>
                                 <input type="text" name="zip" class="form-control" placeholder="Enter Zip" value="{{Auth::user()->zip }}" >
-                                
-                                 
+
+
                                 <br><br>
-                                
+
                                 <label for="">License Number :</label>
                                 <input type="text" name="license_number" class="form-control" placeholder="Enter License Number" value="{{Auth::user()->license_number }}" >
-                                
-                                   
+
+
                                 <br><br>
-                                
+
                                 <label for="">Capacity :</label>
                                 <input type="text" name="capacity" class="form-control" placeholder="Enter Capacity" value="{{Auth::user()->capacity }}" >
-                                
+
                             </div>
                         </div>
 
@@ -383,7 +388,7 @@ li.nav-item.active {
                     </form>
                     <div class="write-jus">
 
-                       
+
                     </div>
                 </div>
 

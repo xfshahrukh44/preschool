@@ -371,7 +371,7 @@ use DateTime;
                         </div>
                         <div class="chating_section">
                             @if ($user != null)
-                                <div class="messg-info">
+                                <div class="messg-info" id="chat-container">
                                     @if (count($conversations) > 0)
                                         @foreach ($conversations as $conversation)
                                             <div
@@ -501,8 +501,123 @@ use DateTime;
 
 </html>
 
-
+@php
+$user1_image = file_exists(public_path(Auth::user()->image)) ? asset(Auth::user()->image) : asset('assets/imgs/profile_empty.png');
+$user2_image = file_exists(public_path($user->image)) ? asset($user->image) : asset('assets/imgs/profile_empty.png');
+$user2 = $user->id;
+@endphp
 <script>
+
+    $(document).ready(function() {
+        let user1_image = "{{ $user1_image }}";
+        let user2_image = "{{ $user2_image }}";
+
+        // Initialize Laravel Echo and Pusher
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+            cluster: '{{ env('PUSHER_APP_CLUSTER') }}'
+        });
+
+        var channel = pusher.subscribe('message-channel');
+
+        function showNotification(message) {
+            // Create a notification element
+            var notification = $('<div class="notification"></div>');
+            notification.text(message);
+            $('body').append(notification);
+
+            // Style and position the notification
+            notification.css({
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                background: '#333',
+                color: '#fff',
+                padding: '10px',
+                borderRadius: '5px',
+                boxShadow: '0 0 10px rgba(0,0,0,0.5)'
+            });
+
+            // Automatically remove the notification after 5 seconds
+            setTimeout(function() {
+                notification.fadeOut(400, function() {
+                    $(this).remove();
+                });
+            }, 5000);
+        }
+
+        channel.bind('new-message', function(data) {
+            console.log('Message received:', data);
+            var user = "{{ Auth::user()->id }}";
+            var user2 = "{{ $user2 }}";
+            $('#chat-container').append(`
+                <div class="${data.user_id == user ? 'right_messg' : 'left_messg'} time_show">
+                    ${data.user_id == user ? `
+                        <div class="chat_picture">
+                            <img src="${user1_image}" class="img-fluid">
+                        </div>
+                    ` : ''}
+                    <div class="para_chat dynamicTextarea">
+                        <div class="show_mssg">
+                            <p class="client_name_show">${data.user_name}</p>
+                            <span>${new Date(data.created_at).toLocaleTimeString()}</span>
+                        </div>
+                        <div class="show_result">
+                            ${data.message}
+                        </div>
+                    </div>
+                    ${data.user_id != user ? `
+                        <div class="chat_picture">
+                            <img src="${user2_image}" class="img-fluid">
+                        </div>
+                    ` : ''}
+                </div>
+            `);
+            $('.tab-content').scrollTop($('.tab-content')[0].scrollHeight);
+
+            if (data.user_id != user) {
+                showNotification(`New message from ${data.user_name}`);
+            }
+        });
+
+        function sendMessage() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{ url('storeConversations') }}",
+                method: 'post',
+                data: {
+                    message_id: $('[name="message_id"]').val(),
+                    message: $('[name="message"]').val()
+                },
+                success: function(result) {
+                    $('[name="message"]').val('');
+                    console.log('Message sent:', result);
+                    // location.reload();
+                    // Optionally, you can trigger additional actions here if needed
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX error:', status, error);
+                }
+            });
+        }
+
+        $('#submitMessage').click(function(e) {
+            e.preventDefault();
+            // Ensure Pusher script is loaded and bound
+            if (pusher) {
+                sendMessage(); // Send the message after Pusher is initialized
+            } else {
+                console.error('Pusher not initialized');
+            }
+        });
+    });
+
+
     $("#save_post").submit(function(e) {
         e.preventDefault();
         var formData = new FormData(this);
@@ -783,75 +898,51 @@ use DateTime;
         });
     });
 
-    $(document).ready(function() {
-        $('#submitMessage').click(function(e) {
-            e.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: "{{ url('storeConversations') }}",
-                method: 'post',
-                data: {
-                    message_id: $('[name="message_id"]').val(),
-                    message: $('[name="message"]').val()
-                },
-                success: function(result) {
-                    $('[name="message"]').val('');
-                    location.reload();
-                    // loadConversations();
-                }
-            });
-        });
+    // function loadConversations() {
+    //     $.ajaxSetup({
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         }
+    //     });
+    //     var value = $('[name="message_id"]').val();
+    //     $.ajax({
+    //         url: "{{ url('getConversations') }}",
+    //         method: "get",
+    //         data: {
+    //             id: value
+    //         },
+    //         success: function(data) {
+    //             $('#chatContent').html('');
+    //             $.each(data, function(i, v) {
+    //                 $('#chatContent').append(`
+    //                     <div class="${v.user_id == {{ Auth::id() }} ? 'right_messg' : 'left_messg'} time_show">
+    //                         ${v.user_id == {{ Auth::id() }} ? `
+    //                             <div class="chat_picture">
+    //                                 <img src="{{ asset('images/commentimage1.png') }}" class="img-fluid">
+    //                             </div>
+    //                         ` : ''}
+    //                         <div class="para_chat" oninput="adjustTextareaSize()">
+    //                             <div class="show_mssg">
+    //                                 <p class="client_name_show">${v.user.name}</p>
+    //                                 <span>${new Date(v.created_at).toLocaleTimeString()}</span>
+    //                             </div>
+    //                             <div class="show_result">
+    //                                 ${v.message}
+    //                             </div>
+    //                         </div>
+    //                         ${v.user_id != {{ Auth::id() }} ? `
+    //                             <div class="chat_picture">
+    //                                 <img src="{{ asset('images/commentimage1.png') }}" class="img-fluid">
+    //                             </div>
+    //                         ` : ''}
+    //                     </div><br>
+    //                 `);
+    //             });
+    //         }
+    //     });
+    // }
 
-        // function loadConversations() {
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         }
-        //     });
-        //     var value = $('[name="message_id"]').val();
-        //     $.ajax({
-        //         url: "{{ url('getConversations') }}",
-        //         method: "get",
-        //         data: {
-        //             id: value
-        //         },
-        //         success: function(data) {
-        //             $('#chatContent').html('');
-        //             $.each(data, function(i, v) {
-        //                 $('#chatContent').append(`
-        //                     <div class="${v.user_id == {{ Auth::id() }} ? 'right_messg' : 'left_messg'} time_show">
-        //                         ${v.user_id == {{ Auth::id() }} ? `
-        //                             <div class="chat_picture">
-        //                                 <img src="{{ asset('images/commentimage1.png') }}" class="img-fluid">
-        //                             </div>
-        //                         ` : ''}
-        //                         <div class="para_chat" oninput="adjustTextareaSize()">
-        //                             <div class="show_mssg">
-        //                                 <p class="client_name_show">${v.user.name}</p>
-        //                                 <span>${new Date(v.created_at).toLocaleTimeString()}</span>
-        //                             </div>
-        //                             <div class="show_result">
-        //                                 ${v.message}
-        //                             </div>
-        //                         </div>
-        //                         ${v.user_id != {{ Auth::id() }} ? `
-        //                             <div class="chat_picture">
-        //                                 <img src="{{ asset('images/commentimage1.png') }}" class="img-fluid">
-        //                             </div>
-        //                         ` : ''}
-        //                     </div><br>
-        //                 `);
-        //             });
-        //         }
-        //     });
-        // }
-
-        // setInterval(loadConversations, 1000);
-    });
+    // setInterval(loadConversations, 1000);
 
     function scrollToBottom() {
         var chatContainer = $('.tab-content');

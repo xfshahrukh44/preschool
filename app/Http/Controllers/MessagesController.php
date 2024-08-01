@@ -8,6 +8,7 @@ use App\MessageComment;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Log;
 
 class MessagesController extends Controller
 {
@@ -34,6 +35,13 @@ class MessagesController extends Controller
         $conversation->message = $request->message;
         $conversation->message_id = $request->message_id;
         $conversation->save();
+
+        $conversation['user_name'] = Auth::user()->name;
+
+        $this->emit_pusher_notification('message-channel', 'new-message', $conversation);
+
+        // Log::info('Message broadcasted', ['message' => $conversation]);
+
         return response()->json($conversation);
 
     }
@@ -123,5 +131,20 @@ class MessagesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function emit_pusher_notification ($channel, $event, $data) {
+        try {
+            $pusher = new \Pusher\Pusher('81a6b65c44dbb01b4a83', 'db18aefd21e737c0d34f', '1842920', [
+                'cluster' => 'us2',
+                'useTLS' => true
+            ]);
+
+            $pusher->trigger($channel, $event, $data);
+
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

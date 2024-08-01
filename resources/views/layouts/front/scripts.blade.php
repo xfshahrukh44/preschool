@@ -26,12 +26,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <script>
-    
+
      $("#select1").select2({
           placeholder: " Select multiple ages",
           allowClear: true
       });
-      
+
 </script>
 
 
@@ -177,7 +177,7 @@ $('#contactform').on('submit',function(e){
 
 
 <script>
-    
+
     // Set the options that I want
     toastr.options = {
     "closeButton": true,
@@ -191,7 +191,7 @@ $('#contactform').on('submit',function(e){
     "timeOut": "5000",
     "extendedTimeOut": "1000",
     "showEasing": "swing",
-    "hideEasing": "linear", 
+    "hideEasing": "linear",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
     }
@@ -199,15 +199,15 @@ $('#contactform').on('submit',function(e){
 </script>
 
 
-        
+
         @yield('js')
 
 @if(Session::has('message'))
 <script>
-    $(document).ready(function onDocumentReady() {  
-    
+    $(document).ready(function onDocumentReady() {
+
         toastr.success("{{ Session::get('message') }}");
-    
+
     });
 </script>
 @endif
@@ -216,10 +216,10 @@ $('#contactform').on('submit',function(e){
 
 @if(Session::has('error'))
 <script>
-    $(document).ready(function onDocumentReady() {  
-    
+    $(document).ready(function onDocumentReady() {
+
         toastr.error("{{ Session::get('error') }}");
-    
+
     });
 </script>
 @endif

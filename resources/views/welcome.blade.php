@@ -2,7 +2,7 @@
 
 @section('css')
     <style>
-        
+
         .sec-one {
         	background-image: url('{{ asset($page->image) }}');
         	background-position: center;
@@ -148,14 +148,14 @@
         .box-new-1 {
             padding-top: 100px;
         }
-        
-        
+
+
         .services.aos-init.aos-animate {
             height: auto !important;
         }
-        
-        
-        
+
+
+
         .top-bottom {
           background-image: url(<?php echo asset($section[25]->value); ?>);
           background-position: center;
@@ -165,7 +165,7 @@
           box-shadow: 0px 0px 14px 2px #0000002b;
           border-radius: 20px;
         }
-        
+
         .top-bottom.two {
           background-image: url(<?php echo asset($section[24]->value); ?>);
           background-position: center;
@@ -175,8 +175,8 @@
           box-shadow: 0px 0px 14px 2px #0000002b;
           border-radius: 20px;
         }
-        
-        
+
+
         .about-sec-three {
           background-image: url(<?php echo asset($section[26]->value); ?>);
           background-position: left;
@@ -216,14 +216,14 @@
                         {!! $page->content !!}
 
                     </div>
-                    
+
                     <form method="get" action="{{ route('search') }}">
                         <div class="header-form">
                             <input type="text" class="form-control" name="search" id="validationCustom03" placeholder="Enter a zip code or city" required>
                             <button class="custom-btn">Search</button>
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
         </div>
@@ -291,49 +291,49 @@
             </div>
         </div>
     </section>
-    
-    
+
+
 {{--    <section class="about-sec-two" style="background: url({{asset('images/doodle-wall.png')}})">--}}
     <section class="about-sec-two">
         <div class="container">
-            
+
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12" style="background: white;">
                 <div class="top-bottom aos-init aos-animate" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom">
-                    
+
                     {!! $section[1]->value !!}
-                
+
                     </div>
-                    
-                   
+
+
 {{--                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
-                 
+
                 </div>
-                
-                 
-                
-                
+
+
+
+
                 </div>
                 <div class="col-lg-6 col-md-6 col-12" style="background: white;">
                 <div class="top-bottom two aos-init aos-animate" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
                     <div class="about-bottom two">
-                    
+
                    {!! $section[2]->value !!}
-                
+
                     </div>
-                    
+
 {{--                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
                 <br><br><br><br><br>
 
                 </div>
-                
-                
-                
-                
+
+
+
+
                 </div>
             </div>
-            
+
         </div>
     </section>
 
@@ -345,16 +345,16 @@
             </div>
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="our-goal">
-                
+
                 {!! $section[27]->value !!}
 
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
-    
+
 
 {{--    <section class="sec-three" style="background: url({{asset('images/doodle-wall.png')}})">--}}
     <section class="sec-three">
@@ -506,7 +506,7 @@
 
 
     <!-- ============================================================== -->
-    
+
 @endsection
 
 

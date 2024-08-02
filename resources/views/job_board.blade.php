@@ -62,8 +62,8 @@
                         <p><a href="#"><i class="fa-solid fa-location-dot"></i> {{ $val_newjob->location }} </a></p>
                     </div>
                     <div class="apply">
-                        <a href="javascript:void(0)" class="custom-btn views become-angel-button" data-jobid="{{ $val_newjob->id }}" data-creatorid="{{ $val_newjob->creator_name }}">Become An Angel</a>
-                        <a href="{{route('apply_for_job',['id'=>$val_newjob->id])}}" class="custom-btn now">Apply Now</a>
+                        <a href="javascript:void(0)" class="custom-btn views become-angel-button" data-jobid="{{ $val_newjob->id }}" data-creatorid="{{ $val_newjob->creator_name }}">Angel</a>
+                        <a href="{{route('apply_for_job',['id'=>$val_newjob->id])}}" class="custom-btn now">View Job Details</a>
                     </div>
                 </div>
             </div>
@@ -125,6 +125,48 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="teacherModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Angel Addition</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="teacherDetailsForm">
+                    <!-- Add teacher details here -->
+                    <div class="form-group">
+                        <label for="teacherName">Name</label>
+                        <input type="text" class="form-control" id="teacherName" value="{{ Auth::user()->name.' '.Auth::user()->lname }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherEmail">Email</label>
+                        <input type="email" class="form-control" id="teacherEmail" value="{{ Auth::user()->email}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherPosition">Current Position</label>
+                        <input type="text" class="form-control" id="teacherPosition" value="{{ Auth::user()->current_position}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherexperience">Years of experience</label>
+                        <input type="text" class="form-control" id="teacherexperience" value="{{ Auth::user()->year_of_experience}}" readonly>
+                    </div>
+                    <p>Are you sure you want to become an angel for this job?</p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 @endsection
 
@@ -146,6 +188,39 @@
                 var creatorId = $(this).data('creatorid');
 
                 $.ajax({
+                    url: "{{ url('check-angel') }}/" + jobId + "/" + creatorId,
+                    type: 'GET',
+                    success: function(response) {
+                        if (response.exists) {
+                            Swal.fire({
+                                title: 'Notice',
+                                text: 'You are already an angel for this job.',
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            });
+                        } else {
+                            // Open modal with teacher's auth details
+                            $('#teacherModal').modal('show');
+                            $('#confirmButton').data('jobid', jobId);
+                            $('#confirmButton').data('creatorid', creatorId);
+                        }
+                    },
+                    error: function(xhr) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'An error occurred: ' + xhr.responseText,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+
+            $('#confirmButton').click(function() {
+                var jobId = $(this).data('jobid');
+                var creatorId = $(this).data('creatorid');
+
+                $.ajax({
                     url: "{{ url('become-an-angel') }}/" + jobId + "/" + creatorId,
                     type: 'GET',
                     success: function(response) {
@@ -156,6 +231,7 @@
                                 icon: 'success',
                                 confirmButtonText: 'OK'
                             });
+                            $('#teacherModal').modal('hide');
                         } else if (response.error) {
                             Swal.fire({
                                 title: 'Error!',
@@ -176,6 +252,7 @@
                 });
             });
         });
+
 
     </script>
 @endsection

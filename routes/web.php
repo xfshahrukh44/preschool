@@ -239,14 +239,12 @@ Route::get('add-post','HomeController@teacher_post')->name('add_post');
 Route::get('job-board','HomeController@job_board')->name('job_board');
 Route::get('apply-for-job/{id?}','HomeController@apply_for_job')->name('apply_for_job');
 Route::get('become-an-angel/{jobid}/{creatorId}','HomeController@become_an_angel')->name('become_an_angel');
+Route::get('check-angel/{jobid}/{creatorId}', 'HomeController@checkAngel')->name('checkAngel');
 Route::get('update-profile','HomeController@update_profile')->name('update_profile');
 
 Route::post('new-post','HomeController@teacher_create_new_post')->name('teacher_create_new_post');
 Route::post('delete-post','HomeController@delete_post')->name('delete_post');
-
-
-Route::post('new-post', 'HomeController@teacher_create_new_post')->name('teacher_create_new_post');
-Route::post('delete-post', 'HomeController@delete_post')->name('delete_post');
+Route::post('share-post','HomeController@share_post')->name('share_post');
 
 
 Route::post('add-pined-post', 'HomeController@add_pined_post')->name('add_pined_post');

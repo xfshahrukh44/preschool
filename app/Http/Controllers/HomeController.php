@@ -365,6 +365,10 @@ class HomeController extends Controller
             return redirect("/");
         }
 
+        $sharedPosts = DB::table('post_shares')
+            ->where('shared_by', $userId)
+            ->get();
+
         if(Auth::user()->role == "3"){
             $connectedTeacherIds = Auth::user()->connectedTeachers->pluck('id');
             $get_all_teachers = DB::table('users')->whereIn('id', $connectedTeacherIds)->get();
@@ -387,7 +391,7 @@ class HomeController extends Controller
                 ->get();
     //       $get_all_teachers = DB::table('users')->where('role','3')->get();
 
-            $get_all_teachers = DB::table('users')->where('role_id', Auth::user()->role)->get();
+            $get_all_teachers = DB::table('users')->where('role', Auth::user()->role)->get();
         }
         //$post_user_profile = User::find($get_last_post->user_id)->image;
         //$dayago = Carbon::parse($post_user_profile->created_at)->diffForHumans();
@@ -441,7 +445,6 @@ class HomeController extends Controller
 
         $userId = Auth::user()->id;
 
-        // Check if the record already exists
         $existingAngel = Angel::where('teacher_id', $userId)
                             ->where('job_id', $jobid)
                             ->first();
@@ -450,7 +453,6 @@ class HomeController extends Controller
             return response()->json(['error' => 'You are already an angel for this job.']);
         }
 
-        // If not found, create a new record
         $angel = new Angel();
         $angel->teacher_id = $userId;
         $angel->job_id = $jobid;
@@ -458,6 +460,21 @@ class HomeController extends Controller
         $angel->save();
 
         return response()->json(['success' => 'You added the angel list.']);
+    }
+
+    public function checkAngel($jobid, $creatorId)
+    {
+        $userId = Auth::user()->id;
+
+        $existingAngel = Angel::where('teacher_id', $userId)
+                            ->where('job_id', $jobid)
+                            ->first();
+
+        if ($existingAngel) {
+            return response()->json(['exists' => true]);
+        } else {
+            return response()->json(['exists' => false]);
+        }
     }
 
 
@@ -521,6 +538,37 @@ class HomeController extends Controller
         return response()->json(['message' => 'New Post has been Created Successfully', 'status' => true, 'get_last_post' => $get_last_post, 'post_user_profile' => $post_user_profile, 'dayago' => $dayago]);
         // return back();
 
+    }
+
+    public function share_post(Request $request)
+    {
+        $request->validate([
+            'post_id' => 'required',
+            'note' => 'nullable|string',
+        ]);
+
+        $postId = $request->input('post_id');
+        $userId = Auth::id();
+        $note = $request->input('note');
+
+        $alreadyShared = DB::table('post_shares')
+            ->where('post_id', $postId)
+            ->where('shared_by', $userId)
+            ->exists();
+
+        if ($alreadyShared) {
+            return response()->json(['message' => 'You have already shared this post.', 'status' => false]);
+        }
+
+        DB::table('post_shares')->insert([
+            'post_id' => $postId,
+            'shared_by' => $userId,
+            'note' => $note,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return response()->json(['message' => 'Post shared successfully', 'status' => true]);
     }
 
 

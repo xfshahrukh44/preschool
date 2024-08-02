@@ -259,10 +259,10 @@ li.nav-item.active {
                                 <input type="text" name="position" class="form-control" placeholder="" value="{{Auth::user()->position}}" >
 
 
-                                <br><br>
+                                {{-- <br><br>
 
                                 <label for="">Ages Accepted</label>
-                                <input type="text" name="lname" class="form-control" placeholder="" value="{{Auth::user()->age_accepted}}" >
+                                <input type="text" name="lname" class="form-control" placeholder="" value="{{Auth::user()->age_accepted}}" > --}}
 
 
                                 <br><br>

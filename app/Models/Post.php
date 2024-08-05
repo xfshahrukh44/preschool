@@ -27,5 +27,10 @@ class Post extends Model
      */
     protected $fillable = ['user_id', 'user_name', 'user_image', 'post', 'post_image', 'role_id'];
 
-    
+    public function users()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
+
 }

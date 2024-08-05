@@ -97,6 +97,28 @@ use DateTime;
     textarea.select2-search__field {
         font-size: 15px !important;
     }
+
+    .share_post .newfeed {
+        margin: 0 40px;
+        padding: 10px 20px;
+    }
+
+    .share_post {
+        margin: 40px 0;
+        border: 2px solid #70809047;
+        padding: 10px 10px;
+        background: #d8dbe4;
+    }
+
+    .share_post .new-feedbut .but2 {
+        width: 30%;
+    }
+
+    .share_post .new-feedbut {
+        margin-top: 40px;
+        justify-content: center;
+        width: 100%;
+    }
 </style>
 
 <body>
@@ -289,176 +311,392 @@ use DateTime;
 
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-lg-6">
-
-                                                <div class="newfeed">
-
-                                                    <input type="hidden" name="" id="get_id"
-                                                        value="{{ $val_get_last->id }}">
-
-                                                    <div class="newfeed-profile-name">
-
-
-                                                        @if (App\User::find($val_get_last->user_id)->image != '')
-                                                            <img style="height:60px; width:60px; border-radius: 50px;"
-                                                                src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
-                                                                class="img-fluid">
-                                                        @else
-                                                            <img style="height:60px; width:60px; border-radius:50px;"
-                                                                src="{{ asset('images/profilemain1.png') }}"
-                                                                class="img-fluid">
-                                                        @endif
-
-                                                        <h4> {{ App\User::find($val_get_last->user_id)->name }}
-                                                            {{ App\User::find($val_get_last->user_id)->lname }}
-                                                            <span>
-                                                                {{ Carbon::parse($val_get_last->created_at)->diffForHumans() }}
-                                                            </span>
-                                                        </h4>
-
-                                                        @if (Auth::user()->id == $val_get_last->user_id)
-                                                            <button class="btn btn-danger"
-                                                                onClick="delete_post('{{ $val_get_last->id }}');"
-                                                                style="position:absolute; right:50px;">
-                                                                <span class="fa fa-trash"> </span></button>
-                                                        @endif
-
-                                                    </div>
-
-                                                    <div class="newfeed-image">
-
-                                                        <p> {{ $val_get_last->post }} </p>
-
-                                                    </div>
-
-                                                    <div class="newfeed-image">
-
-                                                        @if (!is_null($val_get_last->image))
-                                                            <img style="height:400px; width:100%; border-radius:10px;"
-                                                                src="{{ asset($val_get_last->image) }}"
-                                                                class="img-fluid">
-                                                        @endif
+                                                @if($val_get_last->share_post != null)
+                                                    @php
+                                                    $share_user = App\Models\Post::with('users')->where('id', $val_get_last->share_post)->first();
+                                                    @endphp
+                                                    <div class="share_post">
+                                                        <div class="newfeed-profile-name">
 
 
-                                                    </div>
-
-
-                                                    <hr>
-
-                                                    <div class="new-feedbut">
-
-                                                        <?php
-
-                                                        $get_like = DB::table('likes')
-                                                            ->where('user_id', Auth::user()->id)
-                                                            ->where('post_id', $val_get_last->id)
-                                                            ->first();
-
-                                                        ?>
-
-
-                                                        @if ($get_like != '')
-                                                            <button href=""
-                                                                onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
-                                                                class="but0 but1"><b> Liked </b></button>
-                                                        @else
-                                                            <button href=""
-                                                                onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
-                                                                class="but0 but2"> Like
-                                                            </button>
-                                                        @endif
-
-
-                                                        <button href="" style="pointer-events:none;"
-                                                            class="but0 but2">
-                                                            Comment ({{ $get_comment_count }})
-                                                        </button>
-
-
-                                                        <button class="but0 but2 share-post-button" data-postid="{{ $val_get_last->id }}" data-toggle="modal" data-target="#shareModal" style="width: 20px;"><span
-                                                            class="fa fa-share"> </span></button>
-
-                                                    </div>
-
-                                                    <hr>
-
-                                                    <form class="save_comments" method="post">
-
-                                                        <div class="newfeed-commnet">
-
-                                                            @csrf
-
-                                                            <input type="hidden" name="post_id" id="post_id"
-                                                                value="{{ $val_get_last->id }}">
-                                                            <input type="hidden" name="user_id" id="user_id"
-                                                                value="{{ Auth::user()->id }}">
-
-                                                            <input type="hidden" name="user_image" id="user_image"
-                                                                value="{{ App\Models\Post::find($val_get_last->id)->name }} {{ App\Models\Post::find($val_get_last->id)->lname }}">
-                                                            <input type="hidden" name="post_image" id="post_image"
-                                                                value="{{ App\Models\Post::find($val_get_last->id)->image }}">
-                                                            <input type="hidden" name="user_image" id="user_image"
-                                                                value="{{ Auth::user()->image }}">
-
-                                                            <div class="com-img col-md-1">
-                                                                <img style="height:50px; width:50px; border-radius:50px;"
-                                                                    src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
+                                                            @if (App\User::find($val_get_last->user_id)->image != '')
+                                                                <img style="height:60px; width:60px; border-radius: 50px;"
+                                                                    src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
                                                                     class="img-fluid">
-                                                            </div>
+                                                            @else
+                                                                <img style="height:60px; width:60px; border-radius:50px;"
+                                                                    src="{{ asset('images/profilemain1.png') }}"
+                                                                    class="img-fluid">
+                                                            @endif
 
-                                                            <div class="com-img col-md-10">
-                                                                <input type="text"
-                                                                    class="form-control comment_text" id="comment"
-                                                                    name="comment"
-                                                                    style="height: 50px; border-radius:15px; font-size: 15px;"
-                                                                    placeholder="Write Comment">
-                                                            </div>
+                                                            <h4> {{ App\User::find($val_get_last->user_id)->name }}
+                                                                {{ App\User::find($val_get_last->user_id)->lname }}
+                                                                <span>
+                                                                    {{ Carbon::parse($val_get_last->created_at)->diffForHumans() }}
+                                                                </span>
+                                                            </h4>
 
-                                                            <div class="com-img col-md-1">
-                                                                <button type="submit"
-                                                                    class="btn btn-primary comment_post_btn"
-                                                                    style="height: 40px;width: 50px; margin-top: 5px;">
-                                                                    <span class="fa fa-paper-plane"> </span></button>
-                                                            </div>
+                                                            @if (Auth::user()->id == $val_get_last->user_id)
+                                                                <button class="btn btn-danger"
+                                                                    onClick="delete_post('{{ $val_get_last->id }}');"
+                                                                    style="position:absolute; right:50px;">
+                                                                    <span class="fa fa-trash"> </span></button>
+                                                            @endif
 
                                                         </div>
 
-                                                    </form>
+                                                        <div class="newfeed-image">
 
-                                                    <hr>
+                                                            <p> {{ $val_get_last->post }} </p>
+
+                                                        </div>
+
+                                                        <div class="newfeed">
+
+                                                            <input type="hidden" name="" id="get_id"
+                                                                value="{{ $share_user->id }}">
+
+                                                            <div class="newfeed-profile-name">
 
 
-                                                    <div class="row post_comment">
+                                                                @if ($share_user->users->image != null)
+                                                                    <img style="height:60px; width:60px; border-radius: 50px;"
+                                                                        src="{{ asset($share_user->users->image) }}"
+                                                                        class="img-fluid">
+                                                                @else
+                                                                    <img style="height:60px; width:60px; border-radius:50px;"
+                                                                        src="{{ asset('images/profilemain1.png') }}"
+                                                                        class="img-fluid">
+                                                                @endif
 
-                                                        <?php $get_comments_by_id = DB::table('comments')
-                                                            ->where('post_id', $val_get_last->id)
-                                                            ->orderBy('id', 'desc')
-                                                            ->get(); ?>
-                                                        <!-- @dump($get_comments_by_id) -->
-
-                                                        @foreach ($get_comments_by_id as $key => $val_comments)
-                                                            <div class="com-img col-md-1">
-                                                                <img style="height:50px; width:50px; border-radius:50px;"
-                                                                    src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
-                                                                    class="img-fluid">
-                                                            </div>
-
-                                                            <div class="commentbox col-md-10">
-
-                                                                <h4> {{ App\User::find($val_comments->user_id)->name }}
+                                                                <h4> {{ $share_user->users->name }}
+                                                                    {{ $share_user->users->lname }}
                                                                     <span>
-                                                                        {{ Carbon::parse($val_comments->created_at)->diffForHumans() }}
+                                                                        {{ Carbon::parse($share_user->created_at)->diffForHumans() }}
                                                                     </span>
-
-                                                                    <p> {{ $val_comments->comment }} </p>
                                                                 </h4>
+
                                                             </div>
-                                                        @endforeach
+
+                                                            <div class="newfeed-image">
+
+                                                                <p> {{ $share_user->post }} </p>
+
+                                                            </div>
+
+                                                            <div class="newfeed-image">
+
+                                                                @php
+                                                                    $post_image = App\Models\Post::find($val_get_last->share_post)->image;
+                                                                @endphp
+                                                                @if (!is_null($post_image))
+                                                                    <img style="height:400px; width:100%; border-radius:10px;"
+                                                                        src="{{ asset($post_image) }}"
+                                                                        class="img-fluid">
+                                                                @endif
+
+
+                                                            </div>
+
+
+                                                            <hr>
+
+
+
+                                                        </div>
+                                                        <div class="new-feedbut">
+
+                                                            <?php
+                                                                $get_like = DB::table('likes')
+                                                                    ->where('user_id', Auth::user()->id)
+                                                                    ->where('post_id', $val_get_last->id)
+                                                                    ->first();
+
+                                                                $like_count = DB::table('likes')
+                                                                    ->where('post_id', $val_get_last->id)
+                                                                    ->count();
+                                                            ?>
+
+                                                            @if ($get_like)
+                                                                <button onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');" class="but0 but1">
+                                                                    <b>Liked ({{ $like_count }})</b>
+                                                                </button>
+                                                            @else
+                                                                <button onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');" class="but0 but2">
+                                                                    Like ({{ $like_count }})
+                                                                </button>
+                                                            @endif
+
+
+
+                                                            <button href="" style="pointer-events:none;"
+                                                                class="but0 but2">
+                                                                Comment ({{ $get_comment_count }})
+                                                            </button>
+
+
+                                                            <button class="but0 but2 share-post-button"
+                                                                data-postid="{{ $val_get_last->id }}" data-sharepost="{{ $val_get_last->share_post }}" data-toggle="modal"
+                                                                data-target="#shareModal" style="width: 20px;"><span
+                                                                    class="fa fa-share">
+                                                                </span></button>
+
+                                                        </div>
+
+                                                        <hr>
+
+                                                        <form class="save_comments" method="post">
+
+                                                            <div class="newfeed-commnet">
+
+                                                                @csrf
+
+                                                                <input type="hidden" name="post_id" id="post_id"
+                                                                    value="{{ $val_get_last->id }}">
+                                                                <input type="hidden" name="user_id" id="user_id"
+                                                                    value="{{ Auth::user()->id }}">
+
+                                                                <input type="hidden" name="user_image" id="user_image"
+                                                                    value="{{ App\Models\Post::find($val_get_last->id)->name }} {{ App\Models\Post::find($val_get_last->id)->lname }}">
+                                                                <input type="hidden" name="post_image" id="post_image"
+                                                                    value="{{ App\Models\Post::find($val_get_last->id)->image }}">
+                                                                <input type="hidden" name="user_image" id="user_image"
+                                                                    value="{{ Auth::user()->image }}">
+
+                                                                <div class="com-img col-md-1">
+                                                                    <img style="height:50px; width:50px; border-radius:50px;"
+                                                                        src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
+                                                                        class="img-fluid">
+                                                                </div>
+
+                                                                <div class="com-img col-md-10">
+                                                                    <input type="text"
+                                                                        class="form-control comment_text" id="comment"
+                                                                        name="comment"
+                                                                        style="height: 50px; border-radius:15px; font-size: 15px;"
+                                                                        placeholder="Write Comment">
+                                                                </div>
+
+                                                                <div class="com-img col-md-1">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary comment_post_btn"
+                                                                        style="height: 40px;width: 50px; margin-top: 5px;">
+                                                                        <span class="fa fa-paper-plane">
+                                                                        </span></button>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </form>
+
+                                                        <hr>
+
+
+                                                        <div class="row post_comment">
+
+                                                            <?php $get_comments_by_id = DB::table('comments')
+                                                                ->where('post_id', $val_get_last->id)
+                                                                ->orderBy('id', 'desc')
+                                                                ->get(); ?>
+                                                            <!-- @dump($get_comments_by_id) -->
+
+                                                            @foreach ($get_comments_by_id as $key => $val_comments)
+                                                                <div class="com-img col-md-1">
+                                                                    <img style="height:50px; width:50px; border-radius:50px;"
+                                                                        src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
+                                                                        class="img-fluid">
+                                                                </div>
+
+                                                                <div class="commentbox col-md-10">
+
+                                                                    <h4> {{ App\User::find($val_comments->user_id)->name }}
+                                                                        <span>
+                                                                            {{ Carbon::parse($val_comments->created_at)->diffForHumans() }}
+                                                                        </span>
+
+                                                                        <p> {{ $val_comments->comment }} </p>
+                                                                    </h4>
+                                                                </div>
+                                                            @endforeach
+
+
+                                                        </div>
+
+                                                    </div>
+                                                @endif
+                                                @if($val_get_last->share_post == null)
+                                                    <div class="newfeed">
+
+                                                        <input type="hidden" name="" id="get_id"
+                                                            value="{{ $val_get_last->id }}">
+
+                                                        <div class="newfeed-profile-name">
+
+
+                                                            @if (App\User::find($val_get_last->user_id)->image != '')
+                                                                <img style="height:60px; width:60px; border-radius: 50px;"
+                                                                    src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
+                                                                    class="img-fluid">
+                                                            @else
+                                                                <img style="height:60px; width:60px; border-radius:50px;"
+                                                                    src="{{ asset('images/profilemain1.png') }}"
+                                                                    class="img-fluid">
+                                                            @endif
+
+                                                            <h4> {{ App\User::find($val_get_last->user_id)->name }}
+                                                                {{ App\User::find($val_get_last->user_id)->lname }}
+                                                                <span>
+                                                                    {{ Carbon::parse($val_get_last->created_at)->diffForHumans() }}
+                                                                </span>
+                                                            </h4>
+
+                                                            @if (Auth::user()->id == $val_get_last->user_id)
+                                                                <button class="btn btn-danger"
+                                                                    onClick="delete_post('{{ $val_get_last->id }}');"
+                                                                    style="position:absolute; right:50px;">
+                                                                    <span class="fa fa-trash"> </span></button>
+                                                            @endif
+
+                                                        </div>
+
+                                                        <div class="newfeed-image">
+
+                                                            <p> {{ $val_get_last->post }} </p>
+
+                                                        </div>
+
+                                                        <div class="newfeed-image">
+
+                                                            @if (!is_null($val_get_last->image))
+                                                                <img style="height:400px; width:100%; border-radius:10px;"
+                                                                    src="{{ asset($val_get_last->image) }}"
+                                                                    class="img-fluid">
+                                                            @endif
+
+
+                                                        </div>
+
+
+                                                        <hr>
+
+                                                        <div class="new-feedbut">
+
+                                                            <?php
+
+                                                            $get_like = DB::table('likes')
+                                                                ->where('user_id', Auth::user()->id)
+                                                                ->where('post_id', $val_get_last->id)
+                                                                ->first();
+
+                                                            ?>
+
+
+                                                            @if ($get_like != '')
+                                                                <button href=""
+                                                                    onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
+                                                                    class="but0 but1"><b> Liked </b></button>
+                                                            @else
+                                                                <button href=""
+                                                                    onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
+                                                                    class="but0 but2"> Like
+                                                                </button>
+                                                            @endif
+
+
+                                                            <button href="" style="pointer-events:none;"
+                                                                class="but0 but2">
+                                                                Comment ({{ $get_comment_count }})
+                                                            </button>
+
+
+                                                            <button class="but0 but2 share-post-button"
+                                                                data-postid="{{ $val_get_last->id }}" data-toggle="modal"
+                                                                data-target="#shareModal" style="width: 20px;"><span
+                                                                    class="fa fa-share"> </span></button>
+
+                                                        </div>
+
+                                                        <hr>
+
+                                                        <form class="save_comments" method="post">
+
+                                                            <div class="newfeed-commnet">
+
+                                                                @csrf
+
+                                                                <input type="hidden" name="post_id" id="post_id"
+                                                                    value="{{ $val_get_last->id }}">
+                                                                <input type="hidden" name="user_id" id="user_id"
+                                                                    value="{{ Auth::user()->id }}">
+
+                                                                <input type="hidden" name="user_image" id="user_image"
+                                                                    value="{{ App\Models\Post::find($val_get_last->id)->name }} {{ App\Models\Post::find($val_get_last->id)->lname }}">
+                                                                <input type="hidden" name="post_image" id="post_image"
+                                                                    value="{{ App\Models\Post::find($val_get_last->id)->image }}">
+                                                                <input type="hidden" name="user_image" id="user_image"
+                                                                    value="{{ Auth::user()->image }}">
+
+                                                                <div class="com-img col-md-1">
+                                                                    <img style="height:50px; width:50px; border-radius:50px;"
+                                                                        src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
+                                                                        class="img-fluid">
+                                                                </div>
+
+                                                                <div class="com-img col-md-10">
+                                                                    <input type="text"
+                                                                        class="form-control comment_text" id="comment"
+                                                                        name="comment"
+                                                                        style="height: 50px; border-radius:15px; font-size: 15px;"
+                                                                        placeholder="Write Comment">
+                                                                </div>
+
+                                                                <div class="com-img col-md-1">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary comment_post_btn"
+                                                                        style="height: 40px;width: 50px; margin-top: 5px;">
+                                                                        <span class="fa fa-paper-plane"> </span></button>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </form>
+
+                                                        <hr>
+
+
+                                                        <div class="row post_comment">
+
+                                                            <?php $get_comments_by_id = DB::table('comments')
+                                                                ->where('post_id', $val_get_last->id)
+                                                                ->orderBy('id', 'desc')
+                                                                ->get(); ?>
+                                                            <!-- @dump($get_comments_by_id) -->
+
+                                                            @foreach ($get_comments_by_id as $key => $val_comments)
+                                                                <div class="com-img col-md-1">
+                                                                    <img style="height:50px; width:50px; border-radius:50px;"
+                                                                        src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
+                                                                        class="img-fluid">
+                                                                </div>
+
+                                                                <div class="commentbox col-md-10">
+
+                                                                    <h4> {{ App\User::find($val_comments->user_id)->name }}
+                                                                        <span>
+                                                                            {{ Carbon::parse($val_comments->created_at)->diffForHumans() }}
+                                                                        </span>
+
+                                                                        <p> {{ $val_comments->comment }} </p>
+                                                                    </h4>
+                                                                </div>
+                                                            @endforeach
+
+
+                                                        </div>
 
 
                                                     </div>
-
-
-                                                </div>
+                                                @endif
                                             </div>
                                         </div>
 
@@ -525,8 +763,8 @@ use DateTime;
     </section>
 
     @include('footerlink')
-    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel"
-        aria-hidden="true">
+    <div class="modal fade sharePost" id="shareModal" tabindex="-1" role="dialog"
+        aria-labelledby="shareModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1036,9 +1274,11 @@ use DateTime;
 
     $(document).ready(function() {
         var postId;
+        var sharepost;
 
         $('.share-post-button').click(function() {
             postId = $(this).data('postid');
+            sharepost = $(this).data('sharepost');
         });
 
         $('#confirmShareButton').click(function() {
@@ -1050,6 +1290,7 @@ use DateTime;
                 data: {
                     _token: "{{ csrf_token() }}",
                     post_id: postId,
+                    share_post: sharepost,
                     note: note
                 },
                 success: function(response) {
@@ -1059,6 +1300,10 @@ use DateTime;
                             text: response.message,
                             icon: 'success',
                             confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = response.redirectUrl; // Redirect to the URL specified in the response
+                            }
                         });
                         $('#shareModal').modal('hide');
                     } else {
@@ -1081,4 +1326,5 @@ use DateTime;
             });
         });
     });
+
 </script>

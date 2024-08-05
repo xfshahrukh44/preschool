@@ -365,9 +365,12 @@ class HomeController extends Controller
             return redirect("/");
         }
 
-        $sharedPosts = DB::table('post_shares')
-            ->where('shared_by', $userId)
+        $sharedPost = DB::table('post_shares')
+            ->where('shared_by', Auth::user()->id)
             ->get();
+        // Extract post IDs and notes
+        $sharedPostIds = $sharedPost->pluck('post_id');
+        $sharedNotes = $sharedPost->pluck('note', 'post_id');
 
         if(Auth::user()->role == "3"){
             $connectedTeacherIds = Auth::user()->connectedTeachers->pluck('id');
@@ -384,21 +387,19 @@ class HomeController extends Controller
 
 
         }else{
-            $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
-                ->when(request()->has('search'), function ($q) {
-                    return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
-                })
-                ->get();
-    //       $get_all_teachers = DB::table('users')->where('role','3')->get();
+                $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
+                    ->when(request()->has('search'), function ($q) {
+                        return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
+                    })
+                    ->get();
+
+                // return $get_last_post;
+
 
             $get_all_teachers = DB::table('users')->where('role', Auth::user()->role)->get();
         }
-        //$post_user_profile = User::find($get_last_post->user_id)->image;
-        //$dayago = Carbon::parse($post_user_profile->created_at)->diffForHumans();
 
-        //dd($get_last_post);
-
-        return view('teacher_post', compact('get_last_post', 'post_user_profile', 'dayago', 'get_all_teachers'));
+        return view('teacher_post', compact('get_last_post', 'post_user_profile', 'dayago', 'get_all_teachers', 'sharedPostIds'));
 
     }
 
@@ -542,33 +543,39 @@ class HomeController extends Controller
 
     public function share_post(Request $request)
     {
+        // return $request;
         $request->validate([
             'post_id' => 'required',
             'note' => 'nullable|string',
         ]);
 
         $postId = $request->input('post_id');
+        $sharepost = $request->input('share_post');
         $userId = Auth::id();
         $note = $request->input('note');
 
-        $alreadyShared = DB::table('post_shares')
-            ->where('post_id', $postId)
-            ->where('shared_by', $userId)
-            ->exists();
+        if($sharepost != null){
+            $alreadyShared = DB::table('posts')
+                ->where('share_post', $sharepost)
+                ->where('user_id', $userId)
+                ->first();
 
-        if ($alreadyShared) {
-            return response()->json(['message' => 'You have already shared this post.', 'status' => false]);
+            if ($alreadyShared) {
+                return response()->json(['message' => 'You have already shared this post.', 'status' => false]);
+            }
         }
 
-        DB::table('post_shares')->insert([
-            'post_id' => $postId,
-            'shared_by' => $userId,
-            'note' => $note,
+
+        DB::table('posts')->insert([
+            'share_post' => $postId,
+            'user_id' => $userId,
+            'post' => $note,
+            'role_id' => Auth::user()->role,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        return response()->json(['message' => 'Post shared successfully', 'status' => true]);
+        return response()->json(['message' => 'Post shared successfully', 'status' => true, 'redirectUrl' => route('add_post')]);
     }
 
 

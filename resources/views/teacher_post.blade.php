@@ -582,23 +582,23 @@ use DateTime;
                                                         <div class="new-feedbut">
 
                                                             <?php
+                                                                $get_like = DB::table('likes')
+                                                                    ->where('user_id', Auth::user()->id)
+                                                                    ->where('post_id', $val_get_last->id)
+                                                                    ->first();
 
-                                                            $get_like = DB::table('likes')
-                                                                ->where('user_id', Auth::user()->id)
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->first();
-
+                                                                $like_count = DB::table('likes')
+                                                                    ->where('post_id', $val_get_last->id)
+                                                                    ->count();
                                                             ?>
 
-
-                                                            @if ($get_like != '')
-                                                                <button href=""
-                                                                    onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
-                                                                    class="but0 but1"><b> Liked </b></button>
+                                                            @if ($get_like)
+                                                                <button onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');" class="but0 but1">
+                                                                    <b>Liked ({{ $like_count }})</b>
+                                                                </button>
                                                             @else
-                                                                <button href=""
-                                                                    onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
-                                                                    class="but0 but2"> Like
+                                                                <button onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');" class="but0 but2">
+                                                                    Like ({{ $like_count }})
                                                                 </button>
                                                             @endif
 

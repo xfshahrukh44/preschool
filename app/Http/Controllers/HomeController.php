@@ -110,7 +110,7 @@ class HomeController extends Controller
         $page = DB::table('pages')->where('id', 2)->first();
         $section = DB::table('section')->where('page_id', 2)->get();
 
-        $angel = Angel::with('job','creator')->where('creator_id', Auth::user()->id)->get();
+        $angel = Angel::with('job', 'creator')->where('creator_id', Auth::user()->id)->get();
 
         return view('angel-list', compact('page', 'section', 'get_all_claimed_daycare_center', 'angel'));
 
@@ -311,7 +311,7 @@ class HomeController extends Controller
 
         // dd($get_last_post);
 
-        return view('teacher_dashboard', compact('get_all_teacher', 'get_last_post'));
+        return view('teacher_dashboard', compact('get_all_teacher', 'get_last_post', 'get_all_new_job'));
     }
 
     public function connect($id)
@@ -372,28 +372,28 @@ class HomeController extends Controller
         $sharedPostIds = $sharedPost->pluck('post_id');
         $sharedNotes = $sharedPost->pluck('note', 'post_id');
 
-        if(Auth::user()->role == "3"){
+        if (Auth::user()->role == "3") {
             $connectedTeacherIds = Auth::user()->connectedTeachers->pluck('id');
             $get_all_teachers = DB::table('users')->whereIn('id', $connectedTeacherIds)->get();
             $connectedTeacherIds[] = Auth::user()->id;
 
-    //       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
+            //       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
             $get_last_post = Post::where('role_id', Auth::user()->role)->whereIn('user_id', $connectedTeacherIds)->orderBy('id', 'desc')
                 ->when(request()->has('search'), function ($q) {
-                    return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
+                    return $q->where('post', 'LIKE', '%' . request()->get('search') . '%');
                 })
                 ->get();
-    //       $get_all_teachers = DB::table('users')->where('role','3')->get();
+            //       $get_all_teachers = DB::table('users')->where('role','3')->get();
 
 
-        }else{
-                $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
-                    ->when(request()->has('search'), function ($q) {
-                        return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
-                    })
-                    ->get();
+        } else {
+            $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
+                ->when(request()->has('search'), function ($q) {
+                    return $q->where('post', 'LIKE', '%' . request()->get('search') . '%');
+                })
+                ->get();
 
-                // return $get_last_post;
+            // return $get_last_post;
 
 
             $get_all_teachers = DB::table('users')->where('role', Auth::user()->role)->get();
@@ -447,8 +447,8 @@ class HomeController extends Controller
         $userId = Auth::user()->id;
 
         $existingAngel = Angel::where('teacher_id', $userId)
-                            ->where('job_id', $jobid)
-                            ->first();
+            ->where('job_id', $jobid)
+            ->first();
 
         if ($existingAngel) {
             return response()->json(['error' => 'You are already an angel for this job.']);
@@ -468,8 +468,8 @@ class HomeController extends Controller
         $userId = Auth::user()->id;
 
         $existingAngel = Angel::where('teacher_id', $userId)
-                            ->where('job_id', $jobid)
-                            ->first();
+            ->where('job_id', $jobid)
+            ->first();
 
         if ($existingAngel) {
             return response()->json(['exists' => true]);
@@ -554,7 +554,7 @@ class HomeController extends Controller
         $userId = Auth::id();
         $note = $request->input('note');
 
-        if($sharepost != null){
+        if ($sharepost != null) {
             $alreadyShared = DB::table('posts')
                 ->where('share_post', $sharepost)
                 ->where('user_id', $userId)

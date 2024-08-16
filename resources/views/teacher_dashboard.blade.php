@@ -165,7 +165,50 @@ use DateTime;
         margin-top: -16px;
     }
 
+    .user ul {
+        padding: 0;
+        margin-top: 13px;
+        overflow-y: scroll;
+        height: 300px;
+    }
 
+    .sidebarleft .job_view {
+        height: 300px;
+        overflow-y: auto;
+    }
+
+    .sidebarleft .center-info h6 {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebarleft .center-info p a {
+        font-size: 13px;
+    }
+
+    .btn-sm {
+        padding: 4px 8px !important;
+        font-size: 12px !important;
+        border-radius: 0 !important;
+    }
+
+    .sidebarleft .center-info p {
+        margin: 0;
+    }
+
+    .sidebarleft .apply {
+        padding: 0;
+    }
+
+    .flex-eye {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30px;
+        padding-right: 10px;
+    }
 </style>
 
 <body>

@@ -119,6 +119,77 @@ use DateTime;
         justify-content: center;
         width: 100%;
     }
+
+    .user ul {
+        height: 150px;
+    }
+
+
+    .home-sec .sidebarleft {
+        height: auto;
+        position: unset;
+    }
+
+    .sidebarleft .job_view {
+        height: 300px;
+        overflow-y: auto;
+    }
+
+    .sidebarleft .center-info h6 {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0;
+        margin: 0;
+        line-height: 32px;
+    }
+
+    .sidebarleft .center-info p a {
+        text-decoration: none;
+        color: #747272;
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+    .btn-sm {
+        padding: 4px 8px !important;
+        font-size: 12px !important;
+        border-radius: 0 !important;
+    }
+
+    .sidebarleft .center-info p {
+        margin: 0;
+    }
+
+    .sidebarleft .apply {
+        padding: 0;
+    }
+
+    .flex-eye {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30px;
+        padding-right: 10px;
+    }
+
+
+    .home-sec1 .sidebarLeft {
+        position: unset !important;
+        height: 100%;
+    }
+
+    .home-sec1 .sidebarLeft .sidebarleft {
+        height: unset !important;
+    }
+
+    @media(max-width:1440px) {
+
+        .new-feedbut .but1,
+        .but2 {
+            width: 20%;
+            margin-left: 5px;
+        }
+    }
 </style>
 
 <body>
@@ -193,13 +264,13 @@ use DateTime;
                 </div>
 
 
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="center-bar">
 
                                 <div class="row justify-content-center">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <form action="{{ route('add_post') }}" method="GET">
                                             <div class="row m-auto px-5" style="background-color: #f5f7fc;">
                                                 <div class="col-md-12">
@@ -310,10 +381,12 @@ use DateTime;
                                         ?>
 
                                         <div class="row justify-content-center align-items-center">
-                                            <div class="col-lg-6">
-                                                @if($val_get_last->share_post != null)
+                                            <div class="col-lg-12">
+                                                @if ($val_get_last->share_post != null)
                                                     @php
-                                                    $share_user = App\Models\Post::with('users')->where('id', $val_get_last->share_post)->first();
+                                                        $share_user = App\Models\Post::with('users')
+                                                            ->where('id', $val_get_last->share_post)
+                                                            ->first();
                                                     @endphp
                                                     <div class="share_post">
                                                         <div class="newfeed-profile-name">
@@ -387,7 +460,9 @@ use DateTime;
                                                             <div class="newfeed-image">
 
                                                                 @php
-                                                                    $post_image = App\Models\Post::find($val_get_last->share_post)->image;
+                                                                    $post_image = App\Models\Post::find(
+                                                                        $val_get_last->share_post,
+                                                                    )->image;
                                                                 @endphp
                                                                 @if (!is_null($post_image))
                                                                     <img style="height:400px; width:100%; border-radius:10px;"
@@ -407,22 +482,26 @@ use DateTime;
                                                         <div class="new-feedbut">
 
                                                             <?php
-                                                                $get_like = DB::table('likes')
-                                                                    ->where('user_id', Auth::user()->id)
-                                                                    ->where('post_id', $val_get_last->id)
-                                                                    ->first();
+                                                            $get_like = DB::table('likes')
+                                                                ->where('user_id', Auth::user()->id)
+                                                                ->where('post_id', $val_get_last->id)
+                                                                ->first();
 
-                                                                $like_count = DB::table('likes')
-                                                                    ->where('post_id', $val_get_last->id)
-                                                                    ->count();
+                                                            $like_count = DB::table('likes')
+                                                                ->where('post_id', $val_get_last->id)
+                                                                ->count();
                                                             ?>
 
                                                             @if ($get_like)
-                                                                <button onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');" class="but0 but1">
+                                                                <button
+                                                                    onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
+                                                                    class="but0 but1">
                                                                     <b>Liked ({{ $like_count }})</b>
                                                                 </button>
                                                             @else
-                                                                <button onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');" class="but0 but2">
+                                                                <button
+                                                                    onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
+                                                                    class="but0 but2">
                                                                     Like ({{ $like_count }})
                                                                 </button>
                                                             @endif
@@ -436,9 +515,10 @@ use DateTime;
 
 
                                                             <button class="but0 but2 share-post-button"
-                                                                data-postid="{{ $val_get_last->id }}" data-sharepost="{{ $val_get_last->share_post }}" data-toggle="modal"
-                                                                data-target="#shareModal" style="width: 20px;"><span
-                                                                    class="fa fa-share">
+                                                                data-postid="{{ $val_get_last->id }}"
+                                                                data-sharepost="{{ $val_get_last->share_post }}"
+                                                                data-toggle="modal" data-target="#shareModal"
+                                                                style="width: 20px;"><span class="fa fa-share">
                                                                 </span></button>
 
                                                         </div>
@@ -456,11 +536,14 @@ use DateTime;
                                                                 <input type="hidden" name="user_id" id="user_id"
                                                                     value="{{ Auth::user()->id }}">
 
-                                                                <input type="hidden" name="user_image" id="user_image"
+                                                                <input type="hidden" name="user_image"
+                                                                    id="user_image"
                                                                     value="{{ App\Models\Post::find($val_get_last->id)->name }} {{ App\Models\Post::find($val_get_last->id)->lname }}">
-                                                                <input type="hidden" name="post_image" id="post_image"
+                                                                <input type="hidden" name="post_image"
+                                                                    id="post_image"
                                                                     value="{{ App\Models\Post::find($val_get_last->id)->image }}">
-                                                                <input type="hidden" name="user_image" id="user_image"
+                                                                <input type="hidden" name="user_image"
+                                                                    id="user_image"
                                                                     value="{{ Auth::user()->image }}">
 
                                                                 <div class="com-img col-md-1">
@@ -471,8 +554,8 @@ use DateTime;
 
                                                                 <div class="com-img col-md-10">
                                                                     <input type="text"
-                                                                        class="form-control comment_text" id="comment"
-                                                                        name="comment"
+                                                                        class="form-control comment_text"
+                                                                        id="comment" name="comment"
                                                                         style="height: 50px; border-radius:15px; font-size: 15px;"
                                                                         placeholder="Write Comment">
                                                                 </div>
@@ -524,7 +607,7 @@ use DateTime;
 
                                                     </div>
                                                 @endif
-                                                @if($val_get_last->share_post == null)
+                                                @if ($val_get_last->share_post == null)
                                                     <div class="newfeed">
 
                                                         <input type="hidden" name="" id="get_id"
@@ -582,22 +665,26 @@ use DateTime;
                                                         <div class="new-feedbut">
 
                                                             <?php
-                                                                $get_like = DB::table('likes')
-                                                                    ->where('user_id', Auth::user()->id)
-                                                                    ->where('post_id', $val_get_last->id)
-                                                                    ->first();
+                                                            $get_like = DB::table('likes')
+                                                                ->where('user_id', Auth::user()->id)
+                                                                ->where('post_id', $val_get_last->id)
+                                                                ->first();
 
-                                                                $like_count = DB::table('likes')
-                                                                    ->where('post_id', $val_get_last->id)
-                                                                    ->count();
+                                                            $like_count = DB::table('likes')
+                                                                ->where('post_id', $val_get_last->id)
+                                                                ->count();
                                                             ?>
 
                                                             @if ($get_like)
-                                                                <button onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');" class="but0 but1">
+                                                                <button
+                                                                    onClick="unlike('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
+                                                                    class="but0 but1">
                                                                     <b>Liked ({{ $like_count }})</b>
                                                                 </button>
                                                             @else
-                                                                <button onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');" class="but0 but2">
+                                                                <button
+                                                                    onClick="like('{{ $val_get_last->id }}','{{ Auth::user()->id }}');"
+                                                                    class="but0 but2">
                                                                     Like ({{ $like_count }})
                                                                 </button>
                                                             @endif
@@ -610,9 +697,10 @@ use DateTime;
 
 
                                                             <button class="but0 but2 share-post-button"
-                                                                data-postid="{{ $val_get_last->id }}" data-toggle="modal"
-                                                                data-target="#shareModal" style="width: 20px;"><span
-                                                                    class="fa fa-share"> </span></button>
+                                                                data-postid="{{ $val_get_last->id }}"
+                                                                data-toggle="modal" data-target="#shareModal"
+                                                                style="width: 20px;"><span class="fa fa-share">
+                                                                </span></button>
 
                                                         </div>
 
@@ -629,11 +717,14 @@ use DateTime;
                                                                 <input type="hidden" name="user_id" id="user_id"
                                                                     value="{{ Auth::user()->id }}">
 
-                                                                <input type="hidden" name="user_image" id="user_image"
+                                                                <input type="hidden" name="user_image"
+                                                                    id="user_image"
                                                                     value="{{ App\Models\Post::find($val_get_last->id)->name }} {{ App\Models\Post::find($val_get_last->id)->lname }}">
-                                                                <input type="hidden" name="post_image" id="post_image"
+                                                                <input type="hidden" name="post_image"
+                                                                    id="post_image"
                                                                     value="{{ App\Models\Post::find($val_get_last->id)->image }}">
-                                                                <input type="hidden" name="user_image" id="user_image"
+                                                                <input type="hidden" name="user_image"
+                                                                    id="user_image"
                                                                     value="{{ Auth::user()->image }}">
 
                                                                 <div class="com-img col-md-1">
@@ -644,8 +735,8 @@ use DateTime;
 
                                                                 <div class="com-img col-md-10">
                                                                     <input type="text"
-                                                                        class="form-control comment_text" id="comment"
-                                                                        name="comment"
+                                                                        class="form-control comment_text"
+                                                                        id="comment" name="comment"
                                                                         style="height: 50px; border-radius:15px; font-size: 15px;"
                                                                         placeholder="Write Comment">
                                                                 </div>
@@ -654,7 +745,8 @@ use DateTime;
                                                                     <button type="submit"
                                                                         class="btn btn-primary comment_post_btn"
                                                                         style="height: 40px;width: 50px; margin-top: 5px;">
-                                                                        <span class="fa fa-paper-plane"> </span></button>
+                                                                        <span class="fa fa-paper-plane">
+                                                                        </span></button>
                                                                 </div>
 
                                                             </div>
@@ -734,7 +826,6 @@ use DateTime;
                         </div>
                         <div class="user recent_users">
                             <ul>
-
                                 @foreach ($get_last_post as $key => $val_recent_post)
                                     <li>
                                         @if ($val_recent_post->user_image != '')
@@ -751,13 +842,35 @@ use DateTime;
                                         </h6>
                                     </li>
                                 @endforeach
-
                             </ul>
                         </div>
+                        <div class="sidebarleft">
+                            <div class="most">
+                                <h5> Bulletin Board </h5>
+                            </div>
+                            <div class="job_view">
+                                @php
+                                    $get_all_new_job = DB::table('job_posts')->where('status', '1')->get();
+                                @endphp
+                                @foreach ($get_all_new_job as $value)
+                                    <div class="flex-eye">
+                                        <div class="center-info">
+                                            <h6> {{ $value->job_title }} </h6>
+                                            <p><a href="#"><i class="fa-solid fa-location-dot"></i>
+                                                    {{ $value->location }} </a></p>
+                                        </div>
+                                        <div class="apply">
+                                            <a href="{{ route('apply_for_job', ['id' => $value->id]) }}"
+                                                class="custom-btn now btn-sm"><i class="fa-solid fa-eye"></i></a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -1302,7 +1415,8 @@ use DateTime;
                             confirmButtonText: 'OK'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = response.redirectUrl; // Redirect to the URL specified in the response
+                                window.location.href = response
+                                    .redirectUrl; // Redirect to the URL specified in the response
                             }
                         });
                         $('#shareModal').modal('hide');
@@ -1326,5 +1440,4 @@ use DateTime;
             });
         });
     });
-
 </script>

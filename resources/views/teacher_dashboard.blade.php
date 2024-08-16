@@ -621,7 +621,7 @@ use DateTime;
                     $listItem.append('<form action="' + url +
                         '" method="POST" class="remove-form" style="display:inline;">' +
                         '@csrf' +
-                        '<button type="submit" class="btn btn-danger btn-small">Remove</button>' +
+                        '<button type="submit" class="btn btn-danger btn-small"><i class="fa fa-remove"></i></button>' +
                         '</form>');
                     $form.remove();
                 },
@@ -651,7 +651,7 @@ use DateTime;
                         $listItem.append('<form action="' + url +
                             '" method="POST" class="connect-form" style="display:inline;">' +
                             '@csrf' +
-                            '<button type="submit" class="btn btn-primary btn-small">Connect</button>' +
+                            '<button type="submit" class="btn btn-primary btn-small"><i class="fa fa-plus"></i></button>' +
                             '</form>');
                     }
                 },

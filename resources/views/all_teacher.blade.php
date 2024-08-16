@@ -27,21 +27,22 @@
                         @if(in_array($val_teacher->id, json_decode($connectedTeacherIds, true)))
                         <form action="{{ route('remove.teacher', $val_teacher->id) }}" method="POST" class="remove-form" style="display:inline;">
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-small">Remove</button>
+                            <button type="submit" class="btn btn-danger btn-small"><i class="fa fa-remove"></i></button>
                         </form>
                         @else
                         <form action="{{ route('connect.teacher', $val_teacher->id) }}" method="POST" class="connect-form" style="display:inline;">
                             @csrf
-                            <button type="submit" class="btn btn-primary btn-small">Connect</button>
+                            <button type="submit" class="btn btn-primary btn-small"><i class="fa fa-plus"></i></button>
                         </form>
                         @endif
                     @else
                         <h6> {{$val_teacher->name}} <img src="{{asset('images/dotgreen.png')}}" class="img-fluid"></h6>
                         <form action="{{ route('connect.teacher', $val_teacher->id) }}" method="POST" class="connect-form" style="display:inline;">
                             @csrf
-                            <button type="submit" class="btn btn-primary btn-small">Connect</button>
+                            <button type="submit" class="btn btn-primary btn-small"><i class="fa fa-plus"></i></button>
                         </form>
                     @endif
+                    <a href="{{ route('chats.show', $val_teacher->id) }}" class="btn btn-success btn-small" title="message"><i class="fas fa-comment-alt"></i></a>
                 </li>
                 @endforeach
             </ul>

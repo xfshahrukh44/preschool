@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Childcare;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Image;
-use View;
 use File;
+use View;
+use Image;
+use App\Childcare;
+use App\Models\Post;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProviderController extends Controller
 {
@@ -23,7 +24,13 @@ class ProviderController extends Controller
         $page = DB::table('pages')->where('id', 7)->first();
         $section = DB::table('section')->where('page_id', 7)->get();
 
-        return view('provider_dashboard', compact('page', 'section'));
+        $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
+            ->when(request()->has('search'), function ($q) {
+                return $q->where('post', 'LIKE', '%' . request()->get('search') . '%');
+            })
+            ->get();
+
+        return view('provider_dashboard', compact('page', 'section', 'get_last_post'));
     }
 
     public function findDaycare()

@@ -202,10 +202,11 @@
             width: 560px;
             border-radius: 20px;
         }
+
         .section-1 table thead tr {
-    background: black;
-    color: white;
-}
+            background: black;
+            color: white;
+        }
     </style>
 @endsection
 
@@ -229,17 +230,15 @@
     <section class="section-1">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-center" style="padding-left: 150px;padding-right: 150px;">
-
-
-
                 <table id="" class="table table-hover table-bordered table-striped text-center">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Teacher Name</th>
                             <th>Email</th>
-                            <th>Job</th>
-                            <th>Actions</th>
+                            <th>Experience</th>
+                            <th>Contact</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
                     </thead>
 
@@ -250,22 +249,20 @@
                         @foreach ($angel as $key => $val)
                             <tr>
                                 <td>{{ $count }}</td>
-                                <td>{{ $val->creator->name .' '.$val->creator->lname }}</td>
+                                <td>{{ $val->creator->name . ' ' . $val->creator->lname }}</td>
                                 <td>{{ $val->creator->email }}</td>
                                 <td>{{ $val->job->job_title }}</td>
-                                <td>
-                                    <button
-                                        class="btn btn-danger delete-button"
-                                        data-id="{{ $val->id }}"
-                                        data-token="{{ csrf_token() }}"
-                                    >
+                                <td><a href="tel:+{{ $val->creator->phone }}" class="btn btn-primary">Contact</a> </td>
+                                {{-- <td>
+                                    <button class="btn btn-danger delete-button" data-id="{{ $val->id }}"
+                                        data-token="{{ csrf_token() }}">
                                         Delete
                                     </button>
-                                </td>
+                                </td> --}}
                             </tr>
-                        @php
-                            $count++;
-                        @endphp
+                            @php
+                                $count++;
+                            @endphp
                         @endforeach
                     </tbody>
 
@@ -280,57 +277,59 @@
 
 
 @section('js')
-<script>
-    $(document).ready(function() {
-        $('.delete-button').click(function() {
-            var angelId = $(this).data('id');
-            var token = $(this).data('token');
+    <script>
+        $(document).ready(function() {
+            $('.delete-button').click(function() {
+                var angelId = $(this).data('id');
+                var token = $(this).data('token');
 
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "{{ url('delete-angel') }}/" + angelId,
-                        type: 'GET',
-                        data: {
-                            _token: token
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    response.success,
-                                    'success'
-                                ).then(() => {
-                                    // Optionally, remove the row from the table
-                                    $('button.delete-button[data-id="' + angelId + '"]').closest('tr').remove();
-                                });
-                            } else if (response.error) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "{{ url('delete-angel') }}/" + angelId,
+                            type: 'GET',
+                            data: {
+                                _token: token
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        response.success,
+                                        'success'
+                                    ).then(() => {
+                                        // Optionally, remove the row from the table
+                                        $('button.delete-button[data-id="' +
+                                                angelId + '"]').closest('tr')
+                                            .remove();
+                                    });
+                                } else if (response.error) {
+                                    Swal.fire(
+                                        'Error!',
+                                        response.error,
+                                        'error'
+                                    );
+                                }
+                            },
+                            error: function(xhr) {
                                 Swal.fire(
                                     'Error!',
-                                    response.error,
+                                    'An error occurred: ' + xhr.responseText,
                                     'error'
                                 );
                             }
-                        },
-                        error: function(xhr) {
-                            Swal.fire(
-                                'Error!',
-                                'An error occurred: ' + xhr.responseText,
-                                'error'
-                            );
-                        }
-                    });
-                }
+                        });
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 @endsection

@@ -76,12 +76,12 @@
 
 
             <!-- <div class="row">
-                    <div class="col-lg-12">
-                        <div class="last-btn">
-                            <a href="#">View More Jobs</a>
-                        </div>
-                    </div>
-                </div> -->
+                            <div class="col-lg-12">
+                                <div class="last-btn">
+                                    <a href="#">View More Jobs</a>
+                                </div>
+                            </div>
+                        </div> -->
 
 
         </div>

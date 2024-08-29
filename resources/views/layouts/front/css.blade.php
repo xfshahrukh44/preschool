@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/inner.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
 
+
   <!--Toaster Css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">

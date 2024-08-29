@@ -2,7 +2,7 @@
 
 @section('css')
     <style>
-        
+
         /* section-1 */
 .section-1{
     padding: 50px 0 50px 0;
@@ -27,7 +27,7 @@
 }
 .section-1-main-txt2 .form-check{
     padding: 10px;
-} 
+}
 .main-cheak{
     display: flex;
     gap: 10px;
@@ -72,8 +72,8 @@
     background-color: var(--white-color-1);
     padding: 14px;
 }
-.section-1-detail-txt1 .heading-6 a{ 
-    color: var(--blue-color-2) !important; 
+.section-1-detail-txt1 .heading-6 a{
+    color: var(--blue-color-2) !important;
 }
 .section-1-detail-txt2{
     text-align: right;
@@ -108,12 +108,12 @@
     padding-left: 10px;
     color: var(--blue-color-1);
 }
-.section-1-menu-txt .heading-6 a{ 
-    color: var(--blue-color-1) !important; 
+.section-1-menu-txt .heading-6 a{
+    color: var(--blue-color-1) !important;
     font-size: 16px;
 }
 .section-1-menu-txt .para-2 a{
-    color: var(--blue-color-1) !important; 
+    color: var(--blue-color-1) !important;
     font-size: 14px;
 }
 .section-1-menu-txt .border-line {
@@ -162,11 +162,11 @@
     display: flex;
     align-items: center;
 }
-    
+
 .section-1-menu-img {
     width: 35% !important;
-}    
-     
+}
+
 .section-1-menu-img img {
     height: 350px;
     width: 560px;
@@ -194,11 +194,11 @@
     </div>
 </section>
 
-    
+
         <section class="section-1">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-center" style="padding-left: 150px;padding-right: 150px;">
-                
+
                 <!-- <div class="col-lg-3">
                     <div class="section-1-main-txt1">
                         <p class="para-1">Showing <strong class="small-heading">107</strong> communities</p>
@@ -256,13 +256,13 @@
                     <div class="border-line"><span></span></div>
 
                     <div class="section-1-main-txt3">
-                    
+
                     <fieldset id="DistanceFilter">
                         <h6 class="heading-6">Distance</h6>
-                     <div class="radio-cheak"> 
+                     <div class="radio-cheak">
                     <label for="5 miles" class="radio"><input type="radio" name="maxDistance" id="5 miles" value="5" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>5 miles</label>
-                
-                </div>  
+
+                </div>
                 <div class="radio-cheak">
                      <label for="10 miles" class="radio"><input type="radio" name="maxDistance" id="10 miles" value="10" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>10 miles</label>
                     </div>
@@ -329,9 +329,9 @@
                     <div class="section-1-main-txt3">
                         <fieldset id="DistanceFilter">
                             <h6 class="heading-6">Distance</h6>
-                         <div class="radio-cheak"> 
+                         <div class="radio-cheak">
                         <label for="5 miles" class="radio"><input type="radio" name="maxDistance" id="5 miles" value="5" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>All providers</label>
-                    </div>  
+                    </div>
                     <div class="radio-cheak">
                          <label for="10 miles" class="radio"><input type="radio" name="maxDistance" id="10 miles" value="10" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Alta Senior Living</label>
                         </div>
@@ -363,35 +363,35 @@
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>SRI Management, LLC</label>
                         </div>
-                        
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Embassy Healthcare</label>
                         </div>
-                                                
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>HMP Senior Solutions</label>
                         </div>
-                      
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>The Arbor Company</label>
                         </div>
-                         
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Mainstay Healthcare Management</label>
                         </div>
-                                                
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>ProMedica Senior Care</label>
                         </div>
-                                                                        
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Brookdale</label>
                         </div>
-                                                                        
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Best Care Senior Living LLC</label>
                         </div>
-                                                                        
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Allegro Management Company</label>
                         </div>
@@ -399,15 +399,15 @@
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Florida Assisted Living Management</label>
                         </div>
-                        
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Discovery Management Group</label>
                         </div>
-                                                
+
                         <div class="radio-cheak">
                         <label for="25 miles" class="radio"><input type="radio" name="maxDistance" id="25 miles" value="25" data-uw-rm-form="nfx"><span class="checkmark checkmark--radio"></span>Loving Care ALF, Inc.</label>
                         </div>
-        
+
 
 
 
@@ -416,9 +416,9 @@
 
                     <div class="border-line"><span></span></div>
 
-                  
+
                 </div> -->
-                
+
                 @foreach($get_all_claimed_daycare_center as $key => $val_all_claimed_daycare_center)
                 <div class="col-lg-12">
                     <div class="section-1-menu">
@@ -455,13 +455,13 @@
                                     <i class="fas fa-bus"></i>
                                 </div>
                                 <p class="para-2">Provides: Assisted Living, Memory Care</p> -->
-                                
+
                                 <p class="para-2">
                                     {!! $val_all_claimed_daycare_center->description !!}
                                 </p>
-                                
+
                                 <!--<a href="">Read more</a>-->
-                                
+
                                 <div class="border-line"><span></span></div>
                                 <div class="section-1-menu-txt-from">
                                     <!-- <div class="form-check">
@@ -482,14 +482,10 @@
                     </div>
                 </div>
                 @endforeach
-                
-                
-                
-                
             </div>
         </div>
     </section>
-    
+
 
     <!-- ============================================================== -->
 @endsection
@@ -497,8 +493,8 @@
 
 @section('js')
     <script type="text/javascript">
-        
-        
-        
+
+
+
     </script>
 @endsection

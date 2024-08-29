@@ -61,7 +61,7 @@
 }
 
 .account-details-form input {
-    
+
     height: auto !important;
     width: auto !important;
 }
@@ -168,7 +168,7 @@ li.nav-item.active {
 <section class="back">
 
     <div class="container-fluid">
-        
+
         <div class="profilebg1" style="<?php if(Auth::user()->banner_image != ''){ echo 'background-image: url('.Auth::user()->banner_image.') !important;'; }else{ echo 'background-image: url(../images/profilebg.png) !important;';} ?> background-size: cover !important;">
             <div class="row">
                 <div class="col-md-12">
@@ -182,16 +182,16 @@ li.nav-item.active {
                 </div>
             </div>
         </div>
-        
+
         <div class="profile-name-bg">
             <div class="row">
-                
+
                 <div class="col-md-3">
                     <div class="profile-name">
                         <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span></h5>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -204,24 +204,24 @@ li.nav-item.active {
             <i class="fas fa-address-book"></i>
         </div>
         <div class="row">
-            
+
         @include('provider_menues')
 
             <div class="col-lg-9 col-md-8">
-                
+
                 <div class="profileparent">
                     <div class="profilein1">
 
-    
+
         <section class="content">
             <div class="row">
                 <div class="col-12">
-                                                    
+
                 <div class="card">
-                
+
                     <!-- /.card-header -->
                     <div class="card-body">
-                    
+
                         <table id="example1" class="table table-hover table-bordered table-striped text-center">
                             <thead>
                             <tr>
@@ -237,7 +237,7 @@ li.nav-item.active {
                             </thead>
 
                             <tbody>
-                                                        
+
                                 @foreach($request_job as $key => $val_job_request)
                                 <tr>
                                     <td> {{ $key+1 }} </td>
@@ -246,9 +246,9 @@ li.nav-item.active {
                                     <td> {{ $val_job_request->email }} </td>
                                     <td> {{ $val_job_request->expected_salary }} </td>
                                     <td> {{ $val_job_request->education }} </td>
-                                    <td> 
+                                    <td>
                                         <a href="{{ asset($val_job_request->resume) }}" download> <button class="btn btn-primary "> Resume </button> </a> </td>
-                                    <td> 
+                                    <td>
                                         <a href="{{route('view_job_request',['id'=>$val_job_request->id])}}" class="btn btn-success"> <span class="fa fa-eye"></span> </a>
                                         <br><br>
                                         <a href="{{route('delete_job_request',['id'=>$val_job_request->id])}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger"> <span class="fa fa-trash"></span> </a>
@@ -257,7 +257,7 @@ li.nav-item.active {
                                 @endforeach
 
                             </tbody>
-                        
+
                         </table>
 
                         </div>
@@ -277,7 +277,7 @@ li.nav-item.active {
                     </div>
                     <div class="write-jus">
 
-                       
+
                     </div>
                 </div>
 

@@ -43,6 +43,7 @@
 
     <link rel="shortcut icon" href="{{asset('images/layer.png')}}" />
 
+
     <!--Toaster Css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">

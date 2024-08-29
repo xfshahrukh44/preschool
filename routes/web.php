@@ -235,16 +235,16 @@ Route::get('getConversations', 'MessagesController@getConversations')->name('cha
 
 Route::get('my-pinned', 'HomeController@my_pinned')->name('my_pinned');
 
-Route::get('add-post','HomeController@teacher_post')->name('add_post');
-Route::get('job-board','HomeController@job_board')->name('job_board');
-Route::get('apply-for-job/{id?}','HomeController@apply_for_job')->name('apply_for_job');
-Route::get('become-an-angel/{jobid}/{creatorId}','HomeController@become_an_angel')->name('become_an_angel');
+Route::get('add-post', 'HomeController@teacher_post')->name('add_post');
+Route::get('job-board', 'HomeController@job_board')->name('job_board');
+Route::get('apply-for-job/{id?}', 'HomeController@apply_for_job')->name('apply_for_job');
+Route::get('become-an-angel/{jobid}/{creatorId}', 'HomeController@become_an_angel')->name('become_an_angel');
 Route::get('check-angel/{jobid}/{creatorId}', 'HomeController@checkAngel')->name('checkAngel');
-Route::get('update-profile','HomeController@update_profile')->name('update_profile');
+Route::get('update-profile', 'HomeController@update_profile')->name('update_profile');
 
-Route::post('new-post','HomeController@teacher_create_new_post')->name('teacher_create_new_post');
-Route::post('delete-post','HomeController@delete_post')->name('delete_post');
-Route::post('share-post','HomeController@share_post')->name('share_post');
+Route::post('new-post', 'HomeController@teacher_create_new_post')->name('teacher_create_new_post');
+Route::post('delete-post', 'HomeController@delete_post')->name('delete_post');
+Route::post('share-post', 'HomeController@share_post')->name('share_post');
 
 
 Route::post('add-pined-post', 'HomeController@add_pined_post')->name('add_pined_post');
@@ -257,22 +257,24 @@ Route::post('unlike_post', 'HomeController@unlike_post')->name('unlike_post');
 Route::post('save_comment', 'HomeController@save_comment')->name('save_comment');
 
 Route::get('get_last_post', 'HomeController@get_last_post')->name('get_last_post');
+Route::get('bulletin_board', 'HomeController@bulletin')->name('bulletin_board');
+
 
 //For Payment
 Route::post('order-search', 'LoggedInController@orderSearch')->name('order-search');
 // Route::get('search-child-care','LoggedInController@search')->name('searchLogg');
 
 // Provider Dashboard
-Route::get('provider_dashboard','HomeController@provider_dashboard')->name('provider_dashboard');
-Route::get('add-job','HomeController@add_job')->name('add_job');
-Route::get('view-job','HomeController@view_job')->name('view_job');
-Route::get('job-details','HomeController@getJobDetails')->name('get_job_details');
-Route::get('edit-job/{id?}','HomeController@edit_job')->name('edit_job');
-Route::get('delete_job/{id?}','HomeController@delete_job')->name('delete_job');
-Route::post('teacher/connect/{id}','HomeController@connect')->name('connect.teacher');
-Route::post('teacher/remove/{id}','HomeController@remove')->name('remove.teacher');
-Route::get('angel-list','HomeController@angelList')->name('provider.angelList');
-Route::get('delete-angel/{id}','HomeController@deleteAngel')->name('provider.deleteAngel');
+Route::get('provider_dashboard', 'HomeController@provider_dashboard')->name('provider_dashboard');
+Route::get('add-job', 'HomeController@add_job')->name('add_job');
+Route::get('view-job', 'HomeController@view_job')->name('view_job');
+Route::get('job-details', 'HomeController@getJobDetails')->name('get_job_details');
+Route::get('edit-job/{id?}', 'HomeController@edit_job')->name('edit_job');
+Route::get('delete_job/{id?}', 'HomeController@delete_job')->name('delete_job');
+Route::post('teacher/connect/{id}', 'HomeController@connect')->name('connect.teacher');
+Route::post('teacher/remove/{id}', 'HomeController@remove')->name('remove.teacher');
+Route::get('angel-list', 'HomeController@angelList')->name('provider.angelList');
+Route::get('delete-angel/{id}', 'HomeController@deleteAngel')->name('provider.deleteAngel');
 
 Route::prefix('provider')->group(function () {
     Route::get('dashboard', [ProviderController::class, 'dashboard'])->name('provider.dashboard');

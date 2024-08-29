@@ -70,7 +70,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = $this->validator($request->all());
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator, 'registerForm');
         }
 
@@ -78,7 +78,7 @@ class RegisterController extends Controller
 
         $this->guard()->login($user);
 
-//        Session::flash('message', 'New Account Created Successfully');
+        //        Session::flash('message', 'New Account Created Successfully');
         Session::flash('message', 'Thank you for Enrolling. We look forward to working with you!');
         Session::flash('alert-class', 'alert-success');
 
@@ -87,7 +87,8 @@ class RegisterController extends Controller
         }
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+            // ?: redirect($this->redirectPath());
+            ?: redirect()->route('provider.dashboard');
     }
 
     /**
@@ -123,18 +124,18 @@ class RegisterController extends Controller
             'custom_age' => $data['custom_age'],
             'position_accepted' => $data['position_accepted'],
             'about_preschool' => $data['about_preschool'],
-            'payment_method'=> $data['payment_method'],
+            'payment_method' => $data['payment_method'],
             'amount' => $data['amount'],
             'card_token' => $data['stripeToken'],
-            'transaction_id'=>$data['payment_id'],
-            'payer_id'=>$data['payer_id'],
-            'paypal_token'=>$data['_token'],
-//            'amount' => 0,
-            'payment_status'=>$data['payment_status'],
-            'dob'=>$data['dob'],
-            'loe'=>$data['loe'],
-            'do_you_currently_work'=>$data['do_you_work'],
-            'position'=>$data['position'],
+            'transaction_id' => $data['payment_id'],
+            'payer_id' => $data['payer_id'],
+            'paypal_token' => $data['_token'],
+            //            'amount' => 0,
+            'payment_status' => $data['payment_status'],
+            'dob' => $data['dob'],
+            'loe' => $data['loe'],
+            'do_you_currently_work' => $data['do_you_work'],
+            'position' => $data['position'],
 
         ]);
 
@@ -146,7 +147,7 @@ class RegisterController extends Controller
         if ($data['services']) {
             $services = [];
             foreach ($data['services'] as $key => $value) {
-                $services []= $key;
+                $services[] = $key;
             }
             $user->services = $services;
             $user->save();
@@ -157,7 +158,7 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        if($user->profile == null){
+        if ($user->profile == null) {
             $profile = new Profile();
             $profile->user_id = $user->id;
             $profile->localisation = $request->localisation;

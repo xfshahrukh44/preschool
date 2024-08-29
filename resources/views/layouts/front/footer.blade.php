@@ -1,6 +1,17 @@
-<?php $segment = request()->segment(1);?>
+<?php $segment = request()->segment(1); ?>
 
-@if(!in_array($segment, ["home", "claimed_center_detail", "rules-of-conduct-individual", 'joinnow', 'contact', 'become-a-provider', 'job-board']))
+@if (
+    !in_array($segment, [
+        'home',
+        'claimed_center_detail',
+        'rules-of-conduct-individual',
+        'joinnow',
+        'contact',
+        'become-a-provider',
+        'job-board',
+        'angel-list',
+        'become-a-teacher',
+    ]))
     <section class="sec-four">
         <div class="col-lg-12 col-md-12 col-12 text-center mt-5">
             <div class="give-the-best">
@@ -22,16 +33,18 @@
 
                     ?>
 
-                    <!--<h5><a href="#"> {{$footer->name}} </a></h5>-->
+                    <!--<h5><a href="#"> {{ $footer->name }} </a></h5>-->
 
                     <h5><a href="#"> Support </a></h5>
 
-                    <!--{!!$footer->content!!}-->
+                    <!--{!! $footer->content !!}-->
 
                     <ul class="FooterUl">
                         <li>
-                            <p><a href="{{ route('termsandconditionindividual') }}"> Terms & Conditions-Individual Membership </a></p>
-                            <p><a href="{{ route('termsandconditionprovider') }}"> Terms & Conditions-Provider Membership</a></p>
+                            <p><a href="{{ route('termsandconditionindividual') }}"> Terms & Conditions-Individual
+                                    Membership </a></p>
+                            <p><a href="{{ route('termsandconditionprovider') }}"> Terms & Conditions-Provider
+                                    Membership</a></p>
                             <p><a href="{{ route('privacy') }}"> Privacy Policy </a></p>
                             <p><a href="{{ route('community') }}"> Community Guidelines </a></p>
                         </li>
@@ -46,7 +59,7 @@
                     <h5><a href="#">Teacher Links</a></h5>
                     <ul class="FooterUl">
                         <li>
-                            <p><a href="{{route('become-a-teacher')}}">Teachers</a></p>
+                            <p><a href="{{ route('become-a-teacher') }}">Teachers</a></p>
                         </li>
 
                     </ul>
@@ -57,7 +70,7 @@
                     <h5><a href="#">Provider Links</a></h5>
                     <ul class="FooterUl">
                         <li>
-                            <p><a href="{{route('become-a-provider')}}">Providers</a></p>
+                            <p><a href="{{ route('become-a-provider') }}">Providers</a></p>
                         </li>
 
 
@@ -71,18 +84,22 @@
                     <p><a href="#"> If you have any questions or need help, feel free to contact our team.</a></p>
 
                     <!--<div class="ReadMoreFooter"><span><i class="fa-solid fa-phone"></i></span> -->
-                        <!--<span class="Colored"><a href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}"> {{ App\Http\Traits\HelperTrait::returnFlag(59) }} </a></span> -->
+                    <!--<span class="Colored"><a href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}"> {{ App\Http\Traits\HelperTrait::returnFlag(59) }} </a></span> -->
                     <!--</div>-->
 
                     <div class="ReadMoreFooter"><span><i class="fa-solid fa-envelope"></i></span>
-                        <span class="Colored"><a href="mailto:{{ App\Http\Traits\HelperTrait::returnFlag(218) }}"> {{ App\Http\Traits\HelperTrait::returnFlag(218) }} </a></span>
+                        <span class="Colored"><a href="mailto:{{ App\Http\Traits\HelperTrait::returnFlag(218) }}">
+                                {{ App\Http\Traits\HelperTrait::returnFlag(218) }} </a></span>
                     </div>
 
                     <!--<p class="Reused"><a href="#"> {{ App\Http\Traits\HelperTrait::returnFlag(519) }}</a></p>-->
                     <div class="ReadMoreFooter social-linsk">
-                        <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(682) }}"><i class="fa-brands fa-facebook-f"></i></a></span>
-                        <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(1962) }}"><i class="fa-brands fa-instagram"></i></a></span>
-                        <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(1960) }}"><i class="fa-brands fa-twitter"></i></a></span>
+                        <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(682) }}"><i
+                                    class="fa-brands fa-facebook-f"></i></a></span>
+                        <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(1962) }}"><i
+                                    class="fa-brands fa-instagram"></i></a></span>
+                        <span><a href="{{ App\Http\Traits\HelperTrait::returnFlag(1960) }}"><i
+                                    class="fa-brands fa-twitter"></i></a></span>
                     </div>
                 </div>
             </div>
@@ -95,16 +112,16 @@
         <div class="maindivFooter">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-3 col-12">
-{{--                    <div class="LOGO">--}}
-{{--                        <a class="navbar-brand Colored" href="#">--}}
-{{--                            <div class="bg-video-wrap">--}}
-{{--                                <video class="video-1" width="100%" height="100%" autoplay muted loop>--}}
-{{--                                    <source src="{{asset('images/gif.mp4')}}" type="video/mp4">--}}
-{{--                                    <source src="{{asset('images/video.ogg')}}" type="video/ogg">--}}
-{{--                                </video>--}}
-{{--                            </div>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="LOGO"> --}}
+                    {{--                        <a class="navbar-brand Colored" href="#"> --}}
+                    {{--                            <div class="bg-video-wrap"> --}}
+                    {{--                                <video class="video-1" width="100%" height="100%" autoplay muted loop> --}}
+                    {{--                                    <source src="{{asset('images/gif.mp4')}}" type="video/mp4"> --}}
+                    {{--                                    <source src="{{asset('images/video.ogg')}}" type="video/ogg"> --}}
+                    {{--                                </video> --}}
+                    {{--                            </div> --}}
+                    {{--                        </a> --}}
+                    {{--                    </div> --}}
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="SignUp">
@@ -116,7 +133,8 @@
                     <div class="EmailSubbmision">
                         <form method="post" id="newForm">
                             @csrf
-                            <input type="email" name="newemail" id="newemail" placeholder="Your Email Address" id="" required>
+                            <input type="email" name="newemail" id="newemail" placeholder="Your Email Address"
+                                id="" required>
                             <button type="submit" class="custom-btn big"> Sign Up! </button>
                         </form>
 

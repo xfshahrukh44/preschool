@@ -199,6 +199,7 @@ use DateTime;
         <div class="container-fluid">
 
 
+
             <div class="row">
 
                 <div class="col-lg-3 dashboard-nav">
@@ -268,7 +269,6 @@ use DateTime;
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="center-bar">
-
                                 <div class="row justify-content-center">
                                     <div class="col-lg-12">
                                         <form action="{{ route('add_post') }}" method="GET">
@@ -791,12 +791,11 @@ use DateTime;
                                                 @endif
                                             </div>
                                         </div>
-
+                                    @endforeach
                                 </div>
 
 
                             </div>
-                            @endforeach
                         </div>
                     </div>
 

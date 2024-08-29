@@ -109,6 +109,7 @@ class HomeController extends Controller
 
         $page = DB::table('pages')->where('id', 2)->first();
         $section = DB::table('section')->where('page_id', 2)->get();
+        // $user = DB::table('users')->where('page_id', 2)->get();
 
         $angel = Angel::with('job', 'creator')->where('creator_id', Auth::user()->id)->get();
 
@@ -264,7 +265,7 @@ class HomeController extends Controller
 
         $search_result = Childcare::where('city', 'LIKE', "%{$search}%")->orWhere('state', 'LIKE', "%{$search}%")->orWhere('name', 'LIKE', "%{$search}%")->orWhere('county', 'LIKE', "%{$search}%")->orWhere('program_type', 'LIKE', "%{$search}%")->where('status', '1')->orderBy('claimed_by_id', 'DESC')->groupBy('name')->paginate(25);
 
-        return view('search', compact('page', 'section', 'search_result', 'search'));
+        return view('search', compact('page', 'section', 'search_result', 'search', 'claimed_centers'));
 
     }
 
@@ -406,19 +407,24 @@ class HomeController extends Controller
 
     public function job_board()
     {
-
-
         if (Auth::user()->role != "3") {
             return redirect("/");
         }
-
         $page = DB::table('pages')->where('id', 7)->first();
         $section = DB::table('section')->where('page_id', 7)->get();
-
         $get_all_new_job = DB::table('job_posts')->where('status', '1')->get();
-
         return view('job_board', compact('page', 'section', 'get_all_new_job'));
 
+    }
+
+
+    public function bulletin()
+    {
+        $page = DB::table('pages')->where('id', 5)->first();
+        $section = DB::table('section')->where('page_id', 5)->get();
+
+
+        return view('bulletin_board');
     }
 
 

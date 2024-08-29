@@ -396,6 +396,7 @@
 
 
 
+
                                                                             <!-- Modal Header -->
                                                                             <div class="modal-header">
                                                                                 {{--                                                                                <h5 class="modal-title text-center">Claimed --}}

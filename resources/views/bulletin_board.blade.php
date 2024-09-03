@@ -189,7 +189,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="main_card_rota purple_rota">
-                        <a href="#">
+                        <a href="{{route('job_board')}}">
                             <div class="info_rota">
                                 <div class="pin_rota">
                                 </div>

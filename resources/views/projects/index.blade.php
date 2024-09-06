@@ -3,7 +3,7 @@
 @section('css')
     <style>
         .about-sec-one {
-            background-image: url('uploads/pages/iStock_000076101011_Large_1715294141.jpg');
+            background-image:  url('{{asset("uploads/pages/iStock_000076101011_Large_1715294141.jpg")}}');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -166,10 +166,47 @@
         .pink_rota .pin_rota:before {
             background: #ff5346a3;
         }
+
+        .projects_sect {
+            padding: 100px 0;
+            background: #F5F7FC;
+        }
+
+        .project_form .form-control {
+            height: 50px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid black;
+        }
+
+        .project_form {
+            padding: 30px;
+            border: 2px solid black;
+            border-radius: 15px;
+            margin: auto;
+            width: 80%;
+        }
+
+        .project_form label {
+            font-size: 20px;
+            color: black;
+            font-weight: 600;
+        }
+
+        .project_form textarea {
+            height: unset !important;
+        }
+
+        .project_table {
+            padding: 50px 0;
+        }
+
+        .porject_btn {
+            margin-bottom: 50px;
+        }
     </style>
 @endsection
-
-
 
 @section('content')
     <section class="about-sec-one">
@@ -177,99 +214,56 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
-                        <h2>Bulletin Board</h2>
+                        <h2>Projects</h2>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bulletin_board">
-        <div class="container-fluid">
+    <section class="project_table">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="main_card_rota purple_rota">
-                        <a href="{{ route('job_board') }}">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-                                    <h4>Jobs</h4>
-                                </div>
-                            </div>
-                        </a>
+                <div class="col-lg-12">
+                    <div class="porject_btn">
+                        <a href="{{ route('projects.create') }}" class="btn btn-success">Create Project</a>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="main_card_rota yellow_rota">
-                        <a href="{{ route('projects.index') }}">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-                                    <h4>Projects</h4>
-                                </div>
-                            </div>
-                        </a>
+                <div class="col-lg-12">
+                    <div class="tabel_main">
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Decscription</th>
+                                    <th>Project Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($Project as $item)
+                                    <tr>
+                                        <td>{{ $item->id }} </td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->description }}</td>
+                                        <td>
+                                            <img src="{{ asset($item->images()->first()->path) }}"
+                                                alt=""style="width:100px;height:100px;">
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('projects.show', $item->id) }}"
+                                                class="btn btn-primary">Show</a>
+                                            <a href="{{ route('projects.delete', $item->id) }}"
+                                                class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                {{-- <div class="col-lg-4">
-                    <div class="main_card_rota blue_rota">
-                        <a href="#">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="main_card_rota light_blue_rota">
-                        <a href="#">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="main_card_rota dark_yellow_rota">
-                        <a href="#">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="main_card_rota pink_rota">
-                        <a href="#">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
-@endsection
-
-@section('js')
-    <script type="text/javascript"></script>
 @endsection

@@ -66,7 +66,8 @@ class User extends Authenticatable
         'dob',
         'loe',
         'agreed_to_sandbox_terms',
-        'position'
+        'position',
+        'is_verified'
     ];
 
     /**

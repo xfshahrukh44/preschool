@@ -166,10 +166,39 @@
         .pink_rota .pin_rota:before {
             background: #ff5346a3;
         }
+
+        .projects_sect {
+            padding: 100px 0;
+            background: #F5F7FC;
+        }
+
+        .project_form .form-control {
+            height: 50px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid black;
+        }
+
+        .project_form {
+            padding: 30px;
+            border: 2px solid black;
+            border-radius: 15px;
+            margin: auto;
+            width: 80%;
+        }
+
+        .project_form label {
+            font-size: 20px;
+            color: black;
+            font-weight: 600;
+        }
+
+        .project_form textarea {
+            height: unset !important;
+        }
     </style>
 @endsection
-
-
 
 @section('content')
     <section class="about-sec-one">
@@ -177,99 +206,45 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
-                        <h2>Bulletin Board</h2>
+                        <h2>Projects Edit</h2>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bulletin_board">
-        <div class="container-fluid">
+    <section class="projects_sect">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="main_card_rota purple_rota">
-                        <a href="{{ route('job_board') }}">
-                            <div class="info_rota">
-                                <div class="pin_rota">
+                <div class="col-lg-12">
+                    <div class="project_form">
+                        <form action="{{ route('projects.update', $Project->id) }}" method="Post"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="name">Title</label>
+                                    <input type="text" name="title" value="{{ $Project->title }}" class="form-control"
+                                        required>
                                 </div>
-                                <div class="fill_rota">
-                                    <h4>Jobs</h4>
+                                <div class="col-12">
+                                    <label for="photos">Pictures</label>
+                                    @foreach ($Project->images as $item)
+                                        <img src="{{ asset($item->path) }}" alt="">
+                                    @endforeach
+                                </div>
+                                <div class="col-12">
+                                    <label for="description">Description</label>
+                                    <textarea type="text" name="description" class="form-control" rows="5" required>{{ $Project->description }}</textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="custom-btn">Add</button>
                                 </div>
                             </div>
-                        </a>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="main_card_rota yellow_rota">
-                        <a href="{{ route('projects.index') }}">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-                                    <h4>Projects</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                {{-- <div class="col-lg-4">
-                    <div class="main_card_rota blue_rota">
-                        <a href="#">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="main_card_rota light_blue_rota">
-                        <a href="#">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="main_card_rota dark_yellow_rota">
-                        <a href="#">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="main_card_rota pink_rota">
-                        <a href="#">
-                            <div class="info_rota">
-                                <div class="pin_rota">
-                                </div>
-                                <div class="fill_rota">
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
-@endsection
-
-@section('js')
-    <script type="text/javascript"></script>
 @endsection

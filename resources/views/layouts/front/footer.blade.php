@@ -11,6 +11,7 @@
         'job-board',
         'angel-list',
         'become-a-teacher',
+        'projects',
     ]))
     <section class="sec-four">
         <div class="col-lg-12 col-md-12 col-12 text-center mt-5">

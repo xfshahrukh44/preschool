@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProviderController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -259,6 +260,14 @@ Route::post('save_comment', 'HomeController@save_comment')->name('save_comment')
 Route::get('get_last_post', 'HomeController@get_last_post')->name('get_last_post');
 Route::get('bulletin_board', 'HomeController@bulletin')->name('bulletin_board');
 
+//ProjectsPg
+
+Route::get('projects', 'ProjectsPgController@index')->name('projects.index');
+Route::get('projects/create', 'ProjectsPgController@create')->name('projects.create');
+Route::post('projects/store', 'ProjectsPgController@store')->name('projects.store');
+Route::get('projects/show/{id}', 'ProjectsPgController@show')->name('projects.show');
+Route::get('projects/edit/{id}', 'ProjectsPgController@edit')->name('projects.edit');
+Route::get('projects/delete/{id}', 'ProjectsPgController@destroy')->name('projects.delete');
 
 //For Payment
 Route::post('order-search', 'LoggedInController@orderSearch')->name('order-search');
@@ -419,3 +428,11 @@ Route::get('agree-to-sanbox-terms', function () {
 Route::get('rules-of-conduct-individual', function () {
     return view('termsandconditionindividual');
 })->name('rules-of-conduct-individual');
+
+
+
+//=========================== Provider verification ===========================//
+
+
+Route::get('verification/{id}', 'users3\Users3Controller@verification')->name('verification');
+

@@ -22,30 +22,23 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        
-        $logo = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','logo')
-                     ->first();
-             
-        $favicon = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','favicon')
-                     ->first();  
 
-        View()->share('logo',$logo);
-        View()->share('favicon',$favicon);
-        
+        $logo = imagetable::select('img_path')->where('table_name', '=', 'logo')->first();
+
+        $favicon = imagetable::select('img_path')->where('table_name', '=', 'favicon')->first();
+
+        View()->share('logo', $logo);
+        View()->share('favicon', $favicon);
+
     }
-    
+
     public function index(Request $request)
     {
         $keyword = $request->get('search');
         $perPage = 15;
 
         if (!empty($keyword)) {
-            $users = User::where('name', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
+            $users = User::where('name', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%")->paginate($perPage);
         } else {
             $users = User::paginate($perPage);
         }
@@ -164,21 +157,23 @@ class UsersController extends Controller
 
         return redirect('admin/users')->with('flash_message', 'User deleted!');
     }
-    
-    public function getSettings(){
+
+    public function getSettings()
+    {
         $user = auth()->user();
-        return view('admin.users.account-settings',compact('user'));
+        return view('admin.users.account-settings', compact('user'));
     }
 
-    public function saveSettings(Request $request){
-        $this->validate($request,[
+    public function saveSettings(Request $request)
+    {
+        $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
         ]);
 
-        $user =  auth()->user();
+        $user = auth()->user();
 
-        if($request->password){
+        if ($request->password) {
             $user->password = bcrypt($request->password);
         }
         $user->email = $request->email;
@@ -186,18 +181,18 @@ class UsersController extends Controller
         $user->save();
 
         $profile = $user->profile;
-        if($user->profile == null){
-            $profile = new  Profile();
+        if ($user->profile == null) {
+            $profile = new Profile();
         }
-        if($request->dob != null){
-            $date =  Carbon::parse($request->dob)->format('Y-m-d');
-        }else{
+        if ($request->dob != null) {
+            $date = Carbon::parse($request->dob)->format('Y-m-d');
+        } else {
             $date = $request->dob;
         }
 
 
         if ($file = $request->file('pic_file')) {
-            $extension = $file->extension()?: 'png';
+            $extension = $file->extension() ?: 'png';
             $destinationPath = public_path() . '/storage/uploads/users/';
             $safeName = str_random(10) . '.' . $extension;
             $file->move($destinationPath, $safeName);
@@ -221,8 +216,8 @@ class UsersController extends Controller
         $profile->postal = $request->postal;
         $profile->save();
 
-        Session::flash('message','Account has been updated');
+        Session::flash('message', 'Account has been updated');
         return redirect()->back();
     }
-    
+
 }

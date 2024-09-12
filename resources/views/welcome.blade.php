@@ -2,16 +2,15 @@
 
 @section('css')
     <style>
-
         .sec-one {
-        	background-image: url('{{ asset($page->image) }}');
-        	background-position: center;
-        	background-repeat: no-repeat;
-        	background-size: cover;
-        	height: 800px;
-        	display: flex;
-        	align-items: center;
-          }
+            background-image: url('{{ asset($page->image) }}');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 800px;
+            display: flex;
+            align-items: center;
+        }
 
 
         header {
@@ -157,35 +156,35 @@
 
 
         .top-bottom {
-          background-image: url(<?php echo asset($section[25]->value); ?>);
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: 830px;
-          box-shadow: 0px 0px 14px 2px #0000002b;
-          border-radius: 20px;
+            background-image: url(<?php echo asset($section[25]->value); ?>);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 830px;
+            box-shadow: 0px 0px 14px 2px #0000002b;
+            border-radius: 20px;
         }
 
         .top-bottom.two {
-          background-image: url(<?php echo asset($section[24]->value); ?>);
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: 830px;
-          box-shadow: 0px 0px 14px 2px #0000002b;
-          border-radius: 20px;
+            background-image: url(<?php echo asset($section[24]->value); ?>);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 830px;
+            box-shadow: 0px 0px 14px 2px #0000002b;
+            border-radius: 20px;
         }
 
 
         .about-sec-three {
-          background-image: url(<?php echo asset($section[26]->value); ?>);
-          background-position: left;
-          background-size: 50%;
-          background-color: #000000;
-          background-repeat: no-repeat;
-          height: 600px;
-          display: flex;
-          align-items: center;
+            background-image: url(<?php echo asset($section[26]->value); ?>);
+            background-position: left;
+            background-size: 50%;
+            background-color: #000000;
+            background-repeat: no-repeat;
+            height: 600px;
+            display: flex;
+            align-items: center;
         }
 
         .our-goal p {
@@ -197,7 +196,6 @@
             line-height: 25px;
             margin-top: 60px;
         }
-
     </style>
 @endsection
 
@@ -219,7 +217,8 @@
 
                     <form method="get" action="{{ route('search') }}">
                         <div class="header-form">
-                            <input type="text" class="form-control" name="search" id="validationCustom03" placeholder="Enter a zip code or city" required>
+                            <input type="text" class="form-control" name="search" id="validationCustom03"
+                                placeholder="Enter a zip code or city" required>
                             <button class="custom-btn">Search</button>
                         </div>
                     </form>
@@ -257,7 +256,7 @@
     <!--</section>-->
 
 
-{{--    <section class="sec-two" style="background: url({{asset('images/doodle-wall.png')}})">--}}
+    {{--    <section class="sec-two" style="background: url({{asset('images/doodle-wall.png')}})"> --}}
     <section class="sec-two">
         <div class="container">
             <div class="row">
@@ -293,40 +292,42 @@
     </section>
 
 
-{{--    <section class="about-sec-two" style="background: url({{asset('images/doodle-wall.png')}})">--}}
+    {{--    <section class="about-sec-two" style="background: url({{asset('images/doodle-wall.png')}})"> --}}
     <section class="about-sec-two">
         <div class="container">
 
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12" style="background: white;">
-                <div class="top-bottom aos-init aos-animate" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="1500">
-                    <div class="about-bottom">
+                    <div class="top-bottom aos-init aos-animate" data-aos="flip-right" data-aos-easing="linear"
+                        data-aos-duration="1500">
+                        <div class="about-bottom">
 
-                    {!! $section[1]->value !!}
+                            {!! $section[1]->value !!}
+
+                        </div>
+
+
+                        {{--                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a> --}}
 
                     </div>
-
-
-{{--                 <a href="{{route('become-a-provider')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
-
-                </div>
 
 
 
 
                 </div>
                 <div class="col-lg-6 col-md-6 col-12" style="background: white;">
-                <div class="top-bottom two aos-init aos-animate" data-aos="flip-left" data-aos-easing="linear" data-aos-duration="1500">
-                    <div class="about-bottom two">
+                    <div class="top-bottom two aos-init aos-animate" data-aos="flip-left" data-aos-easing="linear"
+                        data-aos-duration="1500">
+                        <div class="about-bottom two">
 
-                   {!! $section[2]->value !!}
+                            {!! $section[2]->value !!}
+
+                        </div>
+
+                        {{--                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a> --}}
+                        <br><br><br><br><br>
 
                     </div>
-
-{{--                <a href="{{route('become-a-teacher')}}" style="text-align:center; margin-left:15px;" class="custom-btn pink"> Enrolled Now </a>--}}
-                <br><br><br><br><br>
-
-                </div>
 
 
 
@@ -338,25 +339,26 @@
     </section>
 
 
-    <section class="about-sec-three aos-init aos-animate" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="our-goal">
-
-                {!! $section[27]->value !!}
-
+    <section class="about-sec-three aos-init aos-animate" data-aos="fade-down" data-aos-easing="linear"
+        data-aos-duration="1500">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
                 </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="our-goal">
+
+                        {!! $section[27]->value !!}
+
+                    </div>
+                </div>
+
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
 
-{{--    <section class="sec-three" style="background: url({{asset('images/doodle-wall.png')}})">--}}
+    {{--    <section class="sec-three" style="background: url({{asset('images/doodle-wall.png')}})"> --}}
     <section class="sec-three">
         <div class="container">
             <div class="row">
@@ -410,7 +412,7 @@
         </div>
     </section>
 
-{{--    <section class="sec-four" style="background: url({{asset('images/doodle-wall.png')}})">--}}
+    {{--    <section class="sec-four" style="background: url({{asset('images/doodle-wall.png')}})"> --}}
     <section class="sec-four">
         <div class="container">
             <div class="row" style="box-shadow: 0px 0px 20px 1px #0000002b;">
@@ -497,16 +499,15 @@
             </div>
         </div>
 
-{{--        <div class="col-lg-12 col-md-12 col-12 text-center mt-5">--}}
-{{--            <div class="give-the-best">--}}
-{{--                <a href="{{ route('joinnow') }}" class="custom-btn">Enroll now</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        {{--        <div class="col-lg-12 col-md-12 col-12 text-center mt-5"> --}}
+        {{--            <div class="give-the-best"> --}}
+        {{--                <a href="{{ route('joinnow') }}" class="custom-btn">Enroll now</a> --}}
+        {{--            </div> --}}
+        {{--        </div> --}}
     </section>
 
 
     <!-- ============================================================== -->
-
 @endsection
 
 

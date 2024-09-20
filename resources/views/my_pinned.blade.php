@@ -211,7 +211,7 @@ li.nav-item.active {
             @include('teacher_menues')
 
                 
-                <div class="col-lg-6 col-md-8 scroll"> 
+                <div class="col-lg-6 col-md-8 scroll">
 
 
                     @foreach($get_my_pinned as $val_pinned)

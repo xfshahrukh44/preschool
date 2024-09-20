@@ -332,29 +332,29 @@
 
                         <!-- <p class="para-2">16001 Lakeshore Villa Dr, Tampa, FL 33613</p> -->
                         <!-- <div class="span-txt">
-                                                                                                                                                                                                                                                                                                                                        <span class="main-box-blue">9.5</span>
-                                                                                                                                                                                                                                                                                                                                        <strong class="small-heading">Review score</strong>
-                                                                                                                                                                                                                                                                                                                                        <span class="main-box">76 reviews</span>
-                                                                                                                                                                                                                                                                                                                                        <strong class="small-heading"><a class="anker-1" href="">Add review</a></strong>
-                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                    <div class="span-txt">
-                                                                                                                                                                                                                                                                                                                                        <span class="para-2">For pricing & availability:</span>
-                                                                                                                                                                                                                                                                                                                                        <strong class="small-heading"><a class="anker-2" href="">
-                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-phone"></i> (866) 374-4058</a></strong>
-                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                            <span class="main-box-blue">9.5</span>
+                                                                                                                                                                                                                                                                                                                                            <strong class="small-heading">Review score</strong>
+                                                                                                                                                                                                                                                                                                                                            <span class="main-box">76 reviews</span>
+                                                                                                                                                                                                                                                                                                                                            <strong class="small-heading"><a class="anker-1" href="">Add review</a></strong>
+                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                        <div class="span-txt">
+                                                                                                                                                                                                                                                                                                                                            <span class="para-2">For pricing & availability:</span>
+                                                                                                                                                                                                                                                                                                                                            <strong class="small-heading"><a class="anker-2" href="">
+                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-phone"></i> (866) 374-4058</a></strong>
+                                                                                                                                                                                                                                                                                                                                        </div>
 
-                                                                                                                                                                                                                                                                                                                                    <div class="section-1-menu-txt">
-                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-paw"></i>
-                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-wifi"></i>
-                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-bus"></i>
-                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                        <div class="section-1-menu-txt">
+                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-paw"></i>
+                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-wifi"></i>
+                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-bus"></i>
+                                                                                                                                                                                                                                                                                                                                        </div>
 
-                                                                                                                                                                                                                                                                                                                                    <div class="section-1-anker">
-                                                                                                                                                                                                                                                                                                                                        <a href="" class="purpul1">Get pricing</a>
-                                                                                                                                                                                                                                                                                                                                        <a href="" class="purpul1">Check Availability</a>
-                                                                                                                                                                                                                                                                                                                                        <a href="" class="purpul1">Download Brochure</a>
-                                                                                                                                                                                                                                                                                                                                        <a href="" class="purpul1">Request a tour</a>
-                                                                                                                                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                                                                        <div class="section-1-anker">
+                                                                                                                                                                                                                                                                                                                                            <a href="" class="purpul1">Get pricing</a>
+                                                                                                                                                                                                                                                                                                                                            <a href="" class="purpul1">Check Availability</a>
+                                                                                                                                                                                                                                                                                                                                            <a href="" class="purpul1">Download Brochure</a>
+                                                                                                                                                                                                                                                                                                                                            <a href="" class="purpul1">Request a tour</a>
+                                                                                                                                                                                                                                                                                                                                        </div> -->
                         <div class="border-line"><span></span></div>
                     </div>
                 </div>
@@ -419,361 +419,370 @@
                 <div class="col-lg-12">
                     <div class="section-3-txt">
                         <figure><img src="{{ asset($get_claimed_daycare_center_detail->feature_image) }}" alt=""
-                                     class="img-fluid"></figure>
+                                class="img-fluid"></figure>
                         <div class="section-3-img">
                             <figure><img src="{{ asset($get_claimed_daycare_center_detail->other_image_one) }}"
-                                         style="height: 329px;width: 100%;" alt="" class="img-fluid"></figure>
+                                    style="height: 329px;width: 100%;" alt="" class="img-fluid"></figure>
                             <figure><img src="{{ asset($get_claimed_daycare_center_detail->other_image_two) }}"
-                                         style="height: 329px;width: 100%;" alt="" class="img-fluid"></figure>
+                                    style="height: 329px;width: 100%;" alt="" class="img-fluid"></figure>
                         </div>
 
                     </div>
                     <div class="section-3-main-txt">
                         <h2 class="heading-2" style="color:#000;">About the facility</h2>
+                        <p style="font-size: 14px;">Details and information displayed here were found through public sources -- not the
+                            business itself -- and may not reflect its current status, including license status. We
+                            strongly encourage you to perform your own research while selecting a care provider.</p>
                         <!--<h6 class="heading-6">Renaissance North Tampa</h6>-->
                         <h4>Provider information</h4>
-                        @if($clahimant->name)
-                            <b>Name: </b> {{$claimant->name}}
+                        @if ($clahimant->name)
+                            <b>Name: </b> {{ $claimant->name }}
                             <br />
                         @endif
-                        @if($claimant->address)
+                        @if ($claimant->address)
                             <b>Address: </b> {!! $claimant->address !!}
                             <br />
                         @endif
-                        @if($claimant->phone)
-                            <b>Phone: </b> {{$claimant->phone}}
+                        @if ($claimant->phone)
+                            <b>Phone: </b> {{ $claimant->phone }}
                             <br />
                         @endif
-                        @if($claimant->age_accepted)
-                            <b>Ages accepted: </b> {{$claimant->age_accepted}}
+                        @if ($claimant->age_accepted)
+                            <b>Ages accepted: </b> {{ $claimant->age_accepted }}
                         @endif
-                    <div class="tabs_info">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Location</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Review</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">Center
-                                    Highlights</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">Cost</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">License</a>
-                            </li>
-                        </ul><!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="section-3-txt">
-                                            <figure><img
-                                                    src="{{ asset($get_claimed_daycare_center_detail->feature_image) }}"
-                                                    alt="" class="img-fluid"></figure>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="section-3-img">
-                                            <figure><img
-                                                    src="{{ asset($get_claimed_daycare_center_detail->other_image_one) }}"
-                                                    style="height: 329px;width: 100%;" alt="" class="img-fluid">
-                                            </figure>
-                                            <figure><img
-                                                    src="{{ asset($get_claimed_daycare_center_detail->other_image_two) }}"
-                                                    style="height: 329px;width: 100%;" alt="" class="img-fluid">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="section-3-main-txt">
-                                            <h2 class="heading-2" style="color:#000;">About the facility</h2>
-                                            <!--<h6 class="heading-6">Renaissance North Tampa</h6>-->
-                                            <h4>Provider information</h4>
-                                            @if ($claimant->name)
-                                                <b>Name: </b> {{ $claimant->name }}
-                                                <br />
-                                            @endif
-                                            @if ($claimant->address)
-                                                <b>Address: </b> {!! $claimant->address !!}
-                                                <br />
-                                            @endif
-                                            @if ($claimant->phone)
-                                                <b>Phone: </b> {{ $claimant->phone }}
-                                                <br />
-                                            @endif
-                                            @if ($claimant->age_accepted)
-                                                <b>Ages accepted: </b> {{ $claimant->age_accepted }}
-                                            @endif
-
-                                            <br />
-
-                                            <h4>Facility information</h4>
-                                            <p class="para-1">
-
-                                                {!! $get_claimed_daycare_center_detail->description !!}
-
-                                            </p>
-                                            <!-- <h6 class="heading-6">Related</h6>
-                                                                                                                                                                                                                                                                                                                                                <p class="para-2"><a href="">6 Practical Things to Consider When Moving an Aging Loved One <span class="d-block"></span> Memory Care Checklist: How to Choose a Memory Care Facility</a></p>
-                                                                                                                                                                                                                                                                                                                                                <strong class="small-heading"><a class="anker-1" href="">Add review
-                                                                                                                                                                                                                                                                                                                                                    <i class="fas fa-chevron-up"></i></a>
-                                                                                                                                                                                                                                                                                                                                                    </strong>
-                                                                                                                                                                                                                                                                                                                                                <h2 class="heading-2">Senior living options offered</h2>
-                                                                                                                                                                                                                                                                                                                                                <div class="section-3-main-cheaq">
-                                                                                                                                                                                                                                                                                                                                                    <ul>
-                                                                                                                                                                                                                                                                                                                                                    <li><p class="para-2"><i class="fas fa-check"></i> Assisted Living</p></li>
-                                                                                                                                                                                                                                                                                                                                                    <li><p class="para-2"><i class="fas fa-check"></i> Memory Care</p></li>
-                                                                                                                                                                                                                                                                                                                                                    </ul>
-                                                                                                                                                                                                                                                                                                                                                  <p class="para-2"><i class="fas fa-check"></i> Independent Living</p> -->
-
-                                        </div>
-                                        <hr>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        @if (!is_null($get_claimed_daycare_center_detail->timings))
-                                            <div class="col-md-12">
-                                                <h3 style="color: black;">Hours open</h3>
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Day</th>
-                                                            <th class="text-center">Hours open</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach (json_decode($get_claimed_daycare_center_detail->timings) as $day => $timings)
-                                                            <tr>
-                                                                <td><b>{{ $day }}</b></td>
-
-                                                                @if (is_null($timings->from) || is_null($timings->to))
-                                                                    <td class="text-danger text-center"
-                                                                        style="font-size: 0.9em;">
-                                                                        Closed</td>
-                                                                @else
-                                                                    <td class="text-center" style="font-size: 0.9em;">
-                                                                        <b>{{ Carbon\Carbon::parse($timings->from)->format('h:i A') }}</b>
-                                                                        -
-                                                                        <b>{{ Carbon\Carbon::parse($timings->to)->format('h:i A') }}</b>
-                                                                    </td>
-                                                                @endif
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
+                        <div class="tabs_info">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Location</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Review</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">Center
+                                        Highlights</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">Cost</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">License</a>
+                                </li>
+                            </ul><!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="section-3-txt">
+                                                <figure><img
+                                                        src="{{ asset($get_claimed_daycare_center_detail->feature_image) }}"
+                                                        alt="" class="img-fluid"></figure>
 
                                             </div>
-                                        @endif
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                @if (!is_null($get_claimed_daycare_center_detail->services))
-                                                    <div class="col-md-6">
-                                                        <h3 style="color: black;">Services</h3>
-                                                        <table class="table">
-                                                            <thead>
-                                                                {{--                                    <tr> --}}
-                                                                {{--                                        <th>Day</th> --}}
-                                                                {{--                                        <th>From</th> --}}
-                                                                {{--                                        <th>To</th> --}}
-                                                                {{--                                    </tr> --}}
-                                                                {{--                                </thead> --}}
-                                                            <tbody>
-                                                                @foreach (json_decode($get_claimed_daycare_center_detail->services) as $service)
-                                                                    <tr>
-                                                                        <td style="font-size: 0.9em;">{{ $service }}
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="section-3-img">
+                                                <figure><img
+                                                        src="{{ asset($get_claimed_daycare_center_detail->other_image_one) }}"
+                                                        style="height: 329px;width: 100%;" alt=""
+                                                        class="img-fluid">
+                                                </figure>
+                                                <figure><img
+                                                        src="{{ asset($get_claimed_daycare_center_detail->other_image_two) }}"
+                                                        style="height: 329px;width: 100%;" alt=""
+                                                        class="img-fluid">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="section-3-main-txt">
+                                                <h2 class="heading-2" style="color:#000;">About the facility</h2>
+                                                <!--<h6 class="heading-6">Renaissance North Tampa</h6>-->
+                                                <h4>Provider information</h4>
+                                                @if ($claimant->name)
+                                                    <b>Name: </b> {{ $claimant->name }}
+                                                    <br />
                                                 @endif
+                                                @if ($claimant->address)
+                                                    <b>Address: </b> {!! $claimant->address !!}
+                                                    <br />
+                                                @endif
+                                                @if ($claimant->phone)
+                                                    <b>Phone: </b> {{ $claimant->phone }}
+                                                    <br />
+                                                @endif
+                                                @if ($claimant->age_accepted)
+                                                    <b>Ages accepted: </b> {{ $claimant->age_accepted }}
+                                                @endif
+
+                                                <br />
+
+                                                <h4>Facility information</h4>
+                                                <p class="para-1">
+
+                                                    {!! $get_claimed_daycare_center_detail->description !!}
+
+                                                </p>
+                                                <!-- <h6 class="heading-6">Related</h6>
+                                                                                                                                                                                                                                                                                                                                                    <p class="para-2"><a href="">6 Practical Things to Consider When Moving an Aging Loved One <span class="d-block"></span> Memory Care Checklist: How to Choose a Memory Care Facility</a></p>
+                                                                                                                                                                                                                                                                                                                                                    <strong class="small-heading"><a class="anker-1" href="">Add review
+                                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-chevron-up"></i></a>
+                                                                                                                                                                                                                                                                                                                                                        </strong>
+                                                                                                                                                                                                                                                                                                                                                    <h2 class="heading-2">Senior living options offered</h2>
+                                                                                                                                                                                                                                                                                                                                                    <div class="section-3-main-cheaq">
+                                                                                                                                                                                                                                                                                                                                                        <ul>
+                                                                                                                                                                                                                                                                                                                                                        <li><p class="para-2"><i class="fas fa-check"></i> Assisted Living</p></li>
+                                                                                                                                                                                                                                                                                                                                                        <li><p class="para-2"><i class="fas fa-check"></i> Memory Care</p></li>
+                                                                                                                                                                                                                                                                                                                                                        </ul>
+                                                                                                                                                                                                                                                                                                                                                      <p class="para-2"><i class="fas fa-check"></i> Independent Living</p> -->
+
                                             </div>
+                                            <hr>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="col-lg-6">
+                                            @if (!is_null($get_claimed_daycare_center_detail->timings))
+                                                <div class="col-md-12">
+                                                    <h3 style="color: black;">Hours open</h3>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Day</th>
+                                                                <th class="text-center">Hours open</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (json_decode($get_claimed_daycare_center_detail->timings) as $day => $timings)
+                                                                <tr>
+                                                                    <td><b>{{ $day }}</b></td>
 
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                @if (!is_null($get_claimed_daycare_center_detail->location_iframe))
-                                    <div class="images-zag" data-aos="flip-left" data-aos-easing="linear"
-                                        data-aos-duration="1500">
-                                        <div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:500px;">
-
-                                            <div id="embed-map-display" style="height:100%; width:100%;max-width:100%;">
-                                                {!! $get_claimed_daycare_center_detail->location_iframe !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="row"
-                                    style="border: 1px solid #cec6c6; padding: 20px; margin-top: 50px; margin-bottom: 50px;">
-                                    <div class="col-lg-12">
-                                        @foreach ($get_reviews as $key => $val_review)
-                                            <div class="span-txt1">
-                                                <div class="section-3-family-txt">
-                                                    <strong class="small-heading">{{ $val_review->name }}</strong>
-                                                    <strong class="small-heading">-</strong>
-                                                    <!--<p class="para-2">Family/friend</p>-->
-                                                    <strong class="small-heading"></strong>
-
-                                                    <p class="para-2">
-
-                                                        <?php if($val_review->rate == 1){ ?>
-
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php }elseif($val_review->rate == 2){ ?>
-
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php }elseif($val_review->rate == 3){ ?>
-
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php }elseif($val_review->rate == 4){ ?>
-
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php }elseif($val_review->rate == 5){ ?>
-
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-
-                                                        <?php } ?>
-
-                                                        {{ $val_review->rate }}.0
-
-                                                    </p>
+                                                                    @if (is_null($timings->from) || is_null($timings->to))
+                                                                        <td class="text-danger text-center"
+                                                                            style="font-size: 0.9em;">
+                                                                            Closed</td>
+                                                                    @else
+                                                                        <td class="text-center" style="font-size: 0.9em;">
+                                                                            <b>{{ Carbon\Carbon::parse($timings->from)->format('h:i A') }}</b>
+                                                                            -
+                                                                            <b>{{ Carbon\Carbon::parse($timings->to)->format('h:i A') }}</b>
+                                                                        </td>
+                                                                    @endif
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
 
                                                 </div>
-                                                <div class="section-3-family-txt1">
-                                                    <!--<h6 class="heading-6">Great place!</h6>-->
-                                                    <p class="para-1"> {!! $val_review->message !!} </p>
-                                                    <!--<strong class="small-heading"><a class="anker-1" href="">Add review-->
-                                                    <!--<i class="fas fa-chevron-right"></i></a>-->
-                                                    <!--</strong>-->
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <div class="col-md-12" style="margin-top: 45px;">
-
-                                        <h3>Review Form</h3>
-
-                                        <form method="post" action="{{ URL('review_store') }}">
-
-                                            @csrf
-
-                                            <input type="hidden" name="daycareid"
-                                                value="{{ $get_claimed_daycare_center_detail->id }}"
-                                                class="form-control" />
-
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-6">
                                             <div class="row">
-
-                                                <div class="form-group col-md-4">
-                                                    <label> Enter Name </label>
-                                                    <input name="name" class="form-control" required />
+                                                <div class="col-lg-6">
+                                                    @if (!is_null($get_claimed_daycare_center_detail->services))
+                                                        <div class="col-md-6">
+                                                            <h3 style="color: black;">Services</h3>
+                                                            <table class="table">
+                                                                <thead>
+                                                                    {{--                                    <tr> --}}
+                                                                    {{--                                        <th>Day</th> --}}
+                                                                    {{--                                        <th>From</th> --}}
+                                                                    {{--                                        <th>To</th> --}}
+                                                                    {{--                                    </tr> --}}
+                                                                    {{--                                </thead> --}}
+                                                                <tbody>
+                                                                    @foreach (json_decode($get_claimed_daycare_center_detail->services) as $service)
+                                                                        <tr>
+                                                                            <td style="font-size: 0.9em;">
+                                                                                {{ $service }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    @endif
                                                 </div>
-
-                                                <div class="form-group col-md-4">
-                                                    <label> Enter Email </label>
-                                                    <input name="email" class="form-control" required />
-                                                </div>
-
-
-                                                <div class="form-group col-md-4">
-                                                    <label> Select Stars </label>
-                                                    <select name="rate" class="form-control">
-                                                        <option value="1">&#11088;</option>
-                                                        <option value="2">&#11088;&#11088;</option>
-                                                        <option value="3">&#11088;&#11088;&#11088;</option>
-                                                        <option value="4">&#11088;&#11088;&#11088;&#11088;</option>
-                                                        <option value="5">&#11088;&#11088;&#11088;&#11088;&#11088;
-                                                        </option>
-                                                    </select>
-                                                </div>
-
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                            <div class="form-group">
-                                                <label> Enter Comments </label>
-                                                <textarea name="message" style="height: 200px;" class="form-control" required>  </textarea>
+                                <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                    @if (!is_null($get_claimed_daycare_center_detail->location_iframe))
+                                        <div class="images-zag" data-aos="flip-left" data-aos-easing="linear"
+                                            data-aos-duration="1500">
+                                            <div
+                                                style="overflow:hidden;resize:none;max-width:100%;width:100%;height:500px;">
+
+                                                <div id="embed-map-display"
+                                                    style="height:100%; width:100%;max-width:100%;">
+                                                    {!! $get_claimed_daycare_center_detail->location_iframe !!}
+                                                </div>
                                             </div>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                    <div class="row"
+                                        style="border: 1px solid #cec6c6; padding: 20px; margin-top: 50px; margin-bottom: 50px;">
+                                        <div class="col-lg-12">
+                                            @foreach ($get_reviews as $key => $val_review)
+                                                <div class="span-txt1">
+                                                    <div class="section-3-family-txt">
+                                                        <strong class="small-heading">{{ $val_review->name }}</strong>
+                                                        <strong class="small-heading">-</strong>
+                                                        <!--<p class="para-2">Family/friend</p>-->
+                                                        <strong class="small-heading"></strong>
 
-                                            <button class="btn btn-primary" type="submit"> Add Reviews</button>
+                                                        <p class="para-2">
 
-                                        </form>
+                                                            <?php if($val_review->rate == 1){ ?>
+
+                                                            <i class="fas fa-star"></i>
+
+                                                            <?php }elseif($val_review->rate == 2){ ?>
+
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+
+                                                            <?php }elseif($val_review->rate == 3){ ?>
+
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+
+                                                            <?php }elseif($val_review->rate == 4){ ?>
+
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+
+                                                            <?php }elseif($val_review->rate == 5){ ?>
+
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+
+                                                            <?php } ?>
+
+                                                            {{ $val_review->rate }}.0
+
+                                                        </p>
+
+                                                    </div>
+                                                    <div class="section-3-family-txt1">
+                                                        <!--<h6 class="heading-6">Great place!</h6>-->
+                                                        <p class="para-1"> {!! $val_review->message !!} </p>
+                                                        <!--<strong class="small-heading"><a class="anker-1" href="">Add review-->
+                                                        <!--<i class="fas fa-chevron-right"></i></a>-->
+                                                        <!--</strong>-->
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <div class="col-md-12" style="margin-top: 45px;">
+
+                                            <h3>Review Form</h3>
+
+                                            <form method="post" action="{{ URL('review_store') }}">
+
+                                                @csrf
+
+                                                <input type="hidden" name="daycareid"
+                                                    value="{{ $get_claimed_daycare_center_detail->id }}"
+                                                    class="form-control" />
+
+                                                <div class="row">
+
+                                                    <div class="form-group col-md-4">
+                                                        <label> Enter Name </label>
+                                                        <input name="name" class="form-control" required />
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label> Enter Email </label>
+                                                        <input name="email" class="form-control" required />
+                                                    </div>
+
+
+                                                    <div class="form-group col-md-4">
+                                                        <label> Select Stars </label>
+                                                        <select name="rate" class="form-control">
+                                                            <option value="1">&#11088;</option>
+                                                            <option value="2">&#11088;&#11088;</option>
+                                                            <option value="3">&#11088;&#11088;&#11088;</option>
+                                                            <option value="4">&#11088;&#11088;&#11088;&#11088;
+                                                            </option>
+                                                            <option value="5">&#11088;&#11088;&#11088;&#11088;&#11088;
+                                                            </option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label> Enter Comments </label>
+                                                    <textarea name="message" style="height: 200px;" class="form-control" required>  </textarea>
+                                                </div>
+
+                                                <button class="btn btn-primary" type="submit"> Add Reviews</button>
+
+                                            </form>
+
+                                        </div>
 
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-4" role="tabpanel">
-                                <div class="hihglight">
-                                    <h3>Center Highlights</h3>
-                                    <p><strong>Highlights:</strong></p>
-                                    <ul>
-                                        <li>State-of-the-art facilities</li>
-                                        <li>Experienced and qualified staff</li>
-                                        <li>Comprehensive care and support programs</li>
-                                        <li>Community involvement and outreach</li>
-                                        <li>Advanced technology and equipment</li>
-                                    </ul>
+                                <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                    <div class="hihglight">
+                                        <h3>Center Highlights</h3>
+                                        <p><strong>Highlights:</strong></p>
+                                        <ul>
+                                            <li>State-of-the-art facilities</li>
+                                            <li>Experienced and qualified staff</li>
+                                            <li>Comprehensive care and support programs</li>
+                                            <li>Community involvement and outreach</li>
+                                            <li>Advanced technology and equipment</li>
+                                        </ul>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-5" role="tabpanel">
-                                <div class="hihglight">
-                                    <h3>Cost</h3>
-                                    <p><strong>Cost:</strong></p>
-                                    <ul>
-                                        <li>Initial Consultation: $100</li>
-                                        <li>Monthly Membership: $50</li>
-                                        <li>Specialized Services: Prices vary, contact for details</li>
-                                    </ul>
+                                <div class="tab-pane" id="tabs-5" role="tabpanel">
+                                    <div class="hihglight">
+                                        <h3>Cost</h3>
+                                        <p><strong>Cost:</strong></p>
+                                        <ul>
+                                            <li>Initial Consultation: $100</li>
+                                            <li>Monthly Membership: $50</li>
+                                            <li>Specialized Services: Prices vary, contact for details</li>
+                                        </ul>
 
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-6" role="tabpanel">
-                                <div class="hihglight">
-                                    <h3>License</h3>
-                                    <p><strong>License:</strong></p>
-                                    <ul>
-                                        <li>Licensed by the Health Department</li>
-                                        <li>Accredited by the National Health Association</li>
-                                        <li>Certified for Quality and Safety Standards</li>
-                                    </ul>
+                                <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                    <div class="hihglight">
+                                        <h3>License</h3>
+                                        <p><strong>License:</strong></p>
+                                        <ul>
+                                            <li>Licensed by the Health Department</li>
+                                            <li>Accredited by the National Health Association</li>
+                                            <li>Certified for Quality and Safety Standards</li>
+                                        </ul>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {{-- <div class="row align-items-end" style="padding-left: 150px;padding-right: 150px;">
+                {{-- <div class="row align-items-end" style="padding-left: 150px;padding-right: 150px;">
                 <h2 style="color:#000; font-size:40px;" class=""> {{ $get_claimed_daycare_center_detail->name }}
                 </h2>
                 <div class="col-lg-6">
@@ -1045,7 +1054,7 @@
                     </div>
                 </div>
             </div> --}}
-        </div>
+            </div>
     </section>
 
     <section class="sec-four">

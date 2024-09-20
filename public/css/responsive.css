@@ -1,913 +1,925 @@
 @media (max-width: 1440px) {
-  .SignUp p {
-    font-size: 15px;
-    line-height: 10px;
-  }
-  .custom-btn.big {
-    padding: 15px 45px;
-  }
-  .EmailSubbmision form input {
-    width: 50%;
-    font-size: 13px;
-  }
-  .our-goal p {
-    width: 90%;
-    margin-top: 40px;
-  }
-  .about-sec-three {
-    height: 455px;
-  }
-  .our-goal h2 {
-    font-size: 70px;
-  }
+    .SignUp p {
+        font-size: 15px;
+        line-height: 10px;
+    }
+    .custom-btn.big {
+        padding: 15px 45px;
+    }
+    .EmailSubbmision form input {
+        width: 50%;
+        font-size: 13px;
+    }
+    .our-goal p {
+        width: 90%;
+        margin-top: 40px;
+    }
+    .about-sec-three {
+        height: 455px;
+    }
+    .our-goal h2 {
+        font-size: 70px;
+    }
 
-  .full-time {
-    width: 35%;
-    height: 28px;
-  }
+    .full-time {
+        width: 35%;
+        height: 28px;
+    }
 
-  .center-info h6 {
-    font-size: 20px;
-    line-height: 30px;
-  }
+    .center-info h6 {
+        font-size: 20px;
+        line-height: 30px;
+    }
 
-  .center-info a {
-    font-size: 15px;
-  }
+    .center-info a {
+        font-size: 15px;
+    }
 
-  .job-board {
-    padding: 50px 85px;
-  }
-  .BlogMain {
-    padding: 30px 40px;
-  }
+    .job-board {
+        padding: 50px 85px;
+    }
+    .BlogMain {
+        padding: 30px 40px;
+    }
 
-  .BlogArea {
-    padding: 1rem 1rem;
-  }
-  nav.navbar.navbar-expand-lg a img {
-    margin-left: 0;
-    position: unset;
-    width: 80%;
-  }
-  .mt-btn a {
-    margin-top: 100px;
-  }
+    .BlogArea {
+        padding: 1rem 1rem;
+    }
+    nav.navbar.navbar-expand-lg a img {
+        margin-left: 0;
+        position: unset;
+        width: 80%;
+    }
+    .mt-btn a {
+        margin-top: 100px;
+    }
 
-  .mt-btn {
-    height: 150px !important;
-  }
+    .mt-btn {
+        height: 150px !important;
+    }
 
-
-  span.select2.select2-container.select2-container--default.select2-container--focus.select2-container--below {
-    width: 100% !important;
-  }
+    span.select2.select2-container.select2-container--default.select2-container--focus.select2-container--below {
+        width: 100% !important;
+    }
+    .bulletin_board {
+        padding: 0 50px !important;
+        padding-top: 100px !important;
+    }
 }
 @media (max-width: 1199px) {
-  .sec-one {
-    height: 660px !important;
-  }
+    .sec-one {
+        height: 660px !important;
+    }
 
-  .priority h1 {
-    font-size: 40px;
-  }
+    .priority h1 {
+        font-size: 40px;
+    }
 
-  .about-bottom {padding-top: 300px !important;}
+    .about-bottom {
+        padding-top: 300px !important;
+    }
 
-  .top-bottom {
-    height: 650px !important;
-  }
-  .our-goal p {
-    width: 90%;
-    font-size: 20px !important;
-  }
+    .top-bottom {
+        height: 650px !important;
+    }
+    .our-goal p {
+        width: 90%;
+        font-size: 20px !important;
+    }
 
-  .give-the-best h1 span {
-    font-size: 30px !important;
-  }
-  .childcare h1 {
-    font-size: 50px;
-    line-height: 60px;
-  }
+    .give-the-best h1 span {
+        font-size: 30px !important;
+    }
+    .childcare h1 {
+        font-size: 50px;
+        line-height: 60px;
+    }
 
-  .services {
-    padding-top: 20px;
-    margin-top: 0;
-  }
+    .services {
+        padding-top: 20px;
+        margin-top: 0;
+    }
 
-  .services h6 {
-    font-size: 15px;
-  }
-  .childcare .custom-para {
-    width: 60%;
-    font-size: 15px;
-    line-height: 26px;
-  }
+    .services h6 {
+        font-size: 15px;
+    }
+    .childcare .custom-para {
+        width: 60%;
+        font-size: 15px;
+        line-height: 26px;
+    }
 
-  .custom-btn {
-    padding: 14px 35px !important;
-    font-size: 15px;
-  }
+    .custom-btn {
+        padding: 14px 35px !important;
+        font-size: 15px;
+    }
 
-  .header-form {
-    margin-top: 25px;
-  }
+    .header-form {
+        margin-top: 25px;
+    }
 
-  .priority h4 {
-    font-size: 30px;
-  }
+    .priority h4 {
+        font-size: 30px;
+    }
 
-  .priority p {
-    font-size: 16px;
-  }
-  .priority .font-b span {
-    font-size: 16px;
-  }
+    .priority p {
+        font-size: 16px;
+    }
+    .priority .font-b span {
+        font-size: 16px;
+    }
 
-  .Provider p {
-    font-size: 15px;
-    width: 96%;
-  }
+    .Provider p {
+        font-size: 15px;
+        width: 96%;
+    }
 
-  .give-the-best h4 {
-    font-size: 30px;
-  }
+    .give-the-best h4 {
+        font-size: 30px;
+    }
 
-  .give-the-best.two {
-    padding-top: 10px;
-    align-items: center;
-  }
+    .give-the-best.two {
+        padding-top: 10px;
+        align-items: center;
+    }
 
-  .services {
-    padding-top: 50px;
-  }
+    .services {
+        padding-top: 50px;
+    }
 
-  .trands h4 {
-    font-size: 38px;
-  }
-  .SignUp p {
-    font-size: 14px;
-    margin-right: 0;
-    line-height: 10px;
-  }
-  .EmailSubbmision form input {
-    width: 45%;
-  }
+    .trands h4 {
+        font-size: 38px;
+    }
+    .SignUp p {
+        font-size: 14px;
+        margin-right: 0;
+        line-height: 10px;
+    }
+    .EmailSubbmision form input {
+        width: 45%;
+    }
 
-  .custom-btn.big {
-    padding: 15px 40px;
-  }
+    .custom-btn.big {
+        padding: 15px 40px;
+    }
 
-  maindivFooter {
-    width: 80%;
-    padding: 30px 20px;
-  }
+    maindivFooter {
+        width: 80%;
+        padding: 30px 20px;
+    }
 
-  .maindivFooter {
-    padding: 20px 5px;
-  }
+    .maindivFooter {
+        padding: 20px 5px;
+    }
 
-  .DownFooterTwo {
-    padding-top: 7rem;
-    padding-bottom: 0;
-  }
-  ul.navbar-nav li a {
-    font-size: 14px;
-  }
-  nav.navbar.navbar-expand-lg a img {
-    width: 75%;
-  }
-  .about-sec-one {
-    height: 400px;
-  }
+    .DownFooterTwo {
+        padding-top: 7rem;
+        padding-bottom: 0;
+    }
+    ul.navbar-nav li a {
+        font-size: 14px;
+    }
+    nav.navbar.navbar-expand-lg a img {
+        width: 75%;
+    }
+    .about-sec-one {
+        height: 400px;
+    }
 
-  .about-us h2 {
-    font-size: 55px;
-  }
+    .about-us h2 {
+        font-size: 55px;
+    }
 
-  .about-bottom h5 {
-    font-size: 40px;
-  }
+    .about-bottom h5 {
+        font-size: 40px;
+    }
 
-  .about-bottom p {
-    width: 98%;
-  }
+    .about-bottom p {
+        width: 98%;
+    }
 
-  .about-sec-three {
-    height: 380px;
-  }
+    .about-sec-three {
+        height: 380px;
+    }
 
-  .our-goal h2 {
-    font-size: 50px;
-  }
+    .our-goal h2 {
+        font-size: 50px;
+    }
 
-  .our-goal p {
-    width: 100%;
-    margin-top: 20px;
-  }
+    .our-goal p {
+        width: 100%;
+        margin-top: 20px;
+    }
 
-  .work h5 {
-    font-size: 35px;
-  }
+    .work h5 {
+        font-size: 35px;
+    }
 
-  .work p {
-    width: 100%;
-  }
-  .content-zig {
-    padding-top: 65px;
-  }
-  .about-pg {}
+    .work p {
+        width: 100%;
+    }
+    .content-zig {
+        padding-top: 65px;
+    }
+    .about-pg {
+    }
 
-  .about-pg .our-goal p {
-    font-size: 15px !important;
-  }
-  .pt-about .about-bottom.two {
-    padding-top: 250px !important;
-  }
-  .pt-about .about-bottom.two {
-    padding-top: 200px !important;
-  }
-  .provider-banner {
-    height: 380px !important;
-  }
+    .about-pg .our-goal p {
+        font-size: 15px !important;
+    }
+    .pt-about .about-bottom.two {
+        padding-top: 250px !important;
+    }
+    .pt-about .about-bottom.two {
+        padding-top: 200px !important;
+    }
+    .provider-banner {
+        height: 380px !important;
+    }
 
-  .zig-zag.provider {
-    padding: 50px 30px;
-  }
-
-
+    .zig-zag.provider {
+        padding: 50px 30px;
+    }
 }
 
 @media (max-width: 991px) {
-  nav.navbar.navbar-expand-lg a img {
-    width: 65% !important;
-    width: 100%;
-    left: 48%;
-    height: 170px;
-  }
+    nav.navbar.navbar-expand-lg a img {
+        width: 65% !important;
+        width: 100%;
+        left: 48%;
+        height: 170px;
+    }
 
-  ul.navbar-nav {
-    text-align: center;
-  }
+    ul.navbar-nav {
+        text-align: center;
+    }
 
-  ul.navbar-nav li {
-    padding: 3px 0px;
-  }
+    ul.navbar-nav li {
+        padding: 3px 0px;
+    }
 
-  form.form-inline {
-    justify-content: center;
-  }
+    form.form-inline {
+        justify-content: center;
+    }
 
-  .custom-btn {
-    padding: 14px 30px !important;
-    font-size: 12px;
-  }
+    .custom-btn {
+        padding: 14px 30px !important;
+        font-size: 12px;
+    }
 
-  .sec-one {
-    height: 600px;
-  }
+    .sec-one {
+        height: 600px;
+    }
 
-  .childcare h1 {
-    font-size: 40px;
-    line-height: 50px;
-  }
+    .childcare h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
 
-  .header-form {
-    width: 70%;
-  }
+    .header-form {
+        width: 70%;
+    }
 
-  .priority h4 {
-    font-size: 25px;
-  }
+    .priority h4 {
+        font-size: 25px;
+    }
 
-  .priority p {
-    font-size: 14px;
-    width: 90%;
-  }
+    .priority p {
+        font-size: 14px;
+        width: 90%;
+    }
 
-  .priority .font-b span {
-    font-size: 14px;
-  }
+    .priority .font-b span {
+        font-size: 14px;
+    }
 
-  .Provider h5 {
-    font-size: 20px;
-  }
+    .Provider h5 {
+        font-size: 20px;
+    }
 
-  .Provider p {
-    margin-top: 20px;
-    width: 98%;
-    font-size: 13px;
-  }
+    .Provider p {
+        margin-top: 20px;
+        width: 98%;
+        font-size: 13px;
+    }
 
-  .give-the-best h4 {
-    font-size: 25px;
-    line-height: 33px;
-  }
+    .give-the-best h4 {
+        font-size: 25px;
+        line-height: 33px;
+    }
 
-  .give-the-best.two .para {
-    width: 60%;
-  }
-  .give-the-best.two {
-    align-items: start;
-  }
+    .give-the-best.two .para {
+        width: 60%;
+    }
+    .give-the-best.two {
+        align-items: start;
+    }
 
-  .services {
-    margin-top: 30px;
-    padding-top: 20px;
-    padding-bottom: 30px;
-  }
+    .services {
+        margin-top: 30px;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
 
-  .font-a {
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
+    .font-a {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
 
-  .bottom-font h6 {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
+    .bottom-font h6 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
 
-  .trands h4 {
-    font-size: 30px;
-  }
+    .trands h4 {
+        font-size: 30px;
+    }
 
-  .teaching p {
-    font-size: 14px;
-  }
+    .teaching p {
+        font-size: 14px;
+    }
 
-  p.samll-b {
-    font-size: 12px;
-    line-height: 20px;
-  }
+    p.samll-b {
+        font-size: 12px;
+        line-height: 20px;
+    }
 
-  .teaching .custom-btn {
-    padding-left: 0 !important;
-  }
+    .teaching .custom-btn {
+        padding-left: 0 !important;
+    }
 
-  .sec-four {
-    padding-bottom: 40px;
-  }
+    .sec-four {
+        padding-bottom: 40px;
+    }
 
-  .sec-two {
-    padding-bottom: 30px;
-  }
+    .sec-two {
+        padding-bottom: 30px;
+    }
 
-  footer {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
+    footer {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
 
-  .FooterMainDiv p {
-    width: 100%;
-    line-height: 23px;
-  }
+    .FooterMainDiv p {
+        width: 100%;
+        line-height: 23px;
+    }
 
-  .FooterMainDiv p a {
-    font-size: 15px;
-  }
+    .FooterMainDiv p a {
+        font-size: 15px;
+    }
 
-  .ReadMoreFooter span a {
-    font-size: 14px;
-  }
+    .ReadMoreFooter span a {
+        font-size: 14px;
+    }
 
-  .QuickContact .ReadMoreFooter span a {
-    font-size: 15px;
-  }
+    .QuickContact .ReadMoreFooter span a {
+        font-size: 15px;
+    }
 
-  .SignUp p {
-    font-size: 13px;
-    line-height: 12px;
-    margin-bottom: 4px;
-  }
+    .SignUp p {
+        font-size: 13px;
+        line-height: 12px;
+        margin-bottom: 4px;
+    }
 
-  .EmailSubbmision form input {
-    font-size: 9px;
-    height: 42px;
-  }
+    .EmailSubbmision form input {
+        font-size: 9px;
+        height: 42px;
+    }
 
-  .LOGO a {
-    margin-left: 1rem;
-  }
+    .LOGO a {
+        margin-left: 1rem;
+    }
 
-  .bg-video-wrap video {
-    width: 130px;
-  }
+    .bg-video-wrap video {
+        width: 130px;
+    }
 
-  .maindivFooter {
-    padding: 10px 5px;
-    top: -20px;
-  }
+    .maindivFooter {
+        padding: 10px 5px;
+        top: -20px;
+    }
 
-  .DownFooterTwo {
-    padding-top: 6rem;
-  }
-  .about-sec-one {
-    height: 300px;
-  }
+    .DownFooterTwo {
+        padding-top: 6rem;
+    }
+    .about-sec-one {
+        height: 300px;
+    }
 
-  .about-us h2 {
-    font-size: 40px;
-  }
+    .about-us h2 {
+        font-size: 40px;
+    }
 
-  .top-bottom.two {
-    margin-top: 80px;
-  }
+    .top-bottom.two {
+        margin-top: 80px;
+    }
 
-  .about-bottom h5 {
-    font-size: 30px;
-  }
+    .about-bottom h5 {
+        font-size: 30px;
+    }
 
-  .about-bottom p {
-    line-height: 20px;
-    width: 93%;
-  }
+    .about-bottom p {
+        line-height: 20px;
+        width: 93%;
+    }
 
-  .about-sec-three {
-    height: 295px;
-  }
+    .about-sec-three {
+        height: 295px;
+    }
 
-  .our-goal h2 {
-    font-size: 35px;
-    margin: 0;
-  }
+    .our-goal h2 {
+        font-size: 35px;
+        margin: 0;
+    }
 
-  .our-goal p {
-    margin-top: 12px;
-  }
+    .our-goal p {
+        margin-top: 12px;
+    }
 
-  .work h5 {
-    font-size: 30px;
-  }
+    .work h5 {
+        font-size: 30px;
+    }
 
-  .work p {
-    font-size: 14px;
-    width: 90%;
-  }
-  .content-zig h6 {
-    font-size: 30px;
-  }
+    .work p {
+        font-size: 14px;
+        width: 90%;
+    }
+    .content-zig h6 {
+        font-size: 30px;
+    }
 
-  .content-zig p {
-    margin-top: 16px;
-  }
+    .content-zig p {
+        margin-top: 16px;
+    }
 
-  .content-zig {
-    padding-top: 20px;
-  }
-  div#navbarSupportedContent {
-    position: absolute;
-    z-index: 0;
-    left: 0;
-    right: 0;
-    top: 120px;
-    background: #e3e3e3e6;
-  }
-  .childcare .custom-para {
-    width: 100%;
-    color: white;
-  }
-  .sec-one {
-    position: relative;
-    z-index: 0;
-  }
+    .content-zig {
+        padding-top: 20px;
+    }
+    div#navbarSupportedContent {
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        right: 0;
+        top: 120px;
+        background: #e3e3e3e6;
+    }
+    .childcare .custom-para {
+        width: 100%;
+        color: white;
+    }
+    .sec-one {
+        position: relative;
+        z-index: 0;
+    }
 
-  .sec-one:before {
-    position: absolute;
-    z-index: 0;
-    content: "";
-    left: 0;
-    top: 0;
-    background: #00000073;
-    width: 100%;
-    height: 100%;
-  }
-  .priority h1 {
-    font-size: 30px;
-  }
+    .sec-one:before {
+        position: absolute;
+        z-index: 0;
+        content: "";
+        left: 0;
+        top: 0;
+        background: #00000073;
+        width: 100%;
+        height: 100%;
+    }
+    .priority h1 {
+        font-size: 30px;
+    }
 
-  .about-sec-two {
-    padding-top: 0;
-  }
+    .about-sec-two {
+        padding-top: 0;
+    }
 
-  .top-bottom.two {
-    margin-top: 0;
-  }
-  .about-sec-three  .our-goal p {
-    width: 100% !important;
-    font-size: 18px !important;
-    margin-top: 20px !important;
-  }
-  .give-the-best h1 span {
-    font-size: 24px !important;
-  }
+    .top-bottom.two {
+        margin-top: 0;
+    }
+    .about-sec-three .our-goal p {
+        width: 100% !important;
+        font-size: 18px !important;
+        margin-top: 20px !important;
+    }
+    .give-the-best h1 span {
+        font-size: 24px !important;
+    }
 
-  .services {margin-top: 0px;padding: 10px;}
+    .services {
+        margin-top: 0px;
+        padding: 10px;
+    }
 
-  .services h6 {
-    font-size: 13px;
-  }
-  .sec-four .box-new-text ul li p span {font-size: 14px !important;}
+    .services h6 {
+        font-size: 13px;
+    }
+    .sec-four .box-new-text ul li p span {
+        font-size: 14px !important;
+    }
 
-  .sec-four .box-new-text ul li p {
-    font-size: 14px !important;
-  }
+    .sec-four .box-new-text ul li p {
+        font-size: 14px !important;
+    }
 
-  footer {
-    padding-top: 6rem !important;
-  }.QuickContact .ReadMoreFooter span a {font-size: 10px;}
-  .maindivFooter {
-    width: 80%;
-    left: 0;
-    right: 0;
-    top: -80px;
-  }
+    footer {
+        padding-top: 6rem !important;
+    }
+    .QuickContact .ReadMoreFooter span a {
+        font-size: 10px;
+    }
+    .maindivFooter {
+        width: 80%;
+        left: 0;
+        right: 0;
+        top: -80px;
+    }
 
-  .about-pg .our-goal p {
+    .about-pg .our-goal p {
+        font-size: 12px !important;
+        margin-top: 10px !important;
+    }
+    .social-linsk a {
+        font-size: 30px !important;
+    }
+    .pt-about .about-bottom.two {
+        padding-top: 150px !important;
+    }
+    .Teacher-Banner {
+        height: 300px !important;
+    }
+    .mt-btn a {
+        margin-top: 50px;
+    }
 
-    font-size: 12px !important;
-    margin-top: 10px !important;
+    .mt-btn {
+        height: unset !important;
+    }
 
-  }
-  .social-linsk a {
-    font-size: 30px !important;
-  }
-  .pt-about .about-bottom.two {
-    padding-top: 150px !important;
-  }
-  .Teacher-Banner {
-    height: 300px !important;
-  }
-  .mt-btn a {
-    margin-top: 50px;
-  }
+    label.ml-5 {
+    }
 
+    .provider label.ml-5 {
+        margin: 0 !important;
+    }
 
-
-  .mt-btn {
-    height: unset !important;
-  }
-
-  label.ml-5 {}
-
-  .provider label.ml-5 {
-    margin: 0 !important;
-  }
-
-  .provider label span {
-    margin-left: -30px;
-  }
-  .Teacher-sec .content-zig h6 {
-    font-size: 1.5rem;
-  }
+    .provider label span {
+        margin-left: -30px;
+    }
+    .Teacher-sec .content-zig h6 {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 767px) {
-  header {
-    z-index: 1;
-  }
+    header {
+        z-index: 1;
+    }
 
-  .childcare h1 {
-    font-size: 30px;
-    line-height: 36px;
-  }
+    .childcare h1 {
+        font-size: 30px;
+        line-height: 36px;
+    }
 
-  .childcare .custom-para {
-    width: 80%;
-  }
+    .childcare .custom-para {
+        width: 80%;
+    }
 
-  .sec-one {
-    height: 490px;
-  }
+    .sec-one {
+        height: 490px;
+    }
 
-  .priority h4 {
-    font-size: 20px;
-  }
+    .priority h4 {
+        font-size: 20px;
+    }
 
-  .priority .font-b span {
-    display: inline;
-  }
+    .priority .font-b span {
+        display: inline;
+    }
 
-  .priority p {
-    width: 100%;
-    line-height: 25px;
-  }
+    .priority p {
+        width: 100%;
+        line-height: 25px;
+    }
 
-  .Provider p {
-    width: 90%;
-  }
+    .Provider p {
+        width: 90%;
+    }
 
-  .give-the-best h4 {
-    text-align: center;
-    font-size: 22px;
-    line-height: 29px;
-  }
+    .give-the-best h4 {
+        text-align: center;
+        font-size: 22px;
+        line-height: 29px;
+    }
 
-  .give-the-best.two {
-    padding-top: 20px;
-  }
+    .give-the-best.two {
+        padding-top: 20px;
+    }
 
-  .services figure img {
-    width: 20%;
-  }
+    .services figure img {
+        width: 20%;
+    }
 
-  .bottom-font h6 {
-    font-size: 30px;
-  }
+    .bottom-font h6 {
+        font-size: 30px;
+    }
 
-  .bottom-font p {
-    font-size: 15px;
-    width: 87%;
-    line-height: 27px;
-    margin-top: 20px;
-  }
+    .bottom-font p {
+        font-size: 15px;
+        width: 87%;
+        line-height: 27px;
+        margin-top: 20px;
+    }
 
-  .sec-four {
-    text-align: center;
-  }
+    .sec-four {
+        text-align: center;
+    }
 
-  .small-p {
-    font-size: 15px !important;
-  }
+    .small-p {
+        font-size: 15px !important;
+    }
 
-  p.samll-b {
-    font-size: 15px;
-    width: 100%;
-    margin-bottom: 17px;
-  }
+    p.samll-b {
+        font-size: 15px;
+        width: 100%;
+        margin-bottom: 17px;
+    }
 
-  .trands {
-    padding-bottom: 10px;
-  }
+    .trands {
+        padding-bottom: 10px;
+    }
 
-  .first-img {
-    margin-top: 20px;
-  }
+    .first-img {
+        margin-top: 20px;
+    }
 
-  footer {
-    text-align: center;
-  }
+    footer {
+        text-align: center;
+    }
 
-  .ReadMoreFooter {
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  .maindivFooter {
-    text-align: center;
-  }
+    .ReadMoreFooter {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .maindivFooter {
+        text-align: center;
+    }
 
-  .SignUp p {
-    text-align: center;
-    font-size: 16px;
-    line-height: 18px;
-  }
+    .SignUp p {
+        text-align: center;
+        font-size: 16px;
+        line-height: 18px;
+    }
 
-  .DownFooterTwo {
-    padding-top: 14rem;
-  }
+    .DownFooterTwo {
+        padding-top: 14rem;
+    }
 
-  .bg-video-wrap video {
-    width: 160px;
-  }
+    .bg-video-wrap video {
+        width: 160px;
+    }
 
-  .EmailSubbmision {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  .top-bottom {
-    height: 730px;
-  }
+    .EmailSubbmision {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .top-bottom {
+        height: 730px;
+    }
 
-  .top-bottom.two {
-    height: 640px;
-  }
+    .top-bottom.two {
+        height: 640px;
+    }
 
-  .about-sec-two {
-    padding-bottom: 40px;
-  }
+    .about-sec-two {
+        padding-bottom: 40px;
+    }
 
-  .about-sec-three {
-    height: 400px;
-    background-size: 100%;
-  }
+    .about-sec-three {
+        height: 400px;
+        background-size: 100%;
+    }
 
-  .our-goal p {
-  }
+    .our-goal p {
+    }
 
-  .our-goal h2 {
-  }
+    .our-goal h2 {
+    }
 
-  .work p {
-    width: 100%;
-  }
+    .work p {
+        width: 100%;
+    }
 
-  .about-sec-three:before {
-    background-color: #00000075;
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-  }
+    .about-sec-three:before {
+        background-color: #00000075;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+    }
 
-  .sec-one {
-    height: 400px !important;
-  }
+    .sec-one {
+        height: 400px !important;
+    }
 
-  .header-form {margin-top: 30px;}
+    .header-form {
+        margin-top: 30px;
+    }
 
-  .sec-one .header-form input {
-    font-size: 15px !important;
-  }
-  .priority h1 {
-    font-size: 25px;
-  }
+    .sec-one .header-form input {
+        font-size: 15px !important;
+    }
+    .priority h1 {
+        font-size: 25px;
+    }
 
-  .top-bottom {
-    margin: auto;
-    width: 80%;
-    height: 580px !important;
-    margin-bottom: 40px;
-  }
-  .about-sec-three {
-    background-size: cover !important;
-    height: 410px !important;
-  }
-  .services {
-    margin: auto;
-    width: 50%;
-    margin-bottom: 20px;
-  }
+    .top-bottom {
+        margin: auto;
+        width: 80%;
+        height: 580px !important;
+        margin-bottom: 40px;
+    }
+    .about-sec-three {
+        background-size: cover !important;
+        height: 410px !important;
+    }
+    .services {
+        margin: auto;
+        width: 50%;
+        margin-bottom: 20px;
+    }
 
-  .services figure img {
-    width: 100%;
-  }
-  .box-new-text ul {
-    list-style: none;
-    text-align: center !important;
-  }
+    .services figure img {
+        width: 100%;
+    }
+    .box-new-text ul {
+        list-style: none;
+        text-align: center !important;
+    }
 
-  .row.box-new-1 {
-    padding-top: 20px !important;
-  }
-  footer {padding-bottom: 37rem;}
+    .row.box-new-1 {
+        padding-top: 20px !important;
+    }
+    footer {
+        padding-bottom: 37rem;
+    }
 
-  .ReadMoreFooter {
-    margin-top: 20px;
-  }
+    .ReadMoreFooter {
+        margin-top: 20px;
+    }
 
-
-  .QuickContact .ReadMoreFooter span a {
-    font-size: 20px;
-  }
-  section.sec-four .mt-5 {
-    margin: 0 !important;
-  }
-  .womenimg img {
-    margin: auto;
-    width: 65% !important;
-  }
-  .provider label span {
-    margin: 0;
-  }
-  h4.ml-2.bigh {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+    .QuickContact .ReadMoreFooter span a {
+        font-size: 20px;
+    }
+    section.sec-four .mt-5 {
+        margin: 0 !important;
+    }
+    .womenimg img {
+        margin: auto;
+        width: 65% !important;
+    }
+    .provider label span {
+        margin: 0;
+    }
+    h4.ml-2.bigh {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
 }
 
 @media (max-width: 575px) {
-  .custom-btn {
-    padding: 8px 20px !important;
-  }
+    .custom-btn {
+        padding: 8px 20px !important;
+    }
 
-  .childcare h1 {
-    font-size: 25px;
-    line-height: 30px;
-  }
+    .childcare h1 {
+        font-size: 25px;
+        line-height: 30px;
+    }
 
-  .childcare .custom-para {
-    width: 100%;
-    font-size: 14px;
-    line-height: 21px;
-  }
+    .childcare .custom-para {
+        width: 100%;
+        font-size: 14px;
+        line-height: 21px;
+    }
 
-  .header-form {
-    width: 100%;
-  }
+    .header-form {
+        width: 100%;
+    }
 
-  .sec-one {
-    height: 350px;
-  }
+    .sec-one {
+        height: 350px;
+    }
 
-  .childcare {
-    margin-top: 50px;
-  }
+    .childcare {
+        margin-top: 50px;
+    }
 
-  .priority h4 {
-    font-size: 15px;
-  }
+    .priority h4 {
+        font-size: 15px;
+    }
 
-  .priority p {
-  }
+    .priority p {
+    }
 
-  .priority p {
-    font-size: 13px;
-  }
+    .priority p {
+        font-size: 13px;
+    }
 
-  .priority .font-b span {
-    font-size: 13px;
-  }
+    .priority .font-b span {
+        font-size: 13px;
+    }
 
-  .Provider {
-    padding-bottom: 20px;
-    margin-top: 30px;
-    text-align: center;
-    padding-left: 6px;
-    padding-right: 6px;
-  }
+    .Provider {
+        padding-bottom: 20px;
+        margin-top: 30px;
+        text-align: center;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
 
-  .Provider p {
-    width: 100%;
-  }
+    .Provider p {
+        width: 100%;
+    }
 
-  .Provider {
-  }
+    .Provider {
+    }
 
-  .give-the-best.two {
-    display: block;
-    text-align: center;
-  }
+    .give-the-best.two {
+        display: block;
+        text-align: center;
+    }
 
-  .give-the-best.two .para {
-    width: 100%;
-  }
+    .give-the-best.two .para {
+        width: 100%;
+    }
 
-  p.samll-b {
-    font-size: 13px;
-  }
+    p.samll-b {
+        font-size: 13px;
+    }
 
-  .SignUp p {
-    font-size: 13px;
-    line-height: 15px;
-  }
-  .about-sec-one {
-    height: 250px;
-  }
+    .SignUp p {
+        font-size: 13px;
+        line-height: 15px;
+    }
+    .about-sec-one {
+        height: 250px;
+    }
 
-  .about-us h2 {
-    font-size: 30px;
-  }
+    .about-us h2 {
+        font-size: 30px;
+    }
 
-  .about-bottom {
-    padding-top: 320px;
-    text-align: center;
-    padding-left: 0;
-  }
+    .about-bottom {
+        padding-top: 320px;
+        text-align: center;
+        padding-left: 0;
+    }
 
-  .about-bottom p {
-    width: 85%;
-    margin: auto;
-    margin-top: 30px;
-  }
+    .about-bottom p {
+        width: 85%;
+        margin: auto;
+        margin-top: 30px;
+    }
 
-  .top-bottom {
-    height: 700px;
-  }
+    .top-bottom {
+        height: 700px;
+    }
 
-  .top-bottom.two {
-    height: 670px;
-  }
+    .top-bottom.two {
+        height: 670px;
+    }
 
-  .work p {
-    font-size: 13px;
-    line-height: 23px;
-  }
-  .content-zig h6 {
-    font-size: 25px;
-  }
+    .work p {
+        font-size: 13px;
+        line-height: 23px;
+    }
+    .content-zig h6 {
+        font-size: 25px;
+    }
 
-  .images-zag img {
-    width: 90%;
-  }
+    .images-zag img {
+        width: 90%;
+    }
 
-  section.zig-zag {
-    text-align: center;
-  }
+    section.zig-zag {
+        text-align: center;
+    }
 
-  .zig-zag .col-lg-6 {
-    margin-top: 10px;
-  }
+    .zig-zag .col-lg-6 {
+        margin-top: 10px;
+    }
 
-  .about-bottom p {
-    width: 92%;
-  }
-  .about-pg {
-    height: 550px  !important;
-  }
+    .about-bottom p {
+        width: 92%;
+    }
+    .about-pg {
+        height: 550px !important;
+    }
 
-  .Teacher-Banner {
-    height: 250px !important;
-  }
-  .maindivFooter {
-    top: 20px;
-  }
+    .Teacher-Banner {
+        height: 250px !important;
+    }
+    .maindivFooter {
+        top: 20px;
+    }
 }

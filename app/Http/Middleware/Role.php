@@ -25,8 +25,8 @@ class Role
             ? $role
             : explode('|', $role);
 
-        if (! Auth::user()->hasAnyRole($roles)) {
-            if(!Auth::user()->hasRole('admin')){
+        if (!Auth::user()->hasAnyRole($roles)) {
+            if (!Auth::user()->hasRole('admin')) {
                 return redirect('/');
             }
         }

@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
+
 @section('css')
+    {{-- <link rel="stylesheet" href="{{ asset('css/dashboard-2.css') }}"> --}}
+
     <style>
         .about-sec-one {
             background-image: url('{{ asset($page->image) }}');
@@ -142,6 +145,27 @@
 
         .dashboard_details {
             margin-bottom: 50px;
+            border: 1px solid #0000002b;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .sty_para p {
+            line-height: unset;
+        }
+
+        .select2-container--default .select2-search--inline .select2-search__field {
+            display: none;
+        }
+
+        .select2-selection__choice {
+            font-size: 14px !important;
+            padding: 6px !important;
+            background: #0B94F7 !important;
+        }
+
+        .select2-selection.select2-selection--multiple {
+            background: #f5f7fc;
         }
     </style>
 @endsection
@@ -158,13 +182,13 @@
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
 
-{{--                    <h2>Daycare Center</h2>--}}
-{{--                    <h2>Childcare Provider Search</h2>--}}
-                    <h2>
-                        <span style="font-family:Comic Sans MS,cursive; color:#000;">
-                            <strong>Childcare Provider Search</strong>
-                        </span>
-                    </h2>
+                        {{--                    <h2>Daycare Center</h2> --}}
+                        {{--                    <h2>Childcare Provider Search</h2> --}}
+                        <h2>
+                            <span style="font-family:Comic Sans MS,cursive; color:#000;">
+                                <strong>Childcare Provider Search</strong>
+                            </span>
+                        </h2>
 
                     </div>
                 </div>
@@ -177,7 +201,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-3" style="margin-top:50px;">
+                <div class="col-md-6 sty_para" style="margin-top:50px;">
 
                     <?php $get_daycarecount = DB::table('childcares')->distinct('name')->count(); ?>
 
@@ -193,17 +217,32 @@
 
 
                     <hr>
-                        <span>
+                    <span>
+                        <p>
+                            The providers listed as [Unverified], have not claimed their listing, and Preschool Portal has
+                            not been able to verify any of the information displayed. We strongly recommend that you verify
+                            the information, on your own, through your local licensing agency. Preschool Portal does not
+                            recommend and/or endorse any provider or business.
+                        </p>
+                    </span>
+                    <span>
+                        <p class="pt-2">
+                            Is this your business? <a href="#">Claim your profile</a>
+                        </p>
+                    </span>
+                    <span>
+                        <p class="pt-2">
                             Don't see your center listed?
                             <a href="{{ route('joinnow') }}">Enroll now</a>
                             to create your profile and start advertising and placing ads
-                        </span>
+                        </p>
+                    </span>
                     <hr>
 
                 </div>
             </div>
 
-            @if(!count($search_result))
+            @if (!count($search_result))
                 <div class="row text-center">
                     No daycares found
                 </div>
@@ -269,14 +308,26 @@
                                 </div>
                             </div>
                             <div class="current_info">
-                                @if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role == 4)
-                                    <a class="btn btn-success"
-                                        href="{{ URL('claimed_center_detail/' . $val_search->id) }}">View</a>
+                                <a class="btn btn-success"
+                                    href="{{ URL('claimed_center_detail/' . $val_search->id) }}">View</a>
+
+                                @if (is_null($val_search->claimed_by_id))
+                                    @if (auth()->check() && auth()->user()->role == 4)
+                                        @if (auth()->user()->is_verified)
+                                            <button data-toggle="modal" data-target="#myModal{{ $val_search->id }}"
+                                                class="btn btn-primary">Claim</button>
+                                        @else
+                                            <button data-toggle="modal" data-target="#not_verified_modal"
+                                                class="btn btn-primary">Claim</button>
+                                        @endif
+                                    @else
+                                        <button data-toggle="modal" data-target="#providerAlert"
+                                            class="btn btn-primary">Claim</button>
+                                    @endif
                                 @else
-                                    {{--                            <a class="btn btn-primary" href="{{ route('provider.findDaycare') }}">Claim</a> --}}
-                                    <button data-toggle="modal" data-target="#providerAlert"
-                                        class="btn btn-primary">Claim</button>
+                                    {{-- <button class="btn btn-danger" disabled>Claimed</button> --}}
                                 @endif
+                                {{-- @endif --}}
                             </div>
                             <div class="comment_box">
                                 <div class="rating_client">
@@ -366,11 +417,414 @@
         </div>
     </section>
 
+    @foreach ($search_result as $key => $value)
+        <!-- The Edit Modal -->
+        <div class="modal fade" id="myModal{{ $value->id }}" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <form id="form{{ $value->id }}" action="{{ route('provider.updateDaycareCenter') }}" method="post"
+                        enctype="multipart/form-data">
+
+                        @csrf
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            {{--                                                                                <h5 class="modal-title text-center">Claimed --}}
+                            <h5 class="modal-title text-center">Claim Center</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <p class="text-center"> {{ $value->name }} </p>
+
+                            <hr>
+
+                            <div class="row">
+
+                                <div class="col-md-12 mb-2">
+
+                                    <input type="hidden" name="id" value="{{ $value->id }}" />
+
+                                    <label> Name </label>
+                                    <input type="text" value="{{ $value->name }}" class="form-control" readonly />
+
+                                </div>
+
+                                <div class="col-md-6 mb-2">
+
+                                    <label> County </label>
+                                    <input type="text" name="county" value="{{ $value->county }}" class="form-control"
+                                        required />
+
+                                    <br>
+
+                                    <label> Zipcode </label>
+                                    <input type="text" name="zip" value="{{ $value->zip }}" class="form-control"
+                                        required />
+
+                                    <br>
+
+                                    <label> Address </label>
+                                    <input type="text" name="physical_address" value="{{ $value->physical_address }}"
+                                        class="form-control" required />
+
+                                </div>
+
+                                <div class="col-md-6 mb-2">
+
+                                    <label> City </label>
+                                    <input type="text" name="city" value="{{ $value->city }}"
+                                        class="form-control" required />
+
+                                    <br>
+
+                                    <label> Phone </label>
+                                    <input type="text" name="phone" value="{{ $value->phone }}"
+                                        class="form-control" required />
+
+                                    <br>
+
+                                    <label> Email </label>
+                                    <input type="text" name="email_address" value="{{ $value->email_address }}"
+                                        class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-12">
+                                    <label for="">Ages Accepted :</label>
+                                    @php
+                                        $age_accepted = explode(',', Auth::user()->age_accepted);
+                                    @endphp
+                                    <select type="text" name="age_accepted[]" class="form-control age_accepted"
+                                        multiple id="">
+                                        <option>Select</option>
+                                        <option {!! in_array('0-1', $age_accepted) ? 'selected' : '' !!}>0-1</option>
+                                        <option {!! in_array('1-2', $age_accepted) ? 'selected' : '' !!}>1-2</option>
+                                        <option {!! in_array('2-3', $age_accepted) ? 'selected' : '' !!}>2-3</option>
+                                        <option {!! in_array('3-4', $age_accepted) ? 'selected' : '' !!}>3-4</option>
+                                        <option {!! in_array('4-5', $age_accepted) ? 'selected' : '' !!}>4-5</option>
+                                        <option {!! in_array('School-ager', $age_accepted) ? 'selected' : '' !!}>School-ager</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-12 mb-2">
+
+                                    <label> Description </label>
+                                    <textarea type="text" style="height: 120px;" name="description" class="form-control" required> {{ $value->description }} </textarea>
+
+                                </div>
+
+                                <div class="col-md-12 mb-2">
+
+                                    <label> Feature Image </label>
+                                    <input type="file" name="feature_image" class="form-control" />
+
+                                </div>
+
+
+
+                                <div class="col-md-12 mb-2">
+
+                                    <label> Other Image 1 </label>
+                                    <input type="file" name="other_image_one" class="form-control" />
+
+                                </div>
+
+                                <div class="col-md-12 mb-2">
+
+                                    <label> Other Image 2 </label>
+                                    <input type="file" name="other_image_two" class="form-control" />
+
+                                </div>
+
+                                <div class="col-md-12 mb-2">
+
+                                    <label> Location iframe </label>
+                                    <textarea type="text" style="height: 120px;" name="location_iframe" class="form-control"> {{ $value->location_iframe }} </textarea>
+
+                                </div>
+
+                                @php
+                                    $decoded_timings = json_decode($value->timings);
+                                    $decoded_services = json_decode($value->services);
+                                @endphp
+                                <div class="col-md-6 mb-2 mt-4">
+                                    <h2 class="ml-2"> Timings </h2>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>Day</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>From</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>To</h5>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>Monday</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Monday][from]"
+                                                value="{{ !is_null($decoded_timings->Monday->from) ? Carbon\Carbon::parse($decoded_timings->Monday->from)->format('H:i') : '' }}">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Monday][to]"
+                                                value="{{ !is_null($decoded_timings->Monday->to) ? Carbon\Carbon::parse($decoded_timings->Monday->to)->format('H:i') : '' }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>Tuesday</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Tuesday][from]"
+                                                value="{{ !is_null($decoded_timings->Tuesday->from) ? Carbon\Carbon::parse($decoded_timings->Tuesday->from)->format('H:i') : '' }}">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Tuesday][to]"
+                                                value="{{ !is_null($decoded_timings->Tuesday->to) ? Carbon\Carbon::parse($decoded_timings->Tuesday->to)->format('H:i') : '' }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>Wednesday</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Wednesday][from]"
+                                                value="{{ !is_null($decoded_timings->Wednesday->from) ? Carbon\Carbon::parse($decoded_timings->Wednesday->from)->format('H:i') : '' }}">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Wednesday][to]"
+                                                value="{{ !is_null($decoded_timings->Wednesday->to) ? Carbon\Carbon::parse($decoded_timings->Wednesday->to)->format('H:i') : '' }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>Thursday</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Thursday][from]"
+                                                value="{{ !is_null($decoded_timings->Thursday->from) ? Carbon\Carbon::parse($decoded_timings->Thursday->from)->format('H:i') : '' }}">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Thursday][to]"
+                                                value="{{ !is_null($decoded_timings->Thursday->to) ? Carbon\Carbon::parse($decoded_timings->Thursday->to)->format('H:i') : '' }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>Friday</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Friday][from]"
+                                                value="{{ !is_null($decoded_timings->Friday->from) ? Carbon\Carbon::parse($decoded_timings->Friday->from)->format('H:i') : '' }}">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Friday][to]"
+                                                value="{{ !is_null($decoded_timings->Friday->to) ? Carbon\Carbon::parse($decoded_timings->Friday->to)->format('H:i') : '' }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>Saturday</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Saturday][from]"
+                                                value="{{ !is_null($decoded_timings->Saturday->from) ? Carbon\Carbon::parse($decoded_timings->Saturday->from)->format('H:i') : '' }}">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Saturday][to]"
+                                                value="{{ !is_null($decoded_timings->Saturday->to) ? Carbon\Carbon::parse($decoded_timings->Saturday->to)->format('H:i') : '' }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">
+                                                <h5>Sunday</h5>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Sunday][from]"
+                                                value="{{ !is_null($decoded_timings->Sunday->from) ? Carbon\Carbon::parse($decoded_timings->Sunday->from)->format('H:i') : '' }}">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[Sunday][to]"
+                                                value="{{ !is_null($decoded_timings->Sunday->to) ? Carbon\Carbon::parse($decoded_timings->Sunday->to)->format('H:i') : '' }}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-2 mt-4">
+                                    <h2 class="ml-2"> Services </h2>
+
+                                    <div class="row ml-2">
+                                        <label for="after_school" class="ml-5">
+                                            <strong>After school</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[After school]" id="after_school" {!! in_array('After school', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="before_school" class="ml-5">
+                                            <strong>Before school</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Before school]" id="before_school" {!! in_array('Before school', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="drop_in" class="ml-5">
+                                            <strong>Drop in</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Drop in]" id="drop_in" {!! in_array('Drop in', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="food_served" class="ml-5">
+                                            <strong>Food served</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Food served]" id="food_served" {!! in_array('Food served', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="full_day" class="ml-5">
+                                            <strong>Full day</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Full day]" id="full_day" {!! in_array('Full day', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="half_day" class="ml-5">
+                                            <strong>Half day</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Half day]" id="half_day" {!! in_array('Half day', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="infant_care" class="ml-5">
+                                            <strong>Infant care</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Infant care]" id="infant_care" {!! in_array('Infant care', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="night_care" class="ml-5">
+                                            <strong>Night care</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Night care]" id="night_care" {!! in_array('Night care', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="transportation" class="ml-5">
+                                            <strong>Transportation</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Transportation]" id="transportation" {!! in_array('Transportation', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+
+                                    <div class="row ml-2">
+                                        <label for="weekend_care" class="ml-5">
+                                            <strong>Weekend care</strong>
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            name="services[Weekend care]" id="weekend_care" {!! in_array('Weekend care', $decoded_services) ? 'checked' : '' !!}>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" />
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="not_verified_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Verification required</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="verified_modal">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Your account hasn't been verified. Please contact Administration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- ============================================================== -->
 @endsection
 
 
 @section('js')
-    <script type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(() => {
+
+            if (parseInt('{{ \Illuminate\Support\Facades\Auth::user()->agreed_to_sandbox_terms }}') == 0) {
+                $('#modal_agree_to_sandbox_terms').modal({
+                    keyboard: false
+                });
+                $('#modal_agree_to_sandbox_terms').modal('show');
+            }
+            $('.age_accepted').select2();
+        });
+    </script>
 @endsection

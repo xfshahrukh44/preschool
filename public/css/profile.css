@@ -255,6 +255,13 @@ a {
   height: 750px;
 }
 
+.project ul {
+  padding: 0;
+  margin-top: 13px;
+  overflow-y: scroll;
+  height: 200px;
+}
+
 .user {
 }
 .recent_users ul li h6 span {

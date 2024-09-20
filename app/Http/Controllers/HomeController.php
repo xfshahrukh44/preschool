@@ -22,6 +22,7 @@ use App\Models\Post;
 use App\Models\Pined_post;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Angel;
 use App\Childcare;
 use App\Page;
 use App\User;
@@ -49,12 +50,12 @@ class HomeController extends Controller
         //$this->middleware('auth');
 
         $logo = imagetable::
-        select('img_path')
+            select('img_path')
             ->where('table_name', '=', 'logo')
             ->first();
 
         $favicon = imagetable::
-        select('img_path')
+            select('img_path')
             ->where('table_name', '=', 'favicon')
             ->first();
 
@@ -101,6 +102,32 @@ class HomeController extends Controller
 
         return view('claimed_center', compact('page', 'section', 'get_all_claimed_daycare_center'));
 
+    }
+
+    public function angelList()
+    {
+
+        $page = DB::table('pages')->where('id', 2)->first();
+        $section = DB::table('section')->where('page_id', 2)->get();
+        // $user = DB::table('users')->where('page_id', 2)->get();
+
+        $angel = Angel::with('job', 'creator')->where('creator_id', Auth::user()->id)->get();
+
+        return view('angel-list', compact('page', 'section', 'get_all_claimed_daycare_center', 'angel'));
+
+    }
+
+    public function deleteAngel($id)
+    {
+        $angel = Angel::find($id);
+
+        if ($angel) {
+            $angel->delete();
+
+            return response()->json(['success' => 'Angel has been deleted successfully.']);
+        } else {
+            return response()->json(['error' => 'Angel not found.'], 404);
+        }
     }
 
 
@@ -238,7 +265,7 @@ class HomeController extends Controller
 
         $search_result = Childcare::where('city', 'LIKE', "%{$search}%")->orWhere('state', 'LIKE', "%{$search}%")->orWhere('name', 'LIKE', "%{$search}%")->orWhere('county', 'LIKE', "%{$search}%")->orWhere('program_type', 'LIKE', "%{$search}%")->where('status', '1')->orderBy('claimed_by_id', 'DESC')->groupBy('name')->paginate(25);
 
-        return view('search', compact('page', 'section', 'search_result', 'search'));
+        return view('search', compact('page', 'section', 'search_result', 'search', 'claimed_centers'));
 
     }
 
@@ -285,7 +312,39 @@ class HomeController extends Controller
 
         // dd($get_last_post);
 
-        return view('teacher_dashboard', compact('get_all_teacher', 'get_last_post'));
+        return view('teacher_dashboard', compact('get_all_teacher', 'get_last_post', 'get_all_new_job'));
+    }
+
+    public function connect($id)
+    {
+        $user = auth()->user();
+
+        if ($user->id == $id) {
+            return response()->json(['error' => 'Cannot connect to yourself.'], 400);
+        }
+
+        $connectedTeacher = User::find($id);
+
+        if ($connectedTeacher) {
+            $user->connectedTeachers()->attach($id);
+            return response()->json(['success' => 'Connected with teacher.', 'user_id' => $connectedTeacher->id]);
+        }
+
+        return response()->json(['error' => 'Teacher not found.'], 404);
+    }
+
+    public function remove($id)
+    {
+        $user = auth()->user();
+
+        $connectedTeacher = User::find($id);
+
+        if ($connectedTeacher) {
+            $user->connectedTeachers()->detach($id);
+            return response()->json(['success' => 'Teacher removed.', 'user_id' => $connectedTeacher->id]);
+        }
+
+        return response()->json(['error' => 'Teacher not found.'], 404);
     }
 
 
@@ -307,40 +366,65 @@ class HomeController extends Controller
             return redirect("/");
         }
 
-
-//       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
-        $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
-            ->when(request()->has('search'), function ($q) {
-                return $q->where('post', 'LIKE', '%'.request()->get('search').'%');
-            })
+        $sharedPost = DB::table('post_shares')
+            ->where('shared_by', Auth::user()->id)
             ->get();
-//       $get_all_teachers = DB::table('users')->where('role','3')->get();
-        $get_all_teachers = DB::table('users')->where('role', Auth::user()->role)->get();
-        //$post_user_profile = User::find($get_last_post->user_id)->image;
-        //$dayago = Carbon::parse($post_user_profile->created_at)->diffForHumans();
+        // Extract post IDs and notes
+        $sharedPostIds = $sharedPost->pluck('post_id');
+        $sharedNotes = $sharedPost->pluck('note', 'post_id');
 
-        //dd($get_last_post);
+        if (Auth::user()->role == "3") {
+            $connectedTeacherIds = Auth::user()->connectedTeachers->pluck('id');
+            $get_all_teachers = DB::table('users')->whereIn('id', $connectedTeacherIds)->get();
+            $connectedTeacherIds[] = Auth::user()->id;
 
-        return view('teacher_post', compact('get_last_post', 'post_user_profile', 'dayago', 'get_all_teachers'));
+            //       $get_last_post = DB::table('posts')->orderBy('id', 'desc')->get();
+            $get_last_post = Post::where('role_id', Auth::user()->role)->whereIn('user_id', $connectedTeacherIds)->orderBy('id', 'desc')
+                ->when(request()->has('search'), function ($q) {
+                    return $q->where('post', 'LIKE', '%' . request()->get('search') . '%');
+                })
+                ->get();
+            //       $get_all_teachers = DB::table('users')->where('role','3')->get();
+
+
+        } else {
+            $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
+                ->when(request()->has('search'), function ($q) {
+                    return $q->where('post', 'LIKE', '%' . request()->get('search') . '%');
+                })
+                ->get();
+
+            // return $get_last_post;
+
+
+            $get_all_teachers = DB::table('users')->where('role', Auth::user()->role)->get();
+        }
+
+        return view('teacher_post', compact('get_last_post', 'post_user_profile', 'dayago', 'get_all_teachers', 'sharedPostIds'));
 
     }
 
 
     public function job_board()
     {
-
-
         if (Auth::user()->role != "3") {
             return redirect("/");
         }
-
         $page = DB::table('pages')->where('id', 7)->first();
         $section = DB::table('section')->where('page_id', 7)->get();
-
         $get_all_new_job = DB::table('job_posts')->where('status', '1')->get();
-
         return view('job_board', compact('page', 'section', 'get_all_new_job'));
 
+    }
+
+
+    public function bulletin()
+    {
+        $page = DB::table('pages')->where('id', 5)->first();
+        $section = DB::table('section')->where('page_id', 5)->get();
+
+
+        return view('bulletin_board');
     }
 
 
@@ -358,6 +442,46 @@ class HomeController extends Controller
 
         return view('apply_for_job', compact('page', 'section', 'get_all_new_job_byid'));
 
+    }
+
+    public function become_an_angel($jobid, $creatorId)
+    {
+        if (Auth::user()->role != "3") {
+            return redirect("/");
+        }
+
+        $userId = Auth::user()->id;
+
+        $existingAngel = Angel::where('teacher_id', $userId)
+            ->where('job_id', $jobid)
+            ->first();
+
+        if ($existingAngel) {
+            return response()->json(['error' => 'You are already an angel for this job.']);
+        }
+
+        $angel = new Angel();
+        $angel->teacher_id = $userId;
+        $angel->job_id = $jobid;
+        $angel->creator_id = $creatorId;
+        $angel->save();
+
+        return response()->json(['success' => 'You added the angel list.']);
+    }
+
+    public function checkAngel($jobid, $creatorId)
+    {
+        $userId = Auth::user()->id;
+
+        $existingAngel = Angel::where('teacher_id', $userId)
+            ->where('job_id', $jobid)
+            ->first();
+
+        if ($existingAngel) {
+            return response()->json(['exists' => true]);
+        } else {
+            return response()->json(['exists' => false]);
+        }
     }
 
 
@@ -412,7 +536,7 @@ class HomeController extends Controller
         $post_save->save();
 
 
-//        $get_last_post = DB::table('posts')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+        //        $get_last_post = DB::table('posts')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
         $get_last_post = DB::table('posts')->where('user_id', Auth::user()->id)->where('role_id', Auth::user()->role)->orderBy('id', 'desc')->first();
         $post_user_profile = User::find($get_last_post->user_id)->image;
         $dayago = Carbon::parse($post_user_profile->created_at)->diffForHumans();
@@ -421,6 +545,43 @@ class HomeController extends Controller
         return response()->json(['message' => 'New Post has been Created Successfully', 'status' => true, 'get_last_post' => $get_last_post, 'post_user_profile' => $post_user_profile, 'dayago' => $dayago]);
         // return back();
 
+    }
+
+    public function share_post(Request $request)
+    {
+        // return $request;
+        $request->validate([
+            'post_id' => 'required',
+            'note' => 'nullable|string',
+        ]);
+
+        $postId = $request->input('post_id');
+        $sharepost = $request->input('share_post');
+        $userId = Auth::id();
+        $note = $request->input('note');
+
+        if ($sharepost != null) {
+            $alreadyShared = DB::table('posts')
+                ->where('share_post', $sharepost)
+                ->where('user_id', $userId)
+                ->first();
+
+            if ($alreadyShared) {
+                return response()->json(['message' => 'You have already shared this post.', 'status' => false]);
+            }
+        }
+
+
+        DB::table('posts')->insert([
+            'share_post' => $postId,
+            'user_id' => $userId,
+            'post' => $note,
+            'role_id' => Auth::user()->role,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return response()->json(['message' => 'Post shared successfully', 'status' => true, 'redirectUrl' => route('add_post')]);
     }
 
 
@@ -446,7 +607,7 @@ class HomeController extends Controller
     public function get_last_post()
     {
         $get_last_post = DB::table('posts')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
-//      $post_user_profile = User::find($get_last_post->user_id)->image;
+        //      $post_user_profile = User::find($get_last_post->user_id)->image;
         $post_user_profile = (Auth::user()->image != '') ? asset(Auth::user()->image) : asset('images/profilemain1.png');
         $dayago = Carbon::parse($post_user_profile->created_at)->diffForHumans();
         // dd($post_user_profile);

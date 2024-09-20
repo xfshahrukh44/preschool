@@ -31,6 +31,7 @@
         color: #000 !important;
         border-radius: 10px !important;
         margin-left: 10px;
+        display: none;
     }
 
 
@@ -233,6 +234,14 @@
         color: black !important;
         font-size: 14px;
     }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+        right: 0px !important;
+        top: -3px !important;
+        padding: 0 !important;
+        left: 0;
+        text-align: end;
+    }
 </style>
 
 <body>
@@ -387,6 +396,7 @@
 
 
 
+
                                                                             <!-- Modal Header -->
                                                                             <div class="modal-header">
                                                                                 {{--                                                                                <h5 class="modal-title text-center">Claimed --}}
@@ -418,6 +428,14 @@
                                                                                             value="{{ $value->name }}"
                                                                                             class="form-control"
                                                                                             readonly />
+
+                                                                                    </div>
+                                                                                    <div class="col-md-12 mb-2">
+
+                                                                                        <label> Position </label>
+                                                                                        <input type="text"
+                                                                                            value="{{ $value->position }}"
+                                                                                            class="form-control" />
 
                                                                                     </div>
 

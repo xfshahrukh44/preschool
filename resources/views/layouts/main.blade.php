@@ -106,6 +106,7 @@
             background-color: #007bff;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
 </head>
 
 <body class="responsive">

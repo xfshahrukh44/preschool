@@ -1,25 +1,23 @@
-<?php $segment = Request::segment(1);?>
+<?php $segment = Request::segment(1); ?>
 
 <style>
+    a:hover {
+        text-decoration: none !important;
+    }
 
-a:hover{
-    text-decoration:none !important;
-}
-
-header {
-    background-color: #e3e3e3e6;
-    position: relative;
-    right: 0;
-    left: 0;
-    top: 0px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /*margin-bottom: 20px !important;*/
-    z-index: 1;
-}
-
+    header {
+        background-color: #e3e3e3e6;
+        position: relative;
+        right: 0;
+        left: 0;
+        top: 0px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*margin-bottom: 20px !important;*/
+        z-index: 1;
+    }
 </style>
 
 <header>
@@ -28,15 +26,16 @@ header {
             <div class="col-lg-12 col-md-12 col-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
 
-                    @if($segment == "password")
-
+                    @if ($segment == 'password')
                     @else
-                    <a class="navbar-brand" href="{{route('home')}}">
-                        <img src="{{asset('images/Comp-1.gif')}}" class="img-fluid" alt="">
-                    </a>
+                        <a class="navbar-brand" href="{{ route('home') }}">
+                            <img src="{{ asset('images/Comp-1.gif') }}" class="img-fluid" alt="">
+                        </a>
                     @endif
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
@@ -44,75 +43,105 @@ header {
 
                         <ul class="navbar-nav ml-auto mr-auto">
 
-                            <li class="nav-item <?php if($segment == "" || $segment == "home"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                            <li class="nav-item <?php if ($segment == '' || $segment == 'home') {
+                                echo 'active';
+                            } ?>">
+                                <a class="nav-link" href="{{ route('home') }}">Home <span
+                                        class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item <?php if($segment == "about"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('about')}}">About Us</a>
+                            <li class="nav-item <?php if ($segment == 'about') {
+                                echo 'active';
+                            } ?>">
+                                <a class="nav-link" href="{{ route('about') }}">About Us</a>
                             </li>
-                            <!--<li class="nav-item <?php if($segment == "teacher"){ echo 'active'; } ?>">-->
-                            <!--    <a class="nav-link" href="{{route('teacher')}}">Teacher</a>-->
+                            <!--<li class="nav-item <?php if ($segment == 'teacher') {
+                                echo 'active';
+                            } ?>">-->
+                            <!--    <a class="nav-link" href="{{ route('teacher') }}">Teacher</a>-->
                             <!--</li>-->
-                            <!--<li class="nav-item <?php if($segment == "provider"){ echo 'active'; } ?>">-->
-                            <!--    <a class="nav-link" href="{{route('provider')}}">Provider</a>-->
+                            <!--<li class="nav-item <?php if ($segment == 'provider') {
+                                echo 'active';
+                            } ?>">-->
+                            <!--    <a class="nav-link" href="{{ route('provider') }}">Provider</a>-->
                             <!--</li>-->
-                            <li class="nav-item <?php if($segment == "contact"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
+                            <li class="nav-item <?php if ($segment == 'contact') {
+                                echo 'active';
+                            } ?>">
+                                <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
                             </li>
-{{--                             <li class="nav-item <?php if($segment == "search"){ echo 'active'; } ?>">--}}
-{{--                                <a class="nav-link" href="{{route('search')}}">Total Daycares</a>--}}
-{{--                            </li>--}}
+                            {{--                             <li class="nav-item <?php if ($segment == 'search') {
+                                echo 'active';
+                            } ?>"> --}}
+                            {{--                                <a class="nav-link" href="{{route('search')}}">Total Daycares</a> --}}
+                            {{--                            </li> --}}
 
-{{--                             <li class="nav-item <?php if($segment == "shared-gallery"){ echo 'active'; } ?>">--}}
-{{--                                <a class="nav-link" href="{{route('sharedgallery')}}">Shared Gallery</a>--}}
-{{--                            </li>--}}
+                            {{--                             <li class="nav-item <?php if ($segment == 'shared-gallery') {
+                                echo 'active';
+                            } ?>"> --}}
+                            {{--                                <a class="nav-link" href="{{route('sharedgallery')}}">Shared Gallery</a> --}}
+                            {{--                            </li> --}}
 
-{{--                            <li class="nav-item <?php if($segment == "shared-gallery"){ echo 'active'; } ?>">--}}
-{{--                                <a class="nav-link" href="{{route('claimed_center')}}">Claimed Center</a>--}}
-{{--                            </li>--}}
+                            {{--                            <li class="nav-item <?php if ($segment == 'shared-gallery') {
+                                echo 'active';
+                            } ?>"> --}}
+                            {{--                                <a class="nav-link" href="{{route('claimed_center')}}">Claimed Center</a> --}}
+                            {{--                            </li> --}}
 
-                            @if(!Auth::check() && Auth::user()->role == '')
-                            <li class="nav-item <?php if($segment == "signin"){ echo 'active'; } ?>">
-{{--                                <a class="nav-link" href="{{route('signin')}}"> Sign In </a>--}}
-                                <a class="nav-link" href="{{route('signin')}}"> Log In </a>
-                            </li>
+                            @if (!Auth::check() && Auth::user()->role == '')
+                                <li class="nav-item <?php if ($segment == 'signin') {
+                                    echo 'active';
+                                } ?>">
+                                    {{--                                <a class="nav-link" href="{{route('signin')}}"> Sign In </a> --}}
+                                    <a class="nav-link" href="{{ route('signin') }}"> Log In </a>
+                                </li>
                             @endif
 
 
-                            @if(Auth::check() && Auth::user()->role == '3')
-                            <li class="nav-item <?php if($segment == "job-board"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('job_board')}}"> Job Board </a>
-                            </li>
+                            @if (Auth::check() && Auth::user()->role == '3')
+                                <li class="nav-item <?php if ($segment == 'job-board') {
+                                    echo 'active';
+                                } ?>">
+                                    <a class="nav-link" href="{{ route('bulletin_board') }}"> View Bulletin Board </a>
+                                </li>
                             @endif
 
-                            @if(Auth::check() && Auth::user()->role == '4')
-                            <li class="nav-item <?php if($segment == "job-board"){ echo 'active'; } ?>">
-                                <a class="nav-link" href="{{route('job_board')}}"> View Job Board </a>
-                            </li>
-                            @endif
+                            {{-- @if (Auth::check() && Auth::user()->role == '4')
+                                <li class="nav-item <?php if ($segment == 'job-board') {
+                                    echo 'active';
+                                } ?>">
+                                    <a class="nav-link" href="{{ route('job_board') }}"> View Bulletin Board </a>
+                                </li>
+                            @endif --}}
 
                         </ul>
 
                         <form class="form-inline my-2 my-lg-0">
 
-                            @if(Auth::check())
+                            @if (Auth::check())
 
-                                @if(Auth::user()->role == '2')
-                                <a href="{{route('account')}}" class="custom-btn" type="submit"> User Dashboard </a>
+                                @if (Auth::user()->role == '2')
+                                    <a href="{{ route('account') }}" class="custom-btn" type="submit"> User Dashboard
+                                    </a>
                                 @elseif(Auth::user()->role == '3')
-                                <a href="{{route('teacher_dashboard')}}" class="custom-btn" type="submit">  Teacher Dashboard </a>
+                                    <a href="{{ route('teacher_dashboard') }}" class="custom-btn" type="submit">
+                                        Teacher Dashboard </a>
                                 @elseif(Auth::user()->role == '4')
-                                <a href="{{route('provider.dashboard')}}" class="custom-btn" type="submit">  Provider Dashboard </a>
+                                    <a href="{{ route('provider.dashboard') }}" class="custom-btn" type="submit">
+                                        Provider Dashboard </a>
                                 @elseif(Auth::user()->role == '1')
-{{--                                <a href="{{URL('admin')}}" class="custom-btn" type="submit">  Admin Dashboard </a>--}}
-                                <a href="{{URL('admin')}}" class="custom-btn" type="submit">Login</a>
+                                    {{--                                <a href="{{URL('admin')}}" class="custom-btn" type="submit">  Admin Dashboard </a> --}}
+                                    <a href="{{ URL('admin') }}" class="custom-btn" type="submit">Login</a>
                                 @endif
-
                             @else
-
-{{--                                <a href="{{route('about')}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "joinnow"){ echo 'background-color:#f84c8f';} ?>">Learn more</a>--}}
-                                <!--<a href="{{'become-a-teacher'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "become-a-teacher"){ echo 'background-color:#f84c8f';} ?>">   Become A Teacher </a>-->
-                                <!--<a href="{{'become-a-provider'}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if($segment == "become-a-provider"){ echo 'background-color:#f84c8f';} ?>">  Become A Provider </a> -->
+                                {{--                                <a href="{{route('about')}}" class="custom-btn" type="submit" style="color:#fff !important;<?php if ($segment == 'joinnow') {
+                                    echo 'background-color:#f84c8f';
+                                } ?>">Learn more</a> --}}
+                                <!--<a href="{{ 'become-a-teacher' }}" class="custom-btn" type="submit" style="color:#fff !important;<?php if ($segment == 'become-a-teacher') {
+                                    echo 'background-color:#f84c8f';
+                                } ?>">   Become A Teacher </a>-->
+                                <!--<a href="{{ 'become-a-provider' }}" class="custom-btn" type="submit" style="color:#fff !important;<?php if ($segment == 'become-a-provider') {
+                                    echo 'background-color:#f84c8f';
+                                } ?>">  Become A Provider </a> -->
 
                             @endif
 
@@ -171,5 +200,3 @@ header {
        <link rel="shortcut icon" href="images/layer.png" />
     <title>Dashboard</title>
 </head> -->
-
-

@@ -81,7 +81,7 @@
 
 
     <script>
-        // MAterial Date picker    
+        // MAterial Date picker
 
         jQuery('#datepicker-inline').datepicker({
             todayHighlight: true

@@ -3,15 +3,13 @@ use App\User;
 use Carbon\Carbon;
 use DateTime;
 ?>
-        <!doctype html>
+<!doctype html>
 <html lang="en">
 
 @include('headerlink')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <style>
-
-
     .fill-5 {
         animation: fill 5s linear 1;
     }
@@ -93,6 +91,7 @@ use DateTime;
         font-weight: bold;
         color: black;
     }
+
     .myaccount-tab-menu.nav a i {
         padding-right: 10px;
         /* background-color: #5798fc; */
@@ -102,7 +101,8 @@ use DateTime;
         border: 1px solid;
     }
 
-    .myaccount-tab-menu.nav .active, .myaccount-tab-menu.nav a:hover {
+    .myaccount-tab-menu.nav .active,
+    .myaccount-tab-menu.nav a:hover {
         background-color: #5798fc;
         color: white;
     }
@@ -112,6 +112,7 @@ use DateTime;
         font-weight: 500;
         font-size: 18px;
     }
+
     .account-details-form input {
         border-width: 1px;
         border-color: white;
@@ -127,13 +128,16 @@ use DateTime;
         color: #000000;
         font-size: 15px;
     }
+
     .account-details-form legend {
         font-family: CottonCandies;
         font-size: 50px;
     }
+
     .editable {
         position: relative;
     }
+
     .editable-wrapper {
         position: absolute;
         right: 0px;
@@ -152,7 +156,8 @@ use DateTime;
         margin-left: 10px;
         font-size: 16px;
     }
-    .editable-wrapper a.edit{
+
+    .editable-wrapper a.edit {
         background-color: #007bff;
     }
 
@@ -160,202 +165,258 @@ use DateTime;
         margin-top: -16px;
     }
 
+    .user ul {
+        padding: 0;
+        margin-top: 13px;
+        overflow-y: scroll;
+        height: 300px;
+    }
+
+    .sidebarleft .job_view {
+        height: 300px;
+        overflow-y: auto;
+    }
+
+    .sidebarleft .center-info h6 {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebarleft .center-info p a {
+        font-size: 13px;
+    }
+
+    .btn-sm {
+        padding: 4px 8px !important;
+        font-size: 12px !important;
+        border-radius: 0 !important;
+    }
+
+    .sidebarleft .center-info p {
+        margin: 0;
+    }
+
+    .sidebarleft .apply {
+        padding: 0;
+    }
+
+    .flex-eye {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30px;
+        padding-right: 10px;
+    }
 </style>
 
 <body>
 
-@include('layouts.front.css')
-@include('layouts/front.header')
+    @include('layouts.front.css')
+    @include('layouts/front.header')
 
 
-<section class="back">
+    <section class="back">
 
-    <div class="container-fluid">
+        <div class="container-fluid">
 
-        <div class="profilebg1" style="<?php if (Auth::user()->banner_image != '') {
-            echo "background-image: url('" . asset(Auth::user()->banner_image) . "') !important;";
-        } else {
-            echo 'background-image: url(' . asset("images/profilebg.png") . ') !important;';
-        } ?> background-size: cover !important;">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="profile1">
-                        @if(Auth::user()->image != '')
-                            <img src="{{asset(Auth::user()->image)}}" style="height:175px; width:175px;"
-                                 class="img-fluid">
-                        @else
-                            <img src="{{asset('images/profilemain1.png')}}" class="img-fluid">
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="profile-name-bg">
-            <div class="row">
-
-                <div class="col-md-3">
-                    <div class="profile-name">
-                        <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span></h5>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container-fluid">
-        <div class="feedDiv" data-toggle="modal" data-target="#feedModal">
-            <i class="fas fa-address-book"></i>
-        </div>
-        <div class="row">
-
-            @include('teacher_menues')
-
-            <div class="col-lg-6 col-md-8">
-
-
-                <form action="{{route('teacher_create_new_post')}}" id="save_post" method="post"
-                      enctype="multipart/form-data">
-
-                    @csrf
-                    <div class="profileparent" style="">
-
-                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}" id="">
-                        <input type="hidden" name="user_name" value="{{Auth::user()->name}} {{Auth::user()->lname}}"
-                               id="">
-                        <input type="hidden" name="user_image" value="{{Auth::user()->image}}" id="">
-
-                        <div>
-                            <input type="file" name="image" id="" class="form-control dropify">
+            <div class="profilebg1" style="<?php if (Auth::user()->banner_image != '') {
+                echo "background-image: url('" . asset(Auth::user()->banner_image) . "') !important;";
+            } else {
+                echo 'background-image: url(' . asset('images/profilebg.png') . ') !important;';
+            } ?> background-size: cover !important;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="profile1">
+                            @if (Auth::user()->image != '')
+                                <img src="{{ asset(Auth::user()->image) }}" style="height:175px; width:175px;"
+                                    class="img-fluid">
+                            @else
+                                <img src="{{ asset('images/profilemain1.png') }}" class="img-fluid">
+                            @endif
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="profilein1">
+            <div class="profile-name-bg">
+                <div class="row">
 
-                            <div class="newfeed-commnet">
-                                <div class="com-img">
-                                    @if(Auth::user()->image != '')
-                                        <img style="height:60px; width:60px; border-radius: 50px;"
-                                             src="{{asset(Auth::user()->image)}}"
-                                             class="img-fluid">
-                                    @else
-                                        <img style="height:60px; width:60px; border-radius:50px;"
-                                             src="{{asset('images/profilemain1.png')}}" class="img-fluid">
-                                    @endif
+                    <div class="col-md-3">
+                        <div class="profile-name">
+                            <h5> {{ Auth::user()->name }} {{ Auth::user()->lname }} <span> {{ Auth::user()->email }}
+                                </span></h5>
+                        </div>
+                    </div>
 
-                                </div>
-                                <div class="commentbox">
-                                    <h4><input type="text" name="post" placeholder="Write Comment"
-                                               style="height: 40px; !important; font-size: 15px;"></h4>
+                </div>
+            </div>
 
-                                </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="feedDiv" data-toggle="modal" data-target="#feedModal">
+                <i class="fas fa-address-book"></i>
+            </div>
+            <div class="row">
+
+                @include('teacher_menues')
+
+                <div class="col-lg-6 col-md-8">
+
+
+                    <form action="{{ route('teacher_create_new_post') }}" id="save_post" method="post"
+                        enctype="multipart/form-data">
+
+                        @csrf
+                        <div class="profileparent" style="">
+
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" id="">
+                            <input type="hidden" name="user_name"
+                                value="{{ Auth::user()->name }} {{ Auth::user()->lname }}" id="">
+                            <input type="hidden" name="user_image" value="{{ Auth::user()->image }}" id="">
+
+                            <div>
+                                <input type="file" name="image" id="" class="form-control dropify">
                             </div>
 
-                        </div>
+                            <div class="profilein1">
+
+                                <div class="newfeed-commnet">
+                                    <div class="com-img">
+                                        @if (Auth::user()->image != '')
+                                            <img style="height:60px; width:60px; border-radius: 50px;"
+                                                src="{{ asset(Auth::user()->image) }}" class="img-fluid">
+                                        @else
+                                            <img style="height:60px; width:60px; border-radius:50px;"
+                                                src="{{ asset('images/profilemain1.png') }}" class="img-fluid">
+                                        @endif
+
+                                    </div>
+                                    <div class="commentbox">
+                                        <h4><input type="text" name="post" placeholder="Write Comment"
+                                                style="height: 40px; !important; font-size: 15px;"></h4>
+
+                                    </div>
+                                </div>
+
+                            </div>
 
 
-                        <div class="write-jus">
+                            <div class="write-jus">
 
-                        <!-- <div class="photoup">
+                                <!-- <div class="photoup">
                                 <ul>
-                                    <li><a href=""><img src="{{asset('images/proficon1.png')}}" class="img-fluid"></a></li>
-                                    <li><a href=""><img src="{{asset('images/proficon2.png')}}" class="img-fluid"></a></li>
-                                    <li><a href=""><img src="{{asset('images/proficon3.png')}}" class="img-fluid"></a></li>
-                                    <li><a href=""><img src="{{asset('images/proficon4.png')}}" class="img-fluid"></a></li>
+                                    <li><a href=""><img src="{{ asset('images/proficon1.png') }}" class="img-fluid"></a></li>
+                                    <li><a href=""><img src="{{ asset('images/proficon2.png') }}" class="img-fluid"></a></li>
+                                    <li><a href=""><img src="{{ asset('images/proficon3.png') }}" class="img-fluid"></a></li>
+                                    <li><a href=""><img src="{{ asset('images/proficon4.png') }}" class="img-fluid"></a></li>
                                 </ul>
                             </div> -->
 
-                            <div class="post">
-                                <button id="btn_post" type="submit" class="btn  custom-btn">Post</button>
-                            </div>
-                        </div>
-
-
-                        <div class="newfeed_progress" id="prog" style="display:none;">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped fill-2" role="progressbar"
-                                     style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                     aria-valuemax="100">
+                                <div class="post">
+                                    <button id="btn_post" type="submit" class="btn  custom-btn">Post</button>
                                 </div>
                             </div>
+
+
+                            <div class="newfeed_progress" id="prog" style="display:none;">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped fill-2" role="progressbar"
+                                        style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
+                    </form>
+
+
+                    <div class="comment_div">
 
 
                     </div>
-                </form>
-
-
-                <div class="comment_div">
 
 
                 </div>
 
 
+                <div class="col-md-3 sidebarleftprofile">
+
+                    @include('all_teacher')
+
+                </div>
+
+
             </div>
-
-
-            <div class="col-md-3 sidebarleftprofile">
-
-                @include('all_teacher')
-
-            </div>
-
-
         </div>
-    </div>
 
-</section>
+    </section>
 
 
-@include('footerlink')
+    @include('footerlink')
 
-<!-- Sandbox terms modal -->
-<div class="modal fade" id="modal_agree_to_sandbox_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Sandbox terms</h5>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12">
-                        <h6>Community Guidelines</h6>
-                    </div>
-                    <div class="col-12">
-                        <p>
-                            Welcome to the Sandbox!
-                        </p>
-                        <p>
-                            The Sandbox is meant to be a place to interact with other professionals while at work; learn from others, build relationships, and otherwise just ‘hang out’. This is the spirit in which these guidelines have been established. The discussions and the way all members and Preschool Portal employees are treated are always to be professional. The general rule of thumb to follow is that if the talk is inappropriate for a traditional workplace, then it is not appropriate here. Forums like the Sandbox are at their best when participants treat each other with respect and courtesy. Please be mindful of this when participating here in the Sandbox.
-                        </p>
-                        <p>
-                            Preschool Portal will occasionally move discussions if they belong in a different category. We will also close/remove duplicate discussions and/or replies if they are causing confusion, are mean-spirited, or are otherwise inappropriate (see our Do’s/Don’ts below). Our intention is not to censor, but to foster an environment that is easy to use and productive for all those involved.
-                        </p>
-                    </div>
-                    <div class="col-12 text-center">
-                        <a target="_blank" href="{{route('rules-of-conduct-individual')}}">Rules of conduct</a>
+    <!-- Sandbox terms modal -->
+    <div class="modal fade" id="modal_agree_to_sandbox_terms" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sandbox terms</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h6>Community Guidelines</h6>
+                        </div>
+                        <div class="col-12">
+                            <p>
+                                Welcome to the Sandbox!
+                            </p>
+                            <p>
+                                The Sandbox is meant to be a place to interact with other professionals while at work;
+                                learn from others, build relationships, and otherwise just ‘hang out’. This is the
+                                spirit in which these guidelines have been established. The discussions and the way all
+                                members and Preschool Portal employees are treated are always to be professional. The
+                                general rule of thumb to follow is that if the talk is inappropriate for a traditional
+                                workplace, then it is not appropriate here. Forums like the Sandbox are at their best
+                                when participants treat each other with respect and courtesy. Please be mindful of this
+                                when participating here in the Sandbox.
+                            </p>
+                            <p>
+                                Preschool Portal will occasionally move discussions if they belong in a different
+                                category. We will also close/remove duplicate discussions and/or replies if they are
+                                causing confusion, are mean-spirited, or are otherwise inappropriate (see our
+                                Do’s/Don’ts below). Our intention is not to censor, but to foster an environment that is
+                                easy to use and productive for all those involved.
+                            </p>
+                        </div>
+                        <div class="col-12 text-center">
+                            <a target="_blank" href="{{ route('rules-of-conduct-individual') }}">Rules of conduct</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                {{--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
-                <a href="{{route('agree_to_sandbox_terms')}}" type="button" class="btn btn-primary">I agree to the terms</a>
+                <div class="modal-footer">
+                    {{--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                    <a href="{{ route('agree_to_sandbox_terms') }}" type="button" class="btn btn-primary">I agree
+                        to the terms</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    $(document).ready(() => {
+    <script>
+        $(document).ready(() => {
 
-        if (parseInt('{{\Illuminate\Support\Facades\Auth::user()->agreed_to_sandbox_terms}}') == 0) {
-            $('#modal_agree_to_sandbox_terms').modal({
-                keyboard: false
-            });
-            $('#modal_agree_to_sandbox_terms').modal('show');
-        }
-    });
-</script>
+            if (parseInt('{{ \Illuminate\Support\Facades\Auth::user()->agreed_to_sandbox_terms }}') == 0) {
+                $('#modal_agree_to_sandbox_terms').modal({
+                    keyboard: false
+                });
+                $('#modal_agree_to_sandbox_terms').modal('show');
+            }
+        });
+    </script>
 
 
 </body>
@@ -364,18 +425,16 @@ use DateTime;
 
 
 <script>
-
-
-    $("#save_post").submit(function (e) {
+    $("#save_post").submit(function(e) {
         e.preventDefault();
         var formData = new FormData(this);
 
 
         $.ajax({
-            url: "{{route('teacher_create_new_post')}}",
+            url: "{{ route('teacher_create_new_post') }}",
             type: 'POST',
             data: formData,
-            success: function (response) {
+            success: function(response) {
 
                 // toastr.success(response.message);
 
@@ -384,8 +443,8 @@ use DateTime;
                 if (response.status) {
                     $('#prog').show();
 
-                    setTimeout(function () {
-                        // alert("sd");    
+                    setTimeout(function() {
+                        // alert("sd");
 
                         $('#prog').hide();
                         toastr.success(response.message);
@@ -407,9 +466,9 @@ use DateTime;
     function get_last_post() {
 
         $.ajax({
-            url: "{{route('get_last_post')}}",
+            url: "{{ route('get_last_post') }}",
             type: 'GET',
-            success: function (response) {
+            success: function(response) {
 
                 // toastr.success(response.message);
                 $('.comment_div').empty();
@@ -425,7 +484,7 @@ use DateTime;
 
                     let post_image_string = data.image ? `<div class="newfeed-image">
 
-                            <img style="height:400px; width:100%; border-radius:10px;" src="{{asset('${data.image}')}}" class="img-fluid">
+                            <img style="height:400px; width:100%; border-radius:10px;" src="{{ asset('${data.image}') }}" class="img-fluid">
 
                         </div>` : ``;
 
@@ -433,29 +492,29 @@ use DateTime;
                     $('.comment_div').append(
                         `<div class="newfeed">
 
-                        <input type="hidden" name="" id="get_id" value="{{'${data.id}'}}">
+                        <input type="hidden" name="" id="get_id" value="{{ '${data.id}' }}">
 
                         <div class="newfeed-profile-name">
 
                             <img style="height:60px; width:60px; border-radius:50px" src="${post_user_image}" class="img-fluid">
 
-                            <h4> {{'${data.user_name}'}} <span> {{'${dayago}'}} </span></h4>
+                            <h4> {{ '${data.user_name}' }} <span> {{ '${dayago}' }} </span></h4>
 
-                            <button class="btn btn-danger" style="position:absolute; right:50px;" onClick="delete_post({{'${data.id}'}})"> <span class="fa fa-trash" > </span> </button>
-                            
+                            <button class="btn btn-danger" style="position:absolute; right:50px;" onClick="delete_post({{ '${data.id}' }})"> <span class="fa fa-trash" > </span> </button>
+
                         </div>
 
                         <div class="newfeed-image">
 
-                            <p> {{'${data.post}'}} </p>
+                            <p> {{ '${data.post}' }} </p>
 
                         </div>
 
-                        `+post_image_string+`
+                        ` + post_image_string + `
 
-                         
+
                         <hr>
-             
+
 
                         </div>`
                     );
@@ -472,8 +531,8 @@ use DateTime;
 
 
     // setInterval(function(){
-    //     // alert("sd");    
-    //     $(".comment_div").load(location.href+" .comment_div>*","");   
+    //     // alert("sd");
+    //     $(".comment_div").load(location.href+" .comment_div>*","");
 
     // }, 5000);
 
@@ -484,7 +543,7 @@ use DateTime;
     //     setTimeout(function(){
 
     //         $('#prog').hide();
-    //         // $(".comment_div").load(location.href+" .comment_div>*",""); 
+    //         // $(".comment_div").load(location.href+" .comment_div>*","");
 
 
     //     }, 3000);
@@ -506,19 +565,19 @@ use DateTime;
         });
 
         $.ajax({
-            url: "{{route('delete_post')}}",
+            url: "{{ route('delete_post') }}",
             type: 'POST',
             data: {
                 "_token": "{{ csrf_token() }}",
                 post_id: post_id
             },
-            success: function (response) {
+            success: function(response) {
 
                 if (response.status) {
 
 
-                    setTimeout(function () {
-                        // alert("sd");    
+                    setTimeout(function() {
+                        // alert("sd");
 
                         $('#prog').hide();
                         toastr.success(response.message);
@@ -550,20 +609,20 @@ use DateTime;
         });
 
         $.ajax({
-            url: "{{route('add_pined_post')}}",
+            url: "{{ route('add_pined_post') }}",
             type: 'POST',
             data: {
                 "_token": "{{ csrf_token() }}",
                 pined_post_id: pined_post_id
 
             },
-            success: function (response) {
+            success: function(response) {
 
                 if (response.status) {
 
 
-                    setTimeout(function () {
-                        // alert("sd");    
+                    setTimeout(function() {
+                        // alert("sd");
 
                         $('#prog').hide();
                         toastr.success(response.message);
@@ -583,4 +642,66 @@ use DateTime;
 
     get_last_post();
 
+    $(document).ready(function() {
+        // Use event delegation to handle dynamic forms
+        $(document).on('submit', 'form.connect-form', function(e) {
+            e.preventDefault();
+
+            var $form = $(this);
+            var actionUrl = $form.attr('action');
+
+            $.ajax({
+                url: actionUrl,
+                type: 'POST',
+                data: $form.serialize(),
+                success: function(response) {
+                    var url = "{{ url('teacher/remove/') }}/" + response.user_id;
+                    $form.find('button').attr('disabled', true);
+
+                    var $listItem = $form.closest('li');
+                    $listItem.find('form.remove-form')
+                        .remove(); // Ensure only one remove form is present
+                    $listItem.append('<form action="' + url +
+                        '" method="POST" class="remove-form" style="display:inline;">' +
+                        '@csrf' +
+                        '<button type="submit" class="btn btn-danger btn-small"><i class="fa fa-remove"></i></button>' +
+                        '</form>');
+                    $form.remove();
+                },
+                error: function(xhr) {
+                    alert('Failed to connect. Please try again.');
+                }
+            });
+        });
+
+        $(document).on('submit', 'form.remove-form', function(e) {
+            e.preventDefault();
+
+            var $form = $(this);
+            var actionUrl = $form.attr('action');
+
+            $.ajax({
+                url: actionUrl,
+                type: 'POST',
+                data: $form.serialize(),
+                success: function(response) {
+                    var $listItem = $form.closest('li');
+                    $form.find('button').attr('disabled', true);
+                    var url = "{{ url('teacher/connect/') }}/" + response.user_id;
+                    $form.remove();
+
+                    if ($listItem.find('form.connect-form').length === 0) {
+                        $listItem.append('<form action="' + url +
+                            '" method="POST" class="connect-form" style="display:inline;">' +
+                            '@csrf' +
+                            '<button type="submit" class="btn btn-primary btn-small"><i class="fa fa-plus"></i></button>' +
+                            '</form>');
+                    }
+                },
+                error: function(xhr) {
+                    alert('Failed to remove. Please try again.');
+                }
+            });
+        });
+    });
 </script>

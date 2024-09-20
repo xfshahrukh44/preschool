@@ -27,26 +27,27 @@ class Job_postController extends Controller
 
     public function index(Request $request)
     {
-        $model = str_slug('job_post','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('job_post', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $keyword = $request->get('search');
             $perPage = 25;
 
             if (!empty($keyword)) {
                 $job_post = Job_post::where('job_title', 'LIKE', "%$keyword%")
-                ->orWhere('job_description', 'LIKE', "%$keyword%")
-                ->orWhere('company_name', 'LIKE', "%$keyword%")
-                ->orWhere('company_description', 'LIKE', "%$keyword%")
-                ->orWhere('location', 'LIKE', "%$keyword%")
-                ->orWhere('job_type', 'LIKE', "%$keyword%")
-                ->orWhere('salary_range', 'LIKE', "%$keyword%")
-                ->orWhere('required_education', 'LIKE', "%$keyword%")
-                ->orWhere('skills', 'LIKE', "%$keyword%")
-                ->orWhere('instruction', 'LIKE', "%$keyword%")
-                ->orWhere('post_date', 'LIKE', "%$keyword%")
-                ->orWhere('due_date', 'LIKE', "%$keyword%")
-                ->orWhere('creator_name', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
+                    ->orWhere('job_description', 'LIKE', "%$keyword%")
+                    ->orWhere('company_name', 'LIKE', "%$keyword%")
+                    ->orWhere('company_description', 'LIKE', "%$keyword%")
+                    ->orWhere('location', 'LIKE', "%$keyword%")
+                    ->orWhere('job_type', 'LIKE', "%$keyword%")
+                    ->orWhere('job_number', 'LIKE', "%$keyword%")
+                    ->orWhere('salary_range', 'LIKE', "%$keyword%")
+                    ->orWhere('required_education', 'LIKE', "%$keyword%")
+                    ->orWhere('skills', 'LIKE', "%$keyword%")
+                    ->orWhere('instruction', 'LIKE', "%$keyword%")
+                    ->orWhere('post_date', 'LIKE', "%$keyword%")
+                    ->orWhere('due_date', 'LIKE', "%$keyword%")
+                    ->orWhere('creator_name', 'LIKE', "%$keyword%")
+                    ->paginate($perPage);
             } else {
                 $job_post = Job_post::paginate($perPage);
             }
@@ -64,8 +65,8 @@ class Job_postController extends Controller
      */
     public function create()
     {
-        $model = str_slug('job_post','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('job_post', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             return view('job_post.job_post.create');
         }
         return response(view('403'), 403);
@@ -81,26 +82,26 @@ class Job_postController extends Controller
      */
     public function store(Request $request)
     {
-        $model = str_slug('job_post','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
-            
+        $model = str_slug('job_post', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
+
 
             $job_post = new Job_post($request->all());
 
             if ($request->hasFile('image')) {
 
                 $file = $request->file('image');
-                
+
                 //make sure yo have image folder inside your public
                 $job_post_path = 'uploads/job_posts/';
                 $fileName = $file->getClientOriginalName();
-                $profileImage = date("Ymd").$fileName.".".$file->getClientOriginalExtension();
+                $profileImage = date("Ymd") . $fileName . "." . $file->getClientOriginalExtension();
 
-                Image::make($file)->save(public_path($job_post_path) . DIRECTORY_SEPARATOR. $profileImage);
+                Image::make($file)->save(public_path($job_post_path) . DIRECTORY_SEPARATOR . $profileImage);
 
-                $job_post->image = $job_post_path.$profileImage;
+                $job_post->image = $job_post_path . $profileImage;
             }
-            
+
             $job_post->save();
             return redirect()->back()->with('message', 'Job_post added!');
         }
@@ -116,8 +117,8 @@ class Job_postController extends Controller
      */
     public function show($id)
     {
-        $model = str_slug('job_post','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('job_post', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $job_post = Job_post::findOrFail($id);
             return view('job_post.job_post.show', compact('job_post'));
         }
@@ -133,8 +134,8 @@ class Job_postController extends Controller
      */
     public function edit($id)
     {
-        $model = str_slug('job_post','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('job_post', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $job_post = Job_post::findOrFail($id);
             return view('job_post.job_post.edit', compact('job_post'));
         }
@@ -151,32 +152,32 @@ class Job_postController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = str_slug('job_post','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
-            
+        $model = str_slug('job_post', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
+
             $requestData = $request->all();
-            
 
-        if ($request->hasFile('image')) {
-            
-            $job_post = Job_post::where('id', $id)->first();
-            $image_path = public_path($job_post->image); 
-            
-            if(File::exists($image_path)) {
-                File::delete($image_path);
+
+            if ($request->hasFile('image')) {
+
+                $job_post = Job_post::where('id', $id)->first();
+                $image_path = public_path($job_post->image);
+
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+
+                $file = $request->file('image');
+                $fileNameExt = $request->file('image')->getClientOriginalName();
+                $fileNameForm = str_replace(' ', '_', $fileNameExt);
+                $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+                $fileExt = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+                $pathToStore = public_path('uploads/job_posts/');
+                Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
+
+                $requestData['image'] = 'uploads/job_posts/' . $fileNameToStore;
             }
-
-            $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
-            $fileNameForm = str_replace(' ', '_', $fileNameExt);
-            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/job_posts/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
-
-             $requestData['image'] = 'uploads/job_posts/'.$fileNameToStore;               
-        }
 
 
             $job_post = Job_post::findOrFail($id);
@@ -196,8 +197,8 @@ class Job_postController extends Controller
      */
     public function destroy($id)
     {
-        $model = str_slug('job_post','-');
-        if(auth()->user()->permissions()->where('name','=','delete-'.$model)->first()!= null) {
+        $model = str_slug('job_post', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'delete-' . $model)->first() != null) {
             Job_post::destroy($id);
             return redirect()->back()->with('message', 'Job_post deleted!');
         }

@@ -192,7 +192,7 @@ use DateTime;
     }
 
     .welcome-sandbox {
-        max-width: 800px;
+        /* max-width: 800px; */
         margin: 20px auto;
         padding: 20px;
         background-color: #fff;

@@ -190,6 +190,38 @@ use DateTime;
             margin-left: 5px;
         }
     }
+
+    .welcome-sandbox {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .welcome-sandbox h1, .welcome-sandbox h2 {
+        color: #333;
+    }
+    .welcome-sandbox ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .welcome-sandbox ul li {
+        padding: 5px 0;
+    }
+    .welcome-sandbox a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    .welcome-sandbox a:hover {
+        text-decoration: underline;
+    }
+    .welcome-sandbox .section {
+        margin-bottom: 20px;
+    }
+    .welcome-sandbox .section-title {
+        font-weight: bold;
+    }
 </style>
 
 <body>
@@ -270,6 +302,51 @@ use DateTime;
                         <div class="col-lg-12">
                             <div class="center-bar">
                                 <div class="row justify-content-center">
+                                    <div class="welcome-sandbox">
+                                        <h1>Community Guidelines</h1>
+                                        <p>Welcome to the Sandbox!</p>
+
+                                        <p>The Sandbox is meant to be a place to interact with other professionals while at work; learn from others, build relationships, and otherwise just ‘hang out’. This is the spirit in which these guidelines have been established. The discussions and the way all members and Preschool Portal employees are treated are always to be professional. The general rule of thumb to follow is that if the talk is inappropriate for a traditional workplace, then it is not appropriate here. Forums like the Sandbox are at their best when participants treat each other with respect and courtesy. Please be mindful of this when participating here in the Sandbox.</p>
+
+                                        <p>Preschool Portal will occasionally move discussions if they belong in a different category. We will also close/remove duplicate discussions and/or replies if they are causing confusion, are mean-spirited, or are otherwise inappropriate (see our Do’s/Don’ts below). Our intention is not to censor, but to foster an environment that is easy to use and productive for all those involved.</p>
+
+                                        <div class="section">
+                                            <h2>Rules of Conduct</h2>
+                                            <p>Violation of these rules may result in the removal of a post, a warning, a suspension from the Sandbox, or suspension from the Preschool Portal site. These rules are not exhaustive and the forum moderators will have full discretion to remove any content they deem inappropriate. You will receive a notification from Preschool Portal if your post is removed or access is suspended.</p>
+                                            <p>Look at our <a href="#dos-donts">Do’s and Don’ts</a> below and get involved! We look forward to hearing from you in the Sandbox.</p>
+                                        </div>
+
+                                        <div class="section">
+                                            <h2>Don’ts</h2>
+                                            <ul>
+                                                <li>Use profanity (even when indicated with alternative letters and symbols), racist, threatening, adult, or violent language.</li>
+                                                <li>Degrade a specific job, profile, child, family, or member.</li>
+                                                <li>Post links or content from a job, profile, or member.</li>
+                                                <li>Post information about a specific child, family, member, or job posting violations (Instead, please review our policies and report the violation by clicking the “Report Violation” link and/or contacting Preschool Portal Customer Support).</li>
+                                                <li>Quote private communications from another member or Preschool Portal employee.</li>
+                                                <li>Post inflammatory, extraneous, or off-topic messages (“trolling”).</li>
+                                                <li>Include contact information, links, or references to other websites with the intent of advertising.</li>
+                                                <li>Repost deleted threads or repeated posting for the sole purpose of moving threads to the top (‘bumping’).</li>
+                                                <li>Post consistently negative content (for example, “laundry lists” or “rants”) without recommending or suggesting a potential solution.</li>
+                                                <li>Post information that encourages Terms of Service and other policy violations.</li>
+                                                <li>Use the forums to directly seek employment and/or hire teachers or sell any products or services of any type.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="section">
+                                            <h2>Dos</h2>
+                                            <ul>
+                                                <li>Give advice freely to your colleagues.</li>
+                                                <li>Be friendly. Welcome new members.</li>
+                                                <li>Preschool Portal is a platform for work. Be considerate of all members.</li>
+                                                <li>Let your personality shine. Witty humor is encouraged.</li>
+                                                <li>Send your ideas for improvement to Preschool Portal in the Suggestion Box.</li>
+                                                <li>Report inappropriate content.</li>
+                                                <li>Build your Sandbox reputation by posting helpful comments.</li>
+                                                <li>Connect with each other and build a vibrant community.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-12">
                                         <form action="{{ route('add_post') }}" method="GET">
                                             <div class="row m-auto px-5" style="background-color: #f5f7fc;">

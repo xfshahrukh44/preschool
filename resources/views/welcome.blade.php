@@ -217,7 +217,7 @@
 
                     <form method="get" action="{{ route('search') }}">
                         <div class="header-form">
-                            <input type="text" class="form-control" name="search" id="validationCustom03"
+                            <input type="text" class="form-control" name="search" id="search-bar"
                                 placeholder="Enter a zip code or city" required>
                             <button class="custom-btn">Search</button>
                         </div>

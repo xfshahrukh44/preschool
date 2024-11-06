@@ -211,7 +211,7 @@
 
                     <form method="get" action="{{ route('search') }}" class="search_bar_location">
                         <input class="form-control" name="search" type="text" placeholder="Search providers"
-                            value="{{ $search ?? '' }}">
+                            value="{{ $search ?? '' }}" id="search-bar">
                         <button type="submit" class="btn btn-block"><i class="fas fa-search"></i></button>
                     </form>
 

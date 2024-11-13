@@ -136,6 +136,8 @@ class RegisterController extends Controller
             'loe' => $data['loe'],
             'do_you_currently_work' => $data['do_you_work'],
             'position' => $data['position'],
+            'license_number' => $data['license_number'],
+            'expiration_date' => $data['expiration_date'],
 
         ]);
 

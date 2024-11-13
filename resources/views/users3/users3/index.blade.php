@@ -51,6 +51,7 @@
                                             <th>Email</th>
                                             <th>Role</th>
                                             <th>Verification</th>
+                                            <th>How did you hear about preschool portal?</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -78,6 +79,7 @@
                                                         <p class="success">Verified</p>
                                                     @endif
                                                 </td>
+                                                <td>{{ $item->about_preschool }}</td>
                                                 <td>
 
 
@@ -113,6 +115,8 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Role</th>
+                                            <th>Verification</th>
+                                            <th>How did you hear about preschool portal?</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>

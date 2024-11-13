@@ -546,7 +546,7 @@
                                             @if (!is_null($get_claimed_daycare_center_detail->timings))
                                                 <div class="col-md-12">
                                                     <h3 style="color: black;">Hours open</h3>
-                                                    <table class="table">
+                                                    <table class="table" style="width: 69%">
                                                         <thead>
                                                             <tr>
                                                                 <th>Day</th>

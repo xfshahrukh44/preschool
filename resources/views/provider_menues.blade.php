@@ -59,7 +59,7 @@ $segment2 = Request::segment(2);
                     } ?>" href="{{ route('provider.claimedCenters') }}"><img width="20"
                                 src="{{ asset('images/search.png') }}"> Claimed Centers </a></li>
                 @endif
-                <li><a class="<?php if ($segment2 == 'angel-list') {
+                <li style="display: none;"><a class="<?php if ($segment2 == 'angel-list') {
                     echo 'menu_active';
                 } ?>" href="{{ route('provider.angelList') }}"><img width="20"
                             src="{{ asset('images/search.png') }}"> Angel List </a></li>

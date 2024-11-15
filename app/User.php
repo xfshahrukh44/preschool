@@ -67,7 +67,8 @@ class User extends Authenticatable
         'loe',
         'agreed_to_sandbox_terms',
         'position',
-        'is_verified'
+        'is_verified',
+        'expiration_date'
     ];
 
     /**

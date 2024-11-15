@@ -382,6 +382,14 @@
 
                                     <br><br>
 
+                                    <label for="">Expiration Date :</label>
+                                    <input type="date" name="expiration_date" class="form-control"
+                                        placeholder="Enter Expiration Date"
+                                        value="{{ Auth::user()->expiration_date }}">
+
+
+                                    <br><br>
+
                                     <label for="">Capacity :</label>
                                     <input type="text" name="capacity" class="form-control"
                                         placeholder="Enter Capacity" value="{{ Auth::user()->capacity }}">
@@ -539,6 +547,11 @@
             $('#hours_of_operation').select2();
             $('#age_accepted').select2();
             $('#types_of_care_provided').select2();
+        });
+
+        document.getElementById('licensedCheckbox').addEventListener('change', function () {
+            const licenseFields = document.getElementById('licenseFields');
+            licenseFields.style.display = this.checked ? 'block' : 'none';
         });
     </script>
 

@@ -264,6 +264,7 @@
                             ->orderBy('id', 'DESC')
                             ->first();
                         $rating = $latest_review ? $latest_review->rate : 0;
+                        $data = DB::table('users')->where('id', $val_search->claimed_by_id)->first();
                     @endphp
                     <div class="col-lg-12">
                         <div class="dashboard_details">
@@ -288,6 +289,7 @@
                                                 {{ $val_search->city . ' ' . ($val_search->state = 'N\A') }}
                                             @endif --}}
                                         </p>
+                                        <p>Age Accepted: {{ $data->age_accepted ?? 'N/A' }}</p>
                                     </div>
                                 </div>
                                 <div class="rating_client">
@@ -693,7 +695,7 @@
                                             <strong>After school</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[After school]" id="after_school" {!! in_array('After school', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[After school]" id="after_school" {!! is_array($decoded_services) && in_array('After school', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -701,7 +703,7 @@
                                             <strong>Before school</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Before school]" id="before_school" {!! in_array('Before school', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Before school]" id="before_school" {!! is_array($decoded_services) && in_array('Before school', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -709,7 +711,7 @@
                                             <strong>Drop in</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Drop in]" id="drop_in" {!! in_array('Drop in', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Drop in]" id="drop_in" {!! is_array($decoded_services) && in_array('Drop in', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -717,7 +719,7 @@
                                             <strong>Food served</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Food served]" id="food_served" {!! in_array('Food served', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Food served]" id="food_served" {!! is_array($decoded_services) && in_array('Food served', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -725,7 +727,7 @@
                                             <strong>Full day</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Full day]" id="full_day" {!! in_array('Full day', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Full day]" id="full_day" {!! is_array($decoded_services) && in_array('Full day', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -733,7 +735,7 @@
                                             <strong>Half day</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Half day]" id="half_day" {!! in_array('Half day', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Half day]" id="half_day" {!! is_array($decoded_services) && in_array('Half day', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -741,7 +743,7 @@
                                             <strong>Infant care</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Infant care]" id="infant_care" {!! in_array('Infant care', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Infant care]" id="infant_care" {!! is_array($decoded_services) && in_array('Infant care', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -749,7 +751,7 @@
                                             <strong>Night care</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Night care]" id="night_care" {!! in_array('Night care', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Night care]" id="night_care" {!! is_array($decoded_services) && in_array('Night care', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -757,7 +759,7 @@
                                             <strong>Transportation</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Transportation]" id="transportation" {!! in_array('Transportation', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Transportation]" id="transportation" {!! is_array($decoded_services) && in_array('Transportation', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
 
                                     <div class="row ml-2">
@@ -765,7 +767,7 @@
                                             <strong>Weekend care</strong>
                                         </label>
                                         <input class="form-check-input" type="checkbox" value=""
-                                            name="services[Weekend care]" id="weekend_care" {!! in_array('Weekend care', $decoded_services) ? 'checked' : '' !!}>
+                                            name="services[Weekend care]" id="weekend_care" {!! is_array($decoded_services) && in_array('Weekend care', $decoded_services) ? 'checked' : '' !!}>
                                     </div>
                                 </div>
 

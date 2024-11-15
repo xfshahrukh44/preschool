@@ -455,6 +455,25 @@
                                 @endif
 
                                 <div class="form-group col-lg-12 mt-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="isLicensed" name="is_licensed">
+                                        <label class="form-check-label" for="isLicensed">Are you licensed?</label>
+                                    </div>
+                                </div>
+
+                                <div id="licenseFields" class="form-group col-lg-12 mt-3" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="licenseNumber">License Number</label>
+                                        <input type="text" class="form-control" id="licenseNumber" name="license_number" placeholder="Enter your license number">
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <label for="expirationDate">Expiration Date</label>
+                                        <input type="date" class="form-control" id="expirationDate" name="expiration_date">
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-12 mt-3">
                                     <input type="checkbox" id="checkbox_agreed_to_terms" required>
                                     <label for="checkbox_agreed_to_terms">
                                         I have read the
@@ -736,6 +755,10 @@
 
         $('#checkbox_agreed_to_terms').on('change', function() {
             refresh_stripe_button_state();
+        });
+
+        document.getElementById('isLicensed').addEventListener('change', function () {
+            document.getElementById('licenseFields').style.display = this.checked ? 'block' : 'none';
         });
     </script>
 @endsection

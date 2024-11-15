@@ -222,6 +222,9 @@ Route::get('joinnow', 'HomeController@joinnow')->name('joinnow');
 
 Route::get('search', 'HomeController@search')->name('search');
 
+Route::get('search-states', 'HomeController@searchStates')->name('search.states');
+Route::get('search-cities', 'HomeController@searchCities')->name('search.cities');
+
 Route::get('claimed_center', 'HomeController@claimed_center')->name('claimed_center');
 
 Route::get('claimed_center_detail/{id?}', 'HomeController@claimed_center_detail')->name('claimed_center_detail');

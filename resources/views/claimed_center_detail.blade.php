@@ -429,12 +429,12 @@
 
                     </div>
                     <div class="section-3-main-txt">
-                        <h2 class="heading-2" style="color:#000;">About the facility</h2>
-                        <p style="font-size: 14px;">Details and information displayed here were found through public sources -- not the
+                        {{-- <h2 class="heading-2" style="color:#000;">About the facility</h2> --}}
+                        {{-- <p style="font-size: 14px;">Details and information displayed here were found through public sources -- not the
                             business itself -- and may not reflect its current status, including license status. We
-                            strongly encourage you to perform your own research while selecting a care provider.</p>
+                            strongly encourage you to perform your own research while selecting a care provider.</p> --}}
                         <!--<h6 class="heading-6">Renaissance North Tampa</h6>-->
-                        <h4>Provider information</h4>
+                        {{-- <h4>Provider information</h4>
                         @if ($clahimant->name)
                             <b>Name: </b> {{ $claimant->name }}
                             <br />
@@ -449,7 +449,7 @@
                         @endif
                         @if ($claimant->age_accepted)
                             <b>Ages accepted: </b> {{ $claimant->age_accepted }}
-                        @endif
+                        @endif --}}
                         <div class="tabs_info">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">

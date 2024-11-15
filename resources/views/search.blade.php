@@ -167,6 +167,32 @@
         .select2-selection.select2-selection--multiple {
             background: #f5f7fc;
         }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            background: #fff;
+            width: 100%;
+            max-height: 200px; /* Limit height for scrolling */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
     </style>
 @endsection
 
@@ -209,22 +235,29 @@
                     {{--                    <h4 Style="color:#000;"> Childcare Provider Search </h4> --}}
                     {{--                </center> --}}
 
+                    {{-- <form method="get" action="{{ route('search') }}" class="search_bar_location">
+                        <input class="form-control" name="search" type="text" placeholder="Search providers"
+                            value="{{ $search ?? '' }}" id="search-bar">
+                        <button type="submit" class="btn btn-block"><i class="fas fa-search"></i></button>
+                    </form> --}}
+
                     <form method="get" action="{{ route('search') }}" class="search_bar_location">
                         <input class="form-control" name="search" type="text" placeholder="Search providers"
                             value="{{ $search ?? '' }}" id="search-bar">
+                        <div class="searchable-input">
+                            <input type="text" id="state-input" name="state" class="form-control" placeholder="Search States">
+                            <div id="state-results" class="dropdown-menu"></div>
+                        </div>
+
+                        <div class="searchable-input">
+                            <input type="text" id="city-input" name="city" class="form-control" placeholder="Search Cities" disabled>
+                            <div id="city-results" class="dropdown-menu"></div>
+                        </div>
                         <button type="submit" class="btn btn-block"><i class="fas fa-search"></i></button>
                     </form>
 
 
                     <hr>
-                    <span>
-                        <p>
-                            The providers listed as [Unverified], have not claimed their listing, and Preschool Portal has
-                            not been able to verify any of the information displayed. We strongly recommend that you verify
-                            the information, on your own, through your local licensing agency. Preschool Portal does not
-                            recommend and/or endorse any provider or business.
-                        </p>
-                    </span>
                     <span>
                         <p class="pt-2">
                             Is this your business? <a href="#">Claim your profile</a>
@@ -235,6 +268,14 @@
                             Don't see your center listed?
                             <a href="{{ route('joinnow') }}">Enroll now</a>
                             to create your profile and start advertising and placing ads
+                        </p>
+                    </span>
+                    <span>
+                        <p>
+                            The providers listed as [Unverified], have not claimed their listing, and Preschool Portal has
+                            not been able to verify any of the information displayed. We strongly recommend that you verify
+                            the information, on your own, through your local licensing agency. Preschool Portal does not
+                            recommend and/or endorse any provider or business.
                         </p>
                     </span>
                     <hr>
@@ -289,7 +330,9 @@
                                                 {{ $val_search->city . ' ' . ($val_search->state = 'N\A') }}
                                             @endif --}}
                                         </p>
-                                        <p>Age Accepted: {{ $data->age_accepted ?? 'N/A' }}</p>
+                                        <p>Address: {{ $data->address ?? 'N/A' }}</p>
+                                        <p>Phone Number: {{ $data->phone ?? 'N/A' }}</p>
+                                        <p>Age Accepted: {{ $data->address ?? 'N/A' }}</p>
                                     </div>
                                 </div>
                                 <div class="rating_client">
@@ -829,4 +872,5 @@
             $('.age_accepted').select2();
         });
     </script>
+
 @endsection

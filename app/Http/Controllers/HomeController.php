@@ -26,6 +26,8 @@ use App\Angel;
 use App\Childcare;
 use App\Page;
 use App\User;
+use App\Models\State;
+use App\Models\City;
 use Image;
 use Carbon\Carbon;
 use DateTime;
@@ -263,11 +265,46 @@ class HomeController extends Controller
             $search = $_GET['search'];
         }
 
-        $search_result = Childcare::where('city', 'LIKE', "%{$search}%")->orWhere('state', 'LIKE', "%{$search}%")->orWhere('name', 'LIKE', "%{$search}%")->orWhere('county', 'LIKE', "%{$search}%")->orWhere('program_type', 'LIKE', "%{$search}%")->where('status', '1')->orderBy('claimed_by_id', 'DESC')->groupBy('name')->paginate(25);
+        $search_result = Childcare::where('city', 'LIKE', "%{$request->city}%")->orWhere('state', 'LIKE', "%{$request->state}%")->orWhere('name', 'LIKE', "%{$search}%")->orWhere('county', 'LIKE', "%{$search}%")->orWhere('program_type', 'LIKE', "%{$search}%")->where('status', '1')->orderBy('claimed_by_id', 'DESC')->groupBy('name')->paginate(25);
 
         return view('search', compact('page', 'section', 'search_result', 'search', 'claimed_centers'));
 
     }
+
+    public function searchStates(Request $request)
+    {
+        $query = $request->input('query', '');
+        if($query == ''){
+            $states = [];
+            return response()->json($states);
+        }
+        $page = $request->input('page', 0);
+        $limit = 10;
+
+        $states = State::where('name', 'like', "%$query%")
+            ->offset($page * $limit)
+            ->limit($limit)
+            ->get(['id', 'name']); // Fetch only required fields
+
+        return response()->json($states);
+    }
+
+    public function searchCities(Request $request)
+    {
+        $stateId = $request->input('state_id');
+        $query = $request->input('query', '');
+        $page = $request->input('page', 0);
+        $limit = 10;
+
+        $cities = City::where('state_id', $stateId)
+            ->where('name', 'like', "%$query%")
+            ->offset($page * $limit)
+            ->limit($limit)
+            ->get(['id', 'name']); // Fetch only required fields
+
+        return response()->json($cities);
+    }
+
 
     public function termsandconditionindividual()
     {

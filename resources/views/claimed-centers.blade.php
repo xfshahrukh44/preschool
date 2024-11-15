@@ -449,8 +449,8 @@
                                                                             </div>
 
                                                                             @php
-                                                                                $decoded_timings = json_decode($value->timings);
-                                                                                $decoded_services = json_decode($value->services);
+                                                                                $decoded_timings = json_decode($value->timings, true) ?? [];
+                                                                                $decoded_services = json_decode($value->services, true) ?? [];
                                                                             @endphp
                                                                             <div class="col-md-6 mb-2 mt-4">
                                                                                 <h2 class="ml-2"> Timings </h2>
@@ -593,71 +593,72 @@
                                                                                     <label for="after_school" class="ml-5">
                                                                                         <strong>After school</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[After school]" id="after_school" {!! in_array('After school', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[After school]" id="after_school" {!! in_array('After school', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="before_school" class="ml-5">
                                                                                         <strong>Before school</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Before school]" id="before_school" {!! in_array('Before school', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Before school]" id="before_school" {!! in_array('Before school', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="drop_in" class="ml-5">
                                                                                         <strong>Drop in</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Drop in]" id="drop_in" {!! in_array('Drop in', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Drop in]" id="drop_in" {!! in_array('Drop in', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="food_served" class="ml-5">
                                                                                         <strong>Food served</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Food served]" id="food_served" {!! in_array('Food served', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Food served]" id="food_served" {!! in_array('Food served', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="full_day" class="ml-5">
                                                                                         <strong>Full day</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Full day]" id="full_day" {!! in_array('Full day', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Full day]" id="full_day" {!! in_array('Full day', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="half_day" class="ml-5">
                                                                                         <strong>Half day</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Half day]" id="half_day" {!! in_array('Half day', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Half day]" id="half_day" {!! in_array('Half day', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="infant_care" class="ml-5">
                                                                                         <strong>Infant care</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Infant care]" id="infant_care" {!! in_array('Infant care', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Infant care]" id="infant_care" {!! in_array('Infant care', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="night_care" class="ml-5">
                                                                                         <strong>Night care</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Night care]" id="night_care" {!! in_array('Night care', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Night care]" id="night_care" {!! in_array('Night care', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="transportation" class="ml-5">
                                                                                         <strong>Transportation</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Transportation]" id="transportation" {!! in_array('Transportation', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Transportation]" id="transportation" {!! in_array('Transportation', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
 
                                                                                 <div class="row ml-2">
                                                                                     <label for="weekend_care" class="ml-5">
                                                                                         <strong>Weekend care</strong>
                                                                                     </label>
-                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Weekend care]" id="weekend_care" {!! in_array('Weekend care', $decoded_services) ? 'checked' : '' !!}>
+                                                                                    <input class="form-check-input" type="checkbox" value="" name="services[Weekend care]" id="weekend_care" {!! in_array('Weekend care', $decoded_services ?? []) ? 'checked' : '' !!}>
                                                                                 </div>
+
                                                                             </div>
 
                                                                         </div>
@@ -905,7 +906,7 @@
 
                                                                             <div class="col-md-6 mb-2 mt-4" style="font-size: 12px;">
                                                                                 <h4 class="ml-2"> Services </h4>
-                                                                                @if(count($decoded_services))
+                                                                                @if(count($decoded_services ?? []))
                                                                                     @foreach($decoded_services as $service)
                                                                                         <div class="row">
                                                                                             <div class="col-12 text-left">

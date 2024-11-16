@@ -171,14 +171,15 @@
         .dropdown-menu {
             position: absolute;
             top: 100%;
-            left: 0;
+            left: unset;
             z-index: 1000;
             display: none;
             background: #fff;
-            width: 100%;
-            max-height: 200px; /* Limit height for scrolling */
+            width: 57%;
+            max-height: 200px;
             overflow-y: auto;
             border: 1px solid #ccc;
+            right: 0;
         }
 
         .dropdown-menu.show {
@@ -192,6 +193,20 @@
 
         .dropdown-item:hover {
             background-color: #f8f9fa;
+        }
+
+        .search_bar_location #search-bar {
+            width: 50%;
+        }
+
+        .search_bar_location #state-input {
+            border-radius: 0;
+            border-left: none;
+        }
+
+        .search_bar_location #city-input {
+            border-left: none;
+            border-radius: 0;
         }
     </style>
 @endsection
@@ -227,7 +242,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-6 sty_para" style="margin-top:50px;">
+                <div class="col-md-8 sty_para" style="margin-top:50px;">
 
                     <?php $get_daycarecount = DB::table('childcares')->distinct('name')->count(); ?>
 
@@ -245,12 +260,14 @@
                         <input class="form-control" name="search" type="text" placeholder="Search providers"
                             value="{{ $search ?? '' }}" id="search-bar">
                         <div class="searchable-input">
-                            <input type="text" id="state-input" name="state" class="form-control" placeholder="Search States">
+                            <input type="text" id="state-input" name="state" class="form-control"
+                                placeholder="Search States">
                             <div id="state-results" class="dropdown-menu"></div>
                         </div>
 
                         <div class="searchable-input">
-                            <input type="text" id="city-input" name="city" class="form-control" placeholder="Search Cities" disabled>
+                            <input type="text" id="city-input" name="city" class="form-control"
+                                placeholder="Search Cities" disabled>
                             <div id="city-results" class="dropdown-menu"></div>
                         </div>
                         <button type="submit" class="btn btn-block"><i class="fas fa-search"></i></button>
@@ -305,7 +322,9 @@
                             ->orderBy('id', 'DESC')
                             ->first();
                         $rating = $latest_review ? $latest_review->rate : 0;
-                        $data = DB::table('users')->where('id', $val_search->claimed_by_id)->first();
+                        $data = DB::table('users')
+                            ->where('id', $val_search->claimed_by_id)
+                            ->first();
                     @endphp
                     <div class="col-lg-12">
                         <div class="dashboard_details">
@@ -501,14 +520,14 @@
                                 <div class="col-md-6 mb-2">
 
                                     <label> County </label>
-                                    <input type="text" name="county" value="{{ $value->county }}" class="form-control"
-                                        required />
+                                    <input type="text" name="county" value="{{ $value->county }}"
+                                        class="form-control" required />
 
                                     <br>
 
                                     <label> Zipcode </label>
-                                    <input type="text" name="zip" value="{{ $value->zip }}" class="form-control"
-                                        required />
+                                    <input type="text" name="zip" value="{{ $value->zip }}"
+                                        class="form-control" required />
 
                                     <br>
 
@@ -872,5 +891,4 @@
             $('.age_accepted').select2();
         });
     </script>
-
 @endsection

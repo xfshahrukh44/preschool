@@ -196,6 +196,143 @@
             line-height: 25px;
             margin-top: 60px;
         }
+
+
+
+        .search_bar_location {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 0;
+        }
+
+        .search_bar_location .btn-block {
+            width: 70px;
+            position: absolute;
+            z-index: 0;
+            right: 0px;
+        }
+
+        .search_bar_location input {
+            height: 45px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .select2-container--default .select2-search--inline .select2-search__field {
+            display: none;
+        }
+
+        .select2-selection__choice {
+            font-size: 14px !important;
+            padding: 6px !important;
+            background: #0B94F7 !important;
+        }
+
+        .select2-selection.select2-selection--multiple {
+            background: #f5f7fc;
+        }
+
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: unset;
+            z-index: 1000;
+            display: none;
+            background: #fff;
+            width: 60.5%;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            right: 0;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .search_bar_location #search-bar {
+            width: 50%;
+        }
+
+        .search_bar_location #state-input {
+            border-radius: 0;
+            border-left: none;
+        }
+
+        .search_bar_location #city-input {
+            border-left: none;
+            border-radius: 0;
+        }
+
+        }
+        }
+
+        .sty {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin: auto;
+            background-color: var(--header-color);
+            align-items: center;
+            border-radius: 5px;
+            margin-top: 40px;
+            /* padding-top: 6px; */
+            padding-right: 10px;
+            /* padding-left: 10px; */
+            /* padding-bottom: 6px; */
+            border: 1px solid #000;
+        }
+
+        .sty #search-bar {
+            background: transparent;
+            border-right: 1px solid #495057;
+            height: 65px;
+            border-radius: 0;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .sty #state-input {
+            background: transparent;
+            border: none;
+            border-right: 1px solid #495057;
+            height: 65px;
+            border-left: none;
+        }
+
+        .sty #city-input {
+            background: transparent;
+            border: none;
+            /* border-right: 1px solid #495057; */
+            height: 65px;
+            border-left: none;
+        }
+
+        .sty {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin: auto;
+            background-color: var(--header-color);
+            align-items: center;
+            border-radius: 5px;
+            margin-top: 40px;
+            /* padding-top: 6px; */
+            padding-right: 10px;
+            /* padding-bottom: 6px; */
+            border: 1px solid #000;
+        }
     </style>
 @endsection
 
@@ -215,13 +352,33 @@
 
                     </div>
 
-                    <form method="get" action="{{ route('search') }}">
+                    <form method="get" action="{{ route('search') }}" class="search_bar_location sty">
+
+                        <input class="form-control" name="search" type="text" placeholder="Search providers"
+                            value="{{ $search ?? '' }}" id="search-bar">
+                        <div class="searchable-input">
+                            <input type="text" id="state-input" name="state" class="form-control"
+                                placeholder="Search States">
+                            <div id="state-results" class="dropdown-menu"></div>
+                        </div>
+
+                        <div class="searchable-input">
+                            <input type="text" id="city-input" name="city" class="form-control"
+                                placeholder="Search Cities" disabled>
+                            <div id="city-results" class="dropdown-menu"></div>
+                        </div>
+                        <button type="submit" class="custom-btn">Search</button>
+                        {{-- <button type="submit" class="btn btn-block"><i class="fas fa-search"></i></button> --}}
+
+                    </form>
+
+                    {{-- <form method="get" action="{{ route('search') }}">
                         <div class="header-form">
                             <input type="text" class="form-control" name="search" id="search-bar"
                                 placeholder="Enter a zip code or city" required>
                             <button class="custom-btn">Search</button>
                         </div>
-                    </form>
+                    </form> --}}
 
                 </div>
             </div>

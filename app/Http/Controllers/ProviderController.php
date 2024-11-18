@@ -64,17 +64,8 @@ class ProviderController extends Controller
 
     public function updateDaycareCenter(Request $request)
     {
-        //        $request->validate([
-//            'services' => 'required|array',
-//            'services.*' => 'boolean'
-//        ]);
         $requestData = $request->except(['timings', 'services']);
         $id = $request->id;
-        //        $childcareupdate = Childcare::findOrFail($id);
-//
-//        if ($childcareupdate->zip != $request->zip) {
-//            return redirect()->back()->with('message', 'Verification failed');
-//        }
 
         if ($request->hasFile('feature_image')) {
 

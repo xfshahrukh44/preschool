@@ -132,7 +132,8 @@
 
         .search_bar_location .btn-block {
             width: 70px;
-            position: absolute;
+            height: 47px;
+            /* position: absolute; */
             z-index: 0;
             right: 0px;
         }
@@ -208,6 +209,19 @@
             border-left: none;
             border-radius: 0;
         }
+
+        div#city-results {
+            position: absolute;
+            left: unset;
+            right: 246px;
+            width: 246px;
+        }
+
+        div#state-results {
+            position: absolute;
+            left: 0;
+            width: 242px;
+        }
     </style>
 @endsection
 
@@ -257,8 +271,8 @@
                     </form> --}}
 
                     <form method="get" action="{{ route('search') }}" class="search_bar_location">
-                        <input class="form-control" name="search" type="text" placeholder="Search providers"
-                            value="{{ $search ?? '' }}" id="search-bar">
+                        {{-- <input class="form-control" name="search" type="text" placeholder="Search providers"
+                            value="{{ $search ?? '' }}" id="search-bar"> --}}
                         <div class="searchable-input">
                             <input type="text" id="state-input" name="state" class="form-control"
                                 placeholder="Search States">
@@ -520,8 +534,8 @@
                                 <div class="col-md-6 mb-2">
 
                                     <label> County </label>
-                                    <input type="text" name="county" value="{{ $value->county }}"
-                                        class="form-control" required />
+                                    <input type="text" name="county" value="USA"
+                                        class="form-control" required readonly />
 
                                     <br>
 

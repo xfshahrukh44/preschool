@@ -253,22 +253,24 @@ class HomeController extends Controller
     }
 
 
-    public function search()
+    public function search(Request $request)
     {
-
         $page = DB::table('pages')->where('id', 2)->first();
         $section = DB::table('section')->where('page_id', 2)->get();
 
-        $search = "";
+        $search = $request->input('search', '');
+        $query = Childcare::where('status', '1')->orderBy('claimed_by_id', 'DESC');
 
-        if (isset($_GET['search'])) {
-            $search = $_GET['search'];
+        if ($request->filled('city')) {
+            $query->where('city', 'LIKE', "%{$request->city}%");
         }
 
-        $search_result = Childcare::where('city', 'LIKE', "%{$request->city}%")->orWhere('state', 'LIKE', "%{$request->state}%")->orWhere('name', 'LIKE', "%{$search}%")->orWhere('county', 'LIKE', "%{$search}%")->orWhere('program_type', 'LIKE', "%{$search}%")->where('status', '1')->orderBy('claimed_by_id', 'DESC')->groupBy('name')->paginate(25);
+        if ($request->filled('state')) {
+            $query->where('state', 'LIKE', "%{$request->state}%");
+        }
 
-        return view('search', compact('page', 'section', 'search_result', 'search', 'claimed_centers'));
-
+        $search_result = $query->paginate(25);
+        return view('search', compact('page', 'section', 'search_result', 'search'));
     }
 
     public function searchStates(Request $request)

@@ -309,6 +309,20 @@
             border-right: 1px solid #495057;
             height: 65px;
             border-left: none;
+            width: 417px;
+        }
+
+        div#city-results {
+            position: absolute;
+            left: unset;
+            right: 0;
+            width: 447px;
+        }
+
+        div#state-results {
+            position: absolute;
+            left: 0;
+            width: 418px;
         }
 
         .sty #city-input {
@@ -354,8 +368,8 @@
 
                     <form method="get" action="{{ route('search') }}" class="search_bar_location sty">
 
-                        <input class="form-control" name="search" type="text" placeholder="Search providers"
-                            value="{{ $search ?? '' }}" id="search-bar">
+                        {{-- <input class="form-control" name="search" type="text" placeholder="Search providers"
+                            value="{{ $search ?? '' }}" id="search-bar"> --}}
                         <div class="searchable-input">
                             <input type="text" id="state-input" name="state" class="form-control"
                                 placeholder="Search States">

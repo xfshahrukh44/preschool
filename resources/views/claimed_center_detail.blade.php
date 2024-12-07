@@ -475,28 +475,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="section-3-txt">
-                                                <figure><img
-                                                        src="{{ asset($get_claimed_daycare_center_detail->feature_image) }}"
-                                                        alt="" class="img-fluid"></figure>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="section-3-img">
-                                                <figure><img
-                                                        src="{{ asset($get_claimed_daycare_center_detail->other_image_one) }}"
-                                                        style="height: 329px;width: 100%;" alt=""
-                                                        class="img-fluid">
-                                                </figure>
-                                                <figure><img
-                                                        src="{{ asset($get_claimed_daycare_center_detail->other_image_two) }}"
-                                                        style="height: 329px;width: 100%;" alt=""
-                                                        class="img-fluid">
-                                                </figure>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-lg-12">
                                             <div class="section-3-main-txt">
                                                 <h2 class="heading-2" style="color:#000;">About the facility</h2>

@@ -96,7 +96,7 @@
                              
                         </div>
                         <div class="form-group" style="margin-top: 20px">
-                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1" rows="6" placeholder="Tell us about yoursel?"></textarea>
+                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1" rows="6" placeholder="How can we help you?"></textarea>
                         </div>
 
                         <button type="submit" class="custom-btn"> Submit </button>

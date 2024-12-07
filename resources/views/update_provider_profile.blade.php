@@ -425,13 +425,12 @@
                             @endphp
                             <select type="text" name="age_accepted[]" class="form-control" multiple
                                 id="age_accepted">
-                                <option>Select</option>
-                                <option {!! in_array('0-1', $age_accepted) ? 'selected' : '' !!}>0-1</option>
-                                <option {!! in_array('1-2', $age_accepted) ? 'selected' : '' !!}>1-2</option>
-                                <option {!! in_array('2-3', $age_accepted) ? 'selected' : '' !!}>2-3</option>
-                                <option {!! in_array('3-4', $age_accepted) ? 'selected' : '' !!}>3-4</option>
-                                <option {!! in_array('4-5', $age_accepted) ? 'selected' : '' !!}>4-5</option>
-                                <option {!! in_array('School-ager', $age_accepted) ? 'selected' : '' !!}>School-ager</option>
+                                <option>--Select--</option> 
+                                <option {!! in_array("0-12 months", $age_accepted) ? "selected" : "" !!}>0-12 months</option>
+                                <option {!! in_array("12-24 months", $age_accepted) ? "selected" : "" !!}>12-24 months</option>
+                                <option {!! in_array("2-5 years", $age_accepted) ? "selected" : "" !!}>2-5 years</option>
+                                <option {!! in_array("5+ years", $age_accepted) ? "selected" : "" !!}>5+ years</option>
+                                <option {!! in_array("School-ager", $age_accepted) ? "selected" : "" !!}>School-ager</option> 
                             </select>
 
                             <br><br>

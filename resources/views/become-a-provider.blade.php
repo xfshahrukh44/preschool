@@ -107,7 +107,6 @@
                         </h6>
 
                         <form class="sign-up" method="POST" action="{{ route('register') }}" id="sign-up">
-
                             @csrf
                             <?php
                             $subtotal = App\Http\Traits\HelperTrait::returnFlag(1973);

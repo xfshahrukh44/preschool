@@ -429,8 +429,7 @@
                                 <option {!! in_array("0-12 months", $age_accepted) ? "selected" : "" !!}>0-12 months</option>
                                 <option {!! in_array("12-24 months", $age_accepted) ? "selected" : "" !!}>12-24 months</option>
                                 <option {!! in_array("2-5 years", $age_accepted) ? "selected" : "" !!}>2-5 years</option>
-                                <option {!! in_array("5+ years", $age_accepted) ? "selected" : "" !!}>5+ years</option>
-                                <option {!! in_array("School-ager", $age_accepted) ? "selected" : "" !!}>School-ager</option> 
+                                <option {!! in_array("5+ years", $age_accepted) ? "selected" : "" !!}>5+ years</option>         
                             </select>
 
                             <br><br>

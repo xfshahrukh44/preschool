@@ -625,7 +625,7 @@
             });
         });
 
-        function stripeTokenHandler(token) {
+        function stripeTokenHandler(token) {    
             var form = document.getElementById('sign-up');
             var hiddenInput = document.createElement('input');
             hiddenInput.setAttribute('type', 'hidden');

@@ -192,18 +192,18 @@
         <div class="container-fluid">
 
             <div class="profilebg1" style="<?php if (Auth::user()->banner_image != '') {
-                echo "background-image: url('" . asset(Auth::user()->banner_image) . "') !important;";
-            } else {
-                echo 'background-image: url(' . asset('images/profilebg.png') . ') !important;';
-            } ?> background-size: cover !important;">
+                                                echo "background-image: url('" . asset(Auth::user()->banner_image) . "') !important;";
+                                            } else {
+                                                echo 'background-image: url(' . asset('images/profilebg.png') . ') !important;';
+                                            } ?> background-size: cover !important;">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="profile1">
                             @if (Auth::user()->image != '')
-                                <img src="{{ asset(Auth::user()->image) }}" style="height:175px; width:175px;"
-                                    class="img-fluid">
+                            <img src="{{ asset(Auth::user()->image) }}" style="height:175px; width:175px;"
+                                class="img-fluid">
                             @else
-                                <img src="{{ asset('images/profilemain1.png') }}" class="img-fluid">
+                            <img src="{{ asset('images/profilemain1.png') }}" class="img-fluid">
                             @endif
                         </div>
                     </div>
@@ -323,40 +323,40 @@
 
                                     <br>
 
-                                    {{--                                <select name="do_you_currently_work" class="form-control" id="show_current_work"> --}}
-                                    {{--                                    <option <?php if (Auth::user()->do_you_currently_work == 'Select') {
-                                        echo 'selected';
-                                    } ?> >Select</option> --}}
-                                    {{--                                    <option <?php if (Auth::user()->do_you_currently_work == 'Childcare facility') {
-                                        echo 'selected';
-                                    } ?> >Childcare facility</option> --}}
-                                    {{--                                    <option <?php if (Auth::user()->do_you_currently_work == 'In Home Provider') {
-                                        echo 'selected';
-                                    } ?> >In Home Provider</option> --}}
-                                    {{--                                </select> --}}
-                                    {{--                                --}}
-                                    {{--                                <br><br> --}}
+                                    {{-- <select name="do_you_currently_work" class="form-control" id="show_current_work"> --}}
+                                    {{-- <option <?php if (Auth::user()->do_you_currently_work == 'Select') {
+                                                        echo 'selected';
+                                                    } ?> >Select</option> --}}
+                                    {{-- <option <?php if (Auth::user()->do_you_currently_work == 'Childcare facility') {
+                                                        echo 'selected';
+                                                    } ?> >Childcare facility</option> --}}
+                                    {{-- <option <?php if (Auth::user()->do_you_currently_work == 'In Home Provider') {
+                                                        echo 'selected';
+                                                    } ?> >In Home Provider</option> --}}
+                                    {{-- </select> --}}
+                                    {{-- --}}
+                                    {{-- <br><br> --}}
 
                                     <label for="">Position :</label>
                                     <select name="current_position" class="form-control">
                                         <option <?php if (Auth::user()->current_position == '') {
-                                            echo 'selected';
-                                        } ?>>Select position</option>
+                                                    echo 'selected';
+                                                } ?>>Select position</option>
                                         <option <?php if (Auth::user()->current_position == 'Owner') {
-                                            echo 'selected';
-                                        } ?>>Owner</option>
+                                                    echo 'selected';
+                                                } ?>>Owner</option>
                                         <option <?php if (Auth::user()->current_position == 'Director') {
-                                            echo 'selected';
-                                        } ?>>Director</option>
+                                                    echo 'selected';
+                                                } ?>>Director</option>
                                         <option <?php if (Auth::user()->current_position == 'Teacher') {
-                                            echo 'selected';
-                                        } ?>>Teacher</option>
+                                                    echo 'selected';
+                                                } ?>>Teacher</option>
                                         <option <?php if (Auth::user()->current_position == 'Aide') {
-                                            echo 'selected';
-                                        } ?>>Aide</option>
+                                                    echo 'selected';
+                                                } ?>>Aide</option>
                                         <option <?php if (Auth::user()->current_position == 'Other') {
-                                            echo 'selected';
-                                        } ?>>Other</option>
+                                                    echo 'selected';
+                                                } ?>>Other</option>
                                     </select>
 
 
@@ -365,17 +365,17 @@
                                     <label for="">Years of Experience :</label>
                                     <select name="year_of_experience" class="form-control">
                                         <option <?php if (Auth::user()->year_of_experience == 'Less than 1') {
-                                            echo 'selected';
-                                        } ?>>Less than 1</option>
+                                                    echo 'selected';
+                                                } ?>>Less than 1</option>
                                         <option <?php if (Auth::user()->year_of_experience == '1-5') {
-                                            echo 'selected';
-                                        } ?>>1-5</option>
+                                                    echo 'selected';
+                                                } ?>>1-5</option>
                                         <option <?php if (Auth::user()->year_of_experience == '5-10') {
-                                            echo 'selected';
-                                        } ?>>5-10</option>
+                                                    echo 'selected';
+                                                } ?>>5-10</option>
                                         <option <?php if (Auth::user()->year_of_experience == '10+') {
-                                            echo 'selected';
-                                        } ?>>10+</option>
+                                                    echo 'selected';
+                                                } ?>>10+</option>
                                     </select>
 
 
@@ -384,26 +384,26 @@
                                     <label for="">Level of Education :</label>
                                     <select name="loe" class="form-control">
                                         <option <?php if (Auth::user()->loe == 'None') {
-                                            echo 'selected';
-                                        } ?>>None</option>
+                                                    echo 'selected';
+                                                } ?>>None</option>
                                         <option <?php if (Auth::user()->loe == 'HS Diploma/GED') {
-                                            echo 'selected';
-                                        } ?>>HS Diploma/GED</option>
+                                                    echo 'selected';
+                                                } ?>>HS Diploma/GED</option>
                                         <option <?php if (Auth::user()->loe == 'Some College') {
-                                            echo 'selected';
-                                        } ?>>Some College</option>
+                                                    echo 'selected';
+                                                } ?>>Some College</option>
                                         <option <?php if (Auth::user()->loe == 'A.A./A.S.') {
-                                            echo 'selected';
-                                        } ?>>A.A./A.S.</option>
+                                                    echo 'selected';
+                                                } ?>>A.A./A.S.</option>
                                         <option <?php if (Auth::user()->loe == 'B.A./B.S.') {
-                                            echo 'selected';
-                                        } ?>>B.A./B.S.</option>
+                                                    echo 'selected';
+                                                } ?>>B.A./B.S.</option>
                                         <option <?php if (Auth::user()->loe == 'M.A./M.S.') {
-                                            echo 'selected';
-                                        } ?>>M.A./M.S.</option>
+                                                    echo 'selected';
+                                                } ?>>M.A./M.S.</option>
                                         <option <?php if (Auth::user()->loe == 'Ph.D./Ed.D.') {
-                                            echo 'selected';
-                                        } ?>>Ph.D./Ed.D.</option>
+                                                    echo 'selected';
+                                                } ?>>Ph.D./Ed.D.</option>
                                     </select>
 
                                     <br><br>
@@ -412,17 +412,16 @@
                                         style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important;"
                                         for="">Ages Accepted :</label>
                                     @php
-                                        $age_accepted = explode(',', Auth::user()->age_accepted);
+                                    $age_accepted = explode(',', Auth::user()->age_accepted);
                                     @endphp
+
                                     <select type="text" name="age_accepted[]" class="form-control" multiple
                                         id="age_accepted">
-                                        <option>Select</option>
-                                        <option {!! in_array('0-1', $age_accepted) ? 'selected' : '' !!}>0-1</option>
-                                        <option {!! in_array('1-2', $age_accepted) ? 'selected' : '' !!}>1-2</option>
-                                        <option {!! in_array('2-3', $age_accepted) ? 'selected' : '' !!}>2-3</option>
-                                        <option {!! in_array('3-4', $age_accepted) ? 'selected' : '' !!}>3-4</option>
-                                        <option {!! in_array('4-5', $age_accepted) ? 'selected' : '' !!}>4-5</option>
-                                        <option {!! in_array('School-ager', $age_accepted) ? 'selected' : '' !!}>School-ager</option>
+                                        <option>--Select--</option> 
+                                        <option {!! in_array("0-12 months", $age_accepted) ? "selected" : "" !!}>0-12 months</option>
+                                        <option {!! in_array("12-24 months", $age_accepted) ? "selected" : "" !!}>12-24 months</option>
+                                        <option {!! in_array("2-5 years", $age_accepted) ? "selected" : "" !!}>2-5 years</option>
+                                        <option {!! in_array("5+ years", $age_accepted) ? "selected" : "" !!}>5+ years</option> 
                                     </select>
 
                                 </div>
@@ -499,7 +498,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    {{--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                    {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                     <a href="{{ route('agree_to_sandbox_terms') }}" type="button" class="btn btn-primary">I agree
                         to the terms</a>
                 </div>

@@ -380,7 +380,7 @@ class LoggedInController extends Controller
 
 
 		$requestData = $request->all();
-// 		dd($requestData);
+		// dd($requestData);
 
 		$users = User::where('id', $request->id)->first();
 		$image_path = public_path($users->image);

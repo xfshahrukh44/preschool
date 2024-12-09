@@ -220,7 +220,7 @@
         stateInput.addEventListener('input', function () {
             stateQuery = this.value;
             statePage = 0; // Reset page on new query
-            fetchStates();
+            fetchStates();  
         });
 
         function fetchStates() {

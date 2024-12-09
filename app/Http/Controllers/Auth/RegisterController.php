@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 use Session;
-use Stripe\Stripe;
+use Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
 
@@ -101,92 +101,98 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $ageacceptedd = implode(',', $data['age_accepted'] ?? []);
+
         // dd($data);
-        // Validate the array data before proceeding
-        Validator::make($data, [
-            'name' => 'required|max:255',
-            'lname' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'role' => 'required',
-            'amount' => 'required|numeric|min:1',
-            'stripeToken' => 'required',
-        ])->validate();
+        if($data['role'] == 4){
 
-        $ageAccepted = implode(',', $data['age_accepted'] ?? []);
+            try {
 
-        // Process payment with Stripe
-        Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        try {
-            // Create a customer in Stripe
-            $customer = Customer::create([
-                'email' => $data['email'],
-                'name' => $data['name'],
-                'source' => $data['stripeToken'],
-            ]);
+                try {
+                    Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            // Create a charge
-            $charge = Charge::create([
-                'customer' => $customer->id,
-                'amount' => $data['amount'] * 100, // Stripe expects the amount in cents
-                'currency' => 'USD',
-                'description' => 'Payment from website',
-            ]);
+                    $customer = \Stripe\Customer::create(array(
+                        'email' => $data['email'],
+                        'name' => $data['name'],
+                        'description' => "Provider Signup",
+                        'source'  => $data['stripeToken'],
+                    ));
+                    $customerId = $customer->id;
+                } catch (Exception $e) {
+                    return redirect()->back()->with('stripe_error', $e->getMessage());
+                }
 
-            $chargeJson = $charge->jsonSerialize();
+                try {
+                    $charge = \Stripe\Charge::create(array(
+                        'customer' => $customer->id,
+                        'amount'   => (int)$data['amount'] * 100,
+                        'currency' => 'USD',
+                        'description' => "Provider Signup",
+                        'metadata' => array("name" => $data['name'], "email" => $data['email']),
+                    ));
 
-            if (
-                $chargeJson['amount_refunded'] == 0 &&
-                empty($chargeJson['failure_code']) &&
-                $chargeJson['paid'] == 1 &&
-                $chargeJson['captured'] == 1
-            ) {
-                $transactionID = $chargeJson['balance_transaction'];
-                $paymentStatus = $chargeJson['status'];
-
-                // Create the user only after payment succeeds
-                $user = User::create([
-                    'name' => $data['name'],
-                    'lname' => $data['lname'],
-                    'email' => $data['email'],
-                    'password' => Hash::make($data['password']),
-                    'role' => $data['role'],
-                    'gender' => $data['gender'],
-                    'age' => $data['age'],
-                    'phone' => $data['phone'],
-                    'address' => $data['address'],
-                    'current_position' => $data['current_position'],
-                    'year_of_experience' => $data['year_of_experience'],
-                    'age_worked_with' => $data['age_worked_with'],
-                    'about' => $data['about'],
-                    'hour_open' => $data['hour_open'],
-                    'age_accepted' => $ageAccepted,
-                    'custom_age' => $data['custom_age'],
-                    'position_accepted' => $data['position_accepted'],
-                    'about_preschool' => $data['about_preschool'],
-                    'payment_method' => $data['payment_method'],
-                    'amount' => $data['amount'],
-                    'card_token' => $data['stripeToken'],
-                    'transaction_id' => $transactionID,
-                    'payer_id' => $data['payer_id'] ?? null,
-                    'paypal_token' => $data['_token'] ?? null,
-                    'payment_status' => $paymentStatus,
-                    'dob' => $data['dob'],
-                    'loe' => $data['loe'],
-                    'do_you_currently_work' => $data['do_you_work'],
-                    'position' => $data['position'],
-                    'license_number' => $data['license_number'],
-                    'expiration_date' => $data['expiration_date'],
-                ]);
-
-                return redirect()->back()->with('success', 'User created and payment successful.');
+                } catch (Exception $e) {
+                    return redirect()->back()->with('stripe_error', $e->getMessage());
+                }
+            } catch (Exception $e) {
+                return redirect()->back()->with('stripe_error', $e->getMessage());
             }
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
         }
 
-        return redirect()->back()->with('error', 'Payment failed.');
+
+        $user = User::create([
+
+            'name' => $data['name'],
+            'lname' => $data['lname'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+            'gender' => $data['gender'],
+            'age' => $data['age'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'current_position ' => $data['current_position'],
+            'year_of_experience' => $data['year_of_experience'],
+            'age_worked_with' => $data['age_worked_with'],
+            'about' => $data['about'],
+            'hour_open' => $data['hour_open'],
+            'age_accepted' => $ageacceptedd,
+            'custom_age' => $data['custom_age'],
+            'position_accepted' => $data['position_accepted'],
+            'about_preschool' => $data['about_preschool'],
+            'payment_method' => $data['payment_method'],
+            'amount' => $data['amount'],
+            'card_token' => $data['stripeToken'],
+            'transaction_id' => $data['payment_id'],
+            'payer_id' => $data['payer_id'],
+            'paypal_token' => $data['_token'],
+            'payment_status' => $data['payment_status'],
+            'dob' => $data['dob'],
+            'loe' => $data['loe'],
+            'do_you_currently_work' => $data['do_you_work'],
+            'position' => $data['position'],
+            'license_number' => $data['license_number'],
+            'expiration_date' => $data['expiration_date'],
+
+        ]);
+
+        if ($data['timings']) {
+            $user->timings = json_encode($data['timings']);
+            $user->save();
+        }
+
+        if ($data['services']) {
+            $services = [];
+            foreach ($data['services'] as $key => $value) {
+                $services[] = $key;
+            }
+            $user->services = $services;
+            $user->save();
+        }
+
+        return $user;
     }
 
     protected function registered(Request $request, $user)

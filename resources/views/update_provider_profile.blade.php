@@ -233,7 +233,8 @@
                 <div class="row">
                     <div class="col-lg-10">
                         <div class="profile-name pl-left">
-                            <p style="font-size: 14px;">Details and information displayed here were found through public sources -- not the
+                            <p style="font-size: 14px;">Details and information displayed here were found through public
+                                sources -- not the
                                 business itself -- and may not reflect its current status, including license status. We
                                 strongly encourage you to perform your own research while selecting a care provider.</p>
                         </div>
@@ -361,8 +362,8 @@
                                     <br><br>
 
                                     <label for="">City :</label>
-                                    <input type="text" name="city" class="form-control" placeholder="Enter City"
-                                        value="{{ Auth::user()->city }}">
+                                    <input type="text" name="city" class="form-control"
+                                        placeholder="Enter City" value="{{ Auth::user()->city }}">
 
 
                                     <br><br>
@@ -416,7 +417,7 @@
                             </select>
 
                             <br><br>
-<!--  -->
+                            <!--  -->
                             <label
                                 style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important;"
                                 for="">Ages Accepted :</label>
@@ -425,11 +426,11 @@
                             @endphp
                             <select type="text" name="age_accepted[]" class="form-control" multiple
                                 id="age_accepted">
-                                <option>--Select--</option> 
-                                <option {!! in_array("0-12 months", $age_accepted) ? "selected" : "" !!}>0-12 months</option>
-                                <option {!! in_array("12-24 months", $age_accepted) ? "selected" : "" !!}>12-24 months</option>
-                                <option {!! in_array("2-5 years", $age_accepted) ? "selected" : "" !!}>2-5 years</option>
-                                <option {!! in_array("5+ years", $age_accepted) ? "selected" : "" !!}>5+ years</option>         
+                                <option>--Select--</option>
+                                <option {!! in_array('0-12 months', $age_accepted) ? 'selected' : '' !!}>0-12 months</option>
+                                <option {!! in_array('12-24 months', $age_accepted) ? 'selected' : '' !!}>12-24 months</option>
+                                <option {!! in_array('2-5 years', $age_accepted) ? 'selected' : '' !!}>2-5 years</option>
+                                <option {!! in_array('5+ years', $age_accepted) ? 'selected' : '' !!}>5+ years</option>
                             </select>
 
                             <br><br>
@@ -547,7 +548,7 @@
             $('#types_of_care_provided').select2();
         });
 
-        document.getElementById('licensedCheckbox').addEventListener('change', function () {
+        document.getElementById('licensedCheckbox').addEventListener('change', function() {
             const licenseFields = document.getElementById('licenseFields');
             licenseFields.style.display = this.checked ? 'block' : 'none';
         });

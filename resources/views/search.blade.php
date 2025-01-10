@@ -365,7 +365,7 @@
                                         </p>
                                         <p>Address: {{ $data->address ?? 'N/A' }}</p>
                                         <p>Phone Number: {{ $data->phone ?? 'N/A' }}</p>
-                                        <p>Age Accepted: {{ $data->address ?? 'N/A' }}</p>
+                                        <p>Age Accepted: {{ $data->age_accepted ?? 'N/A' }}</p>
                                     </div>
                                 </div>
                                 <div class="rating_client">
@@ -534,8 +534,8 @@
                                 <div class="col-md-6 mb-2">
 
                                     <label> County </label>
-                                    <input type="text" name="county" value="USA"
-                                        class="form-control" required readonly />
+                                    <input type="text" name="county" value="USA" class="form-control" required
+                                        readonly />
 
                                     <br>
 
@@ -577,6 +577,14 @@
                                     @endphp
                                     <select type="text" name="age_accepted[]" class="form-control age_accepted"
                                         multiple id="">
+                                        <option>--Select--</option>
+                                        <option {!! in_array('0-12 months', $age_accepted) ? 'selected' : '' !!}>0-12 months</option>
+                                        <option {!! in_array('12-24 months', $age_accepted) ? 'selected' : '' !!}>12-24 months</option>
+                                        <option {!! in_array('2-5 years', $age_accepted) ? 'selected' : '' !!}>2-5 years</option>
+                                        <option {!! in_array('5+ years', $age_accepted) ? 'selected' : '' !!}>5+ years</option>
+                                    </select>
+                                    {{-- <select type="text" name="age_accepted[]" class="form-control age_accepted"
+                                        multiple id="">
                                         <option>Select</option>
                                         <option {!! in_array('0-1', $age_accepted) ? 'selected' : '' !!}>0-1</option>
                                         <option {!! in_array('1-2', $age_accepted) ? 'selected' : '' !!}>1-2</option>
@@ -584,9 +592,10 @@
                                         <option {!! in_array('3-4', $age_accepted) ? 'selected' : '' !!}>3-4</option>
                                         <option {!! in_array('4-5', $age_accepted) ? 'selected' : '' !!}>4-5</option>
                                         <option {!! in_array('School-ager', $age_accepted) ? 'selected' : '' !!}>School-ager</option>
-                                    </select>
+                                    </select> --}}
 
                                 </div>
+
 
                                 <div class="col-md-12 mb-2">
 

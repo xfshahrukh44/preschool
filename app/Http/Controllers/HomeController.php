@@ -276,7 +276,7 @@ class HomeController extends Controller
     public function searchStates(Request $request)
     {
         $query = $request->input('query', '');
-        if($query == ''){
+        if ($query == '') {
             $states = [];
             return response()->json($states);
         }
@@ -908,8 +908,6 @@ class HomeController extends Controller
         if (Auth::user()->role != "4") {
             return redirect("/");
         }
-
-
         return view('update_provider_profile');
 
     }

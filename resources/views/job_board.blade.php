@@ -48,7 +48,7 @@
 
 
                 @foreach ($get_all_new_job as $key => $val_newjob)
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-6 col-12">
                         <div class="main-job">
                             <div class="full-time">
                                 <p> {{ $val_newjob->job_type }} </p>

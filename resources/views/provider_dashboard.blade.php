@@ -176,7 +176,7 @@
 
             <div class="profile-name-bg">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-6 col-12">
                         <div class="profile-name">
                             <h5> {{ Auth::user()->name }} {{ Auth::user()->lname }} <span> {{ Auth::user()->email }}
                                 </span>
@@ -220,7 +220,7 @@
 
                 ?>
 
-                <div class="col-lg-6 col-md-8">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-2 order-md-3 order-sm-3 order-3">
                     <div class="profileparent">
 
                         <div class="row mt-5">
@@ -814,7 +814,7 @@
                 </div>
 
 
-                <div class="col-md-3 sidebarleftprofile">
+                <div class="col-lg-3  col-md-12 col-sm-12 col-12 order-lg-3 order-md-2 order-sm-2 order-2 sidebarleftprofile">
 
                     @include('all_provider')
 

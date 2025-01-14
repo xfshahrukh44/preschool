@@ -275,7 +275,6 @@ Route::get('project/save/{id}', 'ProjectsPgController@save')->name('projects.sav
 //For Payment
 Route::post('order-search', 'LoggedInController@orderSearch')->name('order-search');
 // Route::get('search-child-care','LoggedInController@search')->name('searchLogg');
-
 // Provider Dashboard
 Route::get('provider_dashboard', 'HomeController@provider_dashboard')->name('provider_dashboard');
 Route::get('add-job', 'HomeController@add_job')->name('add_job');

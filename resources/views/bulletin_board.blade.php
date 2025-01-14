@@ -187,7 +187,7 @@
     <section class="bulletin_board">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="main_card_rota purple_rota">
                         <a href="{{ route('job_board') }}">
                             <div class="info_rota">
@@ -200,7 +200,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="main_card_rota yellow_rota">
                         <a href="{{ route('projects.index') }}">
                             <div class="info_rota">

@@ -220,7 +220,7 @@
         <div class="profile-name-bg">
             <div class="row">
 
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6 col-12">
                     <div class="profile-name">
                         <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span></h5>
                     </div>
@@ -240,7 +240,7 @@
 
             @include('provider_menues')
 
-            <div class="col-lg-9 col-md-8">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-12">
 
                 <div class="profileparent">
                     <div class="profilein1">

@@ -1,4 +1,45 @@
 @media (max-width: 1440px) {
+    .tab-content table.table {
+        width: 100% !important;
+    }
+
+    .modal-body label h5 {
+        font-size: 14px !important;
+    }
+    .flex-eye {
+        margin-bottom: 1.3rem !important;
+    }
+
+    .card .card-body {
+        display: flex
+    ;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow-y: scroll;
+    }
+
+    .profileparent {
+        height: 35rem !important;
+    }
+
+    .menu_active {
+        padding: 16px;
+        font-size: 16px !important;
+    }
+
+
+    .mt-btn.join-now-style {
+        height: auto !important;
+        padding: 3rem 0;
+    }
+    .mt-btn.join-now-style a {
+        margin: 0 !important;
+    }
+
+    .our-goal p{
+        font-size: 20px !important;
+        line-height: 23px;
+    }
     .SignUp p {
         font-size: 15px;
         line-height: 10px;
@@ -67,6 +108,117 @@
     }
 }
 @media (max-width: 1199px) {
+
+    .section-3-img img {
+        height: 212px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .modal-body label h5 {
+        font-size: 12px !important;
+    }
+
+    .tabs_info ul li a.nav-link {
+        font-size: 16px !important;
+        padding: 5px 8px !important;
+    }
+
+    .section-3-main-txt .heading-2 {
+        padding: 0 !important;
+    }
+
+    .tab-content table.table {
+        font-size: 13px;
+    }
+
+    .tabs_info ul li .nav-link.active {
+        border-bottom: 3px solid black !important;
+        font-size: 16px !important;
+    }
+
+    .sidebarLeft {
+        position: static !important;
+    }
+
+    .main h4 {
+        font-size: 10px !important;
+    }
+    .sidebar{
+        width: auto !important;
+    }
+
+    .span_icon {
+        font-size: 14px !important;
+        margin-left: 10px !important;
+        padding: 9px 17px !important;
+        top: -11px !important;
+        left: 10px !important;
+    }
+
+
+    .modal .modal-dialog .modal-content .modal-header {
+        padding: 14px 26px;
+    }
+    .modal .modal-dialog .modal-content .modal-header h5{
+        font-size: 20px;
+    }
+
+    .modal .modal-dialog .modal-content .modal-body {
+        padding: 14px 26px;
+    }
+    .modal .modal-dialog .modal-content .modal-body h6{
+        font-size: 18px;
+    }
+    .modal .modal-dialog .modal-content .modal-body p{
+        font-size: 15px;
+    }
+
+    .modal .modal-dialog .modal-content .modal-footer {
+        padding: 14px 26px;
+    }
+
+    .scroll.main-height {
+        height: auto;
+    }
+
+    .apply .custom-btn {
+        padding: 11px 16px !important;
+        font-size: 12px;
+        border-radius: 13px;
+        background: #7f9bff;
+    }
+
+    .info_rota {
+        transform: rotate(-12deg);
+        height: 230px !important;
+        width: 240px !important;
+        box-shadow: 0px 6px 10px 1px #000000ad;
+        position: relative;
+        z-index: 0;
+    }
+
+    .fill_rota h4 {
+        font-size: 40px !important;
+        font-weight: 800;
+        color: black;
+    }
+
+    .fill_rota h4 {
+        font-size: 40px;
+        font-weight: 800;
+        color: black;
+    }
+
+    .profilebuttons ul li a {
+        font-size: 12px;
+    }
+    .menu_active {
+        padding: 10px;
+        font-size: 12px !important;
+    }
+
+
+
     .sec-one {
         height: 660px !important;
     }
@@ -83,8 +235,13 @@
         height: 650px !important;
     }
     .our-goal p {
-        width: 90%;
+        color: #b3b3b3;
+        margin: auto;
+        text-align: center;
+        width: 86%;
         font-size: 20px !important;
+        line-height: 25px;
+        margin-top: 30px;
     }
 
     .give-the-best h1 span {
@@ -110,7 +267,7 @@
     }
 
     .custom-btn {
-        padding: 14px 35px !important;
+        padding: 14px 25px !important;
         font-size: 15px;
     }
 
@@ -243,6 +400,218 @@
 }
 
 @media (max-width: 991px) {
+
+    .review_show h5 {
+        font-size: 30px !important;
+    }
+
+    .section-3-img {
+        flex-direction: column;
+        width: 100%;
+    }
+    .section-3-img  img{
+        width: 100% !important;
+    }
+    .section-3-img figure{
+        width: 100% !important;
+    }
+
+    .profileparent{
+        height: auto !important;
+    }
+
+    .menu_active {
+        background: #d8dbe4;
+        padding: 10px !important;
+        font-size: 13px !important;
+    }
+
+
+    .modal .modal-dialog .modal-content .modal-header {
+        padding: 10px 16px;
+    }
+    .modal .modal-dialog .modal-content .modal-header h5{
+        font-size: 18px;
+    }
+
+    .modal .modal-dialog .modal-content .modal-body {
+        padding: 10px 16px;
+    }
+    .modal .modal-dialog .modal-content .modal-body h6{
+        font-size: 16px;
+    }
+    .modal .modal-dialog .modal-content .modal-body p{
+        font-size: 14px;
+    }
+
+    .modal .modal-dialog .modal-content .modal-footer {
+        padding: 10px 16px;
+    }
+
+    .about-sec-one {
+        height: auto !important;
+        padding: 8rem 0;
+    }
+
+    .sidebar {
+        position: static !important;
+        width: 100%;
+    }
+
+    .sidebar-offcanvas {
+        position: static !important;
+        top: 0;
+        bottom: 0;
+        overflow: auto;
+        left: 0;
+    }
+
+    ul#recent-teacher-responsive {
+        display: none;
+    }
+
+    .user ul {
+        height: auto;
+        max-height: 300px;
+    }
+
+    .job_view .flex-eye {
+        margin-top: 33px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .sidebarLeft {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+
+    .sidebar {min-height: auto;text-align: center;width: 100%;}
+
+    .profilebuttons ul {
+        display: flex;
+        align-items: baseline;
+        justify-content: start;
+        flex-wrap: nowrap;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+    .profilebuttons {
+        overflow-x: scroll;
+        width: 100%;
+    }
+
+    .user ul li form.connect-form {
+        position: absolute;
+        right: 80px;
+    }
+
+    .user ul li a.btn-small {
+        position: absolute;
+        right: 23px;
+    }
+
+    .user ul li {
+        position: relative;
+        z-index: 0;
+    }
+    .comment_box {
+        margin-top: 20px !important;
+    }
+
+    .comment_box .rating_client {
+        width: 25% !important;
+        text-align: start;
+    }
+
+    .client_star i {
+        font-size: 13px !important;
+        color: #ffe234;
+    }
+
+    div#navbarSupportedContent ul.navbar-nav {
+        background: #dadad9;
+    }
+
+    div#navbarSupportedContent .my-2 {
+        margin: 0 !important;
+    }
+    div#navbarSupportedContent li.nav-item.active{
+        border-radius: 0 !important;
+    }
+
+    div#navbarSupportedContent li.nav-item.active a {
+        background-color: #b8bab7;
+    }
+
+
+    .zig-zag.provider img{
+        width: 100% !important;
+    }
+
+    .Teacher-sec .content-zig {
+        margin-left: 1rem;
+        text-align: start;
+    }
+
+    .about-sec-two {
+        padding: 40px 0 30px 0 !important;
+    }
+
+    .box-new-1{
+        padding-top: 50px !important;
+
+    }
+
+    .about-sec-one {
+        height: 270px;
+    }
+
+    .about-sec-three {
+        height: auto !important;
+        padding: 2rem 0 !important;
+    }
+
+    .trands {
+        padding-bottom: 30px;
+    }
+
+    /* .about-sec-three{
+        height: 450px !important;
+    } */
+
+.sty {
+    width: 90% !important;
+    margin: auto;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 40px;
+    padding-right: 10px;
+}
+
+.sty #search-bar {
+    background: transparent;
+    border-right: 1px solid #495057;
+    height: 65px;
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.sty #state-input {
+    background: transparent;
+    border: none;
+    border-right: 1px solid #495057;
+    height: 65px;
+    border-left: none;
+    width: 100%;
+}
+
+
     nav.navbar.navbar-expand-lg a img {
         width: 65% !important;
         width: 100%;
@@ -254,8 +623,8 @@
         text-align: center;
     }
 
-    ul.navbar-nav li {
-        padding: 3px 0px;
+    div#navbarSupportedContent li a {
+        padding: 10px 0 !important;
     }
 
     form.form-inline {
@@ -463,7 +832,7 @@
         z-index: 0;
         left: 0;
         right: 0;
-        top: 120px;
+        top: 130px;
         background: #e3e3e3e6;
     }
     .childcare .custom-para {
@@ -571,6 +940,110 @@
 }
 
 @media (max-width: 767px) {
+
+    .section-3.main-padding .row {
+        padding: 0 !important;
+    }
+
+
+    .form-group label {
+        font-size: 16px !important;
+    }
+
+    .center-bar {
+        padding-top: 3rem !important;
+    }
+
+    .profilebg1 {
+        height: auto !important;
+        padding: 5rem 0 0 0 !important;
+    }
+
+    .profile1 img {
+        margin-left: 1rem !important;
+        margin-bottom: 6px !important;
+    }
+
+    .tabel_main {
+        display: flex;
+        justify-content: start;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow-y: scroll;
+    }
+
+    .modal .modal-dialog .modal-content .modal-header {
+        padding: 8px 12px;
+    }
+    .modal .modal-dialog .modal-content .modal-header h5{
+        font-size: 16px;
+    }
+
+    .modal .modal-dialog .modal-content .modal-body {
+        padding: 8px 12px;
+    }
+    .modal .modal-dialog .modal-content .modal-body h6{
+        font-size: 14px;
+    }
+    .modal .modal-dialog .modal-content .modal-body p{
+        font-size: 12px;
+    }
+
+    .modal .modal-dialog .modal-content .modal-footer {
+        padding: 8px 12px;
+    }
+    .modal .modal-dialog .modal-content .modal-footer a{
+        font-size: 14px;
+    }
+
+    .job-board {
+        padding: 20px 35px;
+    }
+
+    .info_rota {
+        width: 80% !important;
+        height: 330px ! IMPORTANT;
+        margin: auto;
+    }
+
+    .profile-name{
+        justify-content: start;
+    }
+
+    .about-sec-two.search-style {
+        padding-bottom: 0 !important;
+    }
+
+    .clien_details {
+        margin-bottom: 10px;
+        flex-direction: column !important;
+    }
+
+    div#navbarSupportedContent ul.navbar-nav {
+        background: #dadad9;
+    }
+
+    .mt-btn.join-now-style {
+        height: auto !important;
+        padding: 2rem 0;
+    }
+
+    .about-sec-one {
+        height: auto !important;
+        padding: 4rem 0;
+    }
+
+    .sec-one .sty {
+        width: 100% !important;
+        margin-top: 30px;
+        padding-right: 5px;
+    }
+
+    .sec-one h2 {
+        line-height: 50px;
+        font-size: 60px;
+    }
+
     header {
         z-index: 1;
     }
@@ -744,7 +1217,7 @@
     }
     .services {
         margin: auto;
-        width: 50%;
+        width: 60%;
         margin-bottom: 20px;
     }
 
@@ -776,6 +1249,10 @@
     .womenimg img {
         margin: auto;
         width: 65% !important;
+        display: flex;
+    }
+    .content-zig {
+        margin-top: 1rem !important;
     }
     .provider label span {
         margin: 0;
@@ -787,6 +1264,246 @@
 }
 
 @media (max-width: 575px) {
+
+    .review_show h5 {
+        font-size: 19px !important;
+    }
+
+    .tabs_info ul li a.nav-link {
+        font-size: 12px !important;
+        padding: 0px 5px !important;
+    }
+
+    .section-3-main-txt .heading-2 {
+        font-size: 30px !important;
+        line-height: 40px;
+    }
+    .section-3-main-txt h4 {
+        margin-bottom: 15px;
+        margin-top: 20px;
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 23px;
+        color: var(--black-color);
+    }
+
+    .rating_client i {
+        font-size: 25px !important;
+        color: #ffe234;
+    }
+
+    .form-group label {
+        font-size: 14px !important;
+    }
+
+    .parentNumber {
+        margin-bottom: 30px !important;
+    }
+
+    .profileparent {
+        height: auto !important;
+    }
+
+    .newfeed-image img {
+        height: 200px !important;
+        object-fit: cover;
+    }
+
+
+    .modal .modal-dialog .modal-content .modal-header {
+        padding: 6px 10px;
+    }
+    .modal .modal-dialog .modal-content .modal-header h5{
+        font-size: 15px;
+    }
+
+    .modal .modal-dialog .modal-content .modal-body {
+        padding: 6px 10px;
+    }
+    .modal .modal-dialog .modal-content .modal-body h6{
+        font-size: 13px;
+    }
+    .modal .modal-dialog .modal-content .modal-body p{
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .modal .modal-dialog .modal-content .modal-footer {
+        padding: 6px 10px;
+    }
+    .modal .modal-dialog .modal-content .modal-footer a{
+        font-size: 13px;
+    }
+
+
+    .bulletin_board {
+        padding: 0 30px !important;
+        padding-top: 60px !important;
+    }
+
+    .info_rota {
+        width: 100% !important;
+        height: 230px !important;
+    }
+
+    .welcome-sandbox button {
+        font-size: 15px !important;
+    }
+
+    .new-feedbut .but0 {
+        padding: 10px 40px;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 500;
+        justify-content: center;
+        text-align: center;
+        display: flex
+    ;
+    }
+
+    .profile1 img {
+        margin-left: 1rem;
+        margin-bottom: 8px;
+        border: 5px solid #151515;
+        border-radius: 101px;
+    }
+
+    .profile-name-bg {
+        background-color: #F5F7FC;
+        padding: 1rem  0 0 0;
+    }
+    .profilebg1 {
+        height: auto;
+        padding-top: 5rem;
+    }
+
+    .profileparent {
+        padding: 0rem 0rem;
+    }
+
+    .sty_para p {
+        font-size: 12px;
+    }
+
+    .client_info h4 {
+        font-size: 9px !important;
+    }
+
+    .current_info a {
+        font-size: 11px;
+    }
+
+    .current_info button {
+        font-size: 11px;
+    }
+
+    .client_star i {
+        font-size: 10px !important;
+        color: #ffe234;
+    }
+
+    .comment_box {
+        margin-top: 12px !important;
+        padding: 6px !important;
+    }
+
+    .profile_img figure img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+
+
+    .dashboard_details p {
+        font-size: 9px !important;
+        line-height: 11px !important;
+    }
+
+    div#navbarSupportedContent ul.navbar-nav {
+        background: #dadad9;
+    }
+
+    div#navbarSupportedContent {
+        padding: 0 0 10px 0;
+        top: 102px !important;
+        background: #e2e2e2 !important;
+    }
+
+    .Teacher-sec .content-zig {
+        margin-left: 0rem !important;
+        text-align: start;
+    }
+    .priority h1 {
+        font-size: 25px;
+        line-height: 40px;
+    }
+
+    .about-bottom {
+        padding-top: 280px !important;
+    }
+
+    .services {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .sec-three {
+        background-color: #f9fafb;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .searchable-input {
+        width: 100%;
+    }
+
+    .sec-one h2 span {
+        font-size: 30px !important;
+    }
+    .sec-one h2  {
+        line-height: 30px !important;
+    }
+
+    .search_bar_location input {
+        padding: 0 20px;
+    }
+
+    .sec-one .sty {
+        width: 100% !important;
+        margin-top: 10px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+        flex-direction: column;
+    }
+
+    .sty #state-input {
+        border: inherit;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0);
+    }
+
+    nav.navbar.navbar-expand-lg a img {
+        width: 65% !important;
+        width: 100%;
+        left: 48%;
+        height: 130px;
+    }
+
+    div#navbarSupportedContent {
+        top: 110px;
+        background: transparent;
+    }
+    ul.navbar-nav li{
+        padding: 0 !important;
+    }
+
+    div#navbarSupportedContent ul li a {
+        padding: 20px;
+        background: #e3e3e3e6;
+    }
+
     .custom-btn {
         padding: 8px 20px !important;
     }
@@ -866,7 +1583,11 @@
     }
 
     .about-us h2 {
-        font-size: 30px;
+        font-size: 26px;
+    }
+
+    .about-sec-one {
+        padding: 3rem 0  !important;
     }
 
     .about-bottom {
@@ -913,7 +1634,8 @@
         width: 92%;
     }
     .about-pg {
-        height: 550px !important;
+        height: auto !important;
+        padding: 1rem 0 !important;
     }
 
     .Teacher-Banner {

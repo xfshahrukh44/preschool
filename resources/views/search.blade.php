@@ -53,7 +53,7 @@
 
         .clien_details {
             display: flex;
-            align-items: end;
+            align-items: start;
             justify-content: space-between;
             margin-bottom: 20px
         }
@@ -65,15 +65,16 @@
         }
 
         .profile_img figure img {
-            width: 110px !important;
-            height: 120px !important;
+            width: 50px !important;
+            height: 50px !important;
         }
 
         .client_info h4 {
             font-weight: bold;
             color: black;
-            font-size: 20px;
-            margin-bottom: 0;
+            font-size: 14px;
+            margin: 0;
+            padding-bottom: 3px;
         }
 
         .client_info p {
@@ -92,7 +93,7 @@
         }
 
         .rating_client span {
-            font-size: 30px;
+            font-size: 18px;
             color: black;
             font-weight: bold;
         }
@@ -118,10 +119,11 @@
         }
 
         .dashboard_details p {
-            color: black;
-            font-weight: 500;
-            font-size: 16px;
-        }
+    color: black;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
 
         .search_bar_location {
             display: flex;
@@ -145,9 +147,9 @@
         }
 
         .dashboard_details {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             border: 1px solid #0000002b;
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
         }
 
@@ -252,7 +254,7 @@
     </section>
 
 
-    <section class="about-sec-two">
+    <section class="about-sec-two search-style">
         <div class="container">
 
             <div class="row">
@@ -369,7 +371,7 @@
                                     </div>
                                 </div>
                                 <div class="rating_client">
-                                    <span>{{ $average_rating ?? 0.0 }}</span>
+                                    {{-- <span>{{ $average_rating ?? 0.0 }}</span> --}}
                                     <div class="client_star">
                                         <?php for ($i = 0; $i < $full_stars; $i++): ?>
                                         <i class="fa-solid fa-star"></i>

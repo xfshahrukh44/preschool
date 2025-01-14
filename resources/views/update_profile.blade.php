@@ -213,7 +213,7 @@
             <div class="profile-name-bg">
                 <div class="row">
 
-                    <div class="col-md-3">
+                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 order-md-12 col-sm-12 col-12">
                         <div class="profile-name">
                             <h5> {{ Auth::user()->name }} {{ Auth::user()->lname }} <span> {{ Auth::user()->email }}
                                 </span></h5>
@@ -232,7 +232,7 @@
 
                 @include('teacher_menues')
 
-                <div class="col-lg-6 col-md-8">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-2 order-md-3 order-sm-3 order-3">
 
                     <div class="profileparent">
                         <div class="profilein1">
@@ -417,11 +417,11 @@
 
                                     <select type="text" name="age_accepted[]" class="form-control" multiple
                                         id="age_accepted">
-                                        <option>--Select--</option> 
+                                        <option>--Select--</option>
                                         <option {!! in_array("0-12 months", $age_accepted) ? "selected" : "" !!}>0-12 months</option>
                                         <option {!! in_array("12-24 months", $age_accepted) ? "selected" : "" !!}>12-24 months</option>
                                         <option {!! in_array("2-5 years", $age_accepted) ? "selected" : "" !!}>2-5 years</option>
-                                        <option {!! in_array("5+ years", $age_accepted) ? "selected" : "" !!}>5+ years</option> 
+                                        <option {!! in_array("5+ years", $age_accepted) ? "selected" : "" !!}>5+ years</option>
                                     </select>
 
                                 </div>
@@ -442,7 +442,7 @@
                 </div>
 
 
-                <div class="col-md-3 sidebarleftprofile">
+                <div class="col-lg-3 col-md-12 col-sm-12 col-12 order-lg-3 order-md-2 order-sm-2 order-2 sidebarleftprofile">
 
                     @include('all_teacher')
 

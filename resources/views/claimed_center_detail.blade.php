@@ -362,7 +362,7 @@
 
         </div>
     </section>
-    <section class="section-3">
+    <section class="section-3 main-padding">
         <div class="container-fluid">
             <div class="row" style="padding-left: 150px;padding-right: 150px;">
                 <div class="col-lg-12">
@@ -475,7 +475,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                     <div class="row">
-                                        
+
                                         <div class="col-lg-12">
                                             <div class="section-3-main-txt">
                                                 <h2 class="heading-2" style="color:#000;">About the facility</h2>
@@ -556,9 +556,9 @@
                                                 </div>
                                             @endif
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 col-md-12">
                                             <div class="row">
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-12 col-md-12">
                                                     @if (!is_null($get_claimed_daycare_center_detail->services))
                                                         <div class="col-md-6">
                                                             <h3 style="color: black;">Services</h3>

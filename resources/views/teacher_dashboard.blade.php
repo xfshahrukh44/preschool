@@ -243,7 +243,7 @@ use DateTime;
             <div class="profile-name-bg">
                 <div class="row">
 
-                    <div class="col-md-3">
+                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 order-md-12 col-sm-12 col-12">
                         <div class="profile-name">
                             <h5> {{ Auth::user()->name }} {{ Auth::user()->lname }} <span> {{ Auth::user()->email }}
                                 </span></h5>
@@ -263,7 +263,7 @@ use DateTime;
 
                 @include('teacher_menues')
 
-                <div class="col-lg-6 col-md-8">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 order-xxl-2 order-xl-2 order-lg-2 order-md-3 order-sm-3 order-2">
 
 
                     <form action="{{ route('teacher_create_new_post') }}" id="save_post" method="post"
@@ -343,7 +343,7 @@ use DateTime;
                 </div>
 
 
-                <div class="col-md-3 sidebarleftprofile">
+                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 order-xxl-3 order-xl-3 order-lg-3 order-md-2 order-sm-2 sidebarleftprofile">
 
                     @include('all_teacher')
 

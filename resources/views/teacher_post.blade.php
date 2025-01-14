@@ -8,262 +8,7 @@ use DateTime;
 <html lang="en">
 
 @include('headerlink')
-<style>
-    .fill-5 {
-        animation: fill 5s linear 1;
-    }
 
-    .fill-4 {
-        animation: fill 4s linear 1;
-    }
-
-    .fill-3 {
-        animation: fill 3s linear 1;
-    }
-
-    .fill-2 {
-        animation: fill 2s linear 1;
-    }
-
-    .fill-1 {
-        animation: fill 1s linear 1;
-    }
-
-    @keyframes fill {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 100%;
-        }
-    }
-
-    .progress {
-        --bs-progress-height: 1rem;
-        --bs-progress-font-size: 0.75rem;
-        --bs-progress-bg: #e9ecef;
-        --bs-progress-border-radius: 0.375rem;
-        --bs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-        --bs-progress-bar-color: #fff;
-        --bs-progress-bar-bg: #0d6efd;
-        --bs-progress-bar-transition: width 0.6s ease;
-        display: flex;
-        height: var(--bs-progress-height);
-        overflow: hidden;
-        font-size: var(--bs-progress-font-size);
-        background-color: var(--bs-progress-bg);
-        border-radius: var(--bs-progress-border-radius);
-    }
-
-    .progress-bar {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        overflow: hidden;
-        color: var(--bs-progress-bar-color);
-        text-align: center;
-        white-space: nowrap;
-        background-color: var(--bs-progress-bar-bg);
-        transition: var(--bs-progress-bar-transition);
-    }
-
-
-    .newfeed_progress {
-        background-color: #F5F7FC;
-        border: 8px;
-        padding: 8px 8px;
-        margin-top: 13px;
-    }
-
-
-    .sidebar {
-        position: fixed !important;
-        width: 25%;
-    }
-
-    .new-feedbut {
-        margin-top: 13px;
-        display: flex;
-        /* width: 65rem; */
-    }
-
-    /*select2 css*/
-    span.select2.select2-container.select2-container--default {
-        width: 100% !important;
-        margin-top: 10px;
-    }
-
-    textarea.select2-search__field {
-        font-size: 15px !important;
-    }
-
-    .share_post .newfeed {
-        margin: 0 40px;
-        padding: 10px 20px;
-    }
-
-    .share_post {
-        margin: 40px 0;
-        border: 2px solid #70809047;
-        padding: 10px 10px;
-        background: #d8dbe4;
-    }
-
-    .share_post .new-feedbut .but2 {
-        width: 30%;
-    }
-
-    .share_post .new-feedbut {
-        margin-top: 40px;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .user ul {
-        height: 150px;
-    }
-
-
-    .home-sec .sidebarleft {
-        height: auto;
-        position: unset;
-    }
-
-    .sidebarleft .job_view {
-        height: 300px;
-        overflow-y: auto;
-    }
-
-    .sidebarleft .center-info h6 {
-        font-size: 14px;
-        font-weight: 500;
-        padding: 0;
-        margin: 0;
-        line-height: 32px;
-    }
-
-    .sidebarleft .center-info p a {
-        text-decoration: none;
-        color: #747272;
-        font-weight: 500;
-        font-size: 13px;
-    }
-
-    .btn-sm {
-        padding: 4px 8px !important;
-        font-size: 12px !important;
-        border-radius: 0 !important;
-    }
-
-    .sidebarleft .center-info p {
-        margin: 0;
-    }
-
-    .sidebarleft .apply {
-        padding: 0;
-    }
-
-    .flex-eye {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 30px;
-        padding-right: 10px;
-    }
-
-
-    .home-sec1 .sidebarLeft {
-        position: unset !important;
-        height: 100%;
-    }
-
-    .home-sec1 .sidebarLeft .sidebarleft {
-        height: unset !important;
-    }
-
-    @media(max-width:1440px) {
-
-        .new-feedbut .but1,
-        .but2 {
-            width: 20%;
-            margin-left: 5px;
-        }
-    }
-
-    .welcome-sandbox {
-        width: 100%;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .welcome-sandbox h1,
-    .welcome-sandbox h2 {
-        color: #333;
-    }
-
-    .welcome-sandbox ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .welcome-sandbox ul li {
-        padding: 5px 0;
-    }
-
-    .welcome-sandbox a {
-        color: #007BFF;
-        text-decoration: none;
-    }
-
-    .welcome-sandbox a:hover {
-        text-decoration: underline;
-    }
-
-    .welcome-sandbox .section {
-        margin-bottom: 20px;
-    }
-
-    .welcome-sandbox .section-title {
-        font-weight: bold;
-    }
-
-    .welcome-sandbox .card-header {
-        padding: 0;
-        background: none;
-        border: none;
-        padding-left: 1.25rem;
-    }
-
-    .welcome-sandbox .card-header button {
-        text-decoration: none;
-        color: red;
-        font-weight: 600;
-        font-size: 18px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .welcome-sandbox .card {
-        background: transparent;
-        border: none;
-    }
-
-    .welcome-sandbox .card-header .btn-link.collapsed span {
-        transition: all ease 0.5s;
-        transform: rotate(0deg);
-    }
-
-    .welcome-sandbox .card-header .btn-link span {
-        transform: rotate(90deg);
-        transition: all ease 0.5s;
-    }
-</style>
 
 <body>
 
@@ -273,9 +18,9 @@ use DateTime;
 
 
 
-            <div class="row">
+            <div class="row justify-content-center">
 
-                <div class="col-lg-3 dashboard-nav">
+                <div class="col-lg-3 col-md-5 col-sm-5 col-12 order-lg-1 order-md-1 order-sm-1 order-1 dashboard-nav">
                     <nav class="sidebar sidebar-offcanvas mesgSidebar" id="sidebar">
                         <div class="logoDiv">
 
@@ -306,7 +51,7 @@ use DateTime;
                                 </a>
 
                         </div>
-                        <ul class="nav">
+                        <ul class="nav" id="recent-teacher-responsive">
 
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
@@ -334,7 +79,7 @@ use DateTime;
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6  col-md-12 col-sm-12 col-12 order-lg-2 order-md-3 order-sm-3 order-3">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="center-bar">
@@ -1006,7 +751,7 @@ use DateTime;
                 </div>
 
 
-                <div class="col-lg-3 desktop-chat">
+                <div class="col-lg-3 col-md-12 col-sm-12 col-12 order-lg-3 order-md-2 order-sm-2 order-2 desktop-chat">
                     <div class="sidebarLeft side-ri">
                         <div class="searimg">
 

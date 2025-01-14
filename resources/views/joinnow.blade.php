@@ -14,8 +14,8 @@
 }
 
 #embed-map-display .text-marker{}.map-generator{
-    max-width: 100%; 
-    max-height: 100%; 
+    max-width: 100%;
+    max-height: 100%;
     background: none;
 }
 
@@ -52,37 +52,37 @@
 </section>
 
 
-<section class="mt-btn" style="height:250px;">
-    
+<section class="mt-btn join-now-style" style="height:250px;">
+
     <div class="container">
-        
+
         <div class="row">
-            
+
 {{--            <div class="col-lg-4"> --}}
 {{--            --}}
 {{--                <a href="{{'signup'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "signup"){ echo 'background-color:#f84c8f';} ?>">   Become A User </a>--}}
 {{--            --}}
 {{--            </div>--}}
-            
+
             <div class="col-lg-6 col-md-6 col-6">
-            
+
 {{--                <a href="{{'become-a-teacher'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "become-a-teacher"){ echo 'background-color:#f84c8f';} ?>">   Become A Teacher </a>--}}
                 <a href="{{'become-a-teacher'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "become-a-teacher"){ echo 'background-color:#f84c8f';} ?>">Individual</a>
 
             </div>
-            
+
             <div class="col-lg-6  col-md-6 col-6">
-            
+
 {{--                <a href="{{'become-a-provider'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "become-a-provider"){ echo 'background-color:#f84c8f';} ?>">  Become A Provider </a> --}}
                 <a href="{{'become-a-provider'}}" class="custom-btn spc" type="submit" style="color:#fff !important;<?php if($segment == "become-a-provider"){ echo 'background-color:#f84c8f';} ?>">  Business </a>
 
             </div>
-            
+
         </div>
-        
+
     </div>
-    
-    
+
+
 </section>
 
 <!-- ============================================================== -->

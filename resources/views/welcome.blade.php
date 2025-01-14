@@ -187,16 +187,6 @@
             align-items: center;
         }
 
-        .our-goal p {
-            color: #b3b3b3;
-            margin: auto;
-            text-align: center;
-            width: 70%;
-            font-size: 25px !important;
-            line-height: 25px;
-            margin-top: 60px;
-        }
-
 
 
         .search_bar_location {
@@ -275,42 +265,6 @@
             border-radius: 0;
         }
 
-        }
-        }
-
-        .sty {
-            display: flex;
-            justify-content: space-between;
-            width: 80% !important;
-            margin: auto;
-            background-color: var(--header-color);
-            align-items: center;
-            border-radius: 5px;
-            margin-top: 40px;
-            /* padding-top: 6px; */
-            padding-right: 10px;
-            /* padding-left: 10px; */
-            /* padding-bottom: 6px; */
-            border: 1px solid #000;
-        }
-
-        .sty #search-bar {
-            background: transparent;
-            border-right: 1px solid #495057;
-            height: 65px;
-            border-radius: 0;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-        }
-
-        .sty #state-input {
-            background: transparent;
-            border: none;
-            border-right: 1px solid #495057;
-            height: 65px;
-            border-left: none;
-            width: 417px;
-        }
 
         div#city-results {
             position: absolute;

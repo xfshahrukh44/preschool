@@ -1,5 +1,5 @@
-<?php 
-use App\User; 
+<?php
+use App\User;
 use Carbon\Carbon;
 use DateTime;
 ?>
@@ -74,10 +74,10 @@ use DateTime;
 
 
 .scroll{
-    
+
     height:1000px;
     overflow-y: scroll;
-    
+
 }
 
 /*header*/
@@ -173,7 +173,7 @@ li.nav-item.active {
 <section class="back">
 
     <div class="container-fluid">
-    
+
     <div class="profilebg1" style="<?php if(Auth::user()->banner_image != ''){ echo "background-image: url('".asset(Auth::user()->banner_image)."') !important;"; }else{ echo 'background-image: url('.asset("images/profilebg.png").') !important;';} ?> background-size: cover !important;">
             <div class="row">
                 <div class="col-md-12">
@@ -187,81 +187,81 @@ li.nav-item.active {
                 </div>
             </div>
         </div>
-        
+
         <div class="profile-name-bg">
             <div class="row">
-                
-                <div class="col-md-3">
+
+                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 order-md-12 col-sm-12 col-12">
                     <div class="profile-name">
                         <h5> {{Auth::user()->name}} {{Auth::user()->lname}} <span> {{Auth::user()->email}} </span></h5>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-        
+
     </div>
 
     <div class="container-fluid">
         <div class="feedDiv" data-toggle="modal" data-target="#feedModal">
             <i class="fas fa-address-book"></i>
         </div>
-        <div class="row">
-            
+        <div class="row justify-content-center">
+
             @include('teacher_menues')
 
-                
-                <div class="col-lg-6 col-md-8 scroll">
+
+                <div class="col-lg-5 col-md-0 col-sm-12 col-12 order-lg-2 order-md-3 order-sm-3 order-3 scroll main-height">
 
 
                     @foreach($get_my_pinned as $val_pinned)
                     <div class="comment_div">
-    
+
                             <div class="newfeed">
-    
+
                             <input type="hidden" name="" id="get_id" value="{{$val_pinned->post_id}}">
-    
+
                             <div class="newfeed-profile-name">
-    
+
                                 <img style="height:60px; width:60px; border-radius:50px" src="{{asset(App\User::find($val_pinned->user_id)->image ?? 'assets/imgs/noimage.png')}}" class="img-fluid">
-    
+
                                 <h4> {{App\User::find($val_pinned->user_id)->name}} <span> {{ Carbon::parse($val_pinned->created_at)->diffForHumans() }} </span></h4>
-      
+
                             </div>
-    
+
                             <div class="newfeed-image">
-    
+
                                 <p> {{App\Models\Post::find($val_pinned->post_id)->post}} </p>
-    
+
                             </div>
-    
+
                             <div class="newfeed-image">
-    
+
                                 <img style="height:400px; width:100%; border-radius:10px;" src="{{asset(App\Models\Post::find($val_pinned->post_id)->image)}}" class="img-fluid">
-    
+
                             </div>
-    
-                             
+
+
                             <hr>
-                 
-    
+
+
                             </div>
-                        
-    
+
+
                     </div>
                     @endforeach()
-            
+
 
                 </div>
 
 
-            <div class="col-md-3 sidebarleftprofile">
+            <div class="col-lg-4 col-md-8 col-sm-12 col-12 order-lg-3 order-md-2 order-sm-2 order-2 sidebarleftprofile">
 
                 @include('all_teacher')
 
             </div>
 
-             
+
         </div>
     </div>
 

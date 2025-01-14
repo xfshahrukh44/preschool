@@ -4,7 +4,7 @@ $segment = Request::segment(1);
 
 ?>
 
-<div class="col-lg-3 col-md-4 feedcol">
+<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 order-xxl-1 order-xl-1 order-lg-1 order-md-1 order-sm-1 feedcol">
     <div class="sidebarleft">
         <div class="profilebuttons">
             <ul>

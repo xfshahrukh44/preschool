@@ -109,6 +109,40 @@
 }
 @media (max-width: 1199px) {
 
+    .main-responsive-style .searchable-input #state-results {
+        width: 40% !important;
+    }
+
+    .main-responsive-style .searchable-input div#city-results {
+        position: absolute;
+        right: 20%;
+        width: 40% !important;
+    }
+
+    div#city-results {
+        position: absolute;
+        left: 0;
+        width: 246px;
+    }
+
+
+    .sty #state-input {
+        width: 357px !important;
+    }
+
+    .searchable-input #state-results {
+        width: 357px !important;
+    }
+
+    div#city-results {
+        width: 362px !important;
+    }
+
+
+    .show_inner {
+        padding: 60px !important;
+    }
+
     .section-3-img img {
         height: 212px !important;
         margin-bottom: 30px !important;
@@ -401,8 +435,38 @@
 
 @media (max-width: 991px) {
 
+    .main-responsive-style .searchable-input #state-results {
+        width: 44% !important;
+    }
+
+    .main-responsive-style .searchable-input div#city-results {
+        position: absolute;
+        right: 13%;
+        width: 44% !important;
+    }
+
+
+
+    .sty #state-input {
+        width: 260px !important;
+    }
+
+    .searchable-input #state-results {
+        width: 50% !important;
+    }
+
+    div#city-results {
+        width: 50% !important;
+    }
+
+
     .review_show h5 {
         font-size: 30px !important;
+    }
+
+
+    .show_inner {
+        padding: 40px !important;
     }
 
     .section-3-img {
@@ -941,6 +1005,48 @@
 
 @media (max-width: 767px) {
 
+    .main-responsive-style .searchable-input #state-results {
+        width: 45% !important;
+    }
+
+    .main-responsive-style .searchable-input div#city-results {
+        position: absolute;
+        right: 12%;
+        width: 45% !important;
+    }
+
+
+    .sty #state-input {
+        width: 230px !important;
+    }
+
+    .searchable-input #state-results {
+        width: 50% !important;
+    }
+
+    .searchable-input #city-results {
+        width: 52% !important;
+    }
+
+    .project_form label {
+        font-size: 18px !important;
+        line-height: 30px !important;
+    }
+
+    .porject_btn {
+        margin-bottom: 30px !important;
+    }
+
+    .show_inner {
+        padding: 40px 10px !important;
+    }
+
+
+    .project_form {
+        padding: 15px !important;
+    }
+
+
     .section-3.main-padding .row {
         padding: 0 !important;
     }
@@ -1264,6 +1370,36 @@
 }
 
 @media (max-width: 575px) {
+
+
+    .main-responsive-style .searchable-input #state-results {
+        width: 100% !important;
+        top: 44px;
+    }
+
+    .main-responsive-style .searchable-input div#city-results {
+        position: absolute;
+        right: 0%;
+        width: 100% !important;
+        top: 44px;
+    }
+
+
+    .sty #state-input {
+        width: 100% !important;
+    }
+
+    .searchable-input #state-results {
+        width: 100% !important;
+        position: absolute;
+        top: 60px;
+    }
+    .searchable-input #city-results {
+        width: 100% !important;
+        position: absolute;
+        top: 125px;
+    }
+
 
     .review_show h5 {
         font-size: 19px !important;

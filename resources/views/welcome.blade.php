@@ -10,6 +10,9 @@
             height: 800px;
             display: flex;
             align-items: center;
+            position: relative;
+            z-index: 1;
+
         }
 
 

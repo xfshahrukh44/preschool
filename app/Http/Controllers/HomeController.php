@@ -269,7 +269,7 @@ class HomeController extends Controller
             $query->where('state', 'LIKE', "%{$request->state}%");
         }
 
-        $search_result = $query->paginate(25);
+        $search_result = $query->paginate(25)->onEachSide(0);
         return view('search', compact('page', 'section', 'search_result', 'search'));
     }
 

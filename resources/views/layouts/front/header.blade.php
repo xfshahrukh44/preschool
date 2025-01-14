@@ -16,7 +16,7 @@
         align-items: center;
         justify-content: center;
         /*margin-bottom: 20px !important;*/
-        z-index: 1;
+        z-index: 999;
     }
 </style>
 

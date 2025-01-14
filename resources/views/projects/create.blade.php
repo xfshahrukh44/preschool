@@ -77,7 +77,7 @@
     <section class="projects_sect show_inner">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="porject_btn">
                         <a href="{{ route('projects.index') }}" class="btn btn-success">Project</a>
                     </div>

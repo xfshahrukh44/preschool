@@ -254,7 +254,7 @@
     </section>
 
 
-    <section class="about-sec-two search-style">
+    <section class="about-sec-two search-style main-responsive-style">
         <div class="container">
 
             <div class="row">
@@ -321,7 +321,7 @@
                     No daycares found
                 </div>
             @endif
-            <div class="row">
+            <div class="row justify-content-center">
                 {{-- @dd($search_result); --}}
                 @foreach ($search_result as $key => $val_search)
                     @php

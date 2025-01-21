@@ -378,7 +378,12 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <p><a href="#">{{ $get_claimed_daycare_center_detail->physical_address }}</a>
+{{--                                        <p><a href="#">{{ $get_claimed_daycare_center_detail->physical_address }}</a>--}}
+{{--                                        </p>--}}
+                                        <p>
+                                            <a href="#">
+                                                {{ $get_claimed_daycare_center_detail->city ?? '' . ' ' . $get_claimed_daycare_center_detail->state }}
+                                            </a>
                                         </p>
                                     </td>
                                 </tr>
@@ -493,8 +498,16 @@
                                                     <b>Phone: </b> {{ $claimant->phone }}
                                                     <br />
                                                 @endif
-                                                @if ($claimant->age_accepted)
-                                                    <b>Ages accepted: </b> {{ $claimant->age_accepted }}
+                                                @if ($get_claimed_daycare_center_detail->age_accepted)
+                                                    <b>Ages accepted: </b> {{ $get_claimed_daycare_center_detail->age_accepted }}
+                                                    <br />
+                                                @endif
+                                                @if ($get_claimed_daycare_center_detail->food_served)
+                                                    <b>Food served: </b> {{ $get_claimed_daycare_center_detail->food_served }}
+                                                    <br />
+                                                @endif
+                                                @if ($get_claimed_daycare_center_detail->costing)
+                                                    <b>Costing: </b> {{ $get_claimed_daycare_center_detail->costing }}
                                                 @endif
 
                                                 <br />
@@ -727,6 +740,7 @@
                                             <li>Comprehensive care and support programs</li>
                                             <li>Community involvement and outreach</li>
                                             <li>Advanced technology and equipment</li>
+                                            <li>Provider Enrollment</li>
                                         </ul>
 
                                     </div>

@@ -357,17 +357,28 @@
                                     </figure>
                                     <div class="client_info">
                                         <h4>{{ $val_search->name ? $val_search->name : 'N\A' }}</h4>
-                                        <p>
-                                            {{ $val_search->physical_address ?? 'N/A' }}
-                                            {{-- @if (!empty($val_search->city) && !empty($val_search->state))
-                                                {{ $val_search->city . ',' . $val_search->state }},
-                                            @else
-                                                {{ $val_search->city . ' ' . ($val_search->state = 'N\A') }}
-                                            @endif --}}
-                                        </p>
-                                        <p>Address: {{ $data->address ?? 'N/A' }}</p>
-                                        <p>Phone Number: {{ $data->phone ?? 'N/A' }}</p>
-                                        <p>Age Accepted: {{ $data->age_accepted ?? 'N/A' }}</p>
+{{--                                        <p>--}}
+{{--                                            {{ $val_search->physical_address ?? 'N/A' }}--}}
+{{--                                            --}}{{-- @if (!empty($val_search->city) && !empty($val_search->state))--}}
+{{--                                                {{ $val_search->city . ',' . $val_search->state }},--}}
+{{--                                            @else--}}
+{{--                                                {{ $val_search->city . ' ' . ($val_search->state = 'N\A') }}--}}
+{{--                                            @endif --}}
+{{--                                        </p>--}}
+                                        <p>Address: {{ $val_search->physical_address ?? 'N/A' }}</p>
+                                        <p>Phone Number: {{ $val_search->phone ?? 'N/A' }}</p>
+                                        @if($val_search->age_accepted)
+                                            {{--age accepted--}}
+                                            <p>Ages Accepted: {{ $val_search->age_accepted }}</p>
+                                        @endif
+                                        @if($val_search->food_served)
+                                            {{--age accepted--}}
+                                            <p>Food served: {{ $val_search->food_served }}</p>
+                                        @endif
+                                        @if($val_search->costing)
+                                            {{--age accepted--}}
+                                            <p>Costing: {{ $val_search->costing }}</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="rating_client">
@@ -580,10 +591,10 @@
                                     <select type="text" name="age_accepted[]" class="form-control age_accepted"
                                         multiple id="">
                                         <option>--Select--</option>
-                                        <option {!! in_array('0-12 months', $age_accepted) ? 'selected' : '' !!}>0-12 months</option>
-                                        <option {!! in_array('12-24 months', $age_accepted) ? 'selected' : '' !!}>12-24 months</option>
-                                        <option {!! in_array('2-5 years', $age_accepted) ? 'selected' : '' !!}>2-5 years</option>
-                                        <option {!! in_array('5+ years', $age_accepted) ? 'selected' : '' !!}>5+ years</option>
+                                        <option value="0-12 months" {!! in_array('0-12 months', $age_accepted) ? 'selected' : '' !!}>0-12 months</option>
+                                        <option value="12-24 months" {!! in_array('12-24 months', $age_accepted) ? 'selected' : '' !!}>12-24 months</option>
+                                        <option value="2-5 years" {!! in_array('2-5 years', $age_accepted) ? 'selected' : '' !!}>2-5 years</option>
+                                        <option value="5+ years" {!! in_array('5+ years', $age_accepted) ? 'selected' : '' !!}>5+ years</option>
                                     </select>
                                     {{-- <select type="text" name="age_accepted[]" class="form-control age_accepted"
                                         multiple id="">
@@ -596,6 +607,26 @@
                                         <option {!! in_array('School-ager', $age_accepted) ? 'selected' : '' !!}>School-ager</option>
                                     </select> --}}
 
+                                </div>
+
+                                <div class="col-md-12 mb-12">
+                                    <label for="">Food Served :</label>
+{{--                                    @php--}}
+{{--                                        $food_served = explode(',', Auth::user()->food_served);--}}
+{{--                                    @endphp--}}
+                                    <select type="text" name="food_served[]" class="form-control food_served"
+                                        multiple id="">
+                                        <option value="Breakfast">Breakfast</option>
+                                        <option value="Lunch">Lunch</option>
+                                        <option value="Snacks">Snacks</option>
+                                        <option value="Dinner">Dinner</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-12 mb-12">
+                                    <label> Costing </label>
+                                    <input type="text" name="costing" value="{{ $value->costing }}" class="form-control" placeholder="Costing (ex. $4 - $6)" />
                                 </div>
 
 
@@ -914,6 +945,7 @@
                 $('#modal_agree_to_sandbox_terms').modal('show');
             }
             $('.age_accepted').select2();
+            $('.food_served').select2();
         });
     </script>
 @endsection

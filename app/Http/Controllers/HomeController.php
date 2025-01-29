@@ -157,6 +157,19 @@ class HomeController extends Controller
         return view('claimed_center_detail', compact('page', 'section', 'get_reviews', 'get_claimed_daycare_center_detail', 'claimant'));
 
     }
+    // public function claimed_center_detail($id = "")
+    // {
+
+    //     $page = DB::table('pages')->where('id', 2)->first();
+    //     $section = DB::table('section')->where('page_id', 2)->get();
+
+    //     $get_claimed_daycare_center_detail = DB::table('childcares')->where('id', $id)->where('claim_status', '2')->where('status', '1')->first();
+    //     $get_reviews = DB::table('reviews')->where('daycareid', $id)->take(5)->get();
+    //     $claimant = User::find($get_claimed_daycare_center_detail->claimed_by_id);
+
+    //     return view('claimed_center_detail', compact('page', 'section', 'get_reviews', 'get_claimed_daycare_center_detail', 'claimant'));
+
+    // }
 
 
     public function teacher()
@@ -267,6 +280,16 @@ class HomeController extends Controller
 
         if ($request->filled('state')) {
             $query->where('state', 'LIKE', "%{$request->state}%");
+        }
+
+        if ($request->filled('age_accepted')) {
+            $ages = $request->input('age_accepted');
+
+            $query->where(function ($q) use ($ages) {
+                foreach ($ages as $age) {
+                    $q->orWhere('age_accepted', 'LIKE', "%$age%");
+                }
+            });
         }
 
         $search_result = $query->paginate(25)->onEachSide(0);

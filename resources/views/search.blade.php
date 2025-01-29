@@ -119,11 +119,11 @@
         }
 
         .dashboard_details p {
-    color: black;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-}
+            color: black;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 16px;
+        }
 
         .search_bar_location {
             display: flex;
@@ -224,6 +224,33 @@
             left: 0;
             width: 242px;
         }
+
+        .select2-selection__choice {
+            font-size: 14px !important;
+            padding: 6px !important;
+            background: #0B94F7 !important;
+        }
+
+        .select2-selection.select2-selection--multiple {
+            background: #f5f7fc;
+        }
+
+        span.select2.select2-container.select2-container--default {
+            width: 100% !important;
+            margin-top: 10px;
+        }
+
+        select.form-control.age_accepted.select2-hidden-accessible {
+            width: 100% !important;
+            height: 50px !important;
+        }
+
+        .searchable-input {
+            width: 33%;
+        }
+        .custom-select {
+            height: 45px;
+        }
     </style>
 @endsection
 
@@ -286,6 +313,27 @@
                                 placeholder="Search Cities" disabled>
                             <div id="city-results" class="dropdown-menu"></div>
                         </div>
+
+                        <div class="searchable-input">
+                            @php
+                                $age_accepted = explode(',', Auth::user()->age_accepted);
+                            @endphp
+                            {{-- <select type="text" name="age_accepted[]" class="form-control age_accepted" multiple
+                                id="age_accepted">
+                                <option>--Select--</option>
+                                <option>0-12 months</option>
+                                <option>12-24 months</option>
+                                <option>2-5 years</option>
+                                <option>5+ years</option>
+                            </select> --}}
+                            <select name="age_accepted[]" class="form-control">
+                                <option>Select Age</option>
+                                <option value="0-12 months">0-12 months</option>
+                                <option value="12-24 months">12-24 months</option>
+                                <option value="2-5 years">2-5 years</option>
+                                <option value="5+ years">5+ years</option>
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-block"><i class="fas fa-search"></i></button>
                     </form>
 
@@ -325,9 +373,7 @@
                 {{-- @dd($search_result); --}}
                 @foreach ($search_result as $key => $val_search)
                     @php
-                        $average_rating = DB::table('reviews')
-                            ->where('daycareid', $val_search->id)
-                            ->avg('rate');
+                        $average_rating = DB::table('reviews')->where('daycareid', $val_search->id)->avg('rate');
                         $rounded_rating = round($average_rating);
 
                         $full_stars = floor($average_rating);
@@ -338,9 +384,7 @@
                             ->orderBy('id', 'DESC')
                             ->first();
                         $rating = $latest_review ? $latest_review->rate : 0;
-                        $data = DB::table('users')
-                            ->where('id', $val_search->claimed_by_id)
-                            ->first();
+                        $data = DB::table('users')->where('id', $val_search->claimed_by_id)->first();
                     @endphp
                     <div class="col-lg-12">
                         <div class="dashboard_details">
@@ -357,26 +401,26 @@
                                     </figure>
                                     <div class="client_info">
                                         <h4>{{ $val_search->name ? $val_search->name : 'N\A' }}</h4>
-{{--                                        <p>--}}
-{{--                                            {{ $val_search->physical_address ?? 'N/A' }}--}}
-{{--                                            --}}{{-- @if (!empty($val_search->city) && !empty($val_search->state))--}}
-{{--                                                {{ $val_search->city . ',' . $val_search->state }},--}}
-{{--                                            @else--}}
-{{--                                                {{ $val_search->city . ' ' . ($val_search->state = 'N\A') }}--}}
-{{--                                            @endif --}}
-{{--                                        </p>--}}
+                                        {{--                                        <p> --}}
+                                        {{--                                            {{ $val_search->physical_address ?? 'N/A' }} --}}
+                                        {{--                                            --}}{{-- @if (!empty($val_search->city) && !empty($val_search->state)) --}}
+                                        {{--                                                {{ $val_search->city . ',' . $val_search->state }}, --}}
+                                        {{--                                            @else --}}
+                                        {{--                                                {{ $val_search->city . ' ' . ($val_search->state = 'N\A') }} --}}
+                                        {{--                                            @endif --}}
+                                        {{--                                        </p> --}}
                                         <p>Address: {{ $val_search->physical_address ?? 'N/A' }}</p>
                                         <p>Phone Number: {{ $val_search->phone ?? 'N/A' }}</p>
-                                        @if($val_search->age_accepted)
-                                            {{--age accepted--}}
+                                        @if ($val_search->age_accepted)
+                                            {{-- age accepted --}}
                                             <p>Ages Accepted: {{ $val_search->age_accepted }}</p>
                                         @endif
-                                        @if($val_search->food_served)
-                                            {{--age accepted--}}
+                                        @if ($val_search->food_served)
+                                            {{-- age accepted --}}
                                             <p>Food served: {{ $val_search->food_served }}</p>
                                         @endif
-                                        @if($val_search->costing)
-                                            {{--age accepted--}}
+                                        @if ($val_search->costing)
+                                            {{-- age accepted --}}
                                             <p>Costing: {{ $val_search->costing }}</p>
                                         @endif
                                     </div>
@@ -588,7 +632,7 @@
                                     @php
                                         $age_accepted = explode(',', Auth::user()->age_accepted);
                                     @endphp
-                                    <select type="text" name="age_accepted[]" class="form-control age_accepted"
+                                    <select type="text" name="age_accepted[]" class="form-control age_accepted custom-select"
                                         multiple id="">
                                         <option>--Select--</option>
                                         <option value="0-12 months" {!! in_array('0-12 months', $age_accepted) ? 'selected' : '' !!}>0-12 months</option>
@@ -611,11 +655,11 @@
 
                                 <div class="col-md-12 mb-12">
                                     <label for="">Food Served :</label>
-{{--                                    @php--}}
-{{--                                        $food_served = explode(',', Auth::user()->food_served);--}}
-{{--                                    @endphp--}}
-                                    <select type="text" name="food_served[]" class="form-control food_served"
-                                        multiple id="">
+                                    {{--                                    @php --}}
+                                    {{--                                        $food_served = explode(',', Auth::user()->food_served); --}}
+                                    {{--                                    @endphp --}}
+                                    <select type="text" name="food_served[]" class="form-control food_served" multiple
+                                        id="">
                                         <option value="Breakfast">Breakfast</option>
                                         <option value="Lunch">Lunch</option>
                                         <option value="Snacks">Snacks</option>
@@ -626,7 +670,8 @@
 
                                 <div class="col-md-12 mb-12">
                                     <label> Costing </label>
-                                    <input type="text" name="costing" value="{{ $value->costing }}" class="form-control" placeholder="Costing (ex. $4 - $6)" />
+                                    <input type="text" name="costing" value="{{ $value->costing }}"
+                                        class="form-control" placeholder="Costing (ex. $4 - $6)" />
                                 </div>
 
 

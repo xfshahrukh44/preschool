@@ -369,7 +369,7 @@
                                         <?php
                                         $average_rating = DB::table('reviews')->where('daycareid', $get_claimed_daycare_center_detail->id)->avg('rate');
                                         $rounded_rating = round($average_rating);
-
+                                        
                                         $full_stars = floor($average_rating);
                                         $half_star = $average_rating - $full_stars >= 0.5;
                                         ?>
@@ -462,6 +462,7 @@
                                     @endif
                                     @if ($get_claimed_daycare_center_detail->costing)
                                         <b>Costing: </b> {{ $get_claimed_daycare_center_detail->costing }}
+                                        <br />
                                     @endif
                                     @if ($get_claimed_daycare_center_detail->city)
                                         <b>City: </b> {{ $get_claimed_daycare_center_detail->city }}
@@ -469,10 +470,92 @@
                                     @endif
                                     @if ($get_claimed_daycare_center_detail->state)
                                         <b>State: </b> {{ $get_claimed_daycare_center_detail->state }}
+                                        <br />
                                     @endif
-
-                                    <br />
-
+                                    @if ($get_claimed_daycare_center_detail->language)
+                                        <b>Language: </b> {{ $get_claimed_daycare_center_detail->language }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->meal_offered)
+                                        <b>Meals Offered : </b>
+                                        {{ implode(',', json_decode($get_claimed_daycare_center_detail->meal_offered)) }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->tansportation)
+                                        <b>Do you offer tansportation? : </b>
+                                        {{ $get_claimed_daycare_center_detail->tansportation }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->family_discount)
+                                        <b>Family Discount Offered? : </b>
+                                        ${{ $get_claimed_daycare_center_detail->family_discount }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->military_child_discount)
+                                        <b>Military Child Care Discount? : </b>
+                                        ${{ $get_claimed_daycare_center_detail->military_child_discount }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->application_registration)
+                                        <b>Application/Registration : </b>
+                                        ${{ $get_claimed_daycare_center_detail->application_registration }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->diapers)
+                                        <b>Diapers : </b>
+                                        ${{ $get_claimed_daycare_center_detail->diapers }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->early_drop_off)
+                                        <b>Early Drop off : </b>
+                                        ${{ $get_claimed_daycare_center_detail->early_drop_off }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->extended_stay)
+                                        <b>Extended stay : </b>
+                                        ${{ $get_claimed_daycare_center_detail->extended_stay }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->late_payment)
+                                        <b>Late Payment : </b>
+                                        ${{ $get_claimed_daycare_center_detail->late_payment }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->waitingList_registration)
+                                        <b>WaitingList Registration : </b>
+                                        ${{ $get_claimed_daycare_center_detail->waitingList_registration }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->late_pick_up)
+                                        <b>Late Pick-up : </b>
+                                        ${{ $get_claimed_daycare_center_detail->late_pick_up }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->meals_snacks)
+                                        <b>Meals/Snacks : </b>
+                                        ${{ $get_claimed_daycare_center_detail->meals_snacks }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->returned_check)
+                                        <b>Returned Check : </b>
+                                        ${{ $get_claimed_daycare_center_detail->returned_check }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->credit_card_declined)
+                                        <b>Credit Card Declined : </b>
+                                        ${{ $get_claimed_daycare_center_detail->credit_card_declined }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->supplies_materials)
+                                        <b>Supplies/Materials : </b>
+                                        ${{ $get_claimed_daycare_center_detail->supplies_materials }}
+                                        <br />
+                                    @endif
+                                    @if ($get_claimed_daycare_center_detail->other)
+                                        <b>Other : </b>
+                                        ${{ $get_claimed_daycare_center_detail->other }}
+                                        <br />
+                                    @endif
                                     <h4>Facility information</h4>
                                     <p class="para-1">
                                         {!! $get_claimed_daycare_center_detail->description !!}

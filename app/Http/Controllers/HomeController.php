@@ -293,6 +293,8 @@ class HomeController extends Controller
         }
 
         $search_result = $query->paginate(25)->onEachSide(0);
+
+
         return view('search', compact('page', 'section', 'search_result', 'search'));
     }
 
@@ -412,10 +414,8 @@ class HomeController extends Controller
 
     public function my_pinned()
     {
-
+        $userid = Auth::user()->id;
         $get_my_pinned = DB::table('pined_posts')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
-
-        //   dd($get_my_pinned);
 
         return view('my_pinned', compact('get_my_pinned'));
 
@@ -428,9 +428,7 @@ class HomeController extends Controller
             return redirect("/");
         }
 
-        $sharedPost = DB::table('post_shares')
-            ->where('shared_by', Auth::user()->id)
-            ->get();
+        $sharedPost = DB::table('post_shares')->where('shared_by', Auth::user()->id)->get();
         // Extract post IDs and notes
         $sharedPostIds = $sharedPost->pluck('post_id');
         $sharedNotes = $sharedPost->pluck('note', 'post_id');
@@ -447,8 +445,6 @@ class HomeController extends Controller
                 })
                 ->get();
             //       $get_all_teachers = DB::table('users')->where('role','3')->get();
-
-
         } else {
             $get_last_post = Post::where('role_id', Auth::user()->role)->orderBy('id', 'desc')
                 ->when(request()->has('search'), function ($q) {
@@ -634,11 +630,20 @@ class HomeController extends Controller
         }
 
 
-        DB::table('posts')->insert([
+
+        $sharedPostId = DB::table('posts')->insertGetId([
             'share_post' => $postId,
             'user_id' => $userId,
             'post' => $note,
             'role_id' => Auth::user()->role,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('post_shares')->insert([
+            'post_id' => $postId,
+            'shared_by' => $userId,
+            'note' => $note,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -684,9 +689,21 @@ class HomeController extends Controller
     public function like_post(Request $request)
     {
 
+        $postId = $request->input('post_id');
+        $userid = $request->input('user_id');
+
         $post_like = new Like($request->all());
 
+
         $post_like->save();
+
+        DB::table('pined_posts')->insert([
+            'post_id' => $postId,
+            'user_id' => $userid,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
 
         return response()->json(['message' => 'Post Liked', 'status' => true]);
         // return back();

@@ -435,9 +435,7 @@ use DateTime;
                                                                 ->where('post_id', $val_get_last->id)
                                                                 ->first();
 
-                                                            $like_count = DB::table('likes')
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->count();
+                                                            $like_count = DB::table('likes')->where('post_id',$val_get_last->id)->count();
                                                             ?>
 
                                                             @if ($get_like)
@@ -1130,24 +1128,14 @@ use DateTime;
                 user_id: user_id
             },
             success: function(response) {
-
                 if (response.status) {
-
-
                     // setTimeout(function() {
                     //     // alert("sd");
-
                     //     $('#prog').hide();
-
                     // toastr.success(response.message);
                     location.reload();
-
                     //     get_last_post();
-
-
                     // }, 2000);
-
-
                 }
 
             }
@@ -1340,7 +1328,6 @@ use DateTime;
             postId = $(this).data('postid');
             sharepost = $(this).data('sharepost');
         });
-
         $('#confirmShareButton').click(function() {
             var note = $('#note').val();
 

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use File;
 use View;
-use Image;
 use App\Childcare;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProviderController extends Controller
 {
@@ -64,12 +65,10 @@ class ProviderController extends Controller
 
     public function updateDaycareCenter(Request $request)
     {
-        $requestData = $request->except(['timings', 'services']);
+        $requestData = $request->except(['timings', 'services', 'meal_offered)']);
         $id = $request->id;
-
+        // dd($id);
         if ($request->hasFile('feature_image')) {
-
-
             $file = $request->file('feature_image');
             $fileNameExt = $request->file('feature_image')->getClientOriginalName();
             $fileNameForm = str_replace(' ', '_', $fileNameExt);
@@ -77,17 +76,12 @@ class ProviderController extends Controller
             $fileExt = $request->file('feature_image')->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
             $pathToStore = public_path('uploads/feature_images/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
-
-
+            // Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
+            $file->move($pathToStore, $fileNameToStore);
             $requestData['feature_image'] = 'uploads/feature_images/' . $fileNameToStore;
-
         }
 
-
         if ($request->hasFile('other_image_one')) {
-
-
             $file = $request->file('other_image_one');
             $fileNameExt = $request->file('other_image_one')->getClientOriginalName();
             $fileNameForm = str_replace(' ', '_', $fileNameExt);
@@ -95,11 +89,9 @@ class ProviderController extends Controller
             $fileExt = $request->file('other_image_one')->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
             $pathToStore = public_path('uploads/other_image_one/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
-
-
+            $file->move($pathToStore, $fileNameToStore);
+            // Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
             $requestData['other_image_one'] = 'uploads/other_image_one/' . $fileNameToStore;
-
         }
 
 
@@ -113,7 +105,8 @@ class ProviderController extends Controller
             $fileExt = $request->file('other_image_two')->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
             $pathToStore = public_path('uploads/other_image_two/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
+            $file->move($pathToStore, $fileNameToStore);
+            // \Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
 
 
             $requestData['other_image_two'] = 'uploads/other_image_two/' . $fileNameToStore;
@@ -128,6 +121,11 @@ class ProviderController extends Controller
         if ($request->input('food_served')) {
             $food_served = implode(',', $request->input('food_served'));
             $requestData['food_served'] = $food_served;
+        }
+
+        if ($request->input('language')) {
+            $language = $request->input('language');
+            $requestData['language'] = $language;
         }
 
 
@@ -151,6 +149,102 @@ class ProviderController extends Controller
             $childcareupdate->services = $services;
             $childcareupdate->save();
         }
+
+        if ($request->has('meal_offered')) {
+            $meal_offered = [];
+            foreach ($request->get('meal_offered') as $key => $value) {
+                $meal_offered[] = $key;
+            }
+            $childcareupdate->meal_offered = $meal_offered;
+            $childcareupdate->save();
+        }
+
+
+        if ($request->has('tansportation')) {
+            $childcareupdate->tansportation = $request->get('tansportation');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('family_discount_offered')) {
+            $childcareupdate->family_discount_offered = $request->get('family_discount_offered');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('family_discount')) {
+            $childcareupdate->family_discount = $request->get('family_discount');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('military_child_care_discount')) {
+            $childcareupdate->military_child_care_discount = $request->get('military_child_care_discount');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('military_child_discount')) {
+            $childcareupdate->military_child_discount = $request->get('military_child_discount');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('application_registration')) {
+            $childcareupdate->application_registration = $request->get('application_registration');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('diapers')) {
+            $childcareupdate->diapers = $request->get('diapers');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('early_drop_off')) {
+            $childcareupdate->early_drop_off = $request->get('early_drop_off');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('extended_stay')) {
+            $childcareupdate->extended_stay = $request->get('extended_stay');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('late_payment')) {
+            $childcareupdate->late_payment = $request->get('late_payment');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('waitingList_registration')) {
+            $childcareupdate->waitingList_registration = $request->get('waitingList_registration');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('late_pick_up')) {
+            $childcareupdate->late_pick_up = $request->get('late_pick_up');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('meals_snacks')) {
+            $childcareupdate->meals_snacks = $request->get('meals_snacks');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('returned_check')) {
+            $childcareupdate->returned_check = $request->get('returned_check');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('credit_card_declined')) {
+            $childcareupdate->credit_card_declined = $request->get('credit_card_declined');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('supplies_materials')) {
+            $childcareupdate->supplies_materials = $request->get('supplies_materials');
+            $childcareupdate->save();
+        }
+
+        if ($request->has('other')) {
+            $childcareupdate->other = $request->get('other');
+            $childcareupdate->save();
+        }
+
 
         return redirect()->back()->with('message', 'You have successfully claimed daycare center.');
     }

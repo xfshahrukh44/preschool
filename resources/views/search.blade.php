@@ -336,6 +336,12 @@
                         {{-- <input class="form-control" name="search" type="text" placeholder="Search providers"
                             value="{{ $search ?? '' }}" id="search-bar"> --}}
                         <div class="searchable-input">
+                            <input type="text" id="name-input" name="name" class="form-control"
+                                placeholder="Search by name">
+                            <div id="name-results" class="dropdown-menu"></div>
+                        </div>
+
+                        <div class="searchable-input">
                             <input type="text" id="state-input" name="state" class="form-control"
                                 placeholder="Search States">
                             <div id="state-results" class="dropdown-menu"></div>
@@ -351,16 +357,8 @@
                             @php
                                 $age_accepted = explode(',', Auth::user()->age_accepted);
                             @endphp
-                            {{-- <select type="text" name="age_accepted[]" class="form-control age_accepted" multiple
-                                id="age_accepted">
-                                <option>--Select--</option>
-                                <option>0-12 months</option>
-                                <option>12-24 months</option>
-                                <option>2-5 years</option>
-                                <option>5+ years</option>
-                            </select> --}}
                             <select name="age_accepted[]" class="form-control">
-                                <option>Select Age</option>
+                                <option value="">Select Age</option>
                                 <option value="0-12 months">0-12 months</option>
                                 <option value="12-24 months">12-24 months</option>
                                 <option value="2-5 years">2-5 years</option>

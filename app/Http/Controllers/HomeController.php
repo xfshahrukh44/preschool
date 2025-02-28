@@ -272,7 +272,11 @@ class HomeController extends Controller
         $section = DB::table('section')->where('page_id', 2)->get();
 
         $search = $request->input('search', '');
-        $query = Childcare::where('status', '1')->orderBy('claimed_by_id', 'DESC');
+        $query = Childcare::where('status', '1')->orderBy('name', 'ASC');
+
+        if ($request->filled('name')) {
+            $query->where('name', 'LIKE', "%{$request->name}%");
+        }
 
         if ($request->filled('city')) {
             $query->where('city', 'LIKE', "%{$request->city}%");

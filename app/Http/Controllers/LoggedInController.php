@@ -376,8 +376,7 @@ class LoggedInController extends Controller
 
 
 	public function update_profile2(Request $request) {
-
-
+// return Auth::user()->id;
 
 		$requestData = $request->all();
 		// dd($requestData);
@@ -435,14 +434,17 @@ class LoggedInController extends Controller
 
 		}
 
-		if($request->password != ''){
-
+		if($request->password != '' && !is_null($request->password)){
+            // dd($request->all());
 			$requestData['password'] = Hash::make($request->password);
+		} else {
+            unset($requestData['password']);
+        }
 
-		}
+        // dd($requestData);
 
 
-		$users = User::findOrFail($request->id);
+		// $users = User::findOrFail($request->id);
 
         $requestData['hours_of_operation'] = implode(',', $requestData['hours_of_operation'] ?? []);
         $requestData['age_accepted'] = implode(',', $requestData['age_accepted'] ?? []);

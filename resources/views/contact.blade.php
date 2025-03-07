@@ -14,8 +14,8 @@
 }
 
 #embed-map-display .text-marker{}.map-generator{
-    max-width: 100%; 
-    max-height: 100%; 
+    max-width: 100%;
+    max-height: 100%;
     background: none;
 }
 
@@ -60,40 +60,40 @@
 {{--            </div>--}}
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="content-zig mt-0 pt-0 priority" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                
+
                     <form class="form_submission" id="contactform" method="post">
-                        
-                        @csrf 
+
+                        @csrf
                         <div class="row">
-                          
+
                             <input type="hidden" name="form_name" value="Contact Form">
 
                             <div class="col-lg-12" style="margin-top: 20px">
                                 <input type="text" class="form-control" name="fname" placeholder="First name" required="">
                             </div>
-                            
+
                            <br><br>
-  
+
                            <div class="col-lg-12" style="margin-top: 20px">
                                 <input type="text" class="form-control" name="lname" placeholder="Last name" required="">
                             </div>
-                            
+
                            <br><br>
 
                            <div class="col-lg-12" style="margin-top: 20px">
                                 <input type="email" class="form-control" name="email" placeholder="Email" required="">
                             </div>
-                            
+
                            <br><br>
 
                            <div class="col-lg-12" style="margin-top: 20px">
-                                <input type="text" class="form-control" name="phone" placeholder="Phone No" required="">
+                                <input type="text" class="form-control" name="phone" placeholder="Phone Number" required="">
                             </div>
-                            
+
                            <br><br>
-                            
-                          
-                             
+
+
+
                         </div>
                         <div class="form-group" style="margin-top: 20px">
                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1" rows="6" placeholder="How can we help you?"></textarea>
@@ -106,7 +106,7 @@
 
                 </div>
                 <div id="contactformsresult">  </div>
-            
+
             </div>
 
         </div>

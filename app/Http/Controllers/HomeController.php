@@ -272,10 +272,10 @@ class HomeController extends Controller
         $section = DB::table('section')->where('page_id', 2)->get();
 
         $search = $request->input('search', '');
-        $query = Childcare::where('status', '1')->orderBy('name', 'ASC');
+        $query = Childcare::where('status', '1')->where('name', '!=', '')->orderBy('name', 'ASC');
 
         if ($request->filled('name')) {
-            $query->where('name', 'LIKE', "%{$request->name}%");
+            $query->where('name', 'LIKE', "%".$request->name."%");
         }
 
         if ($request->filled('city')) {
@@ -287,13 +287,15 @@ class HomeController extends Controller
         }
 
         if ($request->filled('age_accepted')) {
-            $ages = $request->input('age_accepted');
+            $ages = array_filter($request->input('age_accepted')); // remove null/empty values
 
-            $query->where(function ($q) use ($ages) {
-                foreach ($ages as $age) {
-                    $q->orWhere('age_accepted', 'LIKE', "%$age%");
-                }
-            });
+            if (!empty($ages)) {
+                $query->where(function ($q) use ($ages) {
+                    foreach ($ages as $age) {
+                        $q->orWhere('age_accepted', 'LIKE', "%$age%");
+                    }
+                });
+            }
         }
 
         $search_result = $query->paginate(25)->onEachSide(0);

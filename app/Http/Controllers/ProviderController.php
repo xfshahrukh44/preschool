@@ -67,7 +67,7 @@ class ProviderController extends Controller
     {
         $requestData = $request->except(['timings', 'services', 'meal_offered)']);
         $id = $request->id;
-        // dd($id);
+        // dd($requestData);
         if ($request->hasFile('feature_image')) {
             $file = $request->file('feature_image');
             $fileNameExt = $request->file('feature_image')->getClientOriginalName();
@@ -116,6 +116,7 @@ class ProviderController extends Controller
         if ($request->input('age_accepted')) {
             $ageAccepted = implode(',', $request->input('age_accepted'));
             $requestData['age_accepted'] = $ageAccepted;
+            // dd($ageAccepted);
         }
 
         if ($request->input('food_served')) {
@@ -251,6 +252,7 @@ class ProviderController extends Controller
 
     public function claimedCenters(Request $request)
     {
+        // dd(DB::table('childcares')->where('claimed_by_id', Auth::user()->id)->where('status', '1')->get());
         $claimed_centers = DB::table('childcares')->where('claimed_by_id', Auth::user()->id)->where('status', '1')->get();
 
         //        return view('account.my_claimed_daycare', compact('claimed_centers'));

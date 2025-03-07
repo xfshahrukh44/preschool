@@ -59,9 +59,9 @@
                                     </a></p>
                             </div>
                             <div class="apply">
-                                <a href="javascript:void(0)" class="custom-btn views become-angel-button"
+                                {{-- <a href="javascript:void(0)" class="custom-btn views become-angel-button"
                                     data-jobid="{{ $val_newjob->id }}"
-                                    data-creatorid="{{ $val_newjob->creator_name }}">Angel</a>
+                                    data-creatorid="{{ $val_newjob->creator_name }}">Angel</a> --}}
                                 <a href="{{ route('apply_for_job', ['id' => $val_newjob->id]) }}"
                                     class="custom-btn now">View
                                     Job Details</a>

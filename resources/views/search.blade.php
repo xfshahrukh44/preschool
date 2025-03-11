@@ -399,6 +399,46 @@
                 <div class="row text-center">
                     No daycares found
                 </div>
+                <div class="row mt-4">
+                    <p>
+                        Like we said, we are ONE place for everything preschool. If you cannot find what you’re looking for here,
+                        then we will direct you to someone who you possibly can, while we work on adding more to our site.
+                    </p>
+                    <p>
+                        <b>
+                            <small>*Fees may apply to outside agencies. Preschool Portal is not associated with any outside agency
+                                listed on our site. Please make sure to do your due diligence when looking for a childcare provider.</small>
+                        </b>
+                    </p>
+                </div>
+                <div class="row my-0">
+                    <h6><b>Winnie</b></h6>
+                </div>
+                <div class="row my-0">
+                    <p>
+                        Winnie is a childcare-finding resource made by parents, for parents, backed by a trusted community of parents and providers.
+                    </p>
+                </div>
+                <div class="row my-0">
+                    <p>
+                        <a href="https://winnie.com/ ">https://winnie.com/ </a>
+                    </p>
+                </div>
+                <div class="row my-0">
+                    <img src="{{asset('images/CAA.png')}}" alt="" style="max-height: 140px;">
+                </div>
+                <div class="row my-0">
+                    <p>
+                        Your local Child Care and Resource Referral agency, or CCR&R, can help you find the right childcare for you
+                        and your family. They will talk to you about the <b>different types of child care</b> providers in your area, ask you
+                        questions about your child care needs and create a list of child care providers for you to contact.
+                    </p>
+                </div>
+                <div class="row my-0">
+                    <p>
+                        <a href="https://www.childcareaware.org ">https://www.childcareaware.org </a>
+                    </p>
+                </div>
             @endif
             <div class="row justify-content-center">
                 {{-- @dd($search_result); --}}

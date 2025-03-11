@@ -25,6 +25,6 @@ class Childcare extends Model
      *n
      * @var array
      */
-    protected $fillable = ['physical_address', 'county', 'zip', 'name', 'city','phone', 'email_address', 'description', 'feature_image', 'other_image_one', 'other_image_two'];
+    protected $fillable = ['physical_address', 'county', 'zip', 'name', 'city','phone', 'email_address', 'description', 'feature_image', 'other_image_one', 'other_image_two', 'program_type', 'licence_sub_type', 'state'];
 
 }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
+
 	<?php
-	   $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();			
-	?>	
+	   $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
+	?>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +45,7 @@
     @stack('after-css')
 
 </head>
-			
+
 
 <body class="vertical-layout vertical-menu-modern 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 <!-- ============================================================== -->
@@ -112,7 +112,7 @@
 
 
 <script>
-	
+
 	 $(document).ready(function () {
 
             @if(\Session::has('message'))
@@ -126,8 +126,8 @@
                 stack: 6
             });
             @endif
-			
-			
+
+
             @if(\Session::has('flash_message'))
             $.toast({
                 heading: 'Info!',
@@ -139,11 +139,11 @@
                 stack: 6
             });
             @endif
-			
-			
+
+
         });
 
-	
+
 </script>
 
 <script type="text/javascript">
@@ -157,5 +157,16 @@
 <!-- ============================================================== -->
 @stack('js')
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    @if(session()->has('success'))
+        toastr.success('{{session()->get('success')}}');
+    @endif
+    @if(session()->has('error'))
+        toastr.error('{{session()->get('error')}}');
+    @endif
+</script>
 </body>
 </html>

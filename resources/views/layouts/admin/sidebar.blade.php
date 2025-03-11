@@ -2,11 +2,11 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="nav-item">
-                
+
                 <a href="javascript:;"><i class="la la-home"></i><span class="menu-title" data-i18n="Dashboard">Home</span></a>
-                
+
                 <ul class="menu-content">
-                    
+
                     <li class="{{ (request()->routeIs('admin.dashboard'))? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/dashboard')}}"><i></i>
                             <span data-i18n="eCommerce">Dashboard</span>
@@ -115,7 +115,19 @@
             </li>
 
 
-           
+            <li class="nav-item">
+                <a href="javascript:;"><i class="la la-list"></i><span class="menu-title" data-i18n="Dashboard">Chidcares</span></a>
+                <ul class="menu-content">
+                    <li class="{{ (request()->is('admin/childcares') || request()->is('admin/childcare/*')) ? 'active' : '' }}">
+                        <a class="menu-item" href="{{ url('admin/childcares') }}"><i></i>
+                            <span data-i18n="eCommerce"> View All Chidcares </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
             <!-- <li class="nav-item">
                 <a href="javascript:;"><i class="la la-list"></i><span class="menu-title" data-i18n="Dashboard"> Post </span></a>
                 <ul class="menu-content">
@@ -139,7 +151,7 @@
                     </li>
                 </ul>
             </li> -->
-            
+
 
             <!-- <li class="nav-item">
                 <a href="javascript:;"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="Dashboard">Ecommerce</span></a>
@@ -178,21 +190,21 @@
             <!--        <span class="menu-title" data-i18n="eCommerce">Blog</span>-->
             <!--    </a>-->
             <!--</li>-->
-            
+
             <li class="nav-item {{ (request()->is('payment/payment') || request()->is('payment/payment/*')) ? 'active' : '' }}">
                 <a href="{{url('payment/payment')}}"><i class="la la-user"></i>
                     <span class="menu-title" data-i18n="eCommerce">User Payment</span>
                 </a>
-            </li> 
+            </li>
 
-            
+
             <li class="nav-item {{ (request()->is('admin/shared-gallery/shared-gallery') || request()->is('admin/shared-gallery/shared-gallery/*')) ? 'active' : '' }}">
                 <a href="{{url('admin/shared-gallery/shared-gallery')}}"><i class="la la-picture-o"></i>
                     <span class="menu-title" data-i18n="eCommerce">Shared Gallery</span>
                 </a>
             </li>
-            
-            
+
+
             <li class="nav-item {{ (request()->is('review/review') || request()->is('review/review/*')) ? 'active' : '' }}">
                 <a href="{{url('review/review')}}"><i class="la la-picture-o"></i>
                     <span class="menu-title" data-i18n="eCommerce">Daycare Reviews</span>

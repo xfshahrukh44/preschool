@@ -143,6 +143,14 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin', 'prefix' =>
     Route::get('status/completed/{id}', 'Admin\\ProductController@updatestatuscompleted')->name('status.completed');
     Route::get('status/pending/{id}', 'Admin\\ProductController@updatestatusPending')->name('status.pending');
 
+    //childcares
+    Route::get('childcares', [\App\Http\Controllers\ChildcareController::class, 'index'])->name('admin.childcare.index');
+    Route::get('childcares/create', [\App\Http\Controllers\ChildcareController::class, 'create'])->name('admin.childcare.create');
+    Route::post('childcares/store', [\App\Http\Controllers\ChildcareController::class, 'store'])->name('admin.childcare.store');
+    Route::get('childcares/edit/{id}', [\App\Http\Controllers\ChildcareController::class, 'edit'])->name('admin.childcare.edit');
+    Route::post('childcares/update/{id}', [\App\Http\Controllers\ChildcareController::class, 'update'])->name('admin.childcare.update');
+    Route::get('childcares/destroy/{id}', [\App\Http\Controllers\ChildcareController::class, 'destroy'])->name('admin.childcare.destroy');
+
 
 });
 

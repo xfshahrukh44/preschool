@@ -177,7 +177,8 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="about-us" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000">
-                        <h2>Bulletin Board</h2>
+{{--                        <h2>Bulletin Board</h2>--}}
+                        <h2>Job Board</h2>
                     </div>
                 </div>
             </div>

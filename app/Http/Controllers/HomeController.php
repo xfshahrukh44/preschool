@@ -576,7 +576,7 @@ class HomeController extends Controller
 
         if($provider->email) {
             Mail::send('emails.job_application', ['requestJob' => $request_job], function ($message) use ($request_job, $provider) {
-                $message->to('vobogis156@erapk.com')
+                $message->to($provider->email)
                         ->subject('New Job Application Received')
                         ->attach(public_path($request_job->resume));
             });

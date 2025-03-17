@@ -68,7 +68,8 @@ class User extends Authenticatable
         'agreed_to_sandbox_terms',
         'position',
         'is_verified',
-        'expiration_date'
+        'expiration_date',
+        'video'
     ];
 
     /**

@@ -455,6 +455,18 @@
                                 <option {!! in_array('Faith Based', $types_of_care_provided) ? 'selected' : '' !!}>Faith Based</option>
                             </select>
 
+                            <label
+                                style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important;"
+                                for="">Video Upload :</label>
+
+                            <input type="file" name="video" class="form-control">
+
+                            @if (!empty(Auth::user()->video))
+                                <a href="{{ asset(Auth::user()->video) }}" target="_blank" class="btn btn-primary mt-4">
+                                    View Video
+                                </a>
+                            @endif
+
                             <div class="post">
                                 <button type="submit" class="btn custom-btn">Update Profile</button>
                             </div>

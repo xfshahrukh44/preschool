@@ -520,6 +520,33 @@ class LoggedInController extends Controller
 
 		}
 
+        if ($request->hasFile('video')) {
+
+            // Define storage path
+            $videoPath = public_path('uploads/videos/');
+
+            // Ensure the directory exists
+            if (!File::exists($videoPath)) {
+                File::makeDirectory($videoPath, 0755, true, true);
+            }
+
+            // Get uploaded file
+            $file = $request->file('video');
+
+            // Generate a unique file name
+            $fileNameExt = $file->getClientOriginalName();
+            $fileNameForm = str_replace(' ', '_', $fileNameExt);
+            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+            $fileExt = $file->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+
+            // Move file to the uploads directory
+            $file->move($videoPath, $fileNameToStore);
+
+            // Store video path in request data
+            $requestData['video'] = 'uploads/videos/' . $fileNameToStore;
+        }
+
         $requestData['password'] = Hash::make($request->password);
 
 		$users = User::findOrFail($request->id);

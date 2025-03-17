@@ -9,7 +9,6 @@ use App\newsletter;
 use App\banner;
 use App\imagetable;
 use DB;
-use Mail;
 use View;
 use Session;
 use App\Http\Helpers\UserSystemInfoHelper;
@@ -33,6 +32,7 @@ use Carbon\Carbon;
 use DateTime;
 use App\Models\SharedGallery;
 use App\Models\Review;
+use Illuminate\Support\Facades\Mail;
 
 
 class HomeController extends Controller
@@ -571,6 +571,17 @@ class HomeController extends Controller
         }
 
         $request_job->save();
+
+        $provider = User::find($request->job_creator_id);
+
+        if($provider->email) {
+            Mail::send('emails.job_application', ['requestJob' => $request_job], function ($message) use ($request_job, $provider) {
+                $message->to('vobogis156@erapk.com')
+                        ->subject('New Job Application Received')
+                        ->attach(public_path($request_job->resume));
+            });
+        }
+
         return redirect()->back()->with('message', 'Application has been Submitted Successfully');
 
     }

@@ -369,7 +369,7 @@
                                         <?php
                                         $average_rating = DB::table('reviews')->where('daycareid', $get_claimed_daycare_center_detail->id)->avg('rate');
                                         $rounded_rating = round($average_rating);
-                                        
+
                                         $full_stars = floor($average_rating);
                                         $half_star = $average_rating - $full_stars >= 0.5;
                                         ?>
@@ -639,46 +639,48 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="hihglight">
-                                    <h3>Center Highlights</h3>
-                                    <p><strong>Highlights:</strong></p>
-                                    <ul>
-                                        <li>State-of-the-art facilities</li>
-                                        <li>Experienced and qualified staff</li>
-                                        <li>Comprehensive care and support programs</li>
-                                        <li>Community involvement and outreach</li>
-                                        <li>Advanced technology and equipment</li>
-                                        <li>Provider Enrollment</li>
-                                    </ul>
+                            @if(Auth::user()->role == 4)
+                                <div class="col-lg-12">
+                                    <div class="hihglight">
+                                        <h3>Center Highlights</h3>
+                                        <p><strong>Highlights:</strong></p>
+                                        <ul>
+                                            <li>State-of-the-art facilities</li>
+                                            <li>Experienced and qualified staff</li>
+                                            <li>Comprehensive care and support programs</li>
+                                            <li>Community involvement and outreach</li>
+                                            <li>Advanced technology and equipment</li>
+                                            <li>Provider Enrollment</li>
+                                        </ul>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="hihglight">
-                                    <h3>Cost</h3>
-                                    <p><strong>Cost:</strong></p>
-                                    <ul>
-                                        <li>Initial Consultation: $100</li>
-                                        <li>Monthly Membership: $50</li>
-                                        <li>Specialized Services: Prices vary, contact for details</li>
-                                    </ul>
+                                <div class="col-lg-12">
+                                    <div class="hihglight">
+                                        <h3>Cost</h3>
+                                        <p><strong>Cost:</strong></p>
+                                        <ul>
+                                            <li>Initial Consultation: $100</li>
+                                            <li>Monthly Membership: $50</li>
+                                            <li>Specialized Services: Prices vary, contact for details</li>
+                                        </ul>
 
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="hihglight">
-                                    <h3>License</h3>
-                                    <p><strong>License:</strong></p>
-                                    <ul>
-                                        <li>Licensed by the Health Department</li>
-                                        <li>Accredited by the National Health Association</li>
-                                        <li>Certified for Quality and Safety Standards</li>
-                                    </ul>
+                                <div class="col-lg-12">
+                                    <div class="hihglight">
+                                        <h3>License</h3>
+                                        <p><strong>License:</strong></p>
+                                        <ul>
+                                            <li>Licensed by the Health Department</li>
+                                            <li>Accredited by the National Health Association</li>
+                                            <li>Certified for Quality and Safety Standards</li>
+                                        </ul>
 
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                         <div class="row"
                             style="border: 1px solid #cec6c6; padding: 20px; margin-top: 50px; margin-bottom: 50px;">

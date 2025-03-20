@@ -465,6 +465,9 @@
                                 <a href="{{ asset(Auth::user()->video) }}" target="_blank" class="btn btn-primary mt-4">
                                     View Video
                                 </a>
+                                <a href="{{ route('video_delete') }}" class="btn btn-primary mt-4">
+                                    Delete Video
+                                </a>
                             @endif
 
                             <div class="post">

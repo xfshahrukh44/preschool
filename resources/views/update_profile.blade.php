@@ -282,11 +282,25 @@
                                         <input type="file" name="image" class="form-control" />
                                     </div>
 
+                                    @if (!empty(Auth::user()->image))
+                                        <img src="{{ asset(Auth::user()->image) }}" class="img-fluid">
+                                        <a href="{{ route('image_delete') }}" class="btn btn-primary mt-4">
+                                            Delete Image
+                                        </a>
+                                    @endif
+
                                     <br><br>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Upload Banner Image</label>
                                         <input type="file" name="banner_image" class="form-control" />
                                     </div>
+
+                                    @if (!empty(Auth::user()->banner_image))
+                                        <img src="{{ asset(Auth::user()->banner_image) }}" class="img-fluid">
+                                        <a href="{{ route('banner_delete') }}" class="btn btn-primary mt-4">
+                                            Delete Banner Image
+                                        </a>
+                                    @endif
 
                                     <br><br>
 
@@ -423,6 +437,21 @@
                                         <option {!! in_array("2-5 years", $age_accepted) ? "selected" : "" !!}>2-5 years</option>
                                         <option {!! in_array("5+ years", $age_accepted) ? "selected" : "" !!}>5+ years</option>
                                     </select>
+
+                                    <label
+                                        style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important; margin-top: 27px;"
+                                        for="">Video Upload :</label>
+
+                                    <input type="file" name="video" class="form-control">
+
+                                    @if (!empty(Auth::user()->video))
+                                        <a href="{{ asset(Auth::user()->video) }}" target="_blank" class="btn btn-primary mt-4">
+                                            View Video
+                                        </a>
+                                        <a href="{{ route('video_delete') }}" class="btn btn-primary mt-4">
+                                            Delete Video
+                                        </a>
+                                    @endif
 
                                 </div>
 

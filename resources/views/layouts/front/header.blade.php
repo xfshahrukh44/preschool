@@ -101,7 +101,7 @@
                                 <li class="nav-item <?php if ($segment == 'job-board') {
                                     echo 'active';
                                 } ?>">
-                                    <a class="nav-link" href="{{ route('bulletin_board') }}"> View Bulletin Board </a>
+                                    <a class="nav-link" href="{{ route('bulletin_board') }}"> Job Board </a>
                                 </li>
                             @endif
 

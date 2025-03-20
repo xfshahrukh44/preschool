@@ -320,6 +320,10 @@ Route::get('update-provider-profile', 'HomeController@update_provider_profile')-
 Route::post('update_profile2', 'LoggedInController@update_profile2')->name('update_profile2');
 Route::post('update_prov_profile2', 'LoggedInController@update_prov_profile2')->name('update_prov_profile2');
 
+Route::get('video_delete', 'LoggedInController@video_delete')->name('video_delete');
+Route::get('image_delete', 'LoggedInController@image_delete')->name('image_delete');
+Route::get('banner_delete', 'LoggedInController@banner_delete')->name('banner_delete');
+
 
 
 

@@ -393,21 +393,22 @@ class LoggedInController extends Controller
                 File::delete($image_path);
             }
 
-			if(File::exists($banner_image_path)) {
-                File::delete($banner_image_path);
-            }
+            $pathToStore = public_path('uploads/users/');
 
             $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
+
+            // Generate a new filename
+            $fileNameExt = $file->getClientOriginalName();
             $fileNameForm = str_replace(' ', '_', $fileNameExt);
             $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/users/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
+            $fileExt = $file->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
 
+            // Move file to destination
+            $file->move($pathToStore, $fileNameToStore);
 
-            $requestData['image'] = 'uploads/users/'.$fileNameToStore;
+            // Save file path in database
+            $requestData['image'] = 'uploads/users/' . $fileNameToStore;
 
 		}
 
@@ -420,19 +421,52 @@ class LoggedInController extends Controller
                 File::delete($banner_image_path);
             }
 
+            $pathToStore = public_path('uploads/users/');
+
+            // Get uploaded file
             $file = $request->file('banner_image');
-            $fileNameExt = $request->file('banner_image')->getClientOriginalName();
+
+            // Generate a new filename
+            $fileNameExt = $file->getClientOriginalName();
             $fileNameForm = str_replace(' ', '_', $fileNameExt);
             $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('banner_image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/users/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
+            $fileExt = $file->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
 
+            // Move file to destination
+            $file->move($pathToStore, $fileNameToStore);
 
-            $requestData['banner_image'] = 'uploads/users/'.$fileNameToStore;
+            // Save file path in database
+            $requestData['banner_image'] = 'uploads/users/' . $fileNameToStore;
 
 		}
+
+        if ($request->hasFile('video')) {
+
+            // Define storage path
+            $videoPath = public_path('uploads/videos/');
+
+            // Ensure the directory exists
+            if (!File::exists($videoPath)) {
+                File::makeDirectory($videoPath, 0755, true, true);
+            }
+
+            // Get uploaded file
+            $file = $request->file('video');
+
+            // Generate a unique file name
+            $fileNameExt = $file->getClientOriginalName();
+            $fileNameForm = str_replace(' ', '_', $fileNameExt);
+            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+            $fileExt = $file->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+
+            // Move file to the uploads directory
+            $file->move($videoPath, $fileNameToStore);
+
+            // Store video path in request data
+            $requestData['video'] = 'uploads/videos/' . $fileNameToStore;
+        }
 
 		if($request->password != '' && !is_null($request->password)){
             // dd($request->all());
@@ -479,21 +513,22 @@ class LoggedInController extends Controller
                 File::delete($image_path);
             }
 
-			if(File::exists($banner_image_path)) {
-                File::delete($banner_image_path);
-            }
+            $pathToStore = public_path('uploads/users/');
 
             $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
+
+            // Generate a new filename
+            $fileNameExt = $file->getClientOriginalName();
             $fileNameForm = str_replace(' ', '_', $fileNameExt);
             $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/users/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
+            $fileExt = $file->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
 
+            // Move file to destination
+            $file->move($pathToStore, $fileNameToStore);
 
-            $requestData['image'] = 'uploads/users/'.$fileNameToStore;
+            // Save file path in database
+            $requestData['image'] = 'uploads/users/' . $fileNameToStore;
 
 		}
 
@@ -506,17 +541,23 @@ class LoggedInController extends Controller
                 File::delete($banner_image_path);
             }
 
+            $pathToStore = public_path('uploads/users/');
+
+            // Get uploaded file
             $file = $request->file('banner_image');
-            $fileNameExt = $request->file('banner_image')->getClientOriginalName();
+
+            // Generate a new filename
+            $fileNameExt = $file->getClientOriginalName();
             $fileNameForm = str_replace(' ', '_', $fileNameExt);
             $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('banner_image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/users/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
+            $fileExt = $file->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
 
+            // Move file to destination
+            $file->move($pathToStore, $fileNameToStore);
 
-            $requestData['banner_image'] = 'uploads/users/'.$fileNameToStore;
+            // Save file path in database
+            $requestData['banner_image'] = 'uploads/users/' . $fileNameToStore;
 
 		}
 
@@ -562,6 +603,39 @@ class LoggedInController extends Controller
 	   	return back();
 
 	}
+
+    public function video_delete(Request $request) {
+        $user = User::where('id', Auth::user()->id)->first();
+        $video_path = public_path($user->video);
+        if (File::exists($video_path)) {
+            File::delete($video_path);
+        }
+        $user->video = null;
+        $user->save();
+        return back();
+    }
+
+    public function image_delete(Request $request) {
+        $user = User::where('id', Auth::user()->id)->first();
+        $image_path = public_path($user->image);
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+        $user->image = null;
+        $user->save();
+        return back();
+    }
+
+    public function banner_delete(Request $request) {
+        $user = User::where('id', Auth::user()->id)->first();
+        $banner_path = public_path($user->banner);
+        if (File::exists($banner_path)) {
+            File::delete($banner_path);
+        }
+        $user->banner_image = null;
+        $user->save();
+        return back();
+    }
 
 
 

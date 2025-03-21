@@ -415,20 +415,29 @@
 
                             <label
                                 style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important;"
-                                for="">Hours of Operation :</label>
-                            @php
-                                $hours_of_operation = explode(',', Auth::user()->hours_of_operation);
-                            @endphp
-                            <select name="hours_of_operation[]" class="form-control" multiple
-                                id="hours_of_operation">
-                                <option>Select</option>
-                                <option {!! in_array('Monday to Tuesday', $hours_of_operation) ? 'selected' : '' !!}>Monday to Tuesday</option>
-                                <option {!! in_array('Tuesday to Wednesday', $hours_of_operation) ? 'selected' : '' !!}>Tuesday to Wednesday</option>
-                                <option {!! in_array('Wednesday to Thursday', $hours_of_operation) ? 'selected' : '' !!}>Wednesday to Thursday</option>
-                                <option {!! in_array('Thursday to Friday', $hours_of_operation) ? 'selected' : '' !!}>Thursday to Friday</option>
-                                <option {!! in_array('Friday to Saturday', $hours_of_operation) ? 'selected' : '' !!}>Friday to Saturday</option>
-                                <option {!! in_array('Saturday to Sunday', $hours_of_operation) ? 'selected' : '' !!}>Saturday to Sunday</option>
-                            </select>
+                                for="">Hours open :</label>
+                                <div class="row">
+                                    @php
+                                    // Assuming $user->timings contains JSON data
+                                    $timings = json_decode(Auth::user()->timings, true);
+                                    $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                                    @endphp
+                                @foreach ($days as $day)
+                                    <div class="col-md-4">
+                                        <label>
+                                            <span>{{ $day }}</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time" name="timings[{{ $day }}][from]"
+                                            value="{{ $timings[$day]['from'] ?? '' }}">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <input class="form-control" type="time" name="timings[{{ $day }}][to]"
+                                            value="{{ $timings[$day]['to'] ?? '' }}">
+                                    </div>
+                                @endforeach
+                            </div>
 
                             <br><br>
                             <!--  -->

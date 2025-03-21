@@ -220,117 +220,23 @@
                                 <div class="col-md-7 mb-2 mt-4">
                                     <h4 class="ml-2 bigh"> Hours open </h4>
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <span>Monday</span>
-                                            </label>
+                                    <?php
+                                    $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                                    foreach ($days as $day): ?>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>
+                                                    <span><?= $day ?></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input class="form-control" type="time" name="timings[<?= $day ?>][from]">
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input class="form-control" type="time" name="timings[<?= $day ?>][to]">
+                                            </div>
                                         </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Monday][from]"
-                                                value="09:00">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Monday][to]"
-                                                value="17:00">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <span>Tuesday</span>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Tuesday][from]"
-                                                value="09:00">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Tuesday][to]"
-                                                value="17:00">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <span>Wednesday</span>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Wednesday][from]"
-                                                value="09:00">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Wednesday][to]"
-                                                value="17:00">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <span>Thursday</span>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Thursday][from]"
-                                                value="09:00">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Thursday][to]"
-                                                value="17:00">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <span>Friday</span>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Friday][from]"
-                                                value="09:00">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Friday][to]"
-                                                value="17:00">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <span>Saturday</span>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Saturday][from]"
-                                                value="09:00">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Saturday][to]"
-                                                value="17:00">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <span>Sunday</span>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Sunday][from]"
-                                                value="09:00">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Sunday][to]"
-                                                value="17:00">
-                                        </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
 
                                 <div class="col-md-5 mb-2 mt-4">

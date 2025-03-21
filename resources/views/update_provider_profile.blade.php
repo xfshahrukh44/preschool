@@ -332,11 +332,25 @@
                                         <input type="file" name="image" class="form-control" />
                                     </div>
 
+                                    @if (!empty(Auth::user()->image))
+                                        <img src="{{ asset(Auth::user()->image) }}" class="img-fluid">
+                                        <a href="{{ route('image_delete') }}" class="btn btn-primary mt-4">
+                                            Delete Image
+                                        </a>
+                                    @endif
+
                                     <br><br>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Upload Banner Image</label>
                                         <input type="file" name="banner_image" class="form-control" />
                                     </div>
+
+                                    @if (!empty(Auth::user()->banner_image))
+                                        <img src="{{ asset(Auth::user()->banner_image) }}" class="img-fluid">
+                                        <a href="{{ route('banner_delete') }}" class="btn btn-primary mt-4">
+                                            Delete Banner Image
+                                        </a>
+                                    @endif
 
                                     <br><br>
 

@@ -473,7 +473,7 @@
                     var errorCount = checkEmptyFileds();
 
                     if (errorCount == 1) {
-                        $.toast({
+                        toastr({
                             heading: 'Alert!',
                             position: 'bottom-right',
                             text: 'Please fill the required fields before proceeding to pay',
@@ -500,7 +500,7 @@
                     return actions.payment.execute().then(function() {
                         // generateNotification('success','Payment Authorized');
 
-                        $.toast({
+                        toastr({
                             heading: 'Success!',
                             position: 'bottom-right',
                             text: 'Payment Authorized',

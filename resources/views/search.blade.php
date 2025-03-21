@@ -873,143 +873,38 @@
                                 </div>
 
                                 @php
-                                    $decoded_timings = json_decode($value->timings);
                                     $decoded_services = json_decode($value->services);
                                     $decoded_meal_offered = json_decode($value->meal_offered);
+                                    $decoded_timings = json_decode(Auth::user()->timings);
+                                    $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                                 @endphp
+
                                 <div class="col-md-12 mb-2 mt-4">
                                     <h2 class="ml-2"> Timings </h2>
 
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>Day</h5>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>From</h5>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>To</h5>
-                                            </label>
-                                        </div>
+                                        <div class="col-md-4"><label><h5>Day</h5></label></div>
+                                        <div class="col-md-4"><label><h5>From</h5></label></div>
+                                        <div class="col-md-4"><label><h5>To</h5></label></div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>Monday</h5>
-                                            </label>
+                                    @foreach ($days as $day)
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label><h5>{{ $day }}</h5></label>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input class="form-control" type="time" name="timings[{{ $day }}][from]"
+                                                    value="{{ isset($decoded_timings->$day->from) ? \Carbon\Carbon::parse($decoded_timings->$day->from)->format('H:i') : '' }}">
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input class="form-control" type="time" name="timings[{{ $day }}][to]"
+                                                    value="{{ isset($decoded_timings->$day->to) ? \Carbon\Carbon::parse($decoded_timings->$day->to)->format('H:i') : '' }}">
+                                            </div>
                                         </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Monday][from]"
-                                                value="{{ !is_null($decoded_timings->Monday->from) ? Carbon\Carbon::parse($decoded_timings->Monday->from)->format('H:i') : '' }}">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Monday][to]"
-                                                value="{{ !is_null($decoded_timings->Monday->to) ? Carbon\Carbon::parse($decoded_timings->Monday->to)->format('H:i') : '' }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>Tuesday</h5>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Tuesday][from]"
-                                                value="{{ !is_null($decoded_timings->Tuesday->from) ? Carbon\Carbon::parse($decoded_timings->Tuesday->from)->format('H:i') : '' }}">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Tuesday][to]"
-                                                value="{{ !is_null($decoded_timings->Tuesday->to) ? Carbon\Carbon::parse($decoded_timings->Tuesday->to)->format('H:i') : '' }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>Wednesday</h5>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Wednesday][from]"
-                                                value="{{ !is_null($decoded_timings->Wednesday->from) ? Carbon\Carbon::parse($decoded_timings->Wednesday->from)->format('H:i') : '' }}">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Wednesday][to]"
-                                                value="{{ !is_null($decoded_timings->Wednesday->to) ? Carbon\Carbon::parse($decoded_timings->Wednesday->to)->format('H:i') : '' }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>Thursday</h5>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Thursday][from]"
-                                                value="{{ !is_null($decoded_timings->Thursday->from) ? Carbon\Carbon::parse($decoded_timings->Thursday->from)->format('H:i') : '' }}">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Thursday][to]"
-                                                value="{{ !is_null($decoded_timings->Thursday->to) ? Carbon\Carbon::parse($decoded_timings->Thursday->to)->format('H:i') : '' }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>Friday</h5>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Friday][from]"
-                                                value="{{ !is_null($decoded_timings->Friday->from) ? Carbon\Carbon::parse($decoded_timings->Friday->from)->format('H:i') : '' }}">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Friday][to]"
-                                                value="{{ !is_null($decoded_timings->Friday->to) ? Carbon\Carbon::parse($decoded_timings->Friday->to)->format('H:i') : '' }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>Saturday</h5>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Saturday][from]"
-                                                value="{{ !is_null($decoded_timings->Saturday->from) ? Carbon\Carbon::parse($decoded_timings->Saturday->from)->format('H:i') : '' }}">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Saturday][to]"
-                                                value="{{ !is_null($decoded_timings->Saturday->to) ? Carbon\Carbon::parse($decoded_timings->Saturday->to)->format('H:i') : '' }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="">
-                                                <h5>Sunday</h5>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Sunday][from]"
-                                                value="{{ !is_null($decoded_timings->Sunday->from) ? Carbon\Carbon::parse($decoded_timings->Sunday->from)->format('H:i') : '' }}">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[Sunday][to]"
-                                                value="{{ !is_null($decoded_timings->Sunday->to) ? Carbon\Carbon::parse($decoded_timings->Sunday->to)->format('H:i') : '' }}">
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
+
 
                                 <div class="col-md-12 mb-2 mt-4 services_list">
                                     <h5 class="ml-2 mb-3"> Services </h5>

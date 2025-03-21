@@ -592,7 +592,10 @@ class LoggedInController extends Controller
 
 		$users = User::findOrFail($request->id);
 
-        $requestData['hours_of_operation'] = implode(',', $requestData['hours_of_operation'] ?? []);
+        if ($request->timings) {
+            $requestData['timings'] = json_encode($request->timings);
+        }
+        // $requestData['hours_of_operation'] = implode(',', $requestData['hours_of_operation'] ?? []);
         $requestData['age_accepted'] = implode(',', $requestData['age_accepted'] ?? []);
         $requestData['types_of_care_provided'] = implode(',', $requestData['types_of_care_provided'] ?? []);
 		$users->update($requestData);

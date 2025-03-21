@@ -255,7 +255,6 @@
                 @include('provider_menues')
 
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-2 order-md-3 order-sm-3 order-3">
-
                     <div class="profileparent">
                         <form action="{{ route('update_prov_profile2') }}" method="post" enctype="multipart/form-data">
                             <div class="profilein1" style="border-bottom: 0px; padding-bottom: 0px;">

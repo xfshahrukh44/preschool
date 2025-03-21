@@ -870,6 +870,8 @@
                                     <textarea type="text" style="height: 120px;" name="location_iframe"
                                         class="form-control"> {{ $value->location_iframe }} </textarea>
 
+                                    <a href="https://www.youtube.com/watch?v=_RPuhfX4d_A&ab_channel=Invitify">How To Upload Location?</a>
+
                                 </div>
 
                                 @php

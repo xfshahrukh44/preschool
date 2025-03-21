@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <style>
         .about-sec-one {
             /*background-image: url(<?php //echo asset('images/194-scaled.jpg');
@@ -446,7 +445,6 @@
 
 @section('js')
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
     <script>
@@ -473,15 +471,7 @@
                     var errorCount = checkEmptyFileds();
 
                     if (errorCount == 1) {
-                        toastr({
-                            heading: 'Alert!',
-                            position: 'bottom-right',
-                            text: 'Please fill the required fields before proceeding to pay',
-                            loaderBg: '#ff6849',
-                            icon: 'error',
-                            hideAfter: 5000,
-                            stack: 6
-                        });
+                        toastr.error('Please fill the required fields before proceeding to pay');
                         paypalActions.disable();
                     } else {
                         paypalActions.enable();
@@ -500,15 +490,7 @@
                     return actions.payment.execute().then(function() {
                         // generateNotification('success','Payment Authorized');
 
-                        toastr({
-                            heading: 'Success!',
-                            position: 'bottom-right',
-                            text: 'Payment Authorized',
-                            loaderBg: '#ff6849',
-                            icon: 'success',
-                            hideAfter: 1000,
-                            stack: 6
-                        });
+                        toastr.success('Payment Authorized');
 
                         var params = {
                             payment_status: 'Completed',

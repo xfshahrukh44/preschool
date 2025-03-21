@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="{{asset('css/inner.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
 
-
-  <!--Toaster Css-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">

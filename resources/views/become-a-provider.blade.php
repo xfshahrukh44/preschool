@@ -230,14 +230,15 @@
                                                 </label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input class="form-control" type="time" name="timings[<?= $day ?>][from]">
+                                                <input class="form-control" type="time" name="timings[<?= $day ?>][from]" value="09:00">
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input class="form-control" type="time" name="timings[<?= $day ?>][to]">
+                                                <input class="form-control" type="time" name="timings[<?= $day ?>][to]" value="17:00">
                                             </div>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
+
 
                                 <div class="col-md-5 mb-2 mt-4">
                                     <h4 class="ml-2"> Services </h4>

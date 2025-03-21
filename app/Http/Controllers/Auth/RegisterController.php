@@ -104,43 +104,6 @@ class RegisterController extends Controller
 
         $ageacceptedd = implode(',', $data['age_accepted'] ?? []);
 
-        // dd($data);
-        if($data['role'] == 4){
-
-            try {
-
-
-                try {
-                    Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-                    $customer = \Stripe\Customer::create(array(
-                        'email' => $data['email'],
-                        'name' => $data['name'],
-                        'description' => "Provider Signup",
-                        'source'  => $data['stripeToken'],
-                    ));
-                    $customerId = $customer->id;
-                } catch (Exception $e) {
-                    return redirect()->back()->with('stripe_error', $e->getMessage());
-                }
-
-                try {
-                    $charge = \Stripe\Charge::create(array(
-                        'customer' => $customer->id,
-                        'amount'   => (int)$data['amount'] * 100,
-                        'currency' => 'USD',
-                        'description' => "Provider Signup",
-                        'metadata' => array("name" => $data['name'], "email" => $data['email']),
-                    ));
-
-                } catch (Exception $e) {
-                    return redirect()->back()->with('stripe_error', $e->getMessage());
-                }
-            } catch (Exception $e) {
-                return redirect()->back()->with('stripe_error', $e->getMessage());
-            }
-        }
-
 
         $user = User::create([
 
@@ -177,6 +140,47 @@ class RegisterController extends Controller
             'expiration_date' => $data['expiration_date'],
 
         ]);
+
+        // dd($data);
+        if($data['role'] == 4){
+
+            // try {
+
+
+            //     try {
+            //         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            //         $customer = \Stripe\Customer::create(array(
+            //             'email' => $data['email'],
+            //             'name' => $data['name'],
+            //             'description' => "Provider Signup",
+            //             'source'  => $data['stripeToken'],
+            //         ));
+            //         $customerId = $customer->id;
+            //     } catch (Exception $e) {
+            //         return redirect()->back()->with('stripe_error', $e->getMessage());
+            //     }
+
+            //     try {
+            //         $charge = \Stripe\Charge::create(array(
+            //             'customer' => $customer->id,
+            //             'amount'   => (int)$data['amount'] * 100,
+            //             'currency' => 'USD',
+            //             'description' => "Provider Signup",
+            //             'metadata' => array("name" => $data['name'], "email" => $data['email']),
+            //         ));
+
+            //     } catch (Exception $e) {
+            //         return redirect()->back()->with('stripe_error', $e->getMessage());
+            //     }
+            // } catch (Exception $e) {
+            //     return redirect()->back()->with('stripe_error', $e->getMessage());
+            // }
+            $user->transaction_id = $data['payment_id'];
+			$user->order_status = $data['payment_status'];
+			$user->card_token = $data['payer_id'];
+        }
+
 
         if ($data['timings']) {
             $user->timings = json_encode($data['timings']);

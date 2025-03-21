@@ -20,7 +20,7 @@
             text-decoration: none !important;
         }
 
-        button#stripe-submit {
+        button#paypal {
             margin-top: 2rem;
         }
 
@@ -117,7 +117,7 @@
                             <input type="hidden" name="payer_id" value="" />
                             <input type="hidden" name="payment_status" value="" />
                             <input type="hidden" name="amount" value="{{ $total }}" />
-                            <input type="hidden" name="payment_method" id="payment_method" value="stripe" />
+                            <input type="hidden" name="payment_method" id="payment_method" value="paypal" />
 
                             <div class="row">
 
@@ -223,19 +223,21 @@
                                     <?php
                                     $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                                     foreach ($days as $day): ?>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>
-                                                    <span><?= $day ?></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input class="form-control" type="time" name="timings[<?= $day ?>][from]" value="09:00">
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input class="form-control" type="time" name="timings[<?= $day ?>][to]" value="17:00">
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>
+                                                <span><?= $day ?></span>
+                                            </label>
                                         </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[<?= $day ?>][from]"
+                                                value="09:00">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <input class="form-control" type="time" name="timings[<?= $day ?>][to]"
+                                                value="17:00">
+                                        </div>
+                                    </div>
                                     <?php endforeach; ?>
                                 </div>
 
@@ -394,47 +396,33 @@
 
 
                                 <!--<button type="submit" class="custom-btn">Become a provider</button>-->
-                                <div class="form-group col-lg-12 mt-3">
-                                    <div id="accordion" class="payment-accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse"
+                                                data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne" data-payment="paypal">
+                                                Pay with Paypal {{ $total }} <img src="{{ asset('images/paypal.png') }}"
+                                                    width="60" alt="">
+                                            </button>
+                                        </h5>
+                                    </div>
 
-                                        <div class="card">
-                                            <div class="card-header" id="headingTwo">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapsed" type="button"
-                                                        data-toggle="collapse" data-target="#collapseTwo"
-                                                        aria-expanded="false" aria-controls="collapseTwo"
-                                                        data-payment="stripe">
-                                                        Pay with Credit Card ${{ $total }}<img
-                                                            src="{{ asset('images/payment1.png') }}" alt=""
-                                                            width="150">
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
-                                                data-parent="#accordion">
-                                                <div class="card-body">
-                                                    <div class="stripe-form-wrapper require-validation"
-                                                        data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                                                        data-cc-on-file="false">
-                                                        <div id="card-element"></div>
-                                                        <div id="card-errors" role="alert"></div>
-                                                        <!-- <div class="form-group">
-                                                                <button class="btn btn-red btn-block" type="button"
-                                                                    style="background: #5798fc; color: #fff;"
-                                                                    id="stripe-submit">Pay Now ${{ $total }}</button>
-                                                            </div> -->
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                        data-parent="#accordion">
+                                        <div class="card-body">
+                                            <input type="hidden" name="price" value="{{ $total }}" />
+                                            <input type="hidden" name="product_id" value="" />
+                                            <input type="hidden" name="qty" value="value['qty']" />
+                                            <div id="paypal-button-container-popup"></div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group col-lg-12 mt-3">
-                                    <button type="button" id="stripe-submit"
-                                        class="btn btn-primary btn-block">Register</button>
+                                    <div class="form-group col-lg-12 mt-3">
+                                        <button type="button" id="paypal-submit" disabled
+                                            class="btn btn-primary btn-block">Register</button>
+                                    </div>
                                 </div>
-                            </div>
 
 
                         </form>
@@ -458,127 +446,129 @@
 
 @section('js')
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"
+        integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <script>
-        $(document).ready(function() {
-            toastr.options = {
-                'closeButton': true,
-                'debug': false,
-                'newestOnTop': false,
-                'progressBar': false,
-                'positionClass': 'toast-top-right',
-                'preventDuplicates': false,
-                'showDuration': '1000',
-                'hideDuration': '1000',
-                'timeOut': '5000',
-                'extendedTimeOut': '1000',
-                'showEasing': 'swing',
-                'hideEasing': 'linear',
-                'showMethod': 'fadeIn',
-                'hideMethod': 'fadeOut',
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            paypal.Button.render({
+                env: 'sandbox', //production
+
+                style: {
+                    label: 'checkout',
+                    size: 'responsive',
+                    shape: 'rect',
+                    color: 'gold'
+                },
+                client: {
+                    sandbox: 'AV06KMdIerC8pd6_i1gQQlyVoIwV8e_1UZaJKj9-aELaeNXIGMbdR32kDDEWS4gRsAis6SRpUVYC9Jmf',
+                    // production:'ARIYLCFJIoObVCUxQjohmqLeFQcHKmQ7haI-4kNxHaSwEEALdWABiLwYbJAwAoHSvdHwKJnnOL3Jlzje',
+                },
+                validate: function(actions) {
+                    actions.disable();
+                    paypalActions = actions;
+                },
+
+                onClick: function(e) {
+                    var errorCount = checkEmptyFileds();
+
+                    if (errorCount == 1) {
+                        $.toast({
+                            heading: 'Alert!',
+                            position: 'bottom-right',
+                            text: 'Please fill the required fields before proceeding to pay',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 5000,
+                            stack: 6
+                        });
+                        paypalActions.disable();
+                    } else {
+                        paypalActions.enable();
+                    }
+                },
+                payment: function(data, actions) {
+                    return actions.payment.create({
+                        payment: {
+                            transactions: [{
+                                amount: { total: {{number_format(((float)$total),2, '.', '')}}, currency: 'USD' }
+                            }]
+                        }
+                    });
+                },
+                onAuthorize: function(data, actions) {
+                    return actions.payment.execute().then(function() {
+                        // generateNotification('success','Payment Authorized');
+
+                        $.toast({
+                            heading: 'Success!',
+                            position: 'bottom-right',
+                            text: 'Payment Authorized',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 1000,
+                            stack: 6
+                        });
+
+                        var params = {
+                            payment_status: 'Completed',
+                            paymentID: data.paymentID,
+                            payerID: data.payerID
+                        };
+
+                        // console.log(data.paymentID);
+                        // return false;
+                        $('input[name="payment_status"]').val('Completed');
+                        $('input[name="payment_id"]').val(data.paymentID);
+                        $('input[name="payer_id"]').val(data.payerID);
+                        $('input[name="payment_method"]').val('paypal');
+                        $('#sign-up').submit();
+                    });
+                },
+                onCancel: function(data, actions) {
+                    var params = {
+                        payment_status: 'Failed',
+                        paymentID: data.paymentID
+                    };
+                    $('input[name="payment_status"]').val('Failed');
+                    $('input[name="payment_id"]').val(data.paymentID);
+                    $('input[name="payer_id"]').val('');
+                    $('input[name="payment_method"]').val('paypal');
+                }
+            }, '#paypal-button-container-popup');
         });
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var stripe = Stripe("{{ env('STRIPE_KEY') }}");
-
-            // Create an instance of Elements
-            var elements = stripe.elements();
-            var style = {
-                base: {
-                    color: '#32325d',
-                    lineHeight: '18px',
-                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                    fontSmoothing: 'antialiased',
-                    fontSize: '16px',
-                    '::placeholder': {
-                        color: '#aab7c4'
-                    }
-                },
-                invalid: {
-                    color: '#fa755a',
-                    iconColor: '#fa755a'
-                }
-            };
-
-            var cardElement = document.getElementById('card-element');
-            if (cardElement) {
-                var card = elements.create('card', {
-                    style: style
-                });
-                card.mount('#card-element');
-
-                card.addEventListener('change', function(event) {
-                    var displayError = document.getElementById('card-errors');
-                    if (event.error) {
-                        displayError.textContent = event.error.message || "An error occurred.";
-                    } else {
-                        displayError.textContent = '';
-                    }
-                });
-            }
-
-            $('#stripe-submit').click(function() {
-                stripe.createToken(card).then(function(result) {
-                    var errorCount = checkEmptyFields();
-                    if (result.error || errorCount === 1) {
-                        // Handle Errors
-                        if (result.error) {
-                            var errorElement = document.getElementById('card-errors');
-                            errorElement.textContent = result.error.message;
-                        } else {
-                            toastr.error(
-                                'Please fill the required fields before proceeding to pay');
-                        }
-                    } else {
-                        // Handle Token
-                        stripeTokenHandler(result.token);
-                    }
-                });
-            });
-
-            function stripeTokenHandler(token) {
-                var form = document.getElementById('sign-up');
-                var hiddenInput = document.createElement('input');
-                hiddenInput.setAttribute('type', 'hidden');
-                hiddenInput.setAttribute('name', 'stripeToken');
-                hiddenInput.setAttribute('value', token.id);
-                form.appendChild(hiddenInput);
-                form.submit();
-            }
-
-            function checkEmptyFields() {
-                var errorCount = 0;
-                $('form#sign-up').find('.form-control').each(function() {
-                    if ($(this).prop('required') && !$(this).val()) {
+        function checkEmptyFileds() {
+            var errorCount = 0;
+            $('form#sign-up').find('.form-control').each(function() {
+                if ($(this).prop('required')) {
+                    if (!$(this).val()) {
                         $(this).parent().find('.invalid-feedback').addClass('d-block');
                         $(this).parent().find('.invalid-feedback strong').html('Field is Required');
                         errorCount = 1;
                     }
-                });
-                return errorCount;
-            }
-        });
-    </script>
-
-
-    <script>
-        const refresh_stripe_button_state = () => {
-            $('#stripe-submit').prop('disabled', !($('#checkbox_agreed_to_terms').prop('checked')));
-            $('#stripe-submit').prop('title', $('#checkbox_agreed_to_terms').prop('checked') ? '' :
-                'Please read and accept our terms/privacy policy.');
+                }
+            });
+            return errorCount;
         }
-        refresh_stripe_button_state();
 
-        $('#checkbox_agreed_to_terms').on('change', function() {
-            refresh_stripe_button_state();
-        });
+        // const refresh_paypal_button_state = () => {
+        //     $('#paypal-submit').prop('disabled', !($('#checkbox_agreed_to_terms').prop('checked')));
+        //     $('#paypal-submit').prop('title', $('#checkbox_agreed_to_terms').prop('checked') ? '' :
+        //         'Please read and accept our terms/privacy policy.');
+        // }
+        // refresh_paypal_button_state();
 
-        document.getElementById('isLicensed').addEventListener('change', function() {
-            document.getElementById('licenseFields').style.display = this.checked ? 'block' : 'none';
-        });
+        // $('#checkbox_agreed_to_terms').on('change', function() {
+        //     refresh_paypal_button_state();
+        // });
+
+        // document.getElementById('isLicensed').addEventListener('change', function() {
+        //     document.getElementById('licenseFields').style.display = this.checked ? 'block' : 'none';
+        // });
     </script>
 @endsection

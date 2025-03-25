@@ -6,13 +6,13 @@
     .modal-body label h5 {
         font-size: 14px !important;
     }
+
     .flex-eye {
         margin-bottom: 1.3rem !important;
     }
 
     .card .card-body {
-        display: flex
-    ;
+        display: flex;
         flex-wrap: nowrap;
         white-space: nowrap;
         overflow-y: scroll;
@@ -32,32 +32,39 @@
         height: auto !important;
         padding: 3rem 0;
     }
+
     .mt-btn.join-now-style a {
         margin: 0 !important;
     }
 
-    .our-goal p{
+    .our-goal p {
         font-size: 20px !important;
         line-height: 23px;
     }
+
     .SignUp p {
         font-size: 15px;
         line-height: 10px;
     }
+
     .custom-btn.big {
         padding: 15px 45px;
     }
+
     .EmailSubbmision form input {
         width: 50%;
         font-size: 13px;
     }
+
     .our-goal p {
         width: 90%;
         margin-top: 40px;
     }
+
     .about-sec-three {
-        height: 455px;
+        height: 455px !important;
     }
+
     .our-goal h2 {
         font-size: 70px;
     }
@@ -79,6 +86,7 @@
     .job-board {
         padding: 50px 85px;
     }
+
     .BlogMain {
         padding: 30px 40px;
     }
@@ -86,11 +94,13 @@
     .BlogArea {
         padding: 1rem 1rem;
     }
+
     nav.navbar.navbar-expand-lg a img {
         margin-left: 0;
         position: unset;
         width: 80%;
     }
+
     .mt-btn a {
         margin-top: 100px;
     }
@@ -102,11 +112,85 @@
     span.select2.select2-container.select2-container--default.select2-container--focus.select2-container--below {
         width: 100% !important;
     }
+
     .bulletin_board {
         padding: 0 50px !important;
         padding-top: 100px !important;
     }
+
+    .about-pg {
+        height: 600px !important;
+    }
+
+    .about-pg .our-goal p {
+        font-size: 15px !important;
+    }
+
+    .zig-zag.provider {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .welcome-sandbox .card-body {
+        display: unset;
+        white-space: unset;
+        padding: 30px !important;
+    }
+
+    .welcome-sandbox {
+        padding: 2.5rem;
+    }
+
+    .welcome-sandbox div#collapseOne {
+        padding: 1rem;
+    }
+
+    .user ul {
+        height: unset;
+    }
+
+    .update-form {
+        height: unset !important;
+    }
+
+    .span_icon {
+        font-size: 16px;
+    }
+
+    .new-feedbut {
+        width: 65rem;
+    }
+
+    .new-feedbut .but1,
+    .but2 {
+        width: unset;
+    }
+
+    .commentbox h4 input {
+        width: 380px;
+    }
+
+    .share_post {
+        padding: 25px !important;
+    }
+
+    .w-img {
+        width: 40px;
+    }
+
+    .add-job-provider .profileparent {
+        height: unset !important;
+    }
+
+    .add-job-provider {
+        overflow: hidden;
+    }
+
+    .search_bar_location .btn-block {
+        height: 40px !important;
+    }
 }
+
 @media (max-width: 1199px) {
 
     .main-responsive-style .searchable-input #state-results {
@@ -159,6 +243,7 @@
 
     .section-3-main-txt .heading-2 {
         padding: 0 !important;
+        font-size: 40px;
     }
 
     .tab-content table.table {
@@ -177,7 +262,8 @@
     .main h4 {
         font-size: 10px !important;
     }
-    .sidebar{
+
+    .sidebar {
         width: auto !important;
     }
 
@@ -193,17 +279,20 @@
     .modal .modal-dialog .modal-content .modal-header {
         padding: 14px 26px;
     }
-    .modal .modal-dialog .modal-content .modal-header h5{
+
+    .modal .modal-dialog .modal-content .modal-header h5 {
         font-size: 20px;
     }
 
     .modal .modal-dialog .modal-content .modal-body {
         padding: 14px 26px;
     }
-    .modal .modal-dialog .modal-content .modal-body h6{
+
+    .modal .modal-dialog .modal-content .modal-body h6 {
         font-size: 18px;
     }
-    .modal .modal-dialog .modal-content .modal-body p{
+
+    .modal .modal-dialog .modal-content .modal-body p {
         font-size: 15px;
     }
 
@@ -246,6 +335,7 @@
     .profilebuttons ul li a {
         font-size: 12px;
     }
+
     .menu_active {
         padding: 10px;
         font-size: 12px !important;
@@ -258,7 +348,7 @@
     }
 
     .priority h1 {
-        font-size: 40px;
+        font-size: 35px;
     }
 
     .about-bottom {
@@ -266,8 +356,9 @@
     }
 
     .top-bottom {
-        height: 650px !important;
+        height: 600px !important;
     }
+
     .our-goal p {
         color: #b3b3b3;
         margin: auto;
@@ -281,6 +372,7 @@
     .give-the-best h1 span {
         font-size: 30px !important;
     }
+
     .childcare h1 {
         font-size: 50px;
         line-height: 60px;
@@ -294,6 +386,7 @@
     .services h6 {
         font-size: 15px;
     }
+
     .childcare .custom-para {
         width: 60%;
         font-size: 15px;
@@ -316,6 +409,7 @@
     .priority p {
         font-size: 16px;
     }
+
     .priority .font-b span {
         font-size: 16px;
     }
@@ -335,17 +429,19 @@
     }
 
     .services {
-        padding-top: 50px;
+        padding-top: 15px;
     }
 
     .trands h4 {
         font-size: 38px;
     }
+
     .SignUp p {
         font-size: 14px;
         margin-right: 0;
         line-height: 10px;
     }
+
     .EmailSubbmision form input {
         width: 45%;
     }
@@ -354,7 +450,7 @@
         padding: 15px 40px;
     }
 
-    maindivFooter {
+    .maindivFooter {
         width: 80%;
         padding: 30px 20px;
     }
@@ -367,14 +463,19 @@
         padding-top: 7rem;
         padding-bottom: 0;
     }
+
     ul.navbar-nav li a {
         font-size: 14px;
     }
+
     nav.navbar.navbar-expand-lg a img {
         width: 75%;
+        height: 140px;
     }
+
     .about-sec-one {
-        height: 400px;
+        height: 500px !important;
+
     }
 
     .about-us h2 {
@@ -390,16 +491,18 @@
     }
 
     .about-sec-three {
-        height: 380px;
+        height: 345px !important;
     }
 
     .our-goal h2 {
-        font-size: 50px;
+        font-size: 40px;
+        line-height: unset;
     }
 
     .our-goal p {
         width: 100%;
         margin-top: 20px;
+        font-size: 16px !important;
     }
 
     .work h5 {
@@ -409,27 +512,165 @@
     .work p {
         width: 100%;
     }
+
     .content-zig {
         padding-top: 65px;
     }
+
     .about-pg {
+        height: 600px !important;
+
     }
 
     .about-pg .our-goal p {
         font-size: 15px !important;
     }
+
     .pt-about .about-bottom.two {
         padding-top: 250px !important;
     }
+
     .pt-about .about-bottom.two {
         padding-top: 200px !important;
     }
+
     .provider-banner {
         height: 380px !important;
     }
 
     .zig-zag.provider {
-        padding: 50px 30px;
+        padding: 50px 0px;
+    }
+
+    .childcare h2 span {
+        font-size: 35px !important;
+    }
+
+    .sec-two {
+        padding: 20px 0;
+    }
+
+    .trands {
+        padding-bottom: 20px;
+    }
+
+    .contact-banner {
+        height: 350px !important;
+    }
+
+    .hour-services input.form-control {
+        font-size: 10px;
+        width: 90px;
+        padding-right: 0px;
+    }
+
+    .hour-services input .col-md-4 {
+        padding: 0;
+    }
+
+    .hour-services label {
+        margin-left: 10px !important;
+    }
+
+    .hour-services .col-md-5.mb-2.mt-4 {
+        padding-left: 30px;
+    }
+
+    .back {
+        padding: 1rem 0;
+    }
+
+    .sidebarleft {
+        padding: 1rem 14px 1rem 10px;
+    }
+
+    .profilebuttons ul li {
+        margin-left: 0;
+    }
+
+    .profileparent {
+        padding: 2rem 15px;
+    }
+
+    .commentbox h4 input {
+        width: 330px;
+    }
+
+    .sidebarleft {
+        height: unset;
+    }
+
+    .update-form {
+        padding: 30px;
+        overflow-y: scroll;
+        height: 40rem !important;
+    }
+
+    .update-profile-sec {
+        overflow: hidden;
+    }
+
+    .write-in {
+        padding: 1rem;
+    }
+
+    .new-feedbut {
+        width: 55rem;
+    }
+
+    .but0 {
+        padding: 10px 20px 10px 20px;
+        align-items: center;
+    }
+
+    .w-img {
+        width: 50px;
+        margin-left: -20px;
+    }
+
+    .share_post .new-feedbut .but2 {
+        width: 38%;
+    }
+
+    .newfeed-profile-name .w-img {
+        margin-left: 0;
+    }
+
+    button.btn.btn-primary.comment_post_btn {
+        margin-left: -12px;
+    }
+
+    .share_post button.btn.btn-primary.comment_post_btn {
+        margin-left: -22px;
+    }
+
+    .share_post .post_comment .w-img {
+        margin-left: -4px;
+    }
+
+    .new-feedbut .but1,
+    .but2 {
+        width: unset !important;
+    }
+
+    .recent_users ul li h6 span {
+
+        width: 68%;
+    }
+
+    .add-job-provider .profileparent {
+        padding: 20px;
+        overflow-y: scroll;
+        height: 45rem !important;
+    }
+
+    .search_bar_location input {
+        height: 40px !important;
+    }
+
+    .section-3.main-padding .custom-row {
+        padding: 10px 50px !important;
+
     }
 }
 
@@ -445,10 +686,8 @@
         width: 44% !important;
     }
 
-
-
     .sty #state-input {
-        width: 260px !important;
+        width: 200px !important;
     }
 
     .searchable-input #state-results {
@@ -473,14 +712,16 @@
         flex-direction: column;
         width: 100%;
     }
-    .section-3-img  img{
-        width: 100% !important;
-    }
-    .section-3-img figure{
+
+    .section-3-img img {
         width: 100% !important;
     }
 
-    .profileparent{
+    .section-3-img figure {
+        width: 100% !important;
+    }
+
+    .profileparent {
         height: auto !important;
     }
 
@@ -494,17 +735,20 @@
     .modal .modal-dialog .modal-content .modal-header {
         padding: 10px 16px;
     }
-    .modal .modal-dialog .modal-content .modal-header h5{
+
+    .modal .modal-dialog .modal-content .modal-header h5 {
         font-size: 18px;
     }
 
     .modal .modal-dialog .modal-content .modal-body {
         padding: 10px 16px;
     }
-    .modal .modal-dialog .modal-content .modal-body h6{
+
+    .modal .modal-dialog .modal-content .modal-body h6 {
         font-size: 16px;
     }
-    .modal .modal-dialog .modal-content .modal-body p{
+
+    .modal .modal-dialog .modal-content .modal-body p {
         font-size: 14px;
     }
 
@@ -553,7 +797,11 @@
         margin-bottom: 2rem;
     }
 
-    .sidebar {min-height: auto;text-align: center;width: 100%;}
+    .sidebar {
+        min-height: auto;
+        text-align: center;
+        width: 100%;
+    }
 
     .profilebuttons ul {
         display: flex;
@@ -562,6 +810,7 @@
         flex-wrap: nowrap;
         align-items: center;
         white-space: nowrap;
+        gap: 18px;
     }
 
     .profilebuttons {
@@ -583,6 +832,7 @@
         position: relative;
         z-index: 0;
     }
+
     .comment_box {
         margin-top: 20px !important;
     }
@@ -604,7 +854,8 @@
     div#navbarSupportedContent .my-2 {
         margin: 0 !important;
     }
-    div#navbarSupportedContent li.nav-item.active{
+
+    div#navbarSupportedContent li.nav-item.active {
         border-radius: 0 !important;
     }
 
@@ -613,7 +864,7 @@
     }
 
 
-    .zig-zag.provider img{
+    .zig-zag.provider img {
         width: 100% !important;
     }
 
@@ -626,7 +877,7 @@
         padding: 40px 0 30px 0 !important;
     }
 
-    .box-new-1{
+    .box-new-1 {
         padding-top: 50px !important;
 
     }
@@ -644,43 +895,39 @@
         padding-bottom: 30px;
     }
 
-    /* .about-sec-three{
-        height: 450px !important;
-    } */
+    .sec-one .sty {
+        width: 90% !important;
+        margin: auto;
+        align-items: center;
+        border-radius: 5px;
+        margin-top: 40px;
+        padding-right: 10px;
+        height: 55px;
+    }
 
-.sty {
-    width: 90% !important;
-    margin: auto;
-    align-items: center;
-    border-radius: 5px;
-    margin-top: 40px;
-    padding-right: 10px;
-}
+    .sty #search-bar {
+        background: transparent;
+        border-right: 1px solid #495057;
+        height: 65px;
+        border-radius: 0;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
 
-.sty #search-bar {
-    background: transparent;
-    border-right: 1px solid #495057;
-    height: 65px;
-    border-radius: 0;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-.sty #state-input {
-    background: transparent;
-    border: none;
-    border-right: 1px solid #495057;
-    height: 65px;
-    border-left: none;
-    width: 100%;
-}
+    .sty #state-input {
+        background: transparent;
+        border: none;
+        border-right: 1px solid #495057;
+        height: 50px !important;
+        border-left: none;
+        width: 100%;
+    }
 
 
     nav.navbar.navbar-expand-lg a img {
-        width: 65% !important;
+        width: 90% !important;
         width: 100%;
-        left: 48%;
-        height: 170px;
+        height: 115px;
     }
 
     ul.navbar-nav {
@@ -701,7 +948,7 @@
     }
 
     .sec-one {
-        height: 600px;
+        height: 520px !important;
     }
 
     .childcare h1 {
@@ -744,6 +991,7 @@
     .give-the-best.two .para {
         width: 60%;
     }
+
     .give-the-best.two {
         align-items: start;
     }
@@ -812,7 +1060,7 @@
     }
 
     .SignUp p {
-        font-size: 13px;
+        font-size: 12px;
         line-height: 12px;
         margin-bottom: 4px;
     }
@@ -836,8 +1084,9 @@
     }
 
     .DownFooterTwo {
-        padding-top: 6rem;
+        padding-top: 5rem;
     }
+
     .about-sec-one {
         height: 300px;
     }
@@ -855,12 +1104,13 @@
     }
 
     .about-bottom p {
-        line-height: 20px;
+        line-height: unset;
         width: 93%;
+        margin-top: 0;
     }
 
     .about-sec-three {
-        height: 295px;
+        height: 270px !important;
     }
 
     .our-goal h2 {
@@ -880,6 +1130,7 @@
         font-size: 14px;
         width: 90%;
     }
+
     .content-zig h6 {
         font-size: 30px;
     }
@@ -891,6 +1142,7 @@
     .content-zig {
         padding-top: 20px;
     }
+
     div#navbarSupportedContent {
         position: absolute;
         z-index: 0;
@@ -899,10 +1151,12 @@
         top: 130px;
         background: #e3e3e3e6;
     }
+
     .childcare .custom-para {
         width: 100%;
         color: white;
     }
+
     .sec-one {
         position: relative;
         z-index: 0;
@@ -918,22 +1172,26 @@
         width: 100%;
         height: 100%;
     }
+
     .priority h1 {
-        font-size: 30px;
+        font-size: 25px;
+        line-height: unset;
     }
 
     .about-sec-two {
-        padding-top: 0;
+        padding-top: 0 !important;
     }
 
     .top-bottom.two {
         margin-top: 0;
     }
+
     .about-sec-three .our-goal p {
         width: 100% !important;
-        font-size: 18px !important;
+        font-size: 15px !important;
         margin-top: 20px !important;
     }
+
     .give-the-best h1 span {
         font-size: 24px !important;
     }
@@ -946,6 +1204,7 @@
     .services h6 {
         font-size: 13px;
     }
+
     .sec-four .box-new-text ul li p span {
         font-size: 14px !important;
     }
@@ -957,29 +1216,35 @@
     footer {
         padding-top: 6rem !important;
     }
+
     .QuickContact .ReadMoreFooter span a {
         font-size: 10px;
     }
+
     .maindivFooter {
         width: 80%;
         left: 0;
         right: 0;
-        top: -80px;
+        top: -25px;
     }
 
     .about-pg .our-goal p {
         font-size: 12px !important;
         margin-top: 10px !important;
     }
+
     .social-linsk a {
         font-size: 30px !important;
     }
+
     .pt-about .about-bottom.two {
         padding-top: 150px !important;
     }
+
     .Teacher-Banner {
         height: 300px !important;
     }
+
     .mt-btn a {
         margin-top: 50px;
     }
@@ -988,8 +1253,6 @@
         height: unset !important;
     }
 
-    label.ml-5 {
-    }
 
     .provider label.ml-5 {
         margin: 0 !important;
@@ -998,8 +1261,110 @@
     .provider label span {
         margin-left: -30px;
     }
+
     .Teacher-sec .content-zig h6 {
         font-size: 1.5rem;
+    }
+
+    .childcare h2 span {
+        font-size: 28px !important;
+        line-height: unset !important;
+    }
+
+    .childcare h2 {
+        line-height: unset !important;
+    }
+
+    .about-bottom {
+        padding-top: 250px !important;
+    }
+
+    .top-bottom {
+        height: 470px !important;
+    }
+
+    .our-goal h2 {
+        font-size: 20px;
+    }
+
+    .sec-three {
+        padding-bottom: 30px;
+        padding-top: 20px;
+    }
+
+    .FooterMainDiv h5 {
+        font-size: 12px;
+    }
+
+    .FooterMainDiv h5 a {
+        font-size: 11px;
+    }
+
+    button.custom-btn.big {
+        padding: 9px 20px !important;
+    }
+
+    .pt-about {
+        padding: 60px 0 !important;
+    }
+
+    .about-pg {
+        height: 580px !important;
+    }
+
+    .pt-about .top-bottom {
+        height: 540px !important;
+    }
+
+    .pt-about .top-bottom p span {
+        font-size: 12px !important;
+    }
+
+    .contact-banner {
+        height: 250px !important;
+    }
+
+    .hour-services input.form-control {
+        width: 100%;
+    }
+
+    .hour-services .col-md-4 {
+        padding: 0;
+    }
+
+    .profilebuttons ul li {
+        margin-top: 0;
+    }
+
+    .home-sec1 .col-12 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    a.post-logo img {
+        margin-left: 30px !important;
+        width: 10%;
+    }
+
+    .add-job-provider .profileparent {
+        overflow-y: unset;
+        height: unset !important;
+    }
+
+    .search_bar_location input {
+        font-size: 9px;
+    }
+
+    .searchable-input select {
+        font-size: 10px;
+    }
+
+    .search_bar_location .btn-block {
+        font-size: 12px;
+    }
+
+    .section-3-main-txt h4 {
+        font-size: 25px;
     }
 }
 
@@ -1017,7 +1382,8 @@
 
 
     .sty #state-input {
-        width: 230px !important;
+        width: 180px !important;
+        font-size: 12px;
     }
 
     .searchable-input #state-results {
@@ -1047,8 +1413,8 @@
     }
 
 
-    .section-3.main-padding .row {
-        padding: 0 !important;
+    .section-3.main-padding .custom-row {
+        padding: 10px 20px !important;
     }
 
 
@@ -1068,6 +1434,7 @@
     .profile1 img {
         margin-left: 1rem !important;
         margin-bottom: 6px !important;
+        width: 50%;
     }
 
     .tabel_main {
@@ -1081,24 +1448,28 @@
     .modal .modal-dialog .modal-content .modal-header {
         padding: 8px 12px;
     }
-    .modal .modal-dialog .modal-content .modal-header h5{
+
+    .modal .modal-dialog .modal-content .modal-header h5 {
         font-size: 16px;
     }
 
     .modal .modal-dialog .modal-content .modal-body {
         padding: 8px 12px;
     }
-    .modal .modal-dialog .modal-content .modal-body h6{
+
+    .modal .modal-dialog .modal-content .modal-body h6 {
         font-size: 14px;
     }
-    .modal .modal-dialog .modal-content .modal-body p{
+
+    .modal .modal-dialog .modal-content .modal-body p {
         font-size: 12px;
     }
 
     .modal .modal-dialog .modal-content .modal-footer {
         padding: 8px 12px;
     }
-    .modal .modal-dialog .modal-content .modal-footer a{
+
+    .modal .modal-dialog .modal-content .modal-footer a {
         font-size: 14px;
     }
 
@@ -1112,7 +1483,7 @@
         margin: auto;
     }
 
-    .profile-name{
+    .profile-name {
         justify-content: start;
     }
 
@@ -1239,6 +1610,7 @@
         justify-content: center;
         margin-bottom: 20px;
     }
+
     .maindivFooter {
         text-align: center;
     }
@@ -1250,7 +1622,7 @@
     }
 
     .DownFooterTwo {
-        padding-top: 14rem;
+        padding-top: 9rem;
     }
 
     .bg-video-wrap video {
@@ -1261,6 +1633,7 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
+
     .top-bottom {
         height: 730px;
     }
@@ -1279,10 +1652,9 @@
     }
 
     .our-goal p {
+        color: white;
     }
 
-    .our-goal h2 {
-    }
 
     .work p {
         width: 100%;
@@ -1297,7 +1669,8 @@
     }
 
     .sec-one {
-        height: 400px !important;
+        height: 370px !important;
+        margin: 0 !important;
     }
 
     .header-form {
@@ -1307,29 +1680,33 @@
     .sec-one .header-form input {
         font-size: 15px !important;
     }
+
     .priority h1 {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .top-bottom {
         margin: auto;
-        width: 80%;
-        height: 580px !important;
+        width: 76%;
+        height: 530px !important;
         margin-bottom: 40px;
     }
+
     .about-sec-three {
         background-size: cover !important;
         height: 410px !important;
     }
+
     .services {
         margin: auto;
-        width: 60%;
+        width: 75%;
         margin-bottom: 20px;
     }
 
     .services figure img {
         width: 100%;
     }
+
     .box-new-text ul {
         list-style: none;
         text-align: center !important;
@@ -1338,6 +1715,7 @@
     .row.box-new-1 {
         padding-top: 20px !important;
     }
+
     footer {
         padding-bottom: 37rem;
     }
@@ -1349,25 +1727,89 @@
     .QuickContact .ReadMoreFooter span a {
         font-size: 20px;
     }
+
     section.sec-four .mt-5 {
         margin: 0 !important;
     }
+
     .womenimg img {
         margin: auto;
         width: 65% !important;
         display: flex;
     }
+
     .content-zig {
         margin-top: 1rem !important;
     }
+
     .provider label span {
         margin: 0;
     }
+
     h4.ml-2.bigh {
         font-size: 1.5rem;
         font-weight: bold;
     }
+
+    .childcare h2 span {
+        font-size: 25px !important;
+    }
+
+    .sty #city-input {
+        font-size: 12px;
+    }
+
+    .about-bottom {
+        padding-top: 350px !important;
+    }
+
+    .give-the-best h1 {
+        font-size: 25px;
+        text-align: center;
+        line-height: unset;
+    }
+
+    .give-the-best h1 span {
+        font-size: 22px !important;
+    }
+
+    .footerSpan P {
+        font-size: 13px;
+    }
+
+    .zig-zag.provider img {
+        width: 60% !important;
+        margin: auto;
+    }
+
+    .provider .images-zag {
+        text-align: center !important;
+    }
+
+    .job_view .flex-eye {
+        margin-top: 10px;
+    }
+
+    .profilebuttons ul li {
+        padding: 0 10px;
+    }
+
+    .main-job {
+        margin: auto;
+        width: 80%;
+        margin-top: 50px;
+    }
+
+    .teacher-add-post .share_post button.btn.btn-primary.comment_post_btn {
+        margin-left: 0;
+    }
+
+    .section-3-txt figure img {
+        margin-bottom: 50px !important;!i;!;
+    }
+
 }
+
 
 @media (max-width: 575px) {
 
@@ -1394,6 +1836,7 @@
         position: absolute;
         top: 60px;
     }
+
     .searchable-input #city-results {
         width: 100% !important;
         position: absolute;
@@ -1414,6 +1857,7 @@
         font-size: 30px !important;
         line-height: 40px;
     }
+
     .section-3-main-txt h4 {
         margin-bottom: 15px;
         margin-top: 20px;
@@ -1449,17 +1893,20 @@
     .modal .modal-dialog .modal-content .modal-header {
         padding: 6px 10px;
     }
-    .modal .modal-dialog .modal-content .modal-header h5{
+
+    .modal .modal-dialog .modal-content .modal-header h5 {
         font-size: 15px;
     }
 
     .modal .modal-dialog .modal-content .modal-body {
         padding: 6px 10px;
     }
-    .modal .modal-dialog .modal-content .modal-body h6{
+
+    .modal .modal-dialog .modal-content .modal-body h6 {
         font-size: 13px;
     }
-    .modal .modal-dialog .modal-content .modal-body p{
+
+    .modal .modal-dialog .modal-content .modal-body p {
         font-size: 12px;
         line-height: 14px;
     }
@@ -1467,7 +1914,8 @@
     .modal .modal-dialog .modal-content .modal-footer {
         padding: 6px 10px;
     }
-    .modal .modal-dialog .modal-content .modal-footer a{
+
+    .modal .modal-dialog .modal-content .modal-footer a {
         font-size: 13px;
     }
 
@@ -1487,14 +1935,14 @@
     }
 
     .new-feedbut .but0 {
-        padding: 10px 40px;
+        padding: 5px 20px;
         border-radius: 4px;
-        font-size: 16px;
+        font-size: 10px;
         font-weight: 500;
         justify-content: center;
         text-align: center;
-        display: flex
-    ;
+        display: flex;
+        width: 36% !important;
     }
 
     .profile1 img {
@@ -1506,8 +1954,9 @@
 
     .profile-name-bg {
         background-color: #F5F7FC;
-        padding: 1rem  0 0 0;
+        padding: 1rem 0 0 0;
     }
+
     .profilebg1 {
         height: auto;
         padding-top: 5rem;
@@ -1569,13 +2018,14 @@
         margin-left: 0rem !important;
         text-align: start;
     }
+
     .priority h1 {
-        font-size: 25px;
-        line-height: 40px;
+        font-size: 16px;
+        line-height: unset;
     }
 
     .about-bottom {
-        padding-top: 280px !important;
+        padding-top: 260px !important;
     }
 
     .services {
@@ -1594,9 +2044,11 @@
     }
 
     .sec-one h2 span {
-        font-size: 30px !important;
+        font-size: 16px !important;
+        color: white !important;
     }
-    .sec-one h2  {
+
+    .sec-one h2 {
         line-height: 30px !important;
     }
 
@@ -1607,9 +2059,9 @@
     .sec-one .sty {
         width: 100% !important;
         margin-top: 10px;
-        padding-right: 0px;
-        padding-bottom: 10px;
-        flex-direction: column;
+        padding-right: 10px;
+        padding-bottom: 0;
+        flex-direction: row;
     }
 
     .sty #state-input {
@@ -1621,17 +2073,18 @@
     }
 
     nav.navbar.navbar-expand-lg a img {
-        width: 65% !important;
+        width: 100% !important;
         width: 100%;
         left: 48%;
-        height: 130px;
+        height: 100px;
     }
 
     div#navbarSupportedContent {
         top: 110px;
         background: transparent;
     }
-    ul.navbar-nav li{
+
+    ul.navbar-nav li {
         padding: 0 !important;
     }
 
@@ -1660,18 +2113,15 @@
     }
 
     .sec-one {
-        height: 350px;
+        height: 280px !important;
     }
 
     .childcare {
-        margin-top: 50px;
+        margin-top: 130px;
     }
 
     .priority h4 {
         font-size: 15px;
-    }
-
-    .priority p {
     }
 
     .priority p {
@@ -1694,8 +2144,7 @@
         width: 100%;
     }
 
-    .Provider {
-    }
+
 
     .give-the-best.two {
         display: block;
@@ -1714,6 +2163,7 @@
         font-size: 13px;
         line-height: 15px;
     }
+
     .about-sec-one {
         height: 250px;
     }
@@ -1723,7 +2173,7 @@
     }
 
     .about-sec-one {
-        padding: 3rem 0  !important;
+        padding: 3rem 0 !important;
     }
 
     .about-bottom {
@@ -1735,11 +2185,13 @@
     .about-bottom p {
         width: 85%;
         margin: auto;
-        margin-top: 30px;
+        margin-top: 6px;
+        text-align: start;
     }
 
     .top-bottom {
-        height: 700px;
+        height: 440px !important;
+        width: 85%;
     }
 
     .top-bottom.two {
@@ -1750,6 +2202,7 @@
         font-size: 13px;
         line-height: 23px;
     }
+
     .content-zig h6 {
         font-size: 25px;
     }
@@ -1769,15 +2222,73 @@
     .about-bottom p {
         width: 92%;
     }
+
+    .about-sec-three {
+        height: 300px !important;
+    }
+
     .about-pg {
-        height: auto !important;
+        height: 470px !important;
         padding: 1rem 0 !important;
+        background-position: center !important;
     }
 
     .Teacher-Banner {
         height: 250px !important;
     }
+
     .maindivFooter {
-        top: 20px;
+        top: -50px;
+    }
+
+    .contact-banner {
+        height: 130px !important;
+    }
+
+    .hour-services {
+        padding: 0 15px;
+    }
+
+    .newfeed-commnet {
+        /* display: block; */
+    }
+
+    .welcome-sandbox {
+        padding: 1rem;
+    }
+
+    .center-bar {
+        padding-top: 0 !important;
+    }
+
+    .update-form {
+        padding: 1rem;
+    }
+
+    .new-feedbut {
+        width: 100%;
+    }
+
+    .newfeed {
+        padding: 1rem;
+    }
+
+    .w-img {
+        margin-left: -10px;
+    }
+
+    .teacher-add-post input#comment {
+        width: 220px;
+    }
+
+    .searchable-input select {
+        padding: 0;
+        height: 30px !important;
+    }
+
+    .search_bar_location input {
+        padding: 0 5px;
+        height: 30px !important;
+
     }
 }

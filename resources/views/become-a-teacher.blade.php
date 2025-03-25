@@ -67,7 +67,7 @@
                                     </label>
                                     <input type="text" class="form-control" name="name" required="">
                                 </div>
-                                <div class="col-lg-6 pl-lg-1 pl-md-1">
+                                <div class="col-lg-6">
                                     <label>
                                         <small><b>Last name</b></small>
                                     </label>
@@ -85,7 +85,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mt-3 pl-lg-1 pl-md-1">
+                                <div class="col-lg-6 mt-3">
                                     <label for="Date of birth">
                                         <small><b>D.O.B</b></small>
                                     </label>

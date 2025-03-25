@@ -35,7 +35,7 @@
 @section('content')
 
 
-<section class="about-sec-one Teacher-Banner">
+<section class="about-sec-one Teacher-Banner contact-banner">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">

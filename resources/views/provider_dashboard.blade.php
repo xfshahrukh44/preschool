@@ -187,15 +187,15 @@
                         </div>
                     </div>
                 </div>
-{{--                <div class="row">--}}
-{{--                    <div class="col-lg-10">--}}
-{{--                        <div class="profile-name pl-left">--}}
-{{--                            <p>Details and information displayed here were found through public sources -- not the--}}
-{{--                                business itself -- and may not reflect its current status, including license status. We--}}
-{{--                                strongly encourage you to perform your own research while selecting a care provider.</p>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="row"> --}}
+                {{--                    <div class="col-lg-10"> --}}
+                {{--                        <div class="profile-name pl-left"> --}}
+                {{--                            <p>Details and information displayed here were found through public sources -- not the --}}
+                {{--                                business itself -- and may not reflect its current status, including license status. We --}}
+                {{--                                strongly encourage you to perform your own research while selecting a care provider.</p> --}}
+                {{--                        </div> --}}
+                {{--                    </div> --}}
+                {{--                </div> --}}
             </div>
         </div>
 
@@ -208,7 +208,7 @@
                 @include('provider_menues')
 
                 <?php
-
+                
                 $post_job = DB::table('job_posts')
                     ->where('creator_name', Auth::user()->id)
                     ->count();
@@ -217,7 +217,7 @@
                     ->count();
                 $active_teacher = DB::table('users')->where('role', 3)->where('status', '1')->count();
                 $pending_teacher = DB::table('users')->where('role', 3)->where('status', '0')->count();
-
+                
                 ?>
 
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-2 order-md-3 order-sm-3 order-3">
@@ -385,11 +385,9 @@
 
                                     @foreach ($get_last_post as $key => $val_get_last)
                                         <?php
-
-                                        $get_comment_count = DB::table('comments')
-                                            ->where('post_id', $val_get_last->id)
-                                            ->count();
-
+                                        
+                                        $get_comment_count = DB::table('comments')->where('post_id', $val_get_last->id)->count();
+                                        
                                         ?>
 
                                         <div class="row justify-content-center align-items-center">
@@ -405,13 +403,17 @@
 
 
                                                             @if (App\User::find($val_get_last->user_id)->image != '')
-                                                                <img style="height:60px; width:60px; border-radius: 50px;"
-                                                                    src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
-                                                                    class="img-fluid">
+                                                                <div class="w-img">
+                                                                    <img style="height:60px; width:60px; border-radius: 50px;"
+                                                                        src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
+                                                                        class="img-fluid">
+                                                                </div>
                                                             @else
-                                                                <img style="height:60px; width:60px; border-radius:50px;"
-                                                                    src="{{ asset('images/profilemain1.png') }}"
-                                                                    class="img-fluid">
+                                                                <div class="w-img">
+                                                                    <img style="height:60px; width:60px; border-radius:50px;"
+                                                                        src="{{ asset('images/profilemain1.png') }}"
+                                                                        class="img-fluid">
+                                                                </div>
                                                             @endif
 
                                                             <h4> {{ App\User::find($val_get_last->user_id)->name }}
@@ -445,13 +447,17 @@
 
 
                                                                 @if ($share_user->users->image != null)
-                                                                    <img style="height:60px; width:60px; border-radius: 50px;"
-                                                                        src="{{ asset($share_user->users->image) }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:60px; width:60px; border-radius: 50px;"
+                                                                            src="{{ asset($share_user->users->image) }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 @else
-                                                                    <img style="height:60px; width:60px; border-radius:50px;"
-                                                                        src="{{ asset('images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:60px; width:60px; border-radius:50px;"
+                                                                            src="{{ asset('images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 @endif
 
                                                                 <h4> {{ $share_user->users->name }}
@@ -498,10 +504,8 @@
                                                                 ->where('user_id', Auth::user()->id)
                                                                 ->where('post_id', $val_get_last->id)
                                                                 ->first();
-
-                                                            $like_count = DB::table('likes')
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->count();
+                                                            
+                                                            $like_count = DB::table('likes')->where('post_id', $val_get_last->id)->count();
                                                             ?>
 
                                                             @if ($get_like)
@@ -558,13 +562,15 @@
                                                                     id="user_image"
                                                                     value="{{ Auth::user()->image }}">
 
-                                                                <div class="com-img col-md-1">
-                                                                    <img style="height:50px; width:50px; border-radius:50px;"
-                                                                        src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                <div class="com-img col-md-1 col-2">
+                                                                    <div class="w-img">
+                                                                        <img style="height:50px; width:50px; border-radius:50px;"
+                                                                            src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 </div>
 
-                                                                <div class="com-img col-md-10">
+                                                                <div class="com-img col-md-10 col-8">
                                                                     <input type="text"
                                                                         class="form-control comment_text"
                                                                         id="comment" name="comment"
@@ -572,7 +578,7 @@
                                                                         placeholder="Write Comment">
                                                                 </div>
 
-                                                                <div class="com-img col-md-1">
+                                                                <div class="com-img col-md-1 col-2">
                                                                     <button type="submit"
                                                                         class="btn btn-primary comment_post_btn"
                                                                         style="height: 40px;width: 50px; margin-top: 5px;">
@@ -589,20 +595,19 @@
 
                                                         <div class="row post_comment">
 
-                                                            <?php $get_comments_by_id = DB::table('comments')
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->orderBy('id', 'desc')
-                                                                ->get(); ?>
+                                                            <?php $get_comments_by_id = DB::table('comments')->where('post_id', $val_get_last->id)->orderBy('id', 'desc')->get(); ?>
                                                             <!-- @dump($get_comments_by_id) -->
 
                                                             @foreach ($get_comments_by_id as $key => $val_comments)
-                                                                <div class="com-img col-md-1">
-                                                                    <img style="height:50px; width:50px; border-radius:50px;"
-                                                                        src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                <div class="com-img col-md-1 col-2">
+                                                                    <div class="w-img">
+                                                                        <img style="height:50px; width:50px; border-radius:50px;"
+                                                                            src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 </div>
 
-                                                                <div class="commentbox col-md-10">
+                                                                <div class="commentbox col-md-10 col-8">
 
                                                                     <h4> {{ App\User::find($val_comments->user_id)->name }}
                                                                         <span>
@@ -681,10 +686,8 @@
                                                                 ->where('user_id', Auth::user()->id)
                                                                 ->where('post_id', $val_get_last->id)
                                                                 ->first();
-
-                                                            $like_count = DB::table('likes')
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->count();
+                                                            
+                                                            $like_count = DB::table('likes')->where('post_id', $val_get_last->id)->count();
                                                             ?>
 
                                                             @if ($get_like)
@@ -739,13 +742,17 @@
                                                                     id="user_image"
                                                                     value="{{ Auth::user()->image }}">
 
-                                                                <div class="com-img col-md-1">
-                                                                    <img style="height:50px; width:50px; border-radius:50px;"
-                                                                        src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                <div class="com-img col-md-1 col-2">
+                                                                    <div class="w-img">
+
+
+                                                                        <img style="height:50px; width:50px; border-radius:50px;"
+                                                                            src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 </div>
 
-                                                                <div class="com-img col-md-10">
+                                                                <div class="com-img col-md-10 col-8">
                                                                     <input type="text"
                                                                         class="form-control comment_text"
                                                                         id="comment" name="comment"
@@ -753,7 +760,7 @@
                                                                         placeholder="Write Comment">
                                                                 </div>
 
-                                                                <div class="com-img col-md-1">
+                                                                <div class="com-img col-md-1 col-2">
                                                                     <button type="submit"
                                                                         class="btn btn-primary comment_post_btn"
                                                                         style="height: 40px;width: 50px; margin-top: 5px;">
@@ -770,20 +777,19 @@
 
                                                         <div class="row post_comment">
 
-                                                            <?php $get_comments_by_id = DB::table('comments')
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->orderBy('id', 'desc')
-                                                                ->get(); ?>
+                                                            <?php $get_comments_by_id = DB::table('comments')->where('post_id', $val_get_last->id)->orderBy('id', 'desc')->get(); ?>
                                                             <!-- @dump($get_comments_by_id) -->
 
                                                             @foreach ($get_comments_by_id as $key => $val_comments)
-                                                                <div class="com-img col-md-1">
-                                                                    <img style="height:50px; width:50px; border-radius:50px;"
-                                                                        src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                <div class="com-img col-md-1 col-2">
+                                                                    <div class="w-img">
+                                                                        <img style="height:50px; width:50px; border-radius:50px;"
+                                                                            src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 </div>
 
-                                                                <div class="commentbox col-md-10">
+                                                                <div class="commentbox col-md-10 col-8">
 
                                                                     <h4> {{ App\User::find($val_comments->user_id)->name }}
                                                                         <span>
@@ -814,7 +820,8 @@
                 </div>
 
 
-                <div class="col-lg-3  col-md-12 col-sm-12 col-12 order-lg-3 order-md-2 order-sm-2 order-2 sidebarleftprofile">
+                <div
+                    class="col-lg-3  col-md-12 col-sm-12 col-12 order-lg-3 order-md-2 order-sm-2 order-2 sidebarleftprofile">
 
                     @include('all_provider')
 
@@ -962,15 +969,15 @@
 
                             <div class="newfeed-commnet">
 
-                                    <div class="com-img col-md-1">
+                                    <div class="com-img col-md-1 col-2">
                                         <img style="height:50px; width:50px; border-radius:50px;" src="{{ '${data.user_image}' }}" class="img-fluid">
                                     </div>
 
-                                    <div class="com-img col-md-10">
+                                    <div class="com-img col-md-10 col-8">
                                         <input type="text" class="form-control" name="" style="height: 50px; border-radius:15px; font-size: 15px;" placeholder="Write Comment">
                                     </div>
 
-                                    <div class="com-img col-md-1">
+                                    <div class="com-img col-md-1 col-2">
                                         <button class="btn btn-primary" style="height: 40px;width: 50px; margin-top: 5px;"> <span class="fa fa-paper-plane">  </span> </button>
                                     </div>
 
@@ -1026,19 +1033,19 @@
                         $(ele).next().next().prepend(
                             `<div class="post_comment">
 
-                    <div class="com-img>
-                        <img style="height:50px; width:50px; border-radius:50px;" src="{{ asset('${get_comment.user_image}') }}" class="img-fluid">
-                    </div>
+                            <div class="com-img>
+                                <img style="height:50px; width:50px; border-radius:50px;" src="{{ asset('${get_comment.user_image}') }}" class="img-fluid">
+                            </div>
 
-                    <div class="commentbox>
+                            <div class="commentbox>
 
-                        <h4> {{ '${get_comment.user_image}' }} <span> {{ '${dayago2}' }} </span>
+                                <h4> {{ '${get_comment.user_image}' }} <span> {{ '${dayago2}' }} </span>
 
-                        <p>  {{ '${get_comment.comment}' }} </p>
-                        </h4>
-                    </div>
+                                <p>  {{ '${get_comment.comment}' }} </p>
+                                </h4>
+                            </div>
 
-                    </div>`
+                        </div>`
                         );
 
                         location.reload();

@@ -160,7 +160,7 @@
     @include('layouts/front.header')
 
 
-    <section class="back">
+    <section class="back add-job-provider">
 
         <div class="container-fluid">
 

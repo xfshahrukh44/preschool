@@ -342,7 +342,7 @@
 
     <section class="section-3 main-padding">
         <div class="container-fluid">
-            <div class="row" style="padding-left: 150px;padding-right: 150px;">
+            <div class="row custom-row" style="padding-left: 150px;padding-right: 150px;">
                 <div class="col-lg-12">
                     <div class="review_show">
                         <table>
@@ -369,7 +369,7 @@
                                         <?php
                                         $average_rating = DB::table('reviews')->where('daycareid', $get_claimed_daycare_center_detail->id)->avg('rate');
                                         $rounded_rating = round($average_rating);
-
+                                        
                                         $full_stars = floor($average_rating);
                                         $half_star = $average_rating - $full_stars >= 0.5;
                                         ?>
@@ -394,7 +394,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding-left: 150px;padding-right: 150px;">
+            <div class="row custom-row" style="padding-left: 150px;padding-right: 150px;">
                 <div class="col-lg-12">
                     <div class="section-3-txt">
                         <figure><img src="{{ asset($get_claimed_daycare_center_detail->feature_image) }}" alt=""
@@ -639,7 +639,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @if(Auth::user()->role == 4)
+                            @if (Auth::user()->role == 4)
                                 <div class="col-lg-12">
                                     <div class="hihglight">
                                         <h3>Center Highlights</h3>

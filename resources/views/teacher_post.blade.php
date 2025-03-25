@@ -13,14 +13,14 @@ use DateTime;
 <body>
 
 
-    <section class="home-sec1">
+    <section class="home-sec1 teacher-add-post">
         <div class="container-fluid">
 
 
 
             <div class="row justify-content-center">
 
-                <div class="col-lg-3 col-md-5 col-sm-5 col-12 order-lg-1 order-md-1 order-sm-1 order-1 dashboard-nav">
+                <div class="col-lg-3 col-md-5 col-sm-12 col-12 order-lg-1 order-md-1 order-sm-1 order-1 dashboard-nav">
                     <nav class="sidebar sidebar-offcanvas mesgSidebar" id="sidebar">
                         <div class="logoDiv">
 
@@ -38,7 +38,7 @@ use DateTime;
 
                                 </a>
 
-                                <a href="{{ route('teacher_dashboard') }}">
+                                <a href="{{ route('teacher_dashboard') }}" class="post-logo">
 
                                     <img src="{{ asset('images/techer-7.png') }}" alt=""
                                         style="margin-left: 100px;">
@@ -257,12 +257,16 @@ use DateTime;
                                                         <div class="newfeed-commnet">
                                                             <div class="com-img">
                                                                 @if (Auth::user()->image != '')
-                                                                    <img style="height:50px; width:50px; border-radius: 50px;"
-                                                                        src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:50px; width:50px; border-radius: 50px;"
+                                                                            src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 @else
-                                                                    <img src="{{ asset('images/profilein1.png') }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img src="{{ asset('images/profilein1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 @endif
                                                             </div>
                                                             <div class="commentbox">
@@ -321,11 +325,9 @@ use DateTime;
 
                                     @foreach ($get_last_post as $key => $val_get_last)
                                         <?php
-
-                                        $get_comment_count = DB::table('comments')
-                                            ->where('post_id', $val_get_last->id)
-                                            ->count();
-
+                                        
+                                        $get_comment_count = DB::table('comments')->where('post_id', $val_get_last->id)->count();
+                                        
                                         ?>
 
                                         <div class="row justify-content-center align-items-center">
@@ -341,13 +343,17 @@ use DateTime;
 
 
                                                             @if (App\User::find($val_get_last->user_id)->image != '')
-                                                                <img style="height:60px; width:60px; border-radius: 50px;"
-                                                                    src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
-                                                                    class="img-fluid">
+                                                                <div class="w-img">
+                                                                    <img style="height:60px; width:60px; border-radius: 50px;"
+                                                                        src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
+                                                                        class="img-fluid">
+                                                                </div>
                                                             @else
-                                                                <img style="height:60px; width:60px; border-radius:50px;"
-                                                                    src="{{ asset('images/profilemain1.png') }}"
-                                                                    class="img-fluid">
+                                                                <div class="w-img">
+                                                                    <img style="height:60px; width:60px; border-radius:50px;"
+                                                                        src="{{ asset('images/profilemain1.png') }}"
+                                                                        class="img-fluid">
+                                                                </div>
                                                             @endif
 
                                                             <h4> {{ App\User::find($val_get_last->user_id)->name }}
@@ -378,16 +384,18 @@ use DateTime;
                                                                 value="{{ $share_user->id }}">
 
                                                             <div class="newfeed-profile-name">
-
-
                                                                 @if ($share_user->users->image != null)
-                                                                    <img style="height:60px; width:60px; border-radius: 50px;"
-                                                                        src="{{ asset($share_user->users->image) }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:60px; width:60px; border-radius: 50px;"
+                                                                            src="{{ asset($share_user->users->image) }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 @else
-                                                                    <img style="height:60px; width:60px; border-radius:50px;"
-                                                                        src="{{ asset('images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:60px; width:60px; border-radius:50px;"
+                                                                            src="{{ asset('images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 @endif
 
                                                                 <h4> {{ $share_user->users->name }}
@@ -434,8 +442,8 @@ use DateTime;
                                                                 ->where('user_id', Auth::user()->id)
                                                                 ->where('post_id', $val_get_last->id)
                                                                 ->first();
-
-                                                            $like_count = DB::table('likes')->where('post_id',$val_get_last->id)->count();
+                                                            
+                                                            $like_count = DB::table('likes')->where('post_id', $val_get_last->id)->count();
                                                             ?>
 
                                                             @if ($get_like)
@@ -493,9 +501,11 @@ use DateTime;
                                                                     value="{{ Auth::user()->image }}">
 
                                                                 <div class="com-img col-md-1">
-                                                                    <img style="height:50px; width:50px; border-radius:50px;"
-                                                                        src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:50px; width:50px; border-radius:50px;"
+                                                                            src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 </div>
 
                                                                 <div class="com-img col-md-10">
@@ -523,17 +533,16 @@ use DateTime;
 
                                                         <div class="row post_comment">
 
-                                                            <?php $get_comments_by_id = DB::table('comments')
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->orderBy('id', 'desc')
-                                                                ->get(); ?>
+                                                            <?php $get_comments_by_id = DB::table('comments')->where('post_id', $val_get_last->id)->orderBy('id', 'desc')->get(); ?>
                                                             <!-- @dump($get_comments_by_id) -->
 
                                                             @foreach ($get_comments_by_id as $key => $val_comments)
                                                                 <div class="com-img col-md-1">
-                                                                    <img style="height:50px; width:50px; border-radius:50px;"
-                                                                        src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:50px; width:50px; border-radius:50px;"
+                                                                            src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 </div>
 
                                                                 <div class="commentbox col-md-10">
@@ -563,13 +572,17 @@ use DateTime;
 
 
                                                             @if (App\User::find($val_get_last->user_id)->image != '')
-                                                                <img style="height:60px; width:60px; border-radius: 50px;"
-                                                                    src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
-                                                                    class="img-fluid">
+                                                                <div class="w-img">
+                                                                    <img style="height:60px; width:60px; border-radius: 50px;"
+                                                                        src="{{ asset(App\User::find($val_get_last->user_id)->image) }}"
+                                                                        class="img-fluid">
+                                                                </div>
                                                             @else
-                                                                <img style="height:60px; width:60px; border-radius:50px;"
-                                                                    src="{{ asset('images/profilemain1.png') }}"
-                                                                    class="img-fluid">
+                                                                <div class="w-img">
+                                                                    <img style="height:60px; width:60px; border-radius:50px;"
+                                                                        src="{{ asset('images/profilemain1.png') }}"
+                                                                        class="img-fluid">
+                                                                </div>
                                                             @endif
 
                                                             <h4> {{ App\User::find($val_get_last->user_id)->name }}
@@ -597,9 +610,11 @@ use DateTime;
                                                         <div class="newfeed-image">
 
                                                             @if (!is_null($val_get_last->image))
-                                                                <img style="height:400px; width:100%; border-radius:10px;"
-                                                                    src="{{ asset($val_get_last->image) }}"
-                                                                    class="img-fluid">
+                                                           
+                                                                    <img style="height:400px; width:100%; border-radius:10px;"
+                                                                        src="{{ asset($val_get_last->image) }}"
+                                                                        class="img-fluid">
+                                                              
                                                             @endif
 
 
@@ -615,10 +630,8 @@ use DateTime;
                                                                 ->where('user_id', Auth::user()->id)
                                                                 ->where('post_id', $val_get_last->id)
                                                                 ->first();
-
-                                                            $like_count = DB::table('likes')
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->count();
+                                                            
+                                                            $like_count = DB::table('likes')->where('post_id', $val_get_last->id)->count();
                                                             ?>
 
                                                             @if ($get_like)
@@ -674,9 +687,11 @@ use DateTime;
                                                                     value="{{ Auth::user()->image }}">
 
                                                                 <div class="com-img col-md-1">
-                                                                    <img style="height:50px; width:50px; border-radius:50px;"
-                                                                        src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:50px; width:50px; border-radius:50px;"
+                                                                            src="{{ asset(Auth::user()->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 </div>
 
                                                                 <div class="com-img col-md-10">
@@ -704,17 +719,16 @@ use DateTime;
 
                                                         <div class="row post_comment">
 
-                                                            <?php $get_comments_by_id = DB::table('comments')
-                                                                ->where('post_id', $val_get_last->id)
-                                                                ->orderBy('id', 'desc')
-                                                                ->get(); ?>
+                                                            <?php $get_comments_by_id = DB::table('comments')->where('post_id', $val_get_last->id)->orderBy('id', 'desc')->get(); ?>
                                                             <!-- @dump($get_comments_by_id) -->
 
                                                             @foreach ($get_comments_by_id as $key => $val_comments)
                                                                 <div class="com-img col-md-1">
-                                                                    <img style="height:50px; width:50px; border-radius:50px;"
-                                                                        src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
-                                                                        class="img-fluid">
+                                                                    <div class="w-img">
+                                                                        <img style="height:50px; width:50px; border-radius:50px;"
+                                                                            src="{{ asset(App\User::find($val_comments->user_id)->image ?? 'images/profilemain1.png') }}"
+                                                                            class="img-fluid">
+                                                                    </div>
                                                                 </div>
 
                                                                 <div class="commentbox col-md-10">
@@ -754,11 +768,15 @@ use DateTime;
                         <div class="searimg">
 
                             @if (Auth::user()->image != '')
-                                <img src="{{ asset(Auth::user()->image) }}" class="img-fluid"
-                                    style="height:70px;width:70px; border-radius:50px;">
+                               
+                                    <img src="{{ asset(Auth::user()->image) }}" class="img-fluid"
+                                        style="height:70px;width:70px; border-radius:50px;">
+                              
                             @else
-                                <img style="height:60px; width:60px; border-radius:50px;"
-                                    src="{{ asset('images/profilemain1.png') }}" class="img-fluid">
+                              
+                                    <img style="height:60px; width:60px; border-radius:50px;"
+                                        src="{{ asset('images/profilemain1.png') }}" class="img-fluid">
+                        
                             @endif
 
                             <div class="main">
@@ -774,11 +792,16 @@ use DateTime;
                                 @foreach ($get_last_post as $key => $val_recent_post)
                                     <li>
                                         @if ($val_recent_post->user_image != '')
-                                            <img style="height:50px; width:50px; border-radius:50px;"
-                                                src="{{ asset($val_recent_post->user_image) }}" class="img-fluid">
+                                           
+                                                <img style="height:50px; width:50px; border-radius:50px;"
+                                                    src="{{ asset($val_recent_post->user_image) }}"
+                                                    class="img-fluid">
+                                           
                                         @else
-                                            <img style="height:50px; width:50px; border-radius:50px;"
-                                                src="{{ asset('images/profilemain1.png') }}" class="img-fluid">
+                                          
+                                                <img style="height:50px; width:50px; border-radius:50px;"
+                                                    src="{{ asset('images/profilemain1.png') }}" class="img-fluid">
+                                          
                                         @endif
                                         <h6> {{ $val_recent_post->user_name }}
                                             <span>
@@ -956,8 +979,9 @@ use DateTime;
 
                             <div class="newfeed-profile-name">
 
-
+<div class="w-img">
                                 <img style="height:60px; width:60px; border-radius:50px;" src="{{ asset('${data.user_image}') }}" class="img-fluid">
+                                </div>
 
                                 <h4> {{ '${data.user_name}' }} <span> {{ '${dayago}' }} </span></h4>
 
@@ -976,6 +1000,7 @@ use DateTime;
                                 <img style="height:400px; width:100%; border-radius:10px;" src="{{ '${data.image}' }}" class="img-fluid">
 
                             </div>
+                       
 
 
                             <hr>
@@ -991,7 +1016,9 @@ use DateTime;
                             <div class="newfeed-commnet">
 
                                     <div class="com-img col-md-1">
+                                        <div class="w-img">
                                         <img style="height:50px; width:50px; border-radius:50px;" src="{{ '${data.user_image}' }}" class="img-fluid">
+                                    </div>
                                     </div>
 
                                     <div class="com-img col-md-10">
@@ -1055,7 +1082,9 @@ use DateTime;
                         `<div class="post_comment">
 
                     <div class="com-img>
+                        <div class="w-img">
                         <img style="height:50px; width:50px; border-radius:50px;" src="{{ asset('${get_comment.user_image}') }}" class="img-fluid">
+                    </div>
                     </div>
 
                     <div class="commentbox>

@@ -119,12 +119,10 @@
                             <input type="hidden" name="payment_method" id="payment_method" value="paypal" />
 
                             <div class="row">
-
                                 <input type="hidden" name="role" value="4" />
 
 
-
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 mt-md-3 mt-sm-3">
                                     <input type="text" class="form-control" name="name" placeholder="Business Name"
                                         required="" />
                                 </div>
@@ -134,7 +132,7 @@
                                         class="alert alert-danger w-100 d-block p-2 mt-2 mx-3">{{ $errors->registerForm->get('name')[0] }}</small>
                                 @endif
 
-                                <div class="col-lg-6 pl-lg-1 pl-md-1">
+                                <div class="col-lg-6 mt-md-3 mt-sm-3">
                                     <input type="text" class="form-control" name="phone"
                                         placeholder="Business Phone  Number" required="" />
                                 </div>
@@ -217,27 +215,28 @@
                                 @endif
 
                                 <div class="col-md-7 mb-2 mt-4">
-                                    <h4 class="ml-2 bigh"> Hours open </h4>
-
-                                    <?php
+                                    <div class="hour-services">
+                                        <h4 class="ml-2 bigh"> Hours open </h4>
+                                        <?php
                                     $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                                     foreach ($days as $day): ?>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>
-                                                <span><?= $day ?></span>
-                                            </label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>
+                                                    <span><?= $day ?></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input class="form-control" type="time"
+                                                    name="timings[<?= $day ?>][from]" value="09:00">
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input class="form-control" type="time"
+                                                    name="timings[<?= $day ?>][to]" value="17:00">
+                                            </div>
                                         </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[<?= $day ?>][from]"
-                                                value="09:00">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input class="form-control" type="time" name="timings[<?= $day ?>][to]"
-                                                value="17:00">
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
-                                    <?php endforeach; ?>
                                 </div>
 
 
@@ -401,8 +400,9 @@
                                             <button class="btn btn-link" data-toggle="collapse"
                                                 data-target="#collapseOne" aria-expanded="true"
                                                 aria-controls="collapseOne" data-payment="paypal">
-                                                Pay with Paypal {{ $total }} <img src="{{ asset('images/paypal.png') }}"
-                                                    width="60" alt="">
+                                                Pay with Paypal {{ $total }} <img
+                                                    src="{{ asset('images/paypal.png') }}" width="60"
+                                                    alt="">
                                             </button>
                                         </h5>
                                     </div>
@@ -422,14 +422,8 @@
                                             class="btn btn-primary btn-block">Register</button>
                                     </div>
                                 </div>
-
-
                         </form>
-
-
                     </div>
-
-
 
 
                 </div>
@@ -460,7 +454,7 @@
                 },
                 client: {
                     // sandbox: 'AV06KMdIerC8pd6_i1gQQlyVoIwV8e_1UZaJKj9-aELaeNXIGMbdR32kDDEWS4gRsAis6SRpUVYC9Jmf',
-                    production:'Ab7de0oU1f-UDeaTRJrwYHR6qzaevV5piwHF5rymIOYev-kV1f3vM7_XmwPvzmcLW1oS8PLPTwXz5Hr-',
+                    production: 'Ab7de0oU1f-UDeaTRJrwYHR6qzaevV5piwHF5rymIOYev-kV1f3vM7_XmwPvzmcLW1oS8PLPTwXz5Hr-',
                 },
                 validate: function(actions) {
                     actions.disable();
@@ -481,7 +475,10 @@
                     return actions.payment.create({
                         payment: {
                             transactions: [{
-                                amount: { total: {{number_format(((float)$total),2, '.', '')}}, currency: 'USD' }
+                                amount: {
+                                    total: {{ number_format(((float) $total), 2, '.', '') }},
+                                    currency: 'USD'
+                                }
                             }]
                         }
                     });

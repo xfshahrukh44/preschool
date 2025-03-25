@@ -454,7 +454,7 @@
                 },
                 client: {
                     // sandbox: 'AV06KMdIerC8pd6_i1gQQlyVoIwV8e_1UZaJKj9-aELaeNXIGMbdR32kDDEWS4gRsAis6SRpUVYC9Jmf',
-                    production:'AfwDT4itltD-rbZeZkV8WqrHjjwbzITUJw9-ZCc9S6vA1RNE',
+                    production:'EPNZ8-ThNMB2ubEUeaNkzfaak9OAo0qBSQFjhUBCh5M',
                 },
                 validate: function(actions) {
                     actions.disable();

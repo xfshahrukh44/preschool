@@ -454,7 +454,7 @@
                 },
                 client: {
                     // sandbox: 'AV06KMdIerC8pd6_i1gQQlyVoIwV8e_1UZaJKj9-aELaeNXIGMbdR32kDDEWS4gRsAis6SRpUVYC9Jmf',
-                    production:'Ab7de0oU1f-UDeaTRJrwYHR6qzaevV5piwHF5rymIOYev-kV1f3vM7_XmwPvzmcLW1oS8PLPTwXz5Hr-',
+                    production:'Aa0Z5XC5kI5YzMwMcE9ncxUyUbVad_xiTsDLuWjGFPGOLSIHSTkkhbr2SmPkZJFEY_fhSPcp8wUs5LBu',
                 },
                 validate: function(actions) {
                     actions.disable();

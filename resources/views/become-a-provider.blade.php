@@ -460,7 +460,7 @@
                 },
                 client: {
                     // sandbox: 'AV06KMdIerC8pd6_i1gQQlyVoIwV8e_1UZaJKj9-aELaeNXIGMbdR32kDDEWS4gRsAis6SRpUVYC9Jmf',
-                    production:'Ab7de0oU1f-UDeaTRJrwYHR6qzaevV5piwHF5rymIOYev-kV1f3vM7_XmwPvzmcLW1oS8PLPTwXz5Hr-',
+                    production:'AfwDT4itltD-rbZeZkV8WqrHjjwbzITUJw9-ZCc9S6vA1RNE',
                 },
                 validate: function(actions) {
                     actions.disable();

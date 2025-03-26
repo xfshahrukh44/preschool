@@ -885,23 +885,32 @@
                                     <h2 class="ml-2"> Timings </h2>
 
                                     <div class="row">
-                                        <div class="col-md-4"><label><h5>Day</h5></label></div>
-                                        <div class="col-md-4"><label><h5>From</h5></label></div>
-                                        <div class="col-md-4"><label><h5>To</h5></label></div>
+                                        <div class="col-md-3"><label><h5>Day</h5></label></div>
+                                        <div class="col-md-3"><label><h5>From</h5></label></div>
+                                        <div class="col-md-3"><label><h5>To</h5></label></div>
+                                        <div class="col-md-3"><label><h5>Closed</h5></label></div>
                                     </div>
 
                                     @foreach ($days as $day)
+                                        @php
+                                            $fromTime = isset($decoded_timings->$day->from) ? \Carbon\Carbon::parse($decoded_timings->$day->from)->format('H:i') : '';
+                                            $toTime = isset($decoded_timings->$day->to) ? \Carbon\Carbon::parse($decoded_timings->$day->to)->format('H:i') : '';
+                                            $isClosed = empty($fromTime) || empty($toTime);
+                                        @endphp
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <label><h5>{{ $day }}</h5></label>
                                             </div>
-                                            <div class="col-md-4 form-group">
-                                                <input class="form-control" type="time" name="timings[{{ $day }}][from]"
-                                                    value="{{ isset($decoded_timings->$day->from) ? \Carbon\Carbon::parse($decoded_timings->$day->from)->format('H:i') : '' }}">
+                                            <div class="col-md-3 form-group">
+                                                <input class="form-control time-input {{ $day }}_from" type="time" name="timings[{{ $day }}][from]"
+                                                    value="{{ $fromTime }}" {{ $isClosed ? 'disabled' : '' }}>
                                             </div>
-                                            <div class="col-md-4 form-group">
-                                                <input class="form-control" type="time" name="timings[{{ $day }}][to]"
-                                                    value="{{ isset($decoded_timings->$day->to) ? \Carbon\Carbon::parse($decoded_timings->$day->to)->format('H:i') : '' }}">
+                                            <div class="col-md-3 form-group">
+                                                <input class="form-control time-input {{ $day }}_to" type="time" name="timings[{{ $day }}][to]"
+                                                    value="{{ $toTime }}" {{ $isClosed ? 'disabled' : '' }}>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="checkbox" class="close-day" data-day="{{ $day }}" {{ $isClosed ? 'checked' : '' }}>
                                             </div>
                                         </div>
                                     @endforeach
@@ -1222,5 +1231,47 @@
                 }
             })
         })
+
+        $(document).ready(function () {
+            function handleCheckboxChange(event) {
+                let checkbox = $(event.target);
+                if (!checkbox.hasClass("close-day")) return;
+
+                let day = checkbox.data("day");
+                let fromInput = $("." + day + "_from");
+                let toInput = $("." + day + "_to");
+
+                if (checkbox.is(":checked")) {
+                    console.log(fromInput.val());
+                    fromInput.val("").prop("disabled", true);
+                    toInput.val("").prop("disabled", true);
+                } else {
+                    fromInput.prop("disabled", false);
+                    toInput.prop("disabled", false);
+                }
+            }
+
+            function initializeInputs() {
+                $(".close-day").each(function () {
+                    console.log(123);
+                    let checkbox = $(this);
+                    let day = checkbox.data("day");
+                    let fromInput = $("." + day + "_from");
+                    let toInput = $("." + day + "_to");
+
+                    if (checkbox.is(":checked")) {
+                        fromInput.val("").prop("disabled", true);
+                        toInput.val("").prop("disabled", true);
+                    }
+                });
+            }
+
+            // Initialize on page load
+            initializeInputs();
+
+            // Use event delegation for dynamically added elements
+            $(document).on("change", ".close-day", handleCheckboxChange);
+        });
+
     </script>
 @endsection

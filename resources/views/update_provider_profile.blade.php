@@ -415,25 +415,33 @@
                             <label
                                 style="font-size: 20px; line-height: 0 !important; margin-left: 10px !important; margin-bottom: 20px !important;"
                                 for="">Hours open :</label>
-                                <div class="row">
-                                    @php
-                                    // Assuming $user->timings contains JSON data
+                            <div class="row">
+                                @php
                                     $timings = json_decode(Auth::user()->timings, true);
                                     $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-                                    @endphp
+                                @endphp
                                 @foreach ($days as $day)
-                                    <div class="col-md-4">
+                                    @php
+                                        $isClosed = empty($timings[$day]['from']) || empty($timings[$day]['to']);
+                                    @endphp
+                                    <div class="col-md-3">
                                         <label>
                                             <span>{{ $day }}</span>
                                         </label>
                                     </div>
-                                    <div class="col-md-4 form-group">
-                                        <input class="form-control" type="time" name="timings[{{ $day }}][from]"
-                                            value="{{ $timings[$day]['from'] ?? '' }}">
+                                    <div class="col-md-3 form-group">
+                                        <input class="form-control time-input" type="time" name="timings[{{ $day }}][from]"
+                                            value="{{ $timings[$day]['from'] ?? '' }}" id="{{ $day }}_from"
+                                            {{ $isClosed ? 'disabled' : '' }}>
                                     </div>
-                                    <div class="col-md-4 form-group">
-                                        <input class="form-control" type="time" name="timings[{{ $day }}][to]"
-                                            value="{{ $timings[$day]['to'] ?? '' }}">
+                                    <div class="col-md-3 form-group">
+                                        <input class="form-control time-input" type="time" name="timings[{{ $day }}][to]"
+                                            value="{{ $timings[$day]['to'] ?? '' }}" id="{{ $day }}_to"
+                                            {{ $isClosed ? 'disabled' : '' }}>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="checkbox" class="close-day" id="{{ $day }}_closed" {{ $isClosed ? 'checked' : '' }}>
+                                        <label for="{{ $day }}_closed">Closed</label>
                                     </div>
                                 @endforeach
                             </div>
@@ -585,10 +593,39 @@
             $('#types_of_care_provided').select2();
         });
 
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".close-day").forEach(function (checkbox) {
+                let day = checkbox.id.replace("_closed", "");
+                let fromInput = document.getElementById(day + "_from");
+                let toInput = document.getElementById(day + "_to");
+
+                // Disable time inputs if checkbox is checked on load
+                if (checkbox.checked) {
+                    fromInput.value = "";
+                    toInput.value = "";
+                    fromInput.disabled = true;
+                    toInput.disabled = true;
+                }
+
+                checkbox.addEventListener("change", function () {
+                    if (this.checked) {
+                        fromInput.value = "";
+                        toInput.value = "";
+                        fromInput.disabled = true;
+                        toInput.disabled = true;
+                    } else {
+                        fromInput.disabled = false;
+                        toInput.disabled = false;
+                    }
+                });
+            });
+        });
+
         document.getElementById('licensedCheckbox').addEventListener('change', function() {
             const licenseFields = document.getElementById('licenseFields');
             licenseFields.style.display = this.checked ? 'block' : 'none';
         });
+
     </script>
 
 

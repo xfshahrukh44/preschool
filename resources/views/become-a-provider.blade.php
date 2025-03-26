@@ -216,25 +216,29 @@
 
                                 <div class="col-md-7 mb-2 mt-4">
                                     <div class="hour-services">
-                                        <h4 class="ml-2 bigh"> Hours open </h4>
+                                        <h4 class="ml-2 bigh">Hours open</h4>
                                         <?php
-                                    $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-                                    foreach ($days as $day): ?>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>
-                                                    <span><?= $day ?></span>
-                                                </label>
+                                        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                                        foreach ($days as $day): ?>
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <label>
+                                                        <span><?= $day ?></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-3 form-group">
+                                                    <input class="form-control time-input" type="time"
+                                                        name="timings[<?= $day ?>][from]" value="09:00" id="<?= $day ?>_from">
+                                                </div>
+                                                <div class="col-md-3 form-group">
+                                                    <input class="form-control time-input" type="time"
+                                                        name="timings[<?= $day ?>][to]" value="17:00" id="<?= $day ?>_to">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input type="checkbox" class="close-day" id="<?= $day ?>_closed">
+                                                    <label for="<?= $day ?>_closed">Closed</label>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 form-group">
-                                                <input class="form-control" type="time"
-                                                    name="timings[<?= $day ?>][from]" value="09:00">
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input class="form-control" type="time"
-                                                    name="timings[<?= $day ?>][to]" value="17:00">
-                                            </div>
-                                        </div>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
@@ -544,8 +548,30 @@
         //     refresh_paypal_button_state();
         // });
 
-        // document.getElementById('isLicensed').addEventListener('change', function() {
-        //     document.getElementById('licenseFields').style.display = this.checked ? 'block' : 'none';
-        // });
+        document.getElementById('isLicensed').addEventListener('change', function() {
+            document.getElementById('licenseFields').style.display = this.checked ? 'block' : 'none';
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".close-day").forEach(function (checkbox) {
+                checkbox.addEventListener("change", function () {
+                    let day = this.id.replace("_closed", "");
+                    let fromInput = document.getElementById(day + "_from");
+                    let toInput = document.getElementById(day + "_to");
+
+                    if (this.checked) {
+                        fromInput.value = "";
+                        toInput.value = "";
+                        fromInput.disabled = true;
+                        toInput.disabled = true;
+                    } else {
+                        fromInput.disabled = false;
+                        toInput.disabled = false;
+                        fromInput.value = "09:00";
+                        toInput.value = "17:00";
+                    }
+                });
+            });
+        });
     </script>
 @endsection

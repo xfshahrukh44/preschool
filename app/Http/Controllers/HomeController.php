@@ -272,7 +272,12 @@ class HomeController extends Controller
         $section = DB::table('section')->where('page_id', 2)->get();
 
         $search = $request->input('search', '');
-        $query = Childcare::where('status', '1')->where('name', '!=', '')->orderBy('name', 'ASC');
+        $authUserId = Auth::user()->id;
+
+        $query = Childcare::where('status', '1')
+            ->where('name', '!=', '')
+            ->orderByRaw("CASE WHEN claimed_by_id = ? THEN 0 ELSE 1 END", [$authUserId]) // Prioritize claimed records
+            ->orderBy('name', 'ASC');
 
         if ($request->filled('name')) {
             $query->where('name', 'LIKE', "%".$request->name."%");

@@ -57,6 +57,7 @@ class ProjectsPgController extends Controller
         $project->title = $request->input('title');
         $project->description = $request->input('description');
         $project->save();
+
         // dd($request->all());
 
 
@@ -66,20 +67,21 @@ class ProjectsPgController extends Controller
             foreach ($photos as $photo) {
                 $destinationPath = 'uploads/products/';
 
-                $filename = date("Ymdhis") . uniqid() . "." . $photo->getClientOriginalExtension();
-                //dd($photo,$filename);
-                Image::make($photo)->save(public_path($destinationPath) . DIRECTORY_SEPARATOR . $filename);
+                $photoName = uniqid('main_') . '.' . $photo->getClientOriginalExtension();
+                $photo->move($destinationPath, $photoName);
+                $photoPath = $destinationPath . $photoName;
 
                 DB::table('project_images')->insert([
 
                     'project_id' => $project->id,
                     'name' => $photo->getClientOriginalName(),
-                    'path' => 'uploads/products/' . $filename
+                    'path' => $photoPath
                 ]);
 
             }
 
         }
+
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
 
     }

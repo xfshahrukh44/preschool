@@ -25,7 +25,7 @@ $segment = Request::segment(1);
                 <li><a class="<?php if ($segment == 'job-board') {
                     echo 'menu_active';
                 } ?>" href="{{ route('bulletin_board') }}"><img
-                            src="{{ asset('images/notification1.png') }}"> Job Board </a></li>
+                            src="{{ asset('images/notification1.png') }}"> Bulletin Board </a></li>
                 <li><a class="<?php if ($segment == 'update-profile') {
                     echo 'menu_active';
                 } ?>" href="{{ route('update_profile') }}"><img

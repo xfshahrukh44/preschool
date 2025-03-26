@@ -103,7 +103,7 @@ $connectedTeacherIds = Auth::user()->connectedTeachers->pluck('id');
 
 
     <div class="most">
-        <h5> Job Board </h5>
+        <h5> Bulletin Board </h5>
     </div>
     <div class="job_view">
         @php

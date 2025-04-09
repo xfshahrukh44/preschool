@@ -221,7 +221,7 @@
                                 <input type="checkbox" id="checkbox_agreed_to_terms" required>
                                 <label for="checkbox_agreed_to_terms">
                                     I have read the
-                                    <a target="_blank" href="{{ route('termsandconditionprovider') }}">Terms and
+                                    <a href="javascript:void(0)" data-url="{{ route('termsandconditionprovider') }}">Terms and
                                         conditions</a>
                                 </label>
                                 {{--                                <textarea class="form-control" id="exampleFormControlTextarea2" name="about_preschool" rows="6" placeholder="How did you hear about preschool portal?"></textarea> --}}

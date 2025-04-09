@@ -42,7 +42,7 @@
 
                     <ul class="FooterUl">
                         <li>
-                            <p><a href="{{ route('termsandconditionindividual') }}"> Terms & Conditions-Individual
+                            <p><a href="javascript:void(0)" data-url="{{ route('termsandconditionprovider') }}"> Terms & Conditions-Individual
                                     Membership </a></p>
                             <p><a href="{{ route('termsandconditionprovider') }}"> Terms & Conditions-Provider
                                     Membership</a></p>

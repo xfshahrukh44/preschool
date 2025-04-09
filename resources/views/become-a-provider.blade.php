@@ -448,7 +448,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             paypal.Button.render({
-                env: 'production', //sandbox | production
+                env: 'sandbox', //sandbox | production
 
                 style: {
                     label: 'checkout',
@@ -457,8 +457,8 @@
                     color: 'gold'
                 },
                 client: {
-                    // sandbox: 'AV06KMdIerC8pd6_i1gQQlyVoIwV8e_1UZaJKj9-aELaeNXIGMbdR32kDDEWS4gRsAis6SRpUVYC9Jmf',
-                    production:'Aa0Z5XC5kI5YzMwMcE9ncxUyUbVad_xiTsDLuWjGFPGOLSIHSTkkhbr2SmPkZJFEY_fhSPcp8wUs5LBu',
+                    sandbox: 'AV06KMdIerC8pd6_i1gQQlyVoIwV8e_1UZaJKj9-aELaeNXIGMbdR32kDDEWS4gRsAis6SRpUVYC9Jmf',
+                    // production:'Aa0Z5XC5kI5YzMwMcE9ncxUyUbVad_xiTsDLuWjGFPGOLSIHSTkkhbr2SmPkZJFEY_fhSPcp8wUs5LBu',
                 },
                 validate: function(actions) {
                     actions.disable();

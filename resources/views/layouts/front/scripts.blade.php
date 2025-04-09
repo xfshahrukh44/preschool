@@ -33,6 +33,7 @@
 </script>
 
 
+
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -195,7 +196,6 @@ $('#contactform').on('submit',function(e){
     }
 
 </script>
-
 
 
         @yield('js')

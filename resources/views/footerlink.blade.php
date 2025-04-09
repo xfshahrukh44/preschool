@@ -19,6 +19,8 @@
 <!-- <script src="js/script.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"> </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
 <script src="{{asset('js/custom.js')}}"></script>
 
 
@@ -26,9 +28,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+<script>
+    $(document).ready(function() {
+      $('[data-fancybox]').fancybox({
+        buttons: ["zoom", "close"],
+        loop: false,
+        protect: true
+      });
+    });
+  </script>
+
 
 <script>
-    
+
     // Set the options that I want
     toastr.options = {
     "closeButton": true,
@@ -42,7 +54,7 @@
     "timeOut": "5000",
     "extendedTimeOut": "1000",
     "showEasing": "swing",
-    "hideEasing": "linear", 
+    "hideEasing": "linear",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
     }
@@ -51,10 +63,10 @@
 
 @if(Session::has('message'))
 <script>
-    $(document).ready(function onDocumentReady() {  
-    
+    $(document).ready(function onDocumentReady() {
+
         toastr.success("{{ Session::get('message') }}");
-    
+
     });
 </script>
 @endif
@@ -63,10 +75,10 @@
 
 @if(Session::has('error'))
 <script>
-    $(document).ready(function onDocumentReady() {  
-    
+    $(document).ready(function onDocumentReady() {
+
         toastr.error("{{ Session::get('error') }}");
-    
+
     });
 </script>
 @endif

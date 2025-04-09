@@ -34,14 +34,19 @@ $connectedTeacherIds = Auth::user()->connectedTeachers->pluck('id');
             <ul>
                 @foreach ($saved_projects as $key => $saved_project)
                     <li>
-                        @if ($saved_project->project->images()->first())
-                            <img style="height:39px; width:39px;" src="{{ asset($saved_project->project->images()->first()->path) }}" class="img-fluid">
-                        @else
-                            <img src="{{ asset('images/commentimage1.png') }}" class="img-fluid">
-                        @endif
+                        @php
+                            $image = $saved_project->project->images()->first();
+                            $imagePath = $image ? asset($image->path) : asset('images/commentimage1.png');
+                        @endphp
+
+                        <a href="{{ $imagePath }}" data-fancybox="gallery-{{ $saved_project->id }}">
+                            <img style="height:39px; width:39px;" src="{{ $imagePath }}" class="img-fluid" alt="project image">
+                        </a>
 
                         <a href="{{ route('projects.show', $saved_project->project->id) }}">
-                            <h6> {{ $saved_project->project->title }} <img src="{{ asset('images/dotgreen.png') }}" class="img-fluid"></h6>
+                            <h6> {{ $saved_project->project->title }}
+                                <img src="{{ asset('images/dotgreen.png') }}" class="img-fluid">
+                            </h6>
                         </a>
                     </li>
                 @endforeach

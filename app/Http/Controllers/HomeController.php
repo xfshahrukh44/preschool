@@ -205,6 +205,9 @@ class HomeController extends Controller
 
     public function become_a_teacher()
     {
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
         $page = DB::table('pages')->where('id', 5)->first();
         $section = DB::table('section')->where('page_id', 5)->get();
 
@@ -215,6 +218,9 @@ class HomeController extends Controller
 
     public function become_a_provider()
     {
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
         $page = DB::table('pages')->where('id', 5)->first();
         $section = DB::table('section')->where('page_id', 5)->get();
 
@@ -258,6 +264,9 @@ class HomeController extends Controller
 
     public function joinnow()
     {
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
         $page = DB::table('pages')->where('id', 5)->first();
         $section = DB::table('section')->where('page_id', 5)->get();
 

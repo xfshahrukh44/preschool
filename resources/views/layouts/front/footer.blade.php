@@ -1,5 +1,7 @@
 <?php $segment = request()->segment(1); ?>
 
+@if(!Auth::check())
+
 @if (
     !in_array($segment, [
         'home',
@@ -20,6 +22,8 @@
             </div>
         </div>
     </section>
+@endif
+
 @endif
 
 <footer style="height:450px !important;">

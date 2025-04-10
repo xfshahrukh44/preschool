@@ -472,7 +472,30 @@
                         toastr.error('Please fill the required fields before proceeding to pay');
                         paypalActions.disable();
                     } else {
-                        paypalActions.enable();
+                        // Check if email exists
+                        var email = document.querySelector('input[name="email"]').value;
+
+                        // Make AJAX call to check if email exists
+                        $.ajax({
+                            url: '{{ route('checkEmailExistence') }}', // Route to your email check controller
+                            type: 'POST',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                email: email
+                            },
+                            success: function(response) {
+                                if (response.exists) {
+                                    toastr.error('This email is already registered!');
+                                    paypalActions.disable();  // Disable the PayPal button
+                                } else {
+                                    paypalActions.enable();  // Enable the PayPal button
+                                }
+                            },
+                            error: function() {
+                                toastr.error('An error occurred while checking the email.');
+                                paypalActions.disable();  // Disable the PayPal button
+                            }
+                        });
                     }
                 },
                 payment: function(data, actions) {
@@ -536,17 +559,6 @@
             });
             return errorCount;
         }
-
-        // const refresh_paypal_button_state = () => {
-        //     $('#paypal-submit').prop('disabled', !($('#checkbox_agreed_to_terms').prop('checked')));
-        //     $('#paypal-submit').prop('title', $('#checkbox_agreed_to_terms').prop('checked') ? '' :
-        //         'Please read and accept our terms/privacy policy.');
-        // }
-        // refresh_paypal_button_state();
-
-        // $('#checkbox_agreed_to_terms').on('change', function() {
-        //     refresh_paypal_button_state();
-        // });
 
         document.getElementById('isLicensed').addEventListener('change', function() {
             document.getElementById('licenseFields').style.display = this.checked ? 'block' : 'none';

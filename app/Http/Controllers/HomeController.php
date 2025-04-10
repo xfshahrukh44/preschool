@@ -228,6 +228,15 @@ class HomeController extends Controller
         return view('become-a-provider', compact('page', 'section'));
     }
 
+    public function checkEmailExistence(Request $request)
+    {
+        $email = $request->input('email');
+
+        // Check if the email exists in the database
+        $exists = User::where('email', $email)->exists();
+
+        return response()->json(['exists' => $exists]);
+    }
 
     public function sharedGallery()
     {

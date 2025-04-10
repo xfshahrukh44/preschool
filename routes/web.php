@@ -237,6 +237,8 @@ Route::get('claimed_center', 'HomeController@claimed_center')->name('claimed_cen
 
 Route::get('claimed_center_detail/{id?}', 'HomeController@claimed_center_detail')->name('claimed_center_detail');
 
+Route::post('/check-email-existence', 'HomeController@checkEmailExistence')->name('checkEmailExistence');
+
 
 // Teacher Dashboard
 Route::get('teacher_dashboard', 'HomeController@teacher_dashboard')->name('teacher_dashboard');
